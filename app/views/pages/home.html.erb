@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <h1>Social Tour</h1>
+    <p>
+      This is the home page for the
+      <a href="http://ekaidepd.com/">SocialTour</a>
+      developers application.
+    </p>
+    
+    <div id="user_nav">
+    	<% if !user_signed_in? %>
+    		<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
+		<% end %>
+		<%= render 'pages/user_nav'%>
+	</div>
+	
+  </body>
+</html>
