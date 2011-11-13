@@ -15,16 +15,20 @@ SocialTour::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/help',   :to => 'pages#help'
   
-  match '/auth/:provider/callback', to: 'sessions#create'
+  #for providers authentication
+  match '/auth/:provider/callback', to: 'authentications#create'
+  match '/auth/failure' => 'authentications#failure'
+  match '/signout' => 'authentications#destroy', :as => :signout
+  match '/signin' => 'authentications#new', :as => :signin
   
-  ProjectManage::Application.routes.draw do |map|
-    match '/auth/:provider/callback' => 'authentications#create'
-    devise_for :users
-    esources :projects
-    resources :tasks
-    esources :authentications
-    root :to => 'projects#index'
-  end
+  #ProjectManager::Application.routes.draw do |map|
+  #  match '/auth/:provider/callback' => 'authentications#create'
+  #  devise_for :users
+  #  resources :projects
+  #  resources :tasks
+  #  resources :authentications
+  #  root :to => 'projects#index'
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

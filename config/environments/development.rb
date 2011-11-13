@@ -30,4 +30,7 @@ SocialTour::Application.configure do
   
   #Setup default url options for your specific environment. For example
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  #fix for facebook SSL error
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 end
