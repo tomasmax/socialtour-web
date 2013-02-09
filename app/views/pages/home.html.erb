@@ -1,21 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <h1>Social Tour</h1>
-    <p>
-      This is the home page for the
-      <a href="http://ekaidepd.com/">SocialTour</a>
-      developers application.
-    </p>
-    
-    <div id="user_nav">
+	
     	<% if !user_signed_in? %>
     		<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
 		<% end %>
-		<%= render 'pages/user_nav'%>
-	</div>
-	<p>
-		<%= render 'pages/authentications'%>
-	</p>
-	
-  </body>
+			<%= render 'pages/user_nav'%>
+
+		<p>
+			<%= render 'pages/authentications'%>
+		</p>
+		
+		<!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2><%= t 'via_verde' %></h2>
+    			<p><%= t 'via_verde_msg' %>
+    			<a class="btn"><%= link_to t('read_more'), "/rutas/via-verde-montes-de-hierro" %></a>
+    			</p>
+        </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2><%= t 'btt_routes' %></h2>
+     			<p><%= t 'btt_routes_msg' %>
+     			<a href="/que-hacer/rutas-btt" class="btn"><%= t 'read_more' %></a>
+     			</p>
+       </div>
+        <div class="span4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>								
+        
+					<h2><%= t 'parque_minero' %></h2>
+			    <p><%= t 'parque_minero_msg' %>
+			    <%# a href="/que-ver/parque-minero"><%= t 'read_more' ></a%>
+			    </p>
+			  </div>
+			</div>
+
+<div class="separator"></div>
+
+<div class="row">
+  <div id="pois-index" class="span9">
+    <div>
+      <h2><%= t 'what_do' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list">
+        <%# render @what_to_do %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-hacer" %>
+      </div>
+    </div>
+    
+    <div>
+      <h2><%= t 'what_see' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio de interés? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list condensed">
+        <%# render @what_to_see %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-ver" %>
+      </div>
+    </div>
+    
+    <div>
+      <h2><%= t 'where_eat' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio donde comer? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list">
+        <%# render @where_to_eat %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/donde-comer" %>
+      </div>
+    </div>
+
 </html>

@@ -1,27 +1,49 @@
 require 'test_helper'
 
 class AuthenticationsControllerTest < ActionController::TestCase
-  def test_index
+  setup do
+    @authentication = authentications(:one)
+  end
+
+  test "should get index" do
     get :index
-    assert_template 'index'
+    assert_response :success
+    assert_not_nil assigns(:authentications)
   end
 
-  def test_create_invalid
-    Authentication.any_instance.stubs(:valid?).returns(false)
-    post :create
-    assert_template 'new'
+  test "should get new" do
+    get :new
+    assert_response :success
   end
 
-  def test_create_valid
-    Authentication.any_instance.stubs(:valid?).returns(true)
-    post :create
-    assert_redirected_to authentications_url
+  test "should create authentication" do
+    assert_difference('Authentication.count') do
+      post :create, authentication: { provider: @authentication.provider, uemail: @authentication.uemail, uid: @authentication.uid, uname: @authentication.uname }
+    end
+
+    assert_redirected_to authentication_path(assigns(:authentication))
   end
 
-  def test_destroy
-    authentication = Authentication.first
-    delete :destroy, :id => authentication
-    assert_redirected_to authentications_url
-    assert !Authentication.exists?(authentication.id)
+  test "should show authentication" do
+    get :show, id: @authentication
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @authentication
+    assert_response :success
+  end
+
+  test "should update authentication" do
+    put :update, id: @authentication, authentication: { provider: @authentication.provider, uemail: @authentication.uemail, uid: @authentication.uid, uname: @authentication.uname }
+    assert_redirected_to authentication_path(assigns(:authentication))
+  end
+
+  test "should destroy authentication" do
+    assert_difference('Authentication.count', -1) do
+      delete :destroy, id: @authentication
+    end
+
+    assert_redirected_to authentications_path
   end
 end

@@ -5,7 +5,7 @@
    <div class="authentications">
     <% for authentication in @authentications %>
      <div class="authentication">
-      <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>
+      <%= image_tag "#{authentication.provider}_64.png", :size => "64x64" %>
       <div class="provider"><%= authentication.provider.titleize&crarr;   
       %></div>
       <div class="uid"><%= authentication.uid %></div>
@@ -21,12 +21,15 @@
   <p><strong>Sign in through one of these services:</strong></p>
 <% end %>
 
+
+<%# link_to "Twitter", user_omniauth_authorize_path(:twitter), :class=> "auth_provider" %>
 <a href="/auth/twitter" class="auth_provider">
-  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>
-<a href="/auth/facebook" class="auth_provider">
-  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>
-<a href="/auth/google_apps" class="auth_provider">
-  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>Google</a>
-<a href="/auth/open_id" class="auth_provider">
-  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>OpenID</a>
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %></a>
+<%# link_to "Facebook", user_omniauth_authorize_path(:facebook), :class=> "auth_provider" %>
+	<a href="/auth/facebook" class="auth_provider">
+  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %></a>
+<a href="/auth/google_oauth2" class="auth_provider">
+  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %></a>
+<a href="/auth/foursquare" class="auth_provider">
+  <%= image_tag "foursquare_64.png", :size => "64x64", :alt => "Forsquare" %></a>
 <div class="clear"></div>

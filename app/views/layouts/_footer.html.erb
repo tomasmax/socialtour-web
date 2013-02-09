@@ -2,13 +2,13 @@
 <footer>
   <nav class="round">
     <ul>
+    	</b>
     	<% if user_signed_in? %>
-			<li>Signed in as <%= current_user.email %></li>
-		<% end %>
+				<li>Signed in as <%= current_user.email %></li>
+			<% end %>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://ekaidepd.com/"></a></li>
-      
+      <li><a href="http://ekaidepd.com/"></a></li>     
     </ul>
   </nav>
 </footer>

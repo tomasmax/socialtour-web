@@ -1,0 +1,109 @@
+eu:
+  date:
+    default: "%Y/%m/%d"
+  time:
+    am: "AM"
+    pm: "PM"
+    formats:
+      short: "%I:%M%p %Y/%m/%d"
+      long: "%I:%M%p %Y/%m/%d"
+  
+  resources:
+    pois: "lekuak"
+    
+  path_names:
+    new: "berria" 
+  
+  devise:
+    sessions:
+      admin_user:
+        signed_in: "Zuzentasunez sartu zara"
+    failure:
+      admin_user:
+        unauthenticated: "Inicia sessión para continuar"
+        invalid: "Usuario o contraseña incorrecta"
+  
+  active_admin:
+    dashboard: "Hasiera"
+    view: "Ikusi"
+    edit: "Aldatu"
+    delete: "Ezabatu"
+    delete_confirmation: "Ziur zaude hau ezabatzeaz?"
+    new_model: "%{model} berria"
+    edit_model: "%{model} aldatu"
+    delete_model: "%{model} ezabatu"
+    details: "%{model}-en xehetasunak"
+    cancel: "Deuseztatu"
+    empty: "Hutsik"
+    previous: "Aurrekoa"
+    next: "Hurrengoa"
+    download: "Deskargatu:"
+    has_many_new: "%{model} berria gehitu"
+    has_many_delete: "Ezabatu"
+    filter: "Iragazi"
+    clear_filters: "Iragaziak kendu"
+    search_field: "%{field} bilatu"
+    equal_to: "Berdin"
+    greater_than: "baino handiagoa"
+    less_than: "baino txikiagoa"
+    logout: "Irten"
+    sidebars:
+      filters: "Iragaziak"
+    pagination:
+      empty: "Ez da %{model}-rik aurkitu"
+      one: "Erakusten <b>1</b> %{model}"
+      one_page: "Erakusten %{model} <b>guztiak %{n}</b>"
+      multiple: "Erakusten %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> <b>%{total}</b>-tik"
+    any: "Guztiak"
+    blank_slate:
+      content: "Oraindik ez dago %{resource_name}-rik."
+      link: "Sortu"
+
+  title: "Socialtour"
+
+  what_to_do: "Zer egin"
+
+  description: "Deskribapena"
+  starts_at: "Hasita"
+  ends_at: "Bukatua"
+  log_in: "Sartu"
+  sign_up: "Erregistratu"
+  sign_in_now: "Saioa hasi"
+  comments: "Iruzkinak"
+  last_pois: "Azkenak"
+  top_rated: "Bozkatuenak"
+  last_comments: "Azken iruzkinak"
+  contribute: "Kolaboratu"
+  create_poi: "Site bat gehitu"
+  create_event: "Ekimen bat sortu"
+  next_events: "Hurrengo ekimenak"
+  near: "Gertu"
+  view_all: "Guztiak ikusi"
+  last_photos: "Azken Argazkiak"
+  photos: "Argazkiak"
+  create_photo: "Argazkia sortu"
+  events: "Ekimenak"
+  no_comments: "Ez dago iruzkinik, izan zu lehena bat idazten"
+  add_your_comment: "Zure iruzkina gehitu"
+  publish: "Argitaratu"
+  upload_photos: "Argazkiak igo"
+  create_poi: "Site berri bar sortu"
+  location: "Lokalizazioa"
+  poi_type: "Mota"
+  poi_title: "Izena"
+  poi_description: "Deskribapena"
+  submit_poi: "Bidali"
+  unknown: "Ezezaguna"
+  route_help: "Klikatu maparen gainean ibilbidea marrazteko"
+  login_with_account: "Zure kontuarekin sartu"
+  name: "Izena"
+  email: "Emaila"
+  password: "Pasahitza"
+  password_confirmation: "Baiezta ezazu pasahitza"
+  login_twitter: "Zure Twitter kontuarekin sartu"
+  login_facebook: "Zure Facebook kontuarekin sartu"
+  login_google: "Zure Gmail kontuarekin sartu"
+  login_zalla: "Sesioa hasi/ erregistratu"
+  copyright: "Copyright © 2012 Tenzing. Eskubide guztiak gordeak | Emaila "
+  all: "Guztiak"
+  search: "Bilakera"

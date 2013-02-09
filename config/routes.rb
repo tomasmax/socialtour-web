@@ -1,8 +1,14 @@
 SocialTour::Application.routes.draw do
   resources :authentications
 
+
   devise_for :users
 
+  resources :users
+
+  resources :cities
+  
+  
   get "pages/home"
 
   get "pages/contact"
@@ -17,18 +23,10 @@ SocialTour::Application.routes.draw do
   
   #for providers authentication
   match '/auth/:provider/callback', to: 'authentications#create'
-  match '/auth/failure' => 'authentications#failure'
-  match '/signout' => 'authentications#destroy', :as => :signout
-  match '/signin' => 'authentications#new', :as => :signin
-  
-  #ProjectManager::Application.routes.draw do |map|
-  #  match '/auth/:provider/callback' => 'authentications#create'
-  #  devise_for :users
-  #  resources :projects
-  #  resources :tasks
-  #  resources :authentications
-  #  root :to => 'projects#index'
-  #end
+  match '/auth/failure', to: "authentications#failure"
+  match '/signout' => 'authentications#destroy'
+  match '/signin' => 'authentications#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -85,5 +83,5 @@ SocialTour::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id))(.:format)'
 end

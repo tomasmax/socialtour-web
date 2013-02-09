@@ -1,17 +1,121 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title><%= title %></title>
-    <%= csrf_meta_tag %>
-    <%= render 'layouts/stylesheet' %>
+    <title><%= title || t('title') %></title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%# render 'layouts/stylesheet' %>
+  	<%= javascript_include_tag "application" %>
+  	<%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
+    <%= csrf_meta_tags %>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <body>	
+  	<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1&appId=158273747603181";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
   <body>
-    <div class="container">
-      <%= render 'layouts/header' %>
-      <section class="round">
-        <%= yield %>
-      </section>
-      <%= render 'layouts/footer' %>
+  	
+  	<style>
+  		body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      @bodyBackground: #F2F2F2;
+		@navbarBackground: #FFFFFF;
+  	</style>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">       
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+							<li><% logo = image_tag("logo.png", :size => "100x200", class: "rounded-image") %>
+		  				<%= link_to logo, root_path %></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/pages/about">About</a></li>
+              <li><a href="/pages/contact">Contact</a></li>
+              <li><a href="/pages/help">Help</a></li>
+              <% if user_signed_in? %>
+              	<li><%=link_to "Authentications", authentications_path%></li>
+              <% end %>            
+            </ul>
+            
+            <div class="navbar pull-right">
+		          <%= link_to "eu", "?locale=eu", class: session[:locale] == 'eu' ? 'language-selected' : '' %>
+		          | 
+		          <%= link_to "es", "?locale=es", class: session[:locale] == 'es' ? 'language-selected' : '' %>
+        		</div>
+        		
+        		<form class="navbar-form form-search pull-right span3">
+  							<input type="text" class="input-medium search-query">
+  							<button type="submit" class="btn">Search</button>
+						</form>
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
     </div>
-  </body>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+      	<div class="row">
+      		<div class="span5">
+      			<%= logo2 = image_tag("logo.png", :size => "250x200", class: "rounded-image") %>
+        		<p class="lead"><%= t('subtitle')%></p>
+        		<p><%= t('subsubtitle')%></p>
+    			</div>		
+    			<% if user_signed_in? %>
+    				<%= button_to "Sign out", destroy_user_session_path, class: "btn btn-primary btn-large", method: "get" %>
+ 					<% else %>
+    				<div class="span1">
+    				<%= button_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-large", method: "get" %>
+    				</div>
+    				<div class="span1"></div>
+    				<%= button_to "Sign in", new_user_session_path, class: "btn btn-inverse btn-large", method: "get"%>
+    				</div>
+ 					<% end %>
+ 				</div>
+				
+					<br />
+            <%= link_to t('cities'), cities_path, class: "btn-link" %>
+        		<div class="span2">
+              <%= t 'routes' %>
+            </div>
+            <div class="span2">
+              <%= t 'packages' %>
+            </div>
+            <div class="span2">
+              <%= t 'resources' %>
+            </div> 
+            <div class="span3">
+              <%= t 'to_do' %>
+						</div>
+				</div>          
+								
+				<%= yield %>
+
+			<br />
+			<br />
+      <hr>
+ 
+      <footer>
+        <p>&copy; SocialTour 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>     
+      
 </html>
