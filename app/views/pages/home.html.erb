@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-	
+
     	<% if !user_signed_in? %>
     		<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
 		<% end %>
@@ -34,7 +32,6 @@
         
 					<h2><%= t 'parque_minero' %></h2>
 			    <p><%= t 'parque_minero_msg' %>
-			    <%# a href="/que-ver/parque-minero"><%= t 'read_more' ></a%>
 			    </p>
 			  </div>
 			</div>
@@ -81,5 +78,24 @@
         <%= link_to "Ver más", "/donde-comer" %>
       </div>
     </div>
+	</div>
+  </div>
+  
+  <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      }
+    </script>
+    
+<div id="near" onload="initialize()">
+  <div id="map-canvas"></div>
 
-</html>
+  <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+</div>
+

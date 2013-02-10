@@ -1,0 +1,6 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20130210004110_create_api_keys.rb
+[1m[32m      create[0m    app/models/api_key.rb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/unit/api_key_test.rb
+[1m[32m      create[0m      test/fixtures/api_keys.yml

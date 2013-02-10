@@ -64,6 +64,7 @@ gem 'formtastic'
 gem "meta_search"
 
 gem 'i18n_routing'
+gem 'country_select'
 
 gem 'kaminari'
 
