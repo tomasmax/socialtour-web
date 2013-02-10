@@ -14,7 +14,7 @@ ActiveAdmin.register Poi do
       pois_count = 0
       if gpx.tracks
         gpx.tracks.each do |track|
-          track_poi = Poi.new title: track.name, description: track.name, user_id: session[:current_user_id], 
+          track_poi = Poi.new name: track.name, description: track.name, user_id: session[:current_user_id], 
             latitude: track.points.first.lat, longitude: track.points.first.lon, rating: 0, ratings_count: 0
           track_poi.save!
           
@@ -27,7 +27,7 @@ ActiveAdmin.register Poi do
       
       if gpx.routes
         gpx.routes.each do |track|
-          track_poi = Poi.new title: track.name, description: track.name, user_id: session[:current_user_id], 
+          track_poi = Poi.new name: track.name, description: track.name, user_id: session[:current_user_id], 
             latitude: track.points.first.lat, longitude: track.points.first.lon, rating: 0, ratings_count: 0
           track_poi.save!
           
@@ -48,8 +48,8 @@ ActiveAdmin.register Poi do
     attributes_table do
       row :id
       row :slug
-      row :title
-      row :title_eu
+      row :name
+      row :name_eu
       row :description
       row :description_eu
       row :rating do |p|
@@ -103,8 +103,8 @@ ActiveAdmin.register Poi do
       f.input :city
       f.input :supercategory
       f.input :category
-      f.input :title
-      f.input :title_eu
+      f.input :name
+      f.input :name_eu
       f.input :slug
       f.input :description
       f.input :description_eu
@@ -125,7 +125,7 @@ ActiveAdmin.register Poi do
   end
 
   index do 
-    column :title
+    column :name
     column :description do |poi|
       truncate poi.description, length: 20
     end  

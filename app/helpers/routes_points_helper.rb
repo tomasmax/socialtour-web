@@ -1,0 +1,2 @@
+module RoutesPointsHelper
+end

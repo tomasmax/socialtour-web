@@ -1,0 +1,2 @@
+module RoutesInfosHelper
+end

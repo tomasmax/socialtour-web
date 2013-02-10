@@ -1,0 +1,29 @@
+<h1>Listing routes_points</h1>
+
+<table>
+  <tr>
+    <th>Poi</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Elevation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @routes_points.each do |routes_point| %>
+  <tr>
+    <td><%= routes_point.poi %></td>
+    <td><%= routes_point.latitude %></td>
+    <td><%= routes_point.longitude %></td>
+    <td><%= routes_point.elevation %></td>
+    <td><%= link_to 'Show', routes_point %></td>
+    <td><%= link_to 'Edit', edit_routes_point_path(routes_point) %></td>
+    <td><%= link_to 'Destroy', routes_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Routes point', new_routes_point_path %>

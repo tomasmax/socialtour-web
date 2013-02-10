@@ -84,6 +84,7 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
+    gpx (0.6)
     has_scope (0.5.1)
     hashie (1.2.0)
     hike (1.2.1)
@@ -115,6 +116,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.11.8.13)
+    libxml-ruby (2.3.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -245,11 +247,13 @@ DEPENDENCIES
   fb_graph
   formtastic
   foursquare2
+  gpx
   i18n_routing
   jquery-rails
   kaminari
   koala
   less-rails
+  libxml-ruby
   meta_search
   oauth2
   omniauth

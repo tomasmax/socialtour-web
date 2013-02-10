@@ -61,6 +61,9 @@ gem 'foursquare2'
 #form builder
 gem 'formtastic'
 
+gem 'gpx'
+gem 'libxml-ruby'
+
 gem "meta_search"
 
 gem 'i18n_routing'

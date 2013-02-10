@@ -1,4 +1,10 @@
 SocialTour::Application.routes.draw do
+  resources :route_points
+
+
+  resources :route_infos
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

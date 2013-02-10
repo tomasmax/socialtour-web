@@ -7,6 +7,8 @@ class Poi < ActiveRecord::Base
   has_many :photos, dependent: :delete_all
   has_many :events, dependent: :delete_all
   has_many :ratings, dependent: :delete_all
+  has_many :route_infos, dependent: :delete_all
+  has_many :route_points, dependent: :delete_all
   
   attr_accessible :address, :description, :description_eu, :latitude, :longitude, :minube_id, :minube_url, :name, :name_eu, :picture_nomral, :picture_thumbnail, :rating, :ratings_count, :slug, :telephone, :timetable, :website
   

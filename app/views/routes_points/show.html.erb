@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Poi:</b>
+  <%= @routes_point.poi %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @routes_point.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @routes_point.longitude %>
+</p>
+
+<p>
+  <b>Elevation:</b>
+  <%= @routes_point.elevation %>
+</p>
+
+
+<%= link_to 'Edit', edit_routes_point_path(@routes_point) %> |
+<%= link_to 'Back', routes_points_path %>

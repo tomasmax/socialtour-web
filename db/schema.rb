@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210170904) do
+ActiveRecord::Schema.define(:version => 20130210192949) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -237,6 +237,36 @@ ActiveRecord::Schema.define(:version => 20130210170904) do
 
   add_index "ratings", ["poi_id"], :name => "index_ratings_on_poi_id"
   add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
+
+  create_table "route_infos", :force => true do |t|
+    t.integer  "poi_id"
+    t.decimal  "n_bound",                :precision => 16, :scale => 8
+    t.decimal  "s_bound",                :precision => 16, :scale => 8
+    t.decimal  "e_bound",                :precision => 16, :scale => 8
+    t.decimal  "w_bound",                :precision => 16, :scale => 8
+    t.decimal  "length",                 :precision => 8,  :scale => 2
+    t.string   "difficulty"
+    t.decimal  "max_elevation",          :precision => 6,  :scale => 2, :default => 0.0
+    t.decimal  "min_elevation",          :precision => 6,  :scale => 2, :default => 0.0
+    t.decimal  "max_up_slope",           :precision => 8,  :scale => 6, :default => 0.0
+    t.decimal  "max_down_slope",         :precision => 8,  :scale => 6, :default => 0.0
+    t.decimal  "accomulated_up_slope",   :precision => 10, :scale => 4, :default => 0.0
+    t.decimal  "accomulated_down_slope", :precision => 10, :scale => 4, :default => 0.0
+    t.boolean  "is_circular",                                           :default => false
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
+  end
+
+  create_table "route_points", :force => true do |t|
+    t.integer  "poi_id"
+    t.decimal  "latitude",   :precision => 16, :scale => 8
+    t.decimal  "longitude",  :precision => 16, :scale => 8
+    t.decimal  "elevation",  :precision => 6,  :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+  end
+
+  add_index "route_points", ["poi_id"], :name => "index_route_points_on_poi_id"
 
   create_table "supercategories", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,47 @@
+<h1>Listing routes_infos</h1>
+
+<table>
+  <tr>
+    <th>Poi</th>
+    <th>N bound</th>
+    <th>S bound</th>
+    <th>E bound</th>
+    <th>W bound</th>
+    <th>Lenght</th>
+    <th>Difficulty</th>
+    <th>Max elevation</th>
+    <th>Min elevation</th>
+    <th>Max down slope</th>
+    <th>Accumulated up slope</th>
+    <th>Accumulated down slope</th>
+    <th>Is circular</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @routes_infos.each do |routes_info| %>
+  <tr>
+    <td><%= routes_info.poi %></td>
+    <td><%= routes_info.n_bound %></td>
+    <td><%= routes_info.s_bound %></td>
+    <td><%= routes_info.e_bound %></td>
+    <td><%= routes_info.w_bound %></td>
+    <td><%= routes_info.lenght %></td>
+    <td><%= routes_info.difficulty %></td>
+    <td><%= routes_info.max_elevation %></td>
+    <td><%= routes_info.min_elevation %></td>
+    <td><%= routes_info.max_down_slope %></td>
+    <td><%= routes_info.accumulated_up_slope %></td>
+    <td><%= routes_info.accumulated_down_slope %></td>
+    <td><%= routes_info.is_circular %></td>
+    <td><%= link_to 'Show', routes_info %></td>
+    <td><%= link_to 'Edit', edit_routes_info_path(routes_info) %></td>
+    <td><%= link_to 'Destroy', routes_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Routes info', new_routes_info_path %>

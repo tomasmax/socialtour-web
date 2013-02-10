@@ -1,3 +1,3 @@
-ActiveAdmin.register ApiKey, as: "Apps" do
+ActiveAdmin.register ApiKey, as: "ApiKey" do
   
 end

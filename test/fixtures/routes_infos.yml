@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  poi: 
+  n_bound: 9.99
+  s_bound: 9.99
+  e_bound: 9.99
+  w_bound: 9.99
+  lenght: 9.99
+  difficulty: MyString
+  max_elevation: 9.99
+  min_elevation: 9.99
+  max_down_slope: 9.99
+  accumulated_up_slope: 9.99
+  accumulated_down_slope: 9.99
+  is_circular: false
+
+two:
+  poi: 
+  n_bound: 9.99
+  s_bound: 9.99
+  e_bound: 9.99
+  w_bound: 9.99
+  lenght: 9.99
+  difficulty: MyString
+  max_elevation: 9.99
+  min_elevation: 9.99
+  max_down_slope: 9.99
+  accumulated_up_slope: 9.99
+  accumulated_down_slope: 9.99
+  is_circular: false

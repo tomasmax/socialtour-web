@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  poi: 
+  latitude: 9.99
+  longitude: 9.99
+  elevation: 9.99
+
+two:
+  poi: 
+  latitude: 9.99
+  longitude: 9.99
+  elevation: 9.99

@@ -1,0 +1,69 @@
+<%= form_for(@routes_info) do |f| %>
+  <% if @routes_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@routes_info.errors.count, "error") %> prohibited this routes_info from being saved:</h2>
+
+      <ul>
+      <% @routes_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :poi %><br />
+    <%= f.text_field :poi %>
+  </div>
+  <div class="field">
+    <%= f.label :n_bound %><br />
+    <%= f.text_field :n_bound %>
+  </div>
+  <div class="field">
+    <%= f.label :s_bound %><br />
+    <%= f.text_field :s_bound %>
+  </div>
+  <div class="field">
+    <%= f.label :e_bound %><br />
+    <%= f.text_field :e_bound %>
+  </div>
+  <div class="field">
+    <%= f.label :w_bound %><br />
+    <%= f.text_field :w_bound %>
+  </div>
+  <div class="field">
+    <%= f.label :lenght %><br />
+    <%= f.text_field :lenght %>
+  </div>
+  <div class="field">
+    <%= f.label :difficulty %><br />
+    <%= f.text_field :difficulty %>
+  </div>
+  <div class="field">
+    <%= f.label :max_elevation %><br />
+    <%= f.text_field :max_elevation %>
+  </div>
+  <div class="field">
+    <%= f.label :min_elevation %><br />
+    <%= f.text_field :min_elevation %>
+  </div>
+  <div class="field">
+    <%= f.label :max_down_slope %><br />
+    <%= f.text_field :max_down_slope %>
+  </div>
+  <div class="field">
+    <%= f.label :accumulated_up_slope %><br />
+    <%= f.text_field :accumulated_up_slope %>
+  </div>
+  <div class="field">
+    <%= f.label :accumulated_down_slope %><br />
+    <%= f.text_field :accumulated_down_slope %>
+  </div>
+  <div class="field">
+    <%= f.label :is_circular %><br />
+    <%= f.check_box :is_circular %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
