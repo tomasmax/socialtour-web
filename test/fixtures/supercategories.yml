@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  slug: MyString
+  icon_file_name: MyString
+  icon_content_type: MyString
+  icon_file_size: 1
+  icon_update_at: 2013-02-10 17:11:41
+
+two:
+  name: MyString
+  slug: MyString
+  icon_file_name: MyString
+  icon_content_type: MyString
+  icon_file_size: 1
+  icon_update_at: 2013-02-10 17:11:41

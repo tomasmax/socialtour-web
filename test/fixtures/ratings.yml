@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  poi: 
+  user: 
+  ip: MyString
+  rating: 9.99
+  comment: MyText
+
+two:
+  poi: 
+  user: 
+  ip: MyString
+  rating: 9.99
+  comment: MyText

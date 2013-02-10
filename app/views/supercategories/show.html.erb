@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @supercategory.name %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @supercategory.slug %>
+</p>
+
+<p>
+  <b>Icon file name:</b>
+  <%= @supercategory.icon_file_name %>
+</p>
+
+<p>
+  <b>Icon content type:</b>
+  <%= @supercategory.icon_content_type %>
+</p>
+
+<p>
+  <b>Icon file size:</b>
+  <%= @supercategory.icon_file_size %>
+</p>
+
+<p>
+  <b>Icon update at:</b>
+  <%= @supercategory.icon_update_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_supercategory_path(@supercategory) %> |
+<%= link_to 'Back', supercategories_path %>

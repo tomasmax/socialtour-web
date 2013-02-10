@@ -1,0 +1,69 @@
+<%= form_for(@photo) do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :poi %><br />
+    <%= f.text_field :poi %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :image_file_name %><br />
+    <%= f.text_field :image_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :image_content_type %><br />
+    <%= f.text_field :image_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :image_file_size %><br />
+    <%= f.number_field :image_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :image_updated_at %><br />
+    <%= f.datetime_select :image_updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :is_visible_on_index %><br />
+    <%= f.check_box :is_visible_on_index %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br />
+    <%= f.text_field :subtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :title_eu %><br />
+    <%= f.text_field :title_eu %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle_eu %><br />
+    <%= f.text_field :subtitle_eu %>
+  </div>
+  <div class="field">
+    <%= f.label :minube_url %><br />
+    <%= f.text_field :minube_url %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence %><br />
+    <%= f.number_field :sequence %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

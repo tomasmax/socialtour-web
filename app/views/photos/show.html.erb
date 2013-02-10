@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Poi:</b>
+  <%= @photo.poi %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @photo.user %>
+</p>
+
+<p>
+  <b>Image file name:</b>
+  <%= @photo.image_file_name %>
+</p>
+
+<p>
+  <b>Image content type:</b>
+  <%= @photo.image_content_type %>
+</p>
+
+<p>
+  <b>Image file size:</b>
+  <%= @photo.image_file_size %>
+</p>
+
+<p>
+  <b>Image updated at:</b>
+  <%= @photo.image_updated_at %>
+</p>
+
+<p>
+  <b>Is visible on index:</b>
+  <%= @photo.is_visible_on_index %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @photo.title %>
+</p>
+
+<p>
+  <b>Subtitle:</b>
+  <%= @photo.subtitle %>
+</p>
+
+<p>
+  <b>Title eu:</b>
+  <%= @photo.title_eu %>
+</p>
+
+<p>
+  <b>Subtitle eu:</b>
+  <%= @photo.subtitle_eu %>
+</p>
+
+<p>
+  <b>Minube url:</b>
+  <%= @photo.minube_url %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%= @photo.sequence %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

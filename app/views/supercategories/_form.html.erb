@@ -1,0 +1,41 @@
+<%= form_for(@supercategory) do |f| %>
+  <% if @supercategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supercategory.errors.count, "error") %> prohibited this supercategory from being saved:</h2>
+
+      <ul>
+      <% @supercategory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :slug %><br />
+    <%= f.text_field :slug %>
+  </div>
+  <div class="field">
+    <%= f.label :icon_file_name %><br />
+    <%= f.text_field :icon_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :icon_content_type %><br />
+    <%= f.text_field :icon_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :icon_file_size %><br />
+    <%= f.number_field :icon_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :icon_update_at %><br />
+    <%= f.datetime_select :icon_update_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

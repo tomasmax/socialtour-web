@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  latitude: 9.99
+  longitude: 9.99
+  user: 
+  ratings_count: 1
+  rating: 9.99
+  slug: MyString
+  address: MyString
+  telephone: MyString
+  website: MyString
+  minube_url: MyString
+  minube_id: MyString
+  city: 
+  category: 
+  supercategory: 
+  name_eu: MyString
+  description_eu: MyText
+  timetable: MyText
+  picture_nomral: MyString
+  picture_thumbnail: MyString
+
+two:
+  name: MyString
+  description: MyText
+  latitude: 9.99
+  longitude: 9.99
+  user: 
+  ratings_count: 1
+  rating: 9.99
+  slug: MyString
+  address: MyString
+  telephone: MyString
+  website: MyString
+  minube_url: MyString
+  minube_id: MyString
+  city: 
+  category: 
+  supercategory: 
+  name_eu: MyString
+  description_eu: MyText
+  timetable: MyText
+  picture_nomral: MyString
+  picture_thumbnail: MyString

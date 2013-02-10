@@ -1,4 +1,35 @@
 SocialTour::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  resources :profiles
+
+
+  resources :packages
+
+
+  resources :providers
+
+
+  resources :ratings
+
+
+  resources :supercategories
+
+
+  resources :photos
+
+
+  resources :pois
+
+
+  resources :events
+
+
+  resources :categories
+
+
   resources :authentications
 
 

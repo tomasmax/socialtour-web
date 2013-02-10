@@ -1,0 +1,61 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :about_me %><br />
+    <%= f.text_area :about_me %>
+  </div>
+  <div class="field">
+    <%= f.label :i_like %><br />
+    <%= f.text_area :i_like %>
+  </div>
+  <div class="field">
+    <%= f.label :i_dont_like %><br />
+    <%= f.text_area :i_dont_like %>
+  </div>
+  <div class="field">
+    <%= f.label :married %><br />
+    <%= f.check_box :married %>
+  </div>
+  <div class="field">
+    <%= f.label :soons %><br />
+    <%= f.check_box :soons %>
+  </div>
+  <div class="field">
+    <%= f.label :restrictions %><br />
+    <%= f.text_field :restrictions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

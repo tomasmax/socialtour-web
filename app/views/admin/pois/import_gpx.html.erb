@@ -1,0 +1,27 @@
+<div id="main_content_wrapper">
+  <div id="main_content">
+    <%= form_tag '/admin/pois/submit_gpx', multipart: true, method: 'post' do %>
+      <div style="margin:0;padding:0;display:inline">
+        <fieldset class="inputs">
+          <legend><span>Import from GPX File</span></legend>
+          <ol>
+            <li class="file input optional" id="gpx_file_input">
+              <label class=" label" for="gpx_file">GPX File</label>
+              <input id="gpx_file" name="gpx_file" type="file">
+            </li>
+          </ol>
+        </fieldset>
+        <fieldset class="buttons">
+          <ol>
+            <li class="commit button">
+              <input class="create" id="gpx_file_submit" name="commit" type="submit" value="Cargar GPX">
+            </li>
+            <li class="cancel">
+              <a href="/admin/pois">Cancelar</a>
+            </li>
+          </ol>
+        </fieldset>
+      </div>
+    <% end %>
+  </div>
+</div>

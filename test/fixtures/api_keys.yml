@@ -4,10 +4,8 @@ one:
   description: 
   key: 
   calls_count: 1
-  : 
 
 two:
   description: 
   key: 
   calls_count: 1
-  : 

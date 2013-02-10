@@ -1,0 +1,63 @@
+<h1>Listing pois</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>User</th>
+    <th>Ratings count</th>
+    <th>Rating</th>
+    <th>Slug</th>
+    <th>Address</th>
+    <th>Telephone</th>
+    <th>Website</th>
+    <th>Minube url</th>
+    <th>Minube</th>
+    <th>City</th>
+    <th>Category</th>
+    <th>Supercategory</th>
+    <th>Name eu</th>
+    <th>Description eu</th>
+    <th>Timetable</th>
+    <th>Picture nomral</th>
+    <th>Picture thumbnail</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pois.each do |poi| %>
+  <tr>
+    <td><%= poi.name %></td>
+    <td><%= poi.description %></td>
+    <td><%= poi.latitude %></td>
+    <td><%= poi.longitude %></td>
+    <td><%= poi.user %></td>
+    <td><%= poi.ratings_count %></td>
+    <td><%= poi.rating %></td>
+    <td><%= poi.slug %></td>
+    <td><%= poi.address %></td>
+    <td><%= poi.telephone %></td>
+    <td><%= poi.website %></td>
+    <td><%= poi.minube_url %></td>
+    <td><%= poi.minube_id %></td>
+    <td><%= poi.city %></td>
+    <td><%= poi.category %></td>
+    <td><%= poi.supercategory %></td>
+    <td><%= poi.name_eu %></td>
+    <td><%= poi.description_eu %></td>
+    <td><%= poi.timetable %></td>
+    <td><%= poi.picture_nomral %></td>
+    <td><%= poi.picture_thumbnail %></td>
+    <td><%= link_to 'Show', poi %></td>
+    <td><%= link_to 'Edit', edit_poi_path(poi) %></td>
+    <td><%= link_to 'Destroy', poi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Poi', new_poi_path %>

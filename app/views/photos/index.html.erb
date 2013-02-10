@@ -1,0 +1,47 @@
+<h1>Listing photos</h1>
+
+<table>
+  <tr>
+    <th>Poi</th>
+    <th>User</th>
+    <th>Image file name</th>
+    <th>Image content type</th>
+    <th>Image file size</th>
+    <th>Image updated at</th>
+    <th>Is visible on index</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Title eu</th>
+    <th>Subtitle eu</th>
+    <th>Minube url</th>
+    <th>Sequence</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= photo.poi %></td>
+    <td><%= photo.user %></td>
+    <td><%= photo.image_file_name %></td>
+    <td><%= photo.image_content_type %></td>
+    <td><%= photo.image_file_size %></td>
+    <td><%= photo.image_updated_at %></td>
+    <td><%= photo.is_visible_on_index %></td>
+    <td><%= photo.title %></td>
+    <td><%= photo.subtitle %></td>
+    <td><%= photo.title_eu %></td>
+    <td><%= photo.subtitle_eu %></td>
+    <td><%= photo.minube_url %></td>
+    <td><%= photo.sequence %></td>
+    <td><%= link_to 'Show', photo %></td>
+    <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+    <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Photo', new_photo_path %>

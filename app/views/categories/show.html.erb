@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Supercategory:</b>
+  <%= @category.supercategory %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @category.group %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @category.slug %>
+</p>
+
+<p>
+  <b>Is route:</b>
+  <%= @category.is_route %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: MyString
+  about_me: MyText
+  i_like: MyText
+  i_dont_like: MyText
+  married: false
+  soons: false
+  restrictions: MyString
+
+two:
+  user: 
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  gender: MyString
+  about_me: MyText
+  i_like: MyText
+  i_dont_like: MyText
+  married: false
+  soons: false
+  restrictions: MyString
