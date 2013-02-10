@@ -79,14 +79,14 @@
     			<% if user_signed_in? %>
     				<%= button_to "Sign out", destroy_user_session_path, class: "btn btn-primary btn-large", method: "get" %>
  					<% else %>
-    				<div class="span1">
+    				<div class="span2">
     				<%= button_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-large", method: "get" %>
     				</div>
-    				<div class="span1"></div>
+    				<div class="span1">
     				<%= button_to "Sign in", new_user_session_path, class: "btn btn-inverse btn-large", method: "get"%>
     				</div>
  					<% end %>
- 				</div>
+ 					</div>
 				
 					<br />
             <%= link_to t('cities'), cities_path, class: "btn-link" %>
@@ -102,7 +102,7 @@
             <div class="span3">
               <%= t 'to_do' %>
 						</div>
-				</div>          
+         </div>
 								
 				<%= yield %>
 
