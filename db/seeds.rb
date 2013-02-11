@@ -5,3 +5,55 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Create admin users
+
+AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
+AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
+
+#Load countries
+countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
+resp = Net::HTTP.get_response URI.parse(countries_url)
+result = JSON.parse resp.body
+countries = result["response"]["countries"]
+
+countries.each do |c|
+   puts "- Country #{c['id']} #{c['name']}"
+   country = Country.new c
+   country.id = c["id"]
+   country.name = c["name"]
+   country.pois_count = c["pois_count"]
+   country.full_count = c["full_count"]
+   country.restaurant_count = c["restaurant_count"]
+   country.blog_count = c["blog_count"]
+   country.hotel_count = c["hotel_count"]
+   country.latitude = c["latitude"]
+   country.longitude = c["longitude"]
+   country.save
+end
+
+# Load supercategories and categories from minube
+supercategories_url = "http://api.minube.com/places/supercategories.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
+resp = Net::HTTP.get_response URI.parse(supercategories_url)
+result = JSON.parse resp.body
+supercategories = result["response"]["supercategories"]
+
+supercategories.each do |sc|
+  puts "- Supercategory #{sc['id']} #{sc['name']}"
+  supercategory = Supercategory.new sc
+  supercategory.id = sc['id'];
+  supercategory.save
+
+  categories_url = "http://api.minube.com/places/categories.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3&supercategory=#{supercategory.id}"
+  cat_json = JSON.parse Net::HTTP.get_response(URI.parse(categories_url)).body
+  categories = cat_json["response"]["categories"]
+
+  categories.each do |c|
+    puts "  Category #{c['id']} #{c['name']}"
+    c.delete 'supercategory'
+    category = supercategory.categories.new c
+    category.id = c['id']
+    category.save
+  end
+  
+end

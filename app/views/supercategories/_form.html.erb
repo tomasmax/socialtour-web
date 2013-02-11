@@ -1,41 +1,44 @@
-<%= form_for(@supercategory) do |f| %>
-  <% if @supercategory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@supercategory.errors.count, "error") %> prohibited this supercategory from being saved:</h2>
-
-      <ul>
-      <% @supercategory.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @supercategory, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :slug, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :slug, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :icon_file_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :icon_file_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :icon_content_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :icon_content_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :icon_file_size, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :icon_file_size, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :icon_update_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :icon_update_at, :class => 'datetime_select' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug %>
-  </div>
-  <div class="field">
-    <%= f.label :icon_file_name %><br />
-    <%= f.text_field :icon_file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :icon_content_type %><br />
-    <%= f.text_field :icon_content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :icon_file_size %><br />
-    <%= f.number_field :icon_file_size %>
-  </div>
-  <div class="field">
-    <%= f.label :icon_update_at %><br />
-    <%= f.datetime_select :icon_update_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                supercategories_path, :class => 'btn' %>
   </div>
 <% end %>

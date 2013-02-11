@@ -1,4 +1,7 @@
 SocialTour::Application.routes.draw do
+  resources :countries
+
+
   resources :route_points
 
 

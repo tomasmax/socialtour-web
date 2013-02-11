@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  minube_id: 1
+  name: MyString
+  pois_count: 1
+  full_count: 1
+  see_count: 1
+  restaurant_count: 1
+  blog_count: 1
+  hotel_count: 1
+  latitude: 9.99
+  longitude: 9.99
+
+two:
+  minube_id: 1
+  name: MyString
+  pois_count: 1
+  full_count: 1
+  see_count: 1
+  restaurant_count: 1
+  blog_count: 1
+  hotel_count: 1
+  latitude: 9.99
+  longitude: 9.99

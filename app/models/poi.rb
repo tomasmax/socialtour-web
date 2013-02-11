@@ -28,7 +28,7 @@ class Poi < ActiveRecord::Base
    
   def generate_slug
     if !self.slug
-      self.slug = self.title.without_accents.to_slug
+      self.slug = self.name.without_accents.to_slug
     end
   end
   
@@ -53,7 +53,6 @@ class Poi < ActiveRecord::Base
   end
   
   #metodos de las rutas
-=begin
   def generate_route_info
     if !self.route_info && self.route_points && self.route_points.count > 0
       self.create_route_info
@@ -101,6 +100,5 @@ class Poi < ActiveRecord::Base
       end
     end
   end
-=end
   
 end

@@ -8,6 +8,13 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:country_id) %></th>
+      <th><%= model_class.human_attribute_name(:minube_id) %></th>
+      <th><%= model_class.human_attribute_name(:slug) %></th>
+      <th><%= model_class.human_attribute_name(:image_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:image_content_type) %></th>
+      <th><%= model_class.human_attribute_name(:image_file_size) %></th>
+      <th><%= model_class.human_attribute_name(:image_upload_at) %></th>
+      <th><%= model_class.human_attribute_name(:name_eu) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,7 +25,14 @@
         <td><%= link_to city.id, city_path(city) %></td>
         <td><%= city.name %></td>
         <td><%= city.country_id %></td>
-        <td><%=l city.created_at %></td>
+        <td><%= city.minube_id %></td>
+        <td><%= city.slug %></td>
+        <td><%= city.image_file_name %></td>
+        <td><%= city.image_content_type %></td>
+        <td><%= city.image_file_size %></td>
+        <td><%= city.image_upload_at %></td>
+        <td><%= city.name_eu %></td>
+        <td><%= city.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_city_path(city), :class => 'btn btn-mini' %>

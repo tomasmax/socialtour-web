@@ -61,8 +61,12 @@ gem 'foursquare2'
 #form builder
 gem 'formtastic'
 
+#.gpx archives manager
 gem 'gpx'
+
+#parsers
 gem 'libxml-ruby'
+gem 'json'
 
 gem "meta_search"
 
@@ -74,3 +78,5 @@ gem 'kaminari'
 gem 'therubyracer'
 
 gem 'paperclip'
+
+gem 'without_accents'

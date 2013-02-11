@@ -6,7 +6,8 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%# render 'layouts/stylesheet' %>
   	<%= javascript_include_tag "application" %>
-  	<%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyDpQyPKnWwpJLOZJCzZocuO9RoetHBk70Q&sensor=false" %>
+  	<%# javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyDpQyPKnWwpJLOZJCzZocuO9RoetHBk70Q&sensor=false" %>
+  	<%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
     <%= csrf_meta_tags %>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
