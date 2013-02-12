@@ -15,7 +15,7 @@ $(function(){
         icon: supercategories[poi.supercategory_id] ? supercategories[poi.supercategory_id].icon_urls['small'] : null
     });
     
-    var html = '<a href="/pois/'+poi.slug+'"><b>'+poi.title+'</b></a><p>'+poi.description+'</p>'
+    var html = '<a href="/pois/'+poi.slug+'"><b>'+poi.name+'</b></a><p>'+poi.description+'</p>'
     
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(html); 

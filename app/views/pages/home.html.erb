@@ -1,9 +1,9 @@
 
-    	<% if !user_signed_in? %>
-    		<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
+    <% if !user_signed_in? %>
+    	<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
 		<% end %>
 			<%= render 'pages/user_nav'%>
-
+			
 		<p>
 			<%= render 'pages/authentications'%>
 		</p>
@@ -17,30 +17,22 @@
     			</p>
         </div>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
           <h2><%= t 'btt_routes' %></h2>
      			<p><%= t 'btt_routes_msg' %>
      			<a href="/que-hacer/rutas-btt" class="btn"><%= t 'read_more' %></a>
      			</p>
        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>								
-        
+        <div class="span4">      
 					<h2><%= t 'parque_minero' %></h2>
 			    <p><%= t 'parque_minero_msg' %>
 			    </p>
 			  </div>
 			</div>
 
-<div class="separator"></div>
+<hr class="featurette-divider" />
 
 <div class="row">
   <div id="pois-index" class="span9">
-    <div>
       <h2><%= t 'what_do' %></h2>
       <span class="contribute">
         ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
@@ -51,7 +43,7 @@
       <div class="view-all">
         <%= link_to "Ver más", "/que-hacer" %>
       </div>
-    </div>
+
     
     <div>
       <h2><%= t 'what_see' %></h2>
@@ -81,21 +73,25 @@
 	</div>
   </div>
   
-  <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(43.15, 2.55),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
-      }
-  </script>
+<hr class="featurette-divider" />
+ 
+<div id="near" class="row">
+    <h3 id="map-near">Recursos cercanos</h3>
+    <div id="map-canvas" style="height: 350px; width: 1010px; margin-left: 25px;"></div>
+    <script>
+	    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
+	
+	    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi| 
+	        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: "" }
+	      end %>
+	  
+	    var pois = <%= pois_json.to_json.html_safe %>;
+  	</script>
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true" %>
+    <%= javascript_include_tag "near-pois" %>
     
-<div id="near" onload="initialize()">
-  <div id="map-canvas"></div>
-
-  <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+    
 </div>
+
 
