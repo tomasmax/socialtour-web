@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   before_filter :api_call
- 
+
   
   def poi_url(poi)
     "/#{t 'resources.pois'}/#{poi.slug}"
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
     City.all.each do |city|
       puts "Importing city #{city.name}"
     
-      pois_url = "#{base_url}&city=bilbao"
+      pois_url = "#{base_url}&city=#{city.minube_id}"
       resp = Net::HTTP.get_response URI.parse(pois_url)
       result = JSON.parse resp.body
       pois_list = result["response"]["pois"]

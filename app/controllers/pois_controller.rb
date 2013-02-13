@@ -5,7 +5,7 @@ class PoisController < InheritedResources::Base
   # GET /pois.json
   def index
     ## Check if has pass more than limit time from last update
-    #if (Time.now - @@last_minube_update).to_i > 60*60*4 # 4 hours
+    if (Time.now - @@last_minube_update).to_i > 60*60*4 # 4 hours
       Thread.new do
         begin
           @@last_minube_update = Time.now
@@ -13,7 +13,7 @@ class PoisController < InheritedResources::Base
         rescue Exception => e
           puts "Error updating from minube: #{e}"
         end
-      #end
+      end
     end
 
     respond_to do |format|

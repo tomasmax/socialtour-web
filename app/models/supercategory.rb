@@ -9,7 +9,7 @@ class Supercategory < ActiveRecord::Base
   has_many :pois
   
   validates :name, :presence => true
-  #validates :slug, :presence => true
+  validates :slug, :presence => true
   validates_uniqueness_of :slug
   
   before_validation :generate_slug
