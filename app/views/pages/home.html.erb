@@ -29,10 +29,10 @@
 			  </div>
 			</div>
 
-<hr class="featurette-divider" />
+<hr/>
 
 <div class="row">
-  <div id="pois-index" class="span9">
+  <div id="pois-index" class="span12">
       <h2><%= t 'what_do' %></h2>
       <span class="contribute">
         ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
@@ -43,7 +43,6 @@
       <div class="view-all">
         <%= link_to "Ver más", "/que-hacer" %>
       </div>
-
     
     <div>
       <h2><%= t 'what_see' %></h2>
@@ -70,28 +69,29 @@
         <%= link_to "Ver más", "/donde-comer" %>
       </div>
     </div>
-	</div>
   </div>
-  
-<hr class="featurette-divider" />
- 
-<div id="near" class="row">
-    <h3 id="map-near">Recursos cercanos</h3>
-    <div id="map-canvas" style="height: 350px; width: 1010px; margin-left: 25px;"></div>
-    <script>
-	    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
-	
-	    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi| 
-	        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: "" }
-	      end %>
-	  
-	    var pois = <%= pois_json.to_json.html_safe %>;
-  	</script>
-    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true" %>
-    <%= javascript_include_tag "near-pois" %>
-    
-    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
-    
+  </div>
+
+<h2>Recursos cercanos</h3>
+<div class="row">
+  <div id="pois-index" class="span12">
+		<div id="near" class="row">
+		    
+		    <div id="map-canvas" style="height: 350px; width: 1150px; margin-left: 50px;"></div>
+		    <script>
+			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
+			
+			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi| 
+			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: "" }
+			      end %>
+			  
+			    var pois = <%= pois_json.to_json.html_safe %>;
+		  	</script>
+		    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true" %>
+		    <%= javascript_include_tag "near-pois" %>
+		    
+		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+		    
+		</div>
+	</div>
 </div>
-
-
