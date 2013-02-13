@@ -19,14 +19,14 @@ class Poi < ActiveRecord::Base
   attr_accessor :gpx_file
   
   validates :name, presence: true
-  validates :slug, presence: true
+  #validates :slug, presence: true
   
   validates_uniqueness_of :name, :slug, :minube_id
   
   paginates_per 10
   
   before_validation :generate_slug
-  after_save :save_route, :generate_route_info
+  #after_save :save_route, :generate_route_info
   before_save :set_supercategory
    
   def generate_slug
