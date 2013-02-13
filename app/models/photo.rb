@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
     
   belongs_to :poi
   belongs_to :user
-  attr_accessible :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :is_visible_on_index, :minube_url, :sequence, :subtitle, :subtitle_eu, :title, :title_eu
+  attr_accessible :image_content_type, :image_file_name, :image_file_size, :image_updated_at, :is_visible_on_index, :minube_url, :sequence, :subtitle, :subtitle_eu, :title, :title_eu, :image
   
   validates_uniqueness_of :minube_url
   
