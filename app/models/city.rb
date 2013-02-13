@@ -6,9 +6,9 @@ class City < ActiveRecord::Base
   belongs_to :country
   has_many :users
   has_many :pois
-  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :name_eu, :slug, :minube_id, :icon
+  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :name_eu, :slug, :minube_id, :image
    
-  validates :slug, :presence => true
+  #validates :slug, :presence => true
   validates_uniqueness_of :slug, :minube_id
   
   before_validation :generate_slug

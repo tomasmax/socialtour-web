@@ -10,20 +10,23 @@ class Poi < ActiveRecord::Base
   has_many :route_infos, dependent: :delete_all
   has_many :route_points, dependent: :delete_all
   
-  attr_accessible :address, :description, :description_eu, :latitude, :longitude, :minube_id, :minube_url, :name, :name_eu, :picture_nomral, :picture_thumbnail, :rating, :ratings_count, :slug, :telephone, :timetable, :website
-  
+  attr_accessible :user_id, :category_id, :supercategory_id,
+                  :address, :description, :description_eu, :latitude, :longitude, 
+                  :minube_id, :minube_url, :name, :name_eu, :picture_nomral, :picture_thumbnail, 
+                  :rating, :ratings_count, :slug, :telephone, :timetable, :website
+                  
   attr_accessor :route_points_list
   attr_accessor :gpx_file
   
-  validates :title, presence: true
+  validates :name, presence: true
   validates :slug, presence: true
   
-  validates_uniqueness_of :title, :slug, :minube_id
+  validates_uniqueness_of :name, :slug, :minube_id
   
   paginates_per 10
   
   before_validation :generate_slug
-  #after_save :save_route, :generate_route_info
+  after_save :save_route, :generate_route_info
   before_save :set_supercategory
    
   def generate_slug

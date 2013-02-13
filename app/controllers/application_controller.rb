@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   
   def load_poi_from_minube(poi_hash)
 
-    poi = {title: poi_hash["name"],
+    poi = {name: poi_hash["name"],
       user_id: 1,
       latitude: poi_hash["latitude"],
       longitude: poi_hash["longitude"],
@@ -86,7 +86,7 @@ class ApplicationController < ActionController::Base
               poi = city.pois.new load_poi_from_minube(poi_hash)
               poi.save
               
-              puts "New poi #{poi.title}"
+              puts "New poi #{poi.name}"
             end
             
             if poi
