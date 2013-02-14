@@ -1,0 +1,31 @@
+
+<li class="poi-preview" data-poi-id="<%= poi.id %>" data-poi-lat="<%= poi.latitude %>" data-poi-lng="<%= poi.longitude %>" data-poi-name="<%= poi.name %>" data-poi-slug="<%= poi.slug %>">
+  <div class="poi-img thumbnail">
+    <%= link_to poi_url(poi) do %>
+      <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.png', class: 'poi-preview' %>
+    <% end %>
+  </div>
+  <div class="pois-content">
+    <div class="poi-rating">
+      <div class="starbar-static">
+        <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>
+        <% (0...5).each do |i| %>
+          <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
+        <% end %>
+      </div>
+      <span><%= poi.ratings_count %></span>
+    </div>
+    <h3><%= link_to poi.name, poi_url(poi) %></h3>
+    <div class="poi-user">
+      <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
+    </div>
+    <div class="poi-city">
+      <span>en <%= link_to(poi.city.name, city_url(poi.city)) if poi.city %></span>
+    </div>
+
+    <div class="poi-desc">
+      <p><%= truncate poi.description, length: 220 %></p>
+    </div>
+    
+  </div>
+</li>

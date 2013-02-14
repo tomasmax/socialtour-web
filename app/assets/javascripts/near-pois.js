@@ -38,28 +38,3 @@ $(function(){
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-var mapExpanded = false;
-$(function(){
-  $("a.map-expand").click(function() {
-    $('#map-canvas').animate({
-      height: mapExpanded ? 300 : 600
-    }, {
-    	duration: 300,
-    	easing: "swing",
-    	complete: function(){
-    	  google.maps.event.trigger(map, "resize");
-    	  $("a.map-expand > center").text(mapExpanded ? '↑' : '↓');
-    	}
-    });
-    
-    $("html, body").animate({
-  		scrollTop: $($(this).attr("href")).offset().top + "px"
-  	}, {
-  		duration: 300,
-  		easing: "swing"
-  	});
-
-    mapExpanded = !mapExpanded;
-    return false;
-  });
-});

@@ -1,0 +1,168 @@
+
+.span-poi-side {
+  width: 290px;
+}
+
+#poi-comments {
+  margin-top: 25px;
+}
+
+.poi-link {
+  margin: 12px 0 18px;
+}
+
+.poi-link a {
+  color: #4FA800;
+  font-size: 28px;
+}
+
+.poi-link a.label {
+  color: white;
+  font-size: 18px;
+  line-height: 12px;
+  padding: 4px 8px;
+  background: #F24F00;
+  margin-right: 4px;
+}
+
+.poi-link a.label:hover {
+  background: #4F78D6;
+}
+
+.poi-link a.label > i{
+  margin-left: 4px;
+}
+
+
+ul.places-list li.poi-preview  .poi-img {
+  width: 167px;
+  height: 84px;
+  margin: 5px 10px;
+  float: left;
+}
+  
+.poi-created-at, .poi-city, .poi-user {
+  font-size: 11px;
+  color: gray;
+  display: inline-block;
+}
+  
+.poi-created-at a, .poi-city a, .poi-user a {
+  color: #06C;
+}
+
+ul.places-list {
+  margin-left: 0;
+}
+  
+ul.places-list li.poi-preview  .poi-desc {
+  color: black;
+}
+
+ul.places-list li.poi-preview {
+  display: block;
+  min-height: 100px;
+  margin: 8px 0;
+  padding: 4px 4px 12px 0;
+}
+
+.starbar-static {
+  display: inline;
+}
+
+ul.places-list li.poi-preview .poi-rating {
+  float: right;
+}
+
+ul.places-list li.poi-preview .poi-rating span {
+  margin-left: 8px;
+  font-weight: bold;
+  color: #999;
+}
+
+ul.places-list {
+  list-style: none;
+  margin-top: 25px;
+}
+
+ul.places-list li .pois-content > h3 > a {
+  color: #4FA800;
+}
+
+ul.places-list.condensed {
+  display: table;
+  margin-top: 0;
+}
+
+ul.places-list.condensed li.poi-preview {
+  display: table-cell;
+  width: 210px;
+}
+
+ul.places-list.condensed li.poi-preview .poi-rating span {
+  display: none;
+}
+
+ul.places-list.condensed li.poi-preview .poi-img {
+  margin: 5px 22px;
+  float: none;
+}
+
+div.poi-img img {
+  width: 167px;
+  height: 84px;
+}
+   
+ul.places-list.condensed.reduced li.poi-preview .poi-desc {
+  display: none;
+}
+
+#poi-detail h1 {
+  font-size: 30px;
+  color: #4FA800;
+}
+
+#poi-detail h3.section-title {
+  font-size: 16px;
+  color: #F24F00;
+}
+
+#poi-detail .poi-info {
+  display: block;
+  margin-bottom: 24px;
+}
+
+a.show-in-minube {
+  display: block;
+  width: 220px;
+  height: 79px;
+  text-indent: -9999px;
+  background-image: url('/assets/logo_minube.png');
+}
+
+a.poi-photo-fancy {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  margin: 0 12px 12px 0;
+}
+
+.poi-side-block {
+  margin-bottom: 20px;
+}
+
+div#download-route {
+  margin: 8px 0 12px;
+}
+
+a.download-route {
+  padding: 4px;
+  color:  white;
+  background-color: #598DC4;
+  border-radius: 3px;
+  margin-right: 12px;
+}
+
+a.download-route:hover {
+  background-color: #06C;
+}

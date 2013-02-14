@@ -5,6 +5,7 @@ class PoisController < InheritedResources::Base
   # GET /pois.json
   def index
     ## Check if has pass more than limit time from last update
+=begin
     if (Time.now - @@last_minube_update).to_i > 60*60*4 # 4 hours
       Thread.new do
         begin
@@ -15,7 +16,7 @@ class PoisController < InheritedResources::Base
         end
       end
     end
-
+=end
     respond_to do |format|
       format.html do # index.html.erb
         
@@ -42,6 +43,39 @@ class PoisController < InheritedResources::Base
         
         render json: { todo: what_to_do, tosee: what_to_see, toeat: where_to_eat, tosleep: where_to_sleep }
       end 
+    end
+  end
+  
+  # GET /pois/poi+slug
+  # GET /pois/poi+slug.json
+  respond_to :html, :json, :gpx, :kml
+  def show
+    @poi = Poi.find_by_slug(params[:slug])
+    
+    puts "!!!!!!!!!!!!!!#{params[:slug]}!!!!!!!!!!!"
+    
+    @title = "#{@poi.name} | SocialTour"
+    
+    poi = Poi.where(category_id: Category.where(group: 'do'), city_id: @poi.city).select(:id).sample
+    @what_to_do = Poi.where(id: poi.id) if poi
+    
+    poi = Poi.where(category_id: Category.where(group: 'tosee'), city_id: @poi.city).select(:id).sample
+    @what_to_see = Poi.where(id: poi.id) if poi
+    
+    poi = Poi.where(category_id: Category.where(group: 'eat'), city_id: @poi.city).select(:id).sample
+    @where_to_eat = Poi.where(id: poi.id) if poi
+    
+    @event = Event.new
+    @event.poi = @poi
+    
+    respond_to do |format|
+      format.kml # show.kml.erb
+      format.gpx # show.gpx.erb
+      format.html # show.html.erb
+      format.json do 
+        @poi.route_points_list = @poi.route_points
+        render json: @poi
+      end
     end
   end
   

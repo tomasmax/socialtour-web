@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
           puts "New photo #{photo['url']}"
         end
       rescue Exception => e
-        puts "ESC[31m Error loading photo #{photo['url']}: #{e}"
+        puts "EXC[ Error loading photo #{photo['url']}: #{e} ]"
       end
     end
     
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
     City.all.each do |city|
       puts "Importing city #{city.name}"
     
-      pois_url = "#{base_url}&city=#{city.minube_id}"
+      pois_url = "#{base_url}&city=#{city.minube_id}&supercategory=1"
       resp = Net::HTTP.get_response URI.parse(pois_url)
       result = JSON.parse resp.body
       pois_list = result["response"]["pois"]

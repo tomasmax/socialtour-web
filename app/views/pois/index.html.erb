@@ -1,63 +1,121 @@
-<h1>Listing pois</h1>
+    <% if !user_signed_in? %>
+    	<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
+		<% end %>
+			<%= render 'pages/user_nav'%>
+			
+		<p>
+			<%= render 'pages/authentications'%>
+		</p>
+		
+		<!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2><%= t 'via_verde' %></h2>
+    			<p><%= t 'via_verde_msg' %>
+    			<a class="btn"><%= link_to t('read_more'), "/rutas/via-verde-montes-de-hierro" %></a>
+    			</p>
+        </div>
+        <div class="span4">
+          <h2><%= t 'btt_routes' %></h2>
+     			<p><%= t 'btt_routes_msg' %>
+     			<a href="/que-hacer/rutas-btt" class="btn"><%= t 'read_more' %></a>
+     			</p>
+       </div>
+        <div class="span4">      
+					<h2><%= t 'parque_minero' %></h2>
+			    <p><%= t 'parque_minero_msg' %>
+			    </p>
+			  </div>
+			</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>User</th>
-    <th>Ratings count</th>
-    <th>Rating</th>
-    <th>Slug</th>
-    <th>Address</th>
-    <th>Telephone</th>
-    <th>Website</th>
-    <th>Minube url</th>
-    <th>Minube</th>
-    <th>City</th>
-    <th>Category</th>
-    <th>Supercategory</th>
-    <th>Name eu</th>
-    <th>Description eu</th>
-    <th>Timetable</th>
-    <th>Picture nomral</th>
-    <th>Picture thumbnail</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<hr/>
 
-<% @what_to_do.each do |poi| %>
-  <tr>
-    <td><%= poi.name %></td>
-    <td><%= poi.description %></td>
-    <td><%= poi.latitude %></td>
-    <td><%= poi.longitude %></td>
-    <td><%= poi.user %></td>
-    <td><%= poi.ratings_count %></td>
-    <td><%= poi.rating %></td>
-    <td><%= poi.slug %></td>
-    <td><%= poi.address %></td>
-    <td><%= poi.telephone %></td>
-    <td><%= poi.website %></td>
-    <td><%= poi.minube_url %></td>
-    <td><%= poi.minube_id %></td>
-    <td><%= poi.city %></td>
-    <td><%= poi.category %></td>
-    <td><%= poi.supercategory %></td>
-    <td><%= poi.name_eu %></td>
-    <td><%= poi.description_eu %></td>
-    <td><%= poi.timetable %></td>
-    <td><%= poi.picture_nomral %></td>
-    <td><%= poi.picture_thumbnail %></td>
-    <td><%= link_to 'Show', poi %></td>
-    <td><%= link_to 'Edit', edit_poi_path(poi) %></td>
-    <td><%= link_to 'Destroy', poi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="row">
+  <div id="pois-index" class="span12">
+      <h2><%= t 'what_do' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list">
+        <% render @what_to_do %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-hacer" %>
+      </div>
+    
+    <div>
+      <h2><%= t 'what_see' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio de interés? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list condensed">
+        <% render @what_to_see %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-ver" %>
+      </div>
+    </div>
+    
+    <div>
+      <h2><%= t 'where_eat' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio donde comer? <%# link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list">
+        <% render @where_to_eat %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/donde-comer" %>
+      </div>
+    </div>
+  </div>
+  </div>
 
-<br />
+<h2>Recursos cercanos</h3>
+<div class="row">
+  <div id="pois-index" class="span12">
+		<div id="near" class="row">
+		    
+		    <div id="map-canvas" style="height: 350px; width: 1150px; margin-left: 50px;"></div>
+		    <script>
+			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
+			
+			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi| 
+			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: "" }
+			      end %>
+			  
+			    var pois = <%= pois_json.to_json.html_safe %>;
+		  	</script>
+		    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true" %>
+		    <%= javascript_include_tag "near-pois" %>
+		    
+		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+		    <script>
+      var mapExpanded = false;
+      $("a.map-expand").click(function() {
+        $('#map-canvas').animate({
+          height: mapExpanded ? 300 : 600
+        }, {
+        	duration: 300,
+        	easing: "swing",
+        	complete: function(){
+        	  google.maps.event.trigger(map, "resize");
+        	  $("a.map-expand > center").text(mapExpanded ? '↑' : '↓');
+        	}
+        });
+        
+        $("html, body").animate({
+      		scrollTop: $($(this).attr("href")).offset().top + "px"
+      	}, {
+      		duration: 300,
+      		easing: "swing"
+      	});
 
-<%= link_to 'New Poi', new_poi_path %>
+        mapExpanded = !mapExpanded;
+        return false;
+      });
+    </script>
+		    
+		</div>
+	</div>
+</div>

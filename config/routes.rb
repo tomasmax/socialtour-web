@@ -11,42 +11,34 @@ SocialTour::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
 
   resources :profiles
 
-
   resources :packages
-
 
   resources :providers
 
-
   resources :ratings
-
 
   resources :supercategories
 
-
   resources :photos
-
 
   resources :pois
 
-
   resources :events
-
 
   resources :categories
 
-
   resources :authentications
-
-
-  devise_for :users
 
   resources :users
 
   resources :cities
+  
+  #slug routes
+  get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
   
   
   get "pages/home"
@@ -55,7 +47,7 @@ SocialTour::Application.routes.draw do
 
   get "pages/about"
   
-  root :to => 'pages#home'
+  root :to => 'pois#index'
   
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
