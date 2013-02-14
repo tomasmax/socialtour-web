@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap
+//= require jquery.min
+//= require bootstrap.min
+//= require chosen.jquery
+//= require starbar
 //= require_tree .

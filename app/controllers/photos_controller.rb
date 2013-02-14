@@ -6,6 +6,7 @@ class PhotosController < InheritedResources::Base
     @photos = Photo.all
 
     respond_to do |format|
+      format.html
       format.json { render json: @photos }
     end
   end

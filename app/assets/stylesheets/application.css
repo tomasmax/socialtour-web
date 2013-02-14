@@ -9,10 +9,53 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap_and_overrides
- *= require_tree .
+ *= require bootstrap
+ *= require bootstrap.min
  *= require pois 
  */
+
+
+img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
+    max-width: 99999px;
+}
+
+.navcontainer {
+	width: 1050px;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+#content {
+  background-color: #F0F1F3;
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+#container {
+	
+  background-color: white;
+  padding: 15px 25px;
+  -moz-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+  box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+}
+
+#footer {
+  display: block;
+  color: #C0C0C0;
+  /*background-color: rgb(0, 125, 203);*/
+  border-top: 3px solid #808080;
+  height:  100px;
+  min-width: 1010px;
+  padding: 15px 0;
+}
+
+.rounded-corners {
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
 
 .form-signin {
         max-width: 300px;

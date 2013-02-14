@@ -9,12 +9,12 @@ module ApplicationHelper
     end
   end
 
-=begin 
+
   def poi_url(poi)
     if poi.category && poi.category.is_route
-      "/rutas/#{poi.slug}"
+      "/routes/#{poi.slug}"
     else
-      "/sitios/#{poi.slug}"
+      "/places/#{poi.slug}"
     end
   end
   
@@ -23,13 +23,13 @@ module ApplicationHelper
   end
   
   def user_url(user)
-    if user.url
-      return user.url
-    else
-      return "/usuarios/#{user.id}"
-    end
+    #if user.url
+      #return user.url
+    #else
+      return "/users/#{user.id}"
+    #end
   end
-=end
+
   
   String.class_eval do
   

@@ -21,22 +21,17 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
-
-
   <body>
   	
   	<style>
-  		body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
+  	
       @bodyBackground: #F2F2F2;
-		@navbarBackground: #FFFFFF;
+			@navbarBackground: #FFFFFF;
   	</style>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">       
+        <div class="navcontainer">       
           <div class="nav-collapse collapse">
             <ul class="nav">
 							<li><% logo = image_tag("logo.png", :size => "100x200", class: "rounded-image") %>
@@ -53,20 +48,25 @@
             <div class="navbar pull-right">
 		          <%= link_to "eu", "?locale=eu", class: session[:locale] == 'eu' ? 'language-selected' : '' %>
 		          | 
-		          <%= link_to "es", "?locale=es", class: session[:locale] == 'es' ? 'language-selected' : '' %>
+		          <%= link_to "es", "?locale=es", class: session[:locale] == 'es' ? 'language-selected' : '' %>&nbsp;&nbsp;&nbsp;&nbsp;
+		          
+		        	<% if user_signed_in? %>
+		        		Logged as
+		          	<%= link_to "#{current_user.name}", current_user %>
+		          <% end %>
         		</div>
         		
         		<form class="navbar-form form-search pull-right span3">
   							<input type="text" class="input-medium search-query">
-  							<button type="submit" class="btn">Search</button>
+  							
 						</form>
             
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
-    <div class="container">
+<div id="content">
+    <div class="container rounded-corners" id="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
@@ -106,15 +106,13 @@
 								
 				<%= yield %>
 
-			<br />
-			<br />
       <hr>
- 
-      <footer>
+     </div> <!-- /container -->
+</div>
+      <footer id="footer">
         <%= render 'layouts/footer'%>
       </footer>
 
-    </div> <!-- /container -->
 
   </body>     
       

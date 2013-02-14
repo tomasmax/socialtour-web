@@ -10,20 +10,20 @@
 		<!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2><%= t 'via_verde' %></h2>
-    			<p><%= t 'via_verde_msg' %>
-    			<a class="btn"><%= link_to t('read_more'), "/rutas/via-verde-montes-de-hierro" %></a>
+          <h2><%= t 'routes_social' %></h2>
+    			<p><%= t 'routes_social_msg' %>
+    			<a><%= link_to t('read_more'), "/rutas/", class: "btn" %></a>
     			</p>
         </div>
         <div class="span4">
-          <h2><%= t 'btt_routes' %></h2>
-     			<p><%= t 'btt_routes_msg' %>
-     			<a href="/que-hacer/rutas-btt" class="btn"><%= t 'read_more' %></a>
+          <h2><%= t 'places' %></h2>
+     			<p><%= t 'places_msg' %>
+     			<a href="/que-hacer/" class="btn"><%= t 'read_more' %></a>
      			</p>
        </div>
         <div class="span4">      
-					<h2><%= t 'parque_minero' %></h2>
-			    <p><%= t 'parque_minero_msg' %>
+					<h2><%= t 'packages_social' %></h2>
+			    <p><%= t 'packages_social_msg' %>
 			    </p>
 			  </div>
 			</div>
@@ -72,11 +72,10 @@
   </div>
 
 <h2>Recursos cercanos</h3>
-<div class="row">
-  <div id="pois-index" class="span12">
-		<div id="near" class="row">
+  <div id="pois-index" >
+		<div id="near">
 		    
-		    <div id="map-canvas" style="height: 350px; width: 1150px; margin-left: 50px;"></div>
+		    <div id="map-canvas" style="height: 350px; width: 990px; margin-left: -25px; max-width: none;"></div>
 		    <script>
 			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
 			
@@ -90,32 +89,8 @@
 		    <%= javascript_include_tag "near-pois" %>
 		    
 		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
-		    <script>
-      var mapExpanded = false;
-      $("a.map-expand").click(function() {
-        $('#map-canvas').animate({
-          height: mapExpanded ? 300 : 600
-        }, {
-        	duration: 300,
-        	easing: "swing",
-        	complete: function(){
-        	  google.maps.event.trigger(map, "resize");
-        	  $("a.map-expand > center").text(mapExpanded ? '↑' : '↓');
-        	}
-        });
-        
-        $("html, body").animate({
-      		scrollTop: $($(this).attr("href")).offset().top + "px"
-      	}, {
-      		duration: 300,
-      		easing: "swing"
-      	});
-
-        mapExpanded = !mapExpanded;
-        return false;
-      });
-    </script>
+		    
 		    
 		</div>
 	</div>
-</div>
+

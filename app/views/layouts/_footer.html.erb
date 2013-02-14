@@ -1,7 +1,8 @@
-
+<div class="navcontainer">
     	<% if user_signed_in? %>
 				<p>Signed in as <%= current_user.email %></p>
 			<% end %>
       <p><%= link_to "About", about_path, class: "btn-link" %></p>
       <p><%= link_to "Contact", contact_path, class: "btn-link"  %></p>
       <p>&copy; SocialTour 2013</p>     
+</div>

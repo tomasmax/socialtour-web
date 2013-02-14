@@ -1,12 +1,9 @@
 SocialTour::Application.routes.draw do
   resources :countries
 
-
   resources :route_points
 
-
   resources :route_infos
-
 
   ActiveAdmin.routes(self)
 
@@ -48,6 +45,12 @@ SocialTour::Application.routes.draw do
   get "pages/about"
   
   root :to => 'pois#index'
+  
+  post '/pois/create-from-gpx', to: 'pois#create_from_gpx'
+
+  get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
+  get '/places/:slug(.:format)', to: 'pois#show', as: 'place'
+  get '/routes/:slug(.:format)', to: 'pois#show', as: 'route'
   
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
