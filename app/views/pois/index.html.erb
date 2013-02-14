@@ -75,7 +75,7 @@
   <div id="pois-index" >
 		<div id="near">
 		    
-		    <div id="map-canvas" style="height: 350px; width: 990px; margin-left: -25px; max-width: none;"></div>
+		    <div id="map-canvas" style="height: 350px; width: 990px; margin-left: -25px;"></div>
 		    <script>
 			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
 			
@@ -85,7 +85,7 @@
 			  
 			    var pois = <%= pois_json.to_json.html_safe %>;
 		  	</script>
-		    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true" %>
+		    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
 		    <%= javascript_include_tag "near-pois" %>
 		    
 		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
