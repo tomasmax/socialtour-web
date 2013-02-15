@@ -44,6 +44,7 @@ es:
   places_msg: "lalal"
   packages_social: "Paquetes personalizados"
   packages_social_msg: "lalala"
+  authentications: "Logeate con:"
   
   aventure: "Aventura"
   login_msg_upload: "Sube tus fotos y opina"
