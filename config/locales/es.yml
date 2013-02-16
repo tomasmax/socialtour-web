@@ -9,7 +9,7 @@ es:
       long: "%I:%M%p %d/%m/%Y"
 
   resources:
-    pois: "sitios"
+    pois: "places"
 
   path_names:
     new: 'nuevo' 

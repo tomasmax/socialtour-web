@@ -9,6 +9,36 @@ class ApplicationController < ActionController::Base
     "/#{t 'resources.pois'}/#{poi.slug}"
   end
   
+  def load_poi_from_forsquare(poi)
+    #hacerla
+  end
+  
+  def load_pois_from_foursquare
+    clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
+    pois = clientFoursquare.search_venues(near: 'Bilbao') #near or ll, query, radius, categoryId
+    #meter parametro igual de localizacion o categoria
+    if pois
+        puts "#{pois.count} pois readed"
+    
+        pois.venues.each do |p|
+          begin
+            poi = Poi.find_by_foursquare_id_and_name(p.id,p.name)
+            if poi
+              poi.update_attributes load_poi_from_forsquare(p)
+            else
+              poi = city.pois.new load_poi_from_forsquare(p)
+              poi.save
+              
+              puts "New poi #{poi.name}"
+            end
+           
+          rescue Exception => e
+            puts "Error #{e}"
+          end
+        end
+    end
+  end
+  
   def load_poi_from_minube(poi_hash)
 
     poi = {name: poi_hash["name"],

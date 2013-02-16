@@ -11,7 +11,8 @@
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 
-#Load countries
+
+#Load countries minube
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
 resp = Net::HTTP.get_response URI.parse(countries_url)
 result = JSON.parse resp.body
@@ -56,4 +57,31 @@ supercategories.each do |sc|
     category.save
   end
   
+end
+
+#Load categories foursquare
+clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
+supCategories = clientFoursquare.venue_categories
+supCategories.each do |sc|
+  puts "- High Category FourSquare #{sc.id} #{sc.name}"
+  supercategory = Supercategory.new sc #sin mirar las de minube
+  supercategory.foursquare_id = sc.id
+  supercategory.foursquare_icon = sc.icon.prefix.chop + sc.icon.suffix #chop to cut the last character
+  supercategory.name = sc.pluralName
+  sc.save
+  sc.categories.each do |c|
+    puts "  Category #{c.id} #{c.name}"    
+    cat = Category.find_by_name(c.pluralName)
+    if cat
+      cat.foursquare_id = c.id
+      cat.foursquare_icon = c.icon.prefix.chop + c.icon.suffix
+      cat.name = c.pluralName
+    else
+      category = Category.new c
+      category.foursquare_id = c.id
+      category.foursquare_icon = c.icon.prefix.chop + c.icon.suffix
+      category.name = c.pluralName
+      category.save
+    end
+  end
 end

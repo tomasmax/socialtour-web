@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211133631) do
+ActiveRecord::Schema.define(:version => 20130216184029) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,8 +73,16 @@ ActiveRecord::Schema.define(:version => 20130211133631) do
     t.string   "slug"
     t.boolean  "is_route"
     t.text     "description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.string   "name_eu"
+    t.string   "name_en"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_update_at"
   end
 
   add_index "categories", ["supercategory_id"], :name => "index_categories_on_supercategory_id"
@@ -200,6 +208,12 @@ ActiveRecord::Schema.define(:version => 20130211133631) do
     t.string   "picture_thumbnail"
     t.datetime "created_at",                                                        :null => false
     t.datetime "updated_at",                                                        :null => false
+    t.string   "foursquare_id"
+    t.string   "foursquare_url"
+    t.integer  "checkins_count"
+    t.integer  "users_count"
+    t.string   "tip_count"
+    t.integer  "likes_count"
   end
 
   add_index "pois", ["category_id"], :name => "index_pois_on_category_id"
@@ -292,6 +306,10 @@ ActiveRecord::Schema.define(:version => 20130211133631) do
     t.datetime "icon_update_at"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.string   "name_eu"
+    t.string   "name_en"
   end
 
   create_table "users", :force => true do |t|

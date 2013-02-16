@@ -3,7 +3,8 @@ class Supercategory < ActiveRecord::Base
     url: "/supercategory_img/:hash.:extension",
     hash_secret: "^{R8'PHwe$Jrx@(%rvbo38q"
   
-  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :slug, :icon
+  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :slug, :icon,
+                  :foursquare_id, :foursquare_icon, :name_eu, :name_en
     
   has_many :categories
   has_many :pois
