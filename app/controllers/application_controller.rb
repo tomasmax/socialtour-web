@@ -4,32 +4,95 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :api_call
 
+  @clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
   
   def poi_url(poi)
     "/#{t 'resources.pois'}/#{poi.slug}"
   end
   
-  def load_poi_from_forsquare(poi)
-    #hacerla
+  def load_poi_from_forsquare(venue)
+    cat = Category.find_by_foursquare_id(venue.categories[0].id)
+    poi = {name: venue.name,
+      user_id: 2,#foursquare user
+      latitude: venue.location.lat,
+      longitude: venue.location.lng,
+      address: venue.location.address,#siempre no tiene
+      #telephone: , no hay telefono en foursquare
+      #website: ,
+      foursquare_id: venue.id,
+      foursquare_url: venue.canonicalUrl,
+      checkins_count: venue.stats.checkinsCount,
+      users_count: venue.stats.usersCount,
+      tip_count: venue.stats.tipCount,
+      likes_count: venue.likes.count,
+      category_id: cat.id,
+      supercategory_id: cat.supercategory.id}
+      
+    # Load description from first tip
+    tips = @clientFoursquare.venue_tips("#{poi.foursquare_id}", sort: "recent")    
+    
+    #Load all tips to poi ratings
+    if tips.items
+      poi[:description] = tips.items[0].text
+      
+      tips.items.each do |t|
+        rating = Rating.new
+        rating.poi_id = poi.id
+        rating.user_id = 2
+        rating.comment = t.text
+        rating.save
+      end
+      
+    end
+ 
+    poi 
+  end
+  
+  def load_venue_photos_from_foursquare(poi)
+    
+    photos = @clientFoursquare.venue_photos("#{poi.foursquare_id}", group: "venue")
+    
+    photos.items.each do |photo|
+      begin
+        foursquare_photo_url = photo.prefix+photo.suffix
+        unless Photo.find_by_foursquare_url(foursquare_photo_url)
+          poi.photos.new(user_id: 2, 
+            image: open(), 
+            foursquare_url: foursquare_photo_url,
+            image_file_name: "image.jpg").save
+          puts "New photo #{photo['url']}"
+        end
+      rescue Exception => e
+        puts "EXC[ Error loading photo #{photo['url']}: #{e} ]"
+      end
+    end
+    
   end
   
   def load_pois_from_foursquare
-    clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
-    pois = clientFoursquare.search_venues(near: 'Bilbao') #near or ll, query, radius, categoryId
+    
+    pois = @clientFoursquare.search_venues(near: 'Bilbao') #near or ll, query, radius, categoryId
     #meter parametro igual de localizacion o categoria
-    if pois
+    total_saved = 0
+    if pois.venues
         puts "#{pois.count} pois readed"
     
-        pois.venues.each do |p|
+        pois.venues.each do |venue|
           begin
-            poi = Poi.find_by_foursquare_id_and_name(p.id,p.name)
+            poi = Poi.find_by_foursquare_id_and_name(venue.id,venue.name)
             if poi
-              poi.update_attributes load_poi_from_forsquare(p)
+              poi.update_attributes load_poi_from_forsquare(venue)
             else
-              poi = city.pois.new load_poi_from_forsquare(p)
+              poi = city.pois.new load_poi_from_forsquare(venue)
               poi.save
               
               puts "New poi #{poi.name}"
+            end
+            
+            if poi
+              load_venue_photos_from_foursquare(poi)
+              
+              total_saved = total_saved + 1
             end
            
           rescue Exception => e
@@ -42,7 +105,7 @@ class ApplicationController < ActionController::Base
   def load_poi_from_minube(poi_hash)
 
     poi = {name: poi_hash["name"],
-      user_id: 1,
+      user_id: 1,#minube user
       latitude: poi_hash["latitude"],
       longitude: poi_hash["longitude"],
       address: poi_hash["address"],
