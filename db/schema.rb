@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217134059) do
+ActiveRecord::Schema.define(:version => 20130217180200) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(:version => 20130217134059) do
     t.string   "uname"
     t.string   "uemail"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "auth_token"
+    t.string   "auth_secret"
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"

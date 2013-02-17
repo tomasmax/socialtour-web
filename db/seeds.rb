@@ -11,6 +11,9 @@
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 
+User.create(name: "Minube", :email => "minube@minube.com", :password => 'minube1234', :password_confirmation => 'minube1234')
+User.create(name: "Foursquare", :email => "foursquare@foursquare.com", :password => 'foursquare1234', :password_confirmation => 'foursquare1234')
+
 
 #Load countries minube
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
@@ -60,13 +63,14 @@ supercategories.each do |sc|
 end
 
 #Load categories foursquare
-clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
+clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
 supCategories = clientFoursquare.venue_categories
 supCategories.each do |sc|
   puts "- High Category FourSquare #{sc.id} #{sc.name}"
   supercategory = Supercategory.new sc #sin mirar las de minube
   supercategory.foursquare_id = sc.id
   supercategory.foursquare_icon = sc.icon.prefix.chop + sc.icon.suffix #chop to cut the last character
+  supercategory.icon = open(supercategory.foursquare_icon)
   supercategory.name = sc.pluralName
   sc.save
   sc.categories.each do |c|
@@ -80,6 +84,7 @@ supCategories.each do |sc|
       category = Category.new c
       category.foursquare_id = c.id
       category.foursquare_icon = c.icon.prefix.chop + c.icon.suffix
+      category.icon = open(category.foursquare_icon)
       category.name = c.pluralName
       category.save
     end

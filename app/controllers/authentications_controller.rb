@@ -11,26 +11,30 @@ class AuthenticationsController < InheritedResources::Base
     if authentication #existe la autenticacion
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, authentication.user)
-    elsif current_user #añadir auteticacion al usuario existente
-      current_user.authentications.create(:provider => omniauth ['provider'], :uid => omniauth['uid'], uname: omniauth['extra']['raw_info']['username'], uemail: omniauth['extra']['raw_info']['email'])
-      flash[:notice] = "Authentication successful."
-      redirect_to authentications_url
+=begin   #no va con twitter y forsquare porque no pasan el email   
     elsif omniauth[:info][:email].blank?
         # Get session ready to redirect_to registration form
         session[:omniauth] = omniauth.except('extra')
         flash[:alert] = "Por favor, completa el formulario de registro"
         redirect_to new_user_registration_path
-    else #si no existe el usuario
-      @user = User.new(name: omniauth[:info][:name], email: omniauth[:info][:email], password:Devise.friendly_token[0,20])
-      @user.save!
-      @user.authentications.create(:provider => omniauth ['provider'], :uid => omniauth['uid'], uname: omniauth['extra']['raw_info']['username'], uemail: omniauth['extra']['raw_info']['email'])
-      if @user.save
-        flash[:notice] = "Signed in successfully. Change your password"
-        sign_in_and_redirect(:user, @user)
-      else
-        session[:omniauth] = omniauth.except('extra')
-        redirect_to new_user_registration_url
-      end
+=end      
+    elsif current_user #añadir auteticacion al usuario existente
+      
+      flash[:notice] = "Authentication with #{omniauth ['provider']} successful added."
+      add_account(current_user, omniauth)
+      redirect_to authentications_url
+    
+      else #si no existe el usuario
+        @user = User.new(name: omniauth[:info][:name], email: omniauth[:info][:email], password:Devise.friendly_token[0,20])
+        
+        if @user.save       
+          add_account(@user, omniauth)
+          flash[:notice] = "Signed in with #{omniauth ['provider']}. Change your password"
+          sign_in_and_redirect(:user, @user)
+        else
+          session[:omniauth] = omniauth.except('extra')
+          redirect_to new_user_registration_url
+        end
     end
   end
   

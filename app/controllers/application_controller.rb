@@ -4,10 +4,40 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :api_call
 
-  @clientFoursquare = Foursquare2::Client.new(:oauth_token => '4BZTXM0V5J4OIBJEZ5SBUKX34OO42OGWRL5YMUEXUMR1IW5N', :api_version => '20130215', :locale=>'es')
+  @clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
   
   def poi_url(poi)
     "/#{t 'resources.pois'}/#{poi.slug}"
+  end
+  
+  def add_account(user, auth)
+    authentication = user.authentications.new(provider: auth[:provider], uid: auth[:uid])
+    if auth[:extra]
+      authentication.uname = auth['extra']['raw_info']['username']
+      authentication.uemail = auth['extra']['raw_info']['email']
+    end
+    token = auth[:credentials][:token] rescue nil
+    token ||= auth[:extra][:access_token].token rescue nil
+    authentication.auth_token = token
+    secret = auth[:credentials][:secret] rescue nil
+    secret ||= auth[:extra][:access_token].secret rescue nil
+    authentication.auth_secret = secret
+
+    if authentication.save
+      #complete user information
+      #user.profile.image = open(auth[:info][:image]) unless user.profile.image.exists? || !auth[:info][:image]
+      profile = user.profiles.new
+      profile.first_name = auth[:info][:first_name] if user.profiles.first.first_name.blank?
+      profile.last_name = auth[:info][:last_name] if user.profiles.first.last_name.blank?
+      if auth[:extra]
+        if auth[:extra][:location]
+          city = City.find_by_name(auth[:extra][:location][:name])
+        end
+        user.city = city
+        profile.gender = auth[:extra][:raw_info][:gender] if auth[:extra][:raw_info][:gender]
+      end
+      profile.save!
+    end
   end
   
   def load_poi_from_forsquare(venue)
@@ -57,7 +87,7 @@ class ApplicationController < ActionController::Base
         foursquare_photo_url = photo.prefix+photo.suffix
         unless Photo.find_by_foursquare_url(foursquare_photo_url)
           poi.photos.new(user_id: 2, 
-            image: open(), 
+            image: open(foursquare_photo_url), 
             foursquare_url: foursquare_photo_url,
             image_file_name: "image.jpg").save
           puts "New photo #{photo['url']}"
