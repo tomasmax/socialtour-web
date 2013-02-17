@@ -15,7 +15,7 @@
       </div>
       <span><%= poi.ratings_count %></span>
     </div>
-    <h3><%= link_to poi.name, poi_url(poi) %></h3>
+    <h4><%= link_to poi.name, poi_url(poi) %></h4>
     <div class="poi-user">
       <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
     </div>
@@ -30,4 +30,3 @@
   </div>
 </li>
 
-<% puts "POI name: #{poi.name}"%>

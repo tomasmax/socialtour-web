@@ -83,12 +83,13 @@
     </div>
 <div id="content">
     <div class="container rounded-corners" id="container">
-
+		<%= logo2 = image_tag("logo.png", :size => "300x200") %>
+		
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
       	<div class="row">
       		<div class="span5">
-      			<%= logo2 = image_tag("logo.png", :size => "250x200", class: "rounded-image") %>
+      			
         		<p class="lead"><%= t('subtitle')%></p>
         		<p><%= t('subsubtitle')%></p>
     			</div>		

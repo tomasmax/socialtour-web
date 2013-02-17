@@ -37,7 +37,7 @@
         ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list">
-        <% render @what_to_do %>
+        <%= render @what_to_do %>
       </ul>
       <div class="view-all">
         <%= link_to "Ver más", "/que-hacer" %>
@@ -49,7 +49,7 @@
         ¿Conoces un nuevo sitio de interés? <%# link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list condensed">
-        <% render @what_to_see %>
+        <%= render @what_to_see %>
       </ul>
       <div class="view-all">
         <%= link_to "Ver más", "/que-ver" %>
@@ -62,7 +62,7 @@
         ¿Conoces un nuevo sitio donde comer? <%# link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list">
-        <% render @where_to_eat %>
+        <%= render @where_to_eat %>
       </ul>
       <div class="view-all">
         <%= link_to "Ver más", "/donde-comer" %>
@@ -71,6 +71,7 @@
   </div>
   </div>
 
+<br />
 <h2>Recursos cercanos</h3>
   <div id="pois-index" >
 		<div id="near">

@@ -11,13 +11,20 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap.min
-
  *= require pois 
  */
 
 
 img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     max-width: 99999px;
+}
+
+#header a.logo {
+  text-indent: -9999px;
+  width: 288px;
+  height:100px;
+  /*background: url(/assets/logo.png) no-repeat center center;*/
+  display: block;
 }
 
 .navcontainer {
