@@ -11,7 +11,8 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap.min
- *= require pois 
+ *= require pois
+ *= file-uploader  
  */
 
 
@@ -65,6 +66,11 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     border-radius: 20px;
 }
 
+.column-section {
+  margin-bottom: 24px;
+}
+
+/*form sign-in */
 .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;

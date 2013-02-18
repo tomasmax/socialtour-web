@@ -34,7 +34,7 @@
   <div id="pois-index" class="span12">
       <h2><%= t 'what_do' %></h2>
       <span class="contribute">
-        ¿Conoces un nuevo sitio? <%# link_to t('add_new'), new_poi_path %>
+        ¿Conoces algo nuevo? <%= link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list">
         <%= render @what_to_do %>
@@ -46,7 +46,7 @@
     <div>
       <h2><%= t 'what_see' %></h2>
       <span class="contribute">
-        ¿Conoces un nuevo sitio de interés? <%# link_to t('add_new'), new_poi_path %>
+        ¿Conoces un nuevo sitio de interés? <%= link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list condensed">
         <%= render @what_to_see %>
@@ -59,7 +59,7 @@
     <div>
       <h2><%= t 'where_eat' %></h2>
       <span class="contribute">
-        ¿Conoces un nuevo sitio donde comer? <%# link_to t('add_new'), new_poi_path %>
+        ¿Conoces un nuevo sitio donde comer? <%= link_to t('add_new'), new_poi_path %>
       </span>
       <ul class="places-list">
         <%= render @where_to_eat %>
@@ -72,7 +72,7 @@
   </div>
 
 <br />
-<h2>Recursos cercanos</h3>
+<h2>Recursos cercanos</h2>
   <div id="pois-index" >
 		<div id="near">
 		    
@@ -86,8 +86,6 @@
 			  
 			    var pois = <%= pois_json.to_json.html_safe %>;
 		  	</script>
-		    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
-		    <%= javascript_include_tag "near-pois" %>
 		    
 		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
 		    

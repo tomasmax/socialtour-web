@@ -22,9 +22,6 @@ class PoisController < InheritedResources::Base
         
         ids = Poi.where(category_id: Category.where(group: 'do')).select(:id).sample(3).collect{|p| p.id }
         @what_to_do = Poi.where(id: ids)
-        @what_to_do.each do |d|
-          puts "OOOOOOOO --- #{d.name}"
-        end
         
         ids = Poi.where(category_id: Category.where(group: 'tosee')).select(:id).sample(3).collect{|p| p.id }
         @what_to_see = Poi.where(id: ids)

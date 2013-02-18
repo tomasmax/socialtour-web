@@ -140,6 +140,14 @@ a.show-in-minube {
   background-image: url('/assets/logo_minube.png');
 }
 
+a.show-in-foursquare {
+  display: block;
+  width: 220px;
+  height: 79px;
+  text-indent: -9999px;
+  background-image: url('/assets/logo_foursquare.png');
+}
+
 a.poi-photo-fancy {
   width: 70px;
   height: 70px;

@@ -17,4 +17,28 @@
 //= require bootstrap.min
 //= require chosen.jquery
 //= require starbar
+//= near-pois
+//= pois-show
 //= require_tree .
+
+$(document).ready(function() {
+  // Init custom selects
+  $(".js-select").chosen();
+  
+  $('.starbar').each(function(){
+    starbar($(this));
+  });
+  
+  $('.file-uploader').each(function(){
+    var uploader = $(this);
+    uploader.children('input[type="file"]').change(function(){
+    
+      uploader.children('.uploader-content').append(' <span class="uploader-filename">'+$(this).val().split('\\').pop()+'</span>');
+      
+      uploader.addClass('btn-success');
+      
+      uploader.parent('form').children('input[type="submit"]').css('display', 'inline-block');
+    });
+  });
+      
+});

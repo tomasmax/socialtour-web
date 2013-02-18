@@ -5,34 +5,29 @@
 //= require g.line-min
 
 var map, coordinates, path;
-
 function initialize() {
-  var center = new google.maps.LatLng(poi.latitude, poi.longitude);
-  
-  var options = {
-    zoom: 15,
-    draggableCursor: poi.title,
-    center: center,
+  var myOptions = {
+    zoom: 11,
+    draggableCursor: poi.name,
+    center: new google.maps.LatLng(poi.latitude, poi.longitude),
     mapTypeId: poi.category && poi.category.is_route ? google.maps.MapTypeId.SATELLITE : google.maps.MapTypeId.ROADMAP
   };
-  map = new google.maps.Map(document.getElementById('poi-map-canvas'), options);
+  map = new google.maps.Map(document.getElementById('poi-map-canvas'), myOptions);
   
+  marker = new google.maps.Marker({
+    position: new google.maps.LatLng(poi.latitude, poi.longitude),
+    map: map,
+    icon: poi.supercategory ? poi.supercategory.icon_urls['small'] : null
+  });
   
   var bounds = null;
-  if (poi.route_info) {
+  if (poi.route_infos.first) {
     bounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(poi.route_info.s_bound, poi.route_info.w_bound), 
       new google.maps.LatLng(poi.route_info.n_bound, poi.route_info.e_bound));
       
     map.fitBounds(bounds);
   }
-  
-  
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng(poi.latitude, poi.longitude),
-    map: map,
-    icon: poi.poi_type ? poi.poi_type.image_urls['med'] : null
-  });
   
   if (poi.category && poi.category.is_route){
     coordinates = [];
@@ -98,38 +93,4 @@ window.onload = function () {
   }
 };
 
-/*
-$(function(){
-  AnyTime.picker("starts_at_date", { 
-    format: "%d/%m/%z", 
-    firstDOW: 1, 
-    labelTitle: "Fecha",
-    labelDayOfMonth: "Dia del mes", 
-    labelMonth: "Mes", 
-    labelYear: "Año",
-    dayNames: ["L", "M", "X", "J", "V", "S", "D"]
-  });
-  AnyTime.picker("starts_at_time", { 
-    format: "%H:%i", 
-    labelTitle: "Hora",
-    labelHour: "Hora", 
-    labelMinute: "Minuto" 
-  });
 
-  AnyTime.picker("ends_at_date", { 
-    format: "%d/%m/%z", 
-    firstDOW: 1, 
-    labelTitle: "Fecha",
-    labelDayOfMonth: "Dia del mes", 
-    labelMonth: "Mes", 
-    labelYear: "Año",
-    dayNames: ["L", "M", "X", "J", "V", "S", "D"]
-  });
-  AnyTime.picker("ends_at_time", { 
-    format: "%H:%i", 
-    labelTitle: "Hora",
-    labelHour: "Hora", 
-    labelMinute: "Minuto" 
-  });
-});
-*/
