@@ -1,18 +1,16 @@
-<%= javascript_include_tag "pois-show" %>
-
 <%# Add metadata for google %>
 <div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review-aggregate" class="review-aggregate metadata">
-   <span property="v:itemreviewed"><% @poi.name %></span>
-   <% image_tag(@poi.photos.first.image.url(:icon), rel: 'v:photo') if @poi.photos.any? %>
+   <span property="v:itemreviewed"><%= @poi.name %></span>
+   <%= image_tag(@poi.photos.first.image.url(:icon), rel: 'v:photo') if @poi.photos.any? %>
    <span rel="v:rating">
       <span typeof="v:Rating">
-         <span property="v:average"><% @poi.ratings_count ? (@poi.rating / @poi.ratings_count) : 0 %></span>
-         <%#out of%> 
-         <span property="v:best"></span>
+         <span property="v:average"><%= @poi.ratings_count ? (@poi.rating / @poi.ratings_count) : 0 %></span>
+         out of 
+         <span property="v:best">5</span>
       </span>
    </span>
-  <%# based on >
-   <span property="v:votes"><% @poi.ratings_count %></span>
+   based on 
+   <span property="v:votes"><%= @poi.ratings_count %></span> ratings.
 </div>
 
 
@@ -21,10 +19,13 @@
   poi.route_points = <%= @poi.route_points.to_json.html_safe %>;
 </script>
 
-<div id="poi-detail" class="row">
+<div class="row">
+  <div id="poi-map-canvas" style="height: 300px; width: 990px; margin-left: -25px;"></div>
+</div>
 
 <p id="notice"><%= notice %></p>
 
+<div id="poi-detail" class="row">
   <div class="span9">
     <h1><%= @poi.name %></h1>
     <div class="poi-info">
@@ -59,7 +60,6 @@
       </div>
     <% end %>
     
-    
     <h3 class="section-title">Fotos</h3>
     <div id="poi-photos" class="poi-side-block">
       <% @poi.photos.each do |photo| %>
@@ -87,8 +87,6 @@
       </div>
     <% end %>
     
-    <div id="poi-map-canvas" style="width: 700px; height: 300px; margin: 22px 0 30px -5px; display: block; clear: both;"></div>
-    
     <div id="poi-comments" class="row">
       <div class="span8">
         <h3 id="last-comments"><%= t :comments %></h3>
@@ -97,7 +95,7 @@
     </div>
   </div>
   
-  <div class="span3">
+  <div class="span-poi-side">
     <div class="starbar column-section" data-poi-id="<%= @poi.id %>" data-poi-rating="<%= @poi.rating %>" data-poi-ratings-count="<%= @poi.ratings_count %>">
       <div class="star"></div>
       <div class="star"></div>
@@ -130,54 +128,48 @@
     <% end %>
     
     <div id="share-poi" class="column-section">
-      <h4>Compartelo</h4>
+      <h3>Compartelo</h3>
       <div id="share-poi-facebook">
         <div class="fb-like" data-send="false" data-width="220" data-show-faces="true"></div>
       </div>
-      <hr />
     </div>
     
     <% if @poi.route_infos.first %>
       <div class="column-section">
         <%= render @poi.route_info %>
       </div>
-      <hr />
     <% end %>
-    
     
     <% if @what_to_see && @what_to_see.any? %>
       <div id="to-see" class="poi-side-block see-also">
-        <h4><%= "Más para ver en #{@poi.city.name if @poi.city}" %></h4>
+        <h3><%= "Más para ver en #{@poi.city.name if @poi.city}" %></h3>
         <ul class="places-list condensed reduced">
           <%= render @what_to_see %>
         </ul>
       </div>
-      <hr />
     <% end %>
     
     <% if @what_to_do && @what_to_do.any? %>
       <div id="to-do" class="poi-side-block see-also">
-        <h4><%= "Que más hacer en #{@poi.city.name if @poi.city}" %></h4>
+        <h3><%= "Que más hacer en #{@poi.city.name if @poi.city}" %></h3>
         <ul class="places-list condensed reduced">
           <%= render @what_to_do %>
         </ul>
       </div>
-      <hr />
     <% end %>
     
     <% if @where_to_sleep && @where_to_sleep.any? %>
       <div id="to-do" class="poi-side-block see-also">
-        <h4><%= "Donde dormir en #{@poi.city.name if @poi.city}" %></h4>
+        <h3><%= "Donde dormir en #{@poi.city.name if @poi.city}" %></h3>
         <ul class="places-list condensed reduced">
           <%= render @where_to_sleep %>
         </ul>
       </div>
-      <hr />
     <% end %>
     
     <% if @where_to_eat && @where_to_eat.any? %>
       <div id="to-do" class="poi-side-block see-also">
-        <h4><%= "Donde comer en #{@poi.city.name if @poi.city}" %></h4>
+        <h3><%= "Donde comer en #{@poi.city.name if @poi.city}" %></h3>
         <ul class="places-list condensed reduced">
           <%= render @where_to_eat %>
         </ul>
@@ -185,9 +177,8 @@
     <% end %>
     
     <% if @poi.events.count > 0 || @poi.user == current_user %>
-    <hr />
     <div id="poi-events" class="poi-side-block">
-      <h4 id="events"><%= t :events %></h4>
+      <h3 id="events"><%= t :events %></h3>
       <% if @poi.user && @poi.user == current_user %>
         
         <a href="#" id="create-event-button" class="btn" onClick="showEventForm()"><%= t :create_event %></a>
@@ -227,4 +218,3 @@
     <% end %>
   </div>
 </div>
-

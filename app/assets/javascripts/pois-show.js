@@ -4,7 +4,12 @@
 //= require g.raphael-min
 //= require g.line-min
 
-var map, coordinates, path;
+var map, coordinates, path, infowindow;
+$(function(){
+  infowindow = new google.maps.InfoWindow({ 
+    size: new google.maps.Size(150,50)
+  });
+  
 function initialize() {
   var myOptions = {
     zoom: 11,
@@ -19,6 +24,13 @@ function initialize() {
     map: map,
     icon: poi.supercategory ? poi.supercategory.icon_urls['small'] : null
   });
+  
+  var html = '<a href="/places/'+poi.slug+'"><b>'+poi.name+'</b></a><p>'
+  
+  google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(html); 
+        infowindow.open(map, marker);
+    });
   
   var bounds = null;
   if (poi.route_infos.first) {
@@ -46,6 +58,7 @@ function initialize() {
   }
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+});
 
 function showEventForm(){
   $('#create-event-button').css('display', 'none');
