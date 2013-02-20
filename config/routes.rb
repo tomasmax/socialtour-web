@@ -1,4 +1,7 @@
 SocialTour::Application.routes.draw do
+  resources :likes
+
+
   resources :countries
 
   resources :route_points
@@ -37,6 +40,8 @@ SocialTour::Application.routes.draw do
   #slug routes
   get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
   
+  #explore pois
+  get '/explorer', to: 'pois#explorer', as: 'explorer'
   
   get "pages/home"
 

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @like.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @like.category %>
+</p>
+
+<p>
+  <b>Facebook:</b>
+  <%= @like.facebook_id %>
+</p>
+
+<p>
+  <b>Created time:</b>
+  <%= @like.created_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_like_path(@like) %> |
+<%= link_to 'Back', likes_path %>

@@ -1,3 +1,5 @@
+#require "sentimentalizer"
+
 class User < ActiveRecord::Base
   has_many :authentications
   has_many :packages
@@ -5,6 +7,8 @@ class User < ActiveRecord::Base
   # Social contacts
   has_many :user_social_contacts
   has_many :social_contacts, through: :user_social_contacts
+  
+  has_many :likes
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -36,6 +40,24 @@ class User < ActiveRecord::Base
           #return client.connections.all
       end
     end
+  end
+  
+  def get_likes
+    auth = authentications.find_by_provider("facebook")
+    # first, initialize a Graph API with your token
+    graph = Koala::Facebook::GraphAPI.new(auth.auth_token) # pre 1.2beta
+    graph = Koala::Facebook::API.new(auth.auth_token) # 1.2beta and beyond
+    likes = graph.get_connections('me', 'likes')
+    likes.each do |l|
+      like = Like.new l
+      like.facebook_id = l['id']
+      like.save
+    end
+  end
+  
+  def analyze_sentiment(tweet)
+    #return Sentimentalizer.analyze(tweet)
+    #=> {'text' => 'i am so happy', 'probability' => '0.937', 'sentiment' => ':)' }
   end
   
 end

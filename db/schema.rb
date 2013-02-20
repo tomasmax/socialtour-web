@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217180200) do
+ActiveRecord::Schema.define(:version => 20130220104619) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -141,6 +141,16 @@ ActiveRecord::Schema.define(:version => 20130217180200) do
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
   add_index "events", ["poi_id"], :name => "index_events_on_poi_id"
   add_index "events", ["provider_id"], :name => "index_events_on_provider_id"
+
+  create_table "likes", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.string   "facebook_id"
+    t.datetime "created_time"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "packages", :force => true do |t|
     t.string   "name"

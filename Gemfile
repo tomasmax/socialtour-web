@@ -58,6 +58,9 @@ gem 'fb_graph'
 gem "koala" # Get friends from user
 gem 'foursquare2'
 
+#semtiment analyzer
+#gem 'sentimentalizer'
+
 #form builder
 gem 'formtastic'
 

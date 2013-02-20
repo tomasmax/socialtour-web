@@ -46,6 +46,11 @@ class PoisController < InheritedResources::Base
     end
   end
   
+  #GET /explorer
+  def explorer
+    
+  end
+  
   # GET /pois/poi+slug
   # GET /pois/poi+slug.json
   respond_to :html, :json, :gpx, :kml
