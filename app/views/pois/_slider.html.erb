@@ -1,7 +1,23 @@
-
+<%= javascript_include_tag 'slider' %>
+<div id="last-photos-slider">
+  <h3 id="last-photos"><%= t :last_photos %></h3>
+  
+  <div class="slider">
+    <div id="gallery">
+      <% @slider_photos.each do |photo| %>
+        <%= image_tag photo.image.url(:gallery), 'data-url' => poi_url(photo.poi), 'data-title' => photo.poi.name, 'data-description' => truncate(photo.poi.description) %>
+      <% end %>
+    </div>
+    <div id="thumbs">
+      <% @slider_photos.each do |photo| %>
+        <%= image_tag photo.image.url(:thumb) %>
+      <% end %>  
+    </div>
+  </div>
+</div>
 
 <!-- Carousel
-    ================================================== -->
+    ==================================================
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
       	
@@ -24,4 +40,4 @@
          
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
+    </div> /.carousel -->

@@ -174,3 +174,60 @@ a.download-route {
 a.download-route:hover {
   background-color: #06C;
 }
+
+a.map-expand {
+  display: block;
+  color: whiteSmoke;
+  width: 988px;
+  height: 18px;
+  margin: 0 0 15px -25px;
+  background-color: rgba(0,0,0,0.45);
+  border: 1px solid transparent;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  -webkit-transition: 0.25s ease;
+  -moz-transition: 0.25s ease;
+  -ms-transition: 0.25s ease;
+  -o-transition: 0.25s ease;
+}
+
+a.map-expand:hover {
+  background-color: rgba(0,0,0,0.65);
+  color: white;
+  text-decoration: none;
+}
+
+
+.slider {
+  width: 990px;
+  height: 300px;
+  margin: 8px 0;
+}
+
+#last-photos-slider {
+  margin-top: 23px;
+  margin-bottom: 7px;
+}
+
+#gallery, #thumbs {
+  float: left;
+}
+
+#gallery {
+  width: 890px;
+  height: 300px;
+  overflow: hidden;
+  margin-left: -25px;
+  
+  img {
+    position: absolute;
+  }
+}
+
+#thumbs {
+  width: 100px;
+  height: 300px;
+  overflow: hidden;
+}

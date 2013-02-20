@@ -38,3 +38,13 @@
 	  
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+
+// using bind
+$('#pois-scroll').bind('mousewheel', function(event, delta) {
+    console.log(delta);
+});
+
+// using the event helper
+$('#pois-scroll').mousewheel(function(event, delta) {
+    console.log(delta);
+});
