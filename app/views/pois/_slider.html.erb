@@ -1,0 +1,27 @@
+
+
+<!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner rounded-corners">
+      	
+      		<% x = 0 %>
+          <% @slider_photos.each do |photo| %>
+          	<% if x == 0 %>
+          	<div class="item active">
+			        <%= image_tag photo.image.url(:gallery) %>    
+			      </div>
+			      <% else %>
+			      	<div class="item">
+			        	<%= image_tag photo.image.url(:gallery) %>
+			      	</div>  	
+			      <% end %>
+			      <% x += 1 %>
+			      
+			    <% end %>
+          
+        </div>
+         
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->

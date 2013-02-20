@@ -8,7 +8,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :image_content_type, :image_file_name, :image_file_size,
                   :image_updated_at, :is_visible_on_index, :minube_url, :sequence,
                   :subtitle, :subtitle_eu, :title, :title_eu, :image, :user_id,
-                  :foursquare_url
+                  :foursquare_url, :poi_id, :user_id
   
   validates_uniqueness_of :minube_url
   
@@ -21,6 +21,7 @@ class Photo < ActiveRecord::Base
   def image_urls
     { 
       full: self.image.url(:full),
+      gallery: self.image.url(:gallery),
       thumb: self.image.url(:thumb),
       icon_2x: self.image.url(:icon_2x),
       icon: self.image.url(:icon)
