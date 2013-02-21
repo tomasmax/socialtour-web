@@ -1,3 +1,4 @@
+//= jquery.jscrollpane.min
 
   function initialize() {
   

@@ -1,10 +1,25 @@
-$(document).ready(function() 
+//= require jquery.easing
+//= require jquery.eislideshow
+
+$(function() {
+  $('#slider').eislideshow({
+    animation			: 'center',
+    autoplay			: true,
+    slideshow_interval	: 6000,
+    titlesFactor		: 0,
+	  easing		: 'easeOutExpo',
+	  titleeasing	: 'easeOutExpo',
+	  titlespeed	: 1200
+  });
+});
+
+/* $(document).ready(function() 
 {   
   var index = 0;
   var images = $("#gallery img");
   var thumbs = $("#thumbs img");
   var imgHeight = 100;//$(thumbs).attr("height");
-  $(thumbs).slice(0,3).clone().appendTo("#thumbs");
+  $(thumbs).slice(0,4).clone().appendTo("#thumbs");
   for (i=0; i<thumbs.length; i++)
   {
     $(thumbs[i]).addClass("thumb-"+i);
@@ -34,4 +49,4 @@ $(document).ready(function()
     var scrollPos = (num-1)*imgHeight;
     $("#thumbs").stop().animate({scrollTop: scrollPos}, 400);    
     console.log(scrollPos, "img.image-"+num);
-  }
+  } */

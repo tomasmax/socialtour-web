@@ -5,7 +5,7 @@
       <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.png', class: 'poi-preview' %>
     <% end %>
   </div>
-  <div class="pois-content">
+  <div class="pois-content grey-box">
     <div class="poi-rating">
       <div class="starbar-static">
         <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>

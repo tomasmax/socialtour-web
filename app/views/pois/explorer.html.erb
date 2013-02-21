@@ -3,7 +3,22 @@
 
 <div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 20%; right: 0; z-index: 0; display: block; clear: both;"></div>
 
-<div id="pois-scroll">
-	
-	
+<div class="pois-explorer">
+	<div class="scroll-pane">
+		<div id="places-list">
+		  <h2><%= t 'what_do' %></h2>
+		  <ul class="places-list">
+		    <%= render @what_to_do %>
+		  </ul>
+		</div>
+		
+		<div id="places-list">
+		  <h2><%= t 'what_see' %></h2>
+		  <ul class="places-list-condensed">
+		    <%= render @what_to_see %>
+		  </ul>
+		</div>
+		
+		<%= render @where_to_eat %>
+	</div>
 </div>

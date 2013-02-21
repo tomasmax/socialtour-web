@@ -1,4 +1,5 @@
 class PoisController < InheritedResources::Base
+  layout 'layouts/explore', :only => :explorer
   
   @@last_minube_update = Time.at(0)
   
@@ -48,30 +49,28 @@ class PoisController < InheritedResources::Base
   end
   
   #GET /explorer
+  
   def explorer
-    render :layout => 'explore'
     
-    @poi = Poi.find_by_slug(params[:slug])
+    @city = City.find_by_name("Bilbao")
+    puts "#{@city.name}"
+    @pois = Poi.find_all_by_city_id(@city.id)
     
-    poi = Poi.where(category_id: Category.where(group: 'do'), city_id: @poi.city).select(:id).sample
-    @what_to_do = Poi.where(id: poi.id) if poi
+    pois = Poi.where(category_id: Category.where(group: 'do'), city_id: @city).collect{|p| p.id }
+    @what_to_do = Poi.where(id: pois)
+    puts "-----------!!!!!!#{@what_to_do.first.name}"
+    pois = Poi.where(category_id: Category.where(group: 'tosee'), city_id: @city).collect{|p| p.id }
+    @what_to_see = Poi.where(id: pois)
     
-    poi = Poi.where(category_id: Category.where(group: 'tosee'), city_id: @poi.city).select(:id).sample
-    @what_to_see = Poi.where(id: poi.id) if poi
+    pois = Poi.where(category_id: Category.where(group: 'eat'), city_id: @city).collect{|p| p.id }
+    @where_to_eat = Poi.where(id: pois)
     
-    poi = Poi.where(category_id: Category.where(group: 'eat'), city_id: @poi.city).select(:id).sample
-    @where_to_eat = Poi.where(id: poi.id) if poi
-    
-    @event = Event.new
-    @event.poi = @poi
     
     respond_to do |format|
-      format.html # show.html.erb
-      format.json do 
-        @poi.route_points_list = @poi.route_points
-        render json: @poi
-      end
+      format.html # explorer.html.erb
+   
     end
+    
   end
   
   # GET /pois/poi+slug
