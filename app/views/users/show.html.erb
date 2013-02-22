@@ -3,14 +3,28 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @user.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city_id) %>:</strong></dt>
-  <dd><%= @user.city_id %></dd>
-</dl>
+<div class="row">
+	<div class="span5 offset1">	
+	<%= image_tag @profile.image, class: "img-polaroid"%>
+	<p>
+	  <b><%= model_class.human_attribute_name(:name) %>:</b>
+	  <%= @user.name %>
+  </p>
+  <p>
+	  <b><%= model_class.human_attribute_name(:email) %>:</b>
+	  <%= @user.email %>
+  </p>
+  <p>
+	  <b><%= model_class.human_attribute_name(:city_id) %>:</b>
+	  <%= @user.city_id %>
+  </p>
+  <%= render partial: 'profiles/show' %>
+  <p>
+  	<%= link_to "Likes", likes_path %>
+  </p>
+  </div>
+</div>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

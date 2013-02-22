@@ -1,4 +1,25 @@
 class UsersController < InheritedResources::Base
+  before_filter :authenticate_user!
+  
+  def index
+    @users = User.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users}
+      format.json { render :json => @users}
+    end
+  end
+  
+  # GET /users/id
+  # GET /users/id.json
+  def show
+    @user = User.find_by_id(params[:id])
+    @profile = Profile.find_by_user_id(@user.id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @user}
+    end
+  end
   
   #get facebook friends
   def facebook

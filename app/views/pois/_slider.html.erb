@@ -1,6 +1,4 @@
 
-
-
 <!--<%= javascript_include_tag 'slider' %>
 <div id="last-photos-slider">
   <h3 id="last-photos"><%= t :last_photos %></h3>
@@ -27,11 +25,11 @@
       		<% x = 0 %>
           <% @slider_photos.each do |photo| %>
           	<% if x == 0 %>
-          	<div class="item active rounded-corners">
+          	<div class="item active">
 			        <%= image_tag photo.image.url(:gallery) %>    
 			      </div>
 			      <% else %>
-			      	<div class="item rounded-corners">
+			      	<div class="item">
 			        	<%= image_tag photo.image.url(:gallery) %>
 			      	</div>  	
 			      <% end %>
@@ -44,3 +42,8 @@
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div> <!-- /.carousel -->
+<script>
+	$('#myCarousel').carousel({  
+  interval: 4000 // in milliseconds  
+})
+</script>

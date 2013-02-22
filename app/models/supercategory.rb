@@ -22,10 +22,10 @@ class Supercategory < ActiveRecord::Base
   end
   
   def as_json options=nil
-      options ||= {}
-      options[:methods] = ((options[:methods] || []) + [:icon_urls])
-      super options
-    end
+    options ||= {}
+    options[:methods] = ((options[:methods] || []) + [:icon_urls])
+    super options
+  end
   
   def icon_urls
     { 

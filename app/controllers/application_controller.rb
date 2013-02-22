@@ -36,6 +36,11 @@ class ApplicationController < ActionController::Base
         user.city = city
         profile.gender = auth[:extra][:raw_info][:gender] if auth[:extra][:raw_info][:gender]
       end
+      if auth[:info]
+        if auth[:info][:image]
+          profile.image = open(auth[:info][:image])
+        end
+      end
       profile.save!
     end
   end

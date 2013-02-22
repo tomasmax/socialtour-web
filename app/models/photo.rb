@@ -16,7 +16,7 @@ class Photo < ActiveRecord::Base
       options ||= {}
       options[:methods] = ((options[:methods] || []) + [:image_urls])
       super options
-    end
+  end
   
   def image_urls
     { 

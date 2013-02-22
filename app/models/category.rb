@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   has_attached_file :icon, styles: { small: '32x32>', med: '64x64>', big: '128x128>' }, 
-    url: "/supercategory_img/:hash.:extension",
+    url: "/category_img/:hash.:extension",
     hash_secret: "^{R0'KQwe$Sfgrx@(%rvbo38q"
     
   belongs_to :supercategory
@@ -21,4 +21,19 @@ class Category < ActiveRecord::Base
       self.slug = self.name.without_accents.to_slug
     end
   end
+  
+  def as_json options=nil
+    options ||= {}
+    options[:methods] = ((options[:methods] || []) + [:icon_urls])
+    super options
+  end
+  
+  def icon_urls
+    { 
+      small: self.icon.url(:small),
+      med: self.icon.url(:med),
+      big: self.icon.url(:big)
+    }
+  end
+  
 end
