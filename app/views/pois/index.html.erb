@@ -118,8 +118,9 @@
 		    <script>
 			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
 			
-			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi| 
-			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: "" }
+			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi|
+			    		desc = poi.description.truncate(50) if poi.description 
+			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc }
 			      end %>
 			  
 			    var pois = <%= pois_json.to_json.html_safe %>;

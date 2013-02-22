@@ -5,7 +5,7 @@ var map, infowindow, markers = [];
 
 $(function(){
   infowindow = new google.maps.InfoWindow({ 
-    size: new google.maps.Size(200,50)
+    size: new google.maps.Size(150,50)
   });
   
   function createMarker(poi) {

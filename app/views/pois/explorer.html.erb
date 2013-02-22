@@ -1,7 +1,17 @@
 
 <%= javascript_include_tag "pois-explorer" %>
 
-<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 20%; right: 0; z-index: 0; display: block; clear: both;"></div>
+<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 17%; right: 0; z-index: 0; display: block; clear: both;"></div>
+<script>
+	var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
+			
+	<% pois_json = Poi.order('created_at desc').limit(50).collect do |poi|
+		desc = poi.description if poi.description
+		{ supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc }
+		end %>
+			  
+	var pois = <%= pois_json.to_json.html_safe %>;
+</script>
 
 <!-- <div class="pois-explorer">
 	<div class="scroll-pane">
@@ -51,7 +61,7 @@
     </div>
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
-        <ul class="places-list-condensed">
+        <ul class="places-list">
 		    	<%= render collection: @what_to_see, partial: "poi_explorer", as: :poi %>
 		  	</ul>
       </div>
@@ -61,3 +71,6 @@
 </div>
 </div>
 </div>
+<script>
+	$("#accordion2").collapse()
+</script>

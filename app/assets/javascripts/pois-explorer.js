@@ -1,5 +1,30 @@
 //= jquery.jscrollpane.min
 
+var map, infowindow, markers = [];
+
+$(function(){
+  infowindow = new google.maps.InfoWindow({ 
+    size: new google.maps.Size(200,50)
+  });
+  
+  function createMarker(poi) {
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(poi.latitude, poi.longitude),
+        animation: google.maps.Animation.DROP,
+        map: map,
+        icon: supercategories[poi.supercategory_id] ? supercategories[poi.supercategory_id].icon_urls['small'] : null
+    });
+    
+    var html = '<a href="/places/'+poi.slug+'"><b>'+poi.name+'</b></a><p>'+ poi.description +'</p>'
+    
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(html); 
+        infowindow.open(map, marker);
+    });
+       
+   	return marker;
+  }
+  
   function initialize() {
   
     var options = {
@@ -37,8 +62,89 @@
 	    map.setCenter(initialLocation);
 	  }
 	  
+    $.each(pois, function(index, poi) {
+      markers.push(createMarker(poi));
+    });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+
+});
+
+var coordinates, path, poisDict = {}, selectedPOI = null;
+
+$(function(){
+  function loadRoute(poi, route_points) {
+    if (path)
+      path.setMap(null);
+    
+    coordinates = [];
+    for (var index in route_points) {
+      coordinates.push(new google.maps.LatLng(route_points[index].latitude, 
+        route_points[index].longitude));
+    }
+    
+    path = new google.maps.Polyline({
+      path: coordinates,
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.45,
+      strokeWeight: 3
+    });
+    path.setMap(map);
+    
+    if (poi.route_info) {
+      var bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(poi.route_info.s_bound, poi.route_info.w_bound), 
+        new google.maps.LatLng(poi.route_info.n_bound, poi.route_info.e_bound));
+        
+      map.panToBounds(bounds);
+    } else {
+      map.panTo(new google.maps.LatLng(route_points[0].latitude, 
+        route_points[0].longitude))
+    }
+    
+    selectedPOI = poi;
+  };
+
+  $('#places-list ul.places-list li').mouseenter(function(){
+    var el = $(this);
+   
+    $('#places-list ul.places-list li').removeClass('hover');
+    el.addClass('hover');
+    var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
+    map.setCenter(position);
+    map.setZoom(19);
+    var marker;
+    for(marker m : markers)
+		{
+		
+		  if m.position.lat == el.attr('data-poi-lat') && m.position.lng == el.attr('data-poi-lng')
+		  {
+		    marker = m;
+		    break;	
+		  }
+		}
+   	//map.infowindow.open(map, marker);
+   	
+    var poiSlug = el.attr('data-poi-slug');
+    
+    if (poisDict[poiSlug]){
+      loadRoute(poisDict[poiSlug], poisDict[poiSlug].route_points);
+    }else{
+      $.getJSON('/pois/'+poiSlug+'.json', function(poi){
+        poisDict[poiSlug] = poi
+        loadRoute(poi.poi, poi.route_points);
+      });
+      
+    }
+  });
+  
+  $('#places-list ul.places-list li').on('click', function(){
+    var el = $(this);
+    var poiSlug = el.attr('data-poi-slug');
+    window.location.href = '/places/'+poiSlug;
+  });
+
+});
 
 // using bind
 $('#pois-scroll').bind('mousewheel', function(event, delta) {
