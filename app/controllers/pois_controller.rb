@@ -1,4 +1,6 @@
 class PoisController < InheritedResources::Base
+  before_filter :authenticate_user!, :only => :new
+  
   layout 'layouts/explore', :only => :explorer
   
   @@last_minube_update = Time.at(0)

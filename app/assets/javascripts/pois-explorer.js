@@ -11,6 +11,7 @@ $(function(){
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(poi.latitude, poi.longitude),
         animation: google.maps.Animation.DROP,
+        id: poi.id,
         map: map,
         icon: supercategories[poi.supercategory_id] ? supercategories[poi.supercategory_id].icon_urls['small'] : null
     });
@@ -20,6 +21,18 @@ $(function(){
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(html); 
         infowindow.open(map, marker);
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    });
+    
+    google.maps.event.addListener(marker, 'mouseout', function() {
+       
+        marker.setAnimation(null);
+    });
+    
+    google.maps.event.addListener(marker, 'zoom_changed', function() {
+        infowindow.setContent(html); 
+        infowindow.open(map, marker);
+        marker.setAnimation(google.maps.Animation.BOUNCE);
     });
        
    	return marker;
@@ -29,7 +42,7 @@ $(function(){
   
     var options = {
       scrollwheel: false,
-      zoom: 12,
+      zoom: 14,
       /*center: new google.maps.LatLng(43.28,-3),*/
       mapTypeId: google.maps.MapTypeId.HYBRID
     };
@@ -71,6 +84,7 @@ $(function(){
 });
 
 var coordinates, path, poisDict = {}, selectedPOI = null;
+var marker;
 
 $(function(){
   function loadRoute(poi, route_points) {
@@ -107,34 +121,34 @@ $(function(){
 
   $('#places-list ul.places-list li').mouseenter(function(){
     var el = $(this);
-   
-    $('#places-list ul.places-list li').removeClass('hover');
-    el.addClass('hover');
+    //$(this).effect("highlight", {color:"#666666"}, 2000);
+ 
+    $('#places-list ul.places-list li').removeClass('hero-unit');
+    el.addClass('hero-unit');
     var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
-    map.setCenter(position);
+    map.panTo(position);
     map.setZoom(19);
-    var marker;
-    for(marker m : markers)
-		{
-		
-		  if m.position.lat == el.attr('data-poi-lat') && m.position.lng == el.attr('data-poi-lng')
-		  {
-		    marker = m;
-		    break;	
-		  }
-		}
-   	//map.infowindow.open(map, marker);
+    var exit = false;
+    	for (var i = 0; i < markers.length && !exit; i++) {
+    		m = markers[i];
+			  if (m.getPosition().lat() == el.attr('data-poi-lat') && m.getPosition().lng() == el.attr('data-poi-lng'))
+			  {	
+			  	m.setAnimation(google.maps.Animation.BOUNCE);
+			    exit = true;
+			  }
+			}
+			  
+   	//map.setMarker(map, marker);
    	
     var poiSlug = el.attr('data-poi-slug');
     
     if (poisDict[poiSlug]){
       loadRoute(poisDict[poiSlug], poisDict[poiSlug].route_points);
     }else{
-      $.getJSON('/pois/'+poiSlug+'.json', function(poi){
+      $.getJSON('/places/'+poiSlug+'.json', function(poi){
         poisDict[poiSlug] = poi
         loadRoute(poi.poi, poi.route_points);
-      });
-      
+      }); 
     }
   });
   
@@ -144,14 +158,4 @@ $(function(){
     window.location.href = '/places/'+poiSlug;
   });
 
-});
-
-// using bind
-$('#pois-scroll').bind('mousewheel', function(event, delta) {
-    console.log(delta);
-});
-
-// using the event helper
-$('#pois-scroll').mousewheel(function(event, delta) {
-    console.log(delta);
 });

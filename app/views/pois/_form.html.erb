@@ -1,48 +1,45 @@
-<%= form_for(@poi) do |f| %>
-  <% if @poi.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@poi.errors.count, "error") %> prohibited this poi from being saved:</h2>
-
-      <ul>
-      <% @poi.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div id="new-poi">
+  <%= form_for(@poi, html: {multipart: true}) do |f| %>
+    <fieldset>
+      <% if @poi.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@poi.errors.count, "error") %> prohibited this poi from being saved:</h2>
+    
+          <ul>
+          <% @poi.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    
+      <div class="clearfix">
+        <%= f.label t(:poi_title) %>
+        <div class="input">
+          <%= f.text_field :name, class: 'span6' %>
+        </div>
+      </div>
+      <div class="clearfix">
+        <%= f.label t(:poi_description) %>
+        <div class="input">
+          <%= f.text_area :description, class: 'span6', rows: 10 %>
+        </div>
+      </div>
+      
+      <div class="clearfix">
+        <%= f.label "Categoria" %>
+        <div class="input">
+          <select id="poi_category" name="poi[category_id]">
+            <%= option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name) %>
+          </select>
+        </div>
+        <%= f.label "Localidad" %>
+        <div class="input">
+          <select id="poi_category" name="poi[city_id]">
+            <%= options_for_select(City.order('name').all.collect{|city| [city.name, city.id] }, @city ? @city.id : nil) %>
+          </select>
+        </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :ratings_count %><br />
-    <%= f.number_field :ratings_count %>
-  </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.text_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug %>
-  </div>
   <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
@@ -55,47 +52,45 @@
     <%= f.label :website %><br />
     <%= f.text_field :website %>
   </div>
-  <div class="field">
-    <%= f.label :minube_url %><br />
-    <%= f.text_field :minube_url %>
-  </div>
-  <div class="field">
-    <%= f.label :minube_id %><br />
-    <%= f.text_field :minube_id %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :supercategory %><br />
-    <%= f.text_field :supercategory %>
-  </div>
-  <div class="field">
-    <%= f.label :name_eu %><br />
-    <%= f.text_field :name_eu %>
-  </div>
-  <div class="field">
-    <%= f.label :description_eu %><br />
-    <%= f.text_area :description_eu %>
-  </div>
+
   <div class="field">
     <%= f.label :timetable %><br />
-    <%= f.text_area :timetable %>
+    <%= f.text_area :timetable, class: 'span6', rows: 2 %>
   </div>
-  <div class="field">
-    <%= f.label :picture_nomral %><br />
-    <%= f.text_field :picture_nomral %>
-  </div>
-  <div class="field">
-    <%= f.label :picture_thumbnail %><br />
-    <%= f.text_field :picture_thumbnail %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      
+        
+        <br/>
+        <div id="poi-type-image" class="input"></div>
+      </div>
+      <%#
+      <div class="clearfix">
+        < f.label 'Subir ruta desde GPX' >
+        <div class="input">
+          < f.file_field :gpx_file >
+        </div>
+      </div>
+      %>
+      
+      <%= f.hidden_field :latitude, id: 'poi-latitude' %>
+      <%= f.hidden_field :longitude, id: 'poi-longitude' %>
+      <%= f.hidden_field :user_id, id: current_user.id %>
+      
+      <div id="route-points" style="display: none;"></div>
+
+      <div class="clearfix">
+        <%= f.label t(:location) %>
+        <div class="input">
+          <div id="map-canvas" width="650" height="450"></div> 
+          <span id="route-help" class="help-block"><%= t :route_help %></span>
+        </div>
+      </div>
+      
+    </fieldset>
+    
+    <div class="actions">
+      <%= f.submit t(:submit_poi), class: 'btn primary span2' %>
+    </div>
+  <% end %>
+</div>
+
+
