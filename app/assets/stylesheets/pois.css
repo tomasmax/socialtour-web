@@ -29,7 +29,6 @@
 }
 
 .poi-link a {
-  color: #4FA800;
   font-size: 28px;
 }
 
@@ -38,12 +37,11 @@
   font-size: 18px;
   line-height: 12px;
   padding: 4px 8px;
-  background: #F24F00;
   margin-right: 4px;
 }
 
 .poi-link a.label:hover {
-  background: #4F78D6;
+  background: #4F78DD;
 }
 
 .poi-link a.label > i{
@@ -109,11 +107,13 @@ ul.places-list li .pois-content > h3 > a {
 ul.places-list.condensed {
   display: table;
   margin-top: 0;
+  margin: 10px 10px;
 }
 
 ul.places-list.condensed li.poi-preview {
   display: table-cell;
-  width: 210px;
+  padding: 8px;
+  width: 30%;
 }
 
 ul.places-list.condensed li.poi-preview .poi-rating span {

@@ -14,7 +14,8 @@ class Poi < ActiveRecord::Base
                   :address, :description, :description_eu, :latitude, :longitude, 
                   :minube_id, :minube_url, :name, :name_eu, :picture_nomral, :picture_thumbnail, 
                   :rating, :ratings_count, :slug, :telephone, :timetable, :website,
-                  :foursquare_id, :foursquare_url, :checkins_count, :users_count, :tip_count, :likes_count
+                  :foursquare_id, :foursquare_url, :checkins_count, :users_count, :tip_count, :likes_count,
+                  :city_id
 
                   
   attr_accessor :route_points_list

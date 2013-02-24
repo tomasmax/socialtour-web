@@ -27,6 +27,7 @@
 
   <div class="span9">
     <h1><%= @poi.name %></h1>
+    <hr class="close-divider" />
     <div class="poi-info">
       <div class="poi-user">
         <span>por <%= link_to @poi.user.name, user_url(@poi.user) if @poi.user %> </span>
@@ -50,6 +51,7 @@
     <% if (@poi.address && @poi.address.length > 0) || (@poi.telephone && @poi.telephone.length > 0) %>
       <div class="location">
         <h3 class="section-title">Dirección</h3>
+        <hr class="close-divider" />
         <address>
           <span><%= @poi.address %></span>
           <% if @poi.telephone && @poi.telephone.length > 0 %>
@@ -59,8 +61,8 @@
       </div>
     <% end %>
     
-    
     <h3 class="section-title">Fotos</h3>
+    <hr class="close-divider" />
     <div id="poi-photos" class="poi-side-block">
       <% @poi.photos.each do |photo| %>
         <%= link_to photo.image.url(:full), class: "poi-photo-fancy", alt: @poi.name do %>
@@ -122,7 +124,7 @@
     
     <% if @poi.website && @poi.website.length > 0 %>
       <div class="poi-link">
-        <%= link_to @poi.website, target: "blank", class: "label label-inverse" do %>
+        <%= link_to @poi.website, target: "blank", class: "label" do %>
           Visita su página web
           <i class="icon-share-alt icon-white"></i>
         <% end %>

@@ -1,14 +1,14 @@
 #require "sentimentalizer"
 
 class User < ActiveRecord::Base
-  has_many :authentications
+  has_many :authentications, dependent: :delete_all
   has_many :packages
-  has_many :profiles
+  has_many :profiles, dependent: :delete_all
   # Social contacts
   has_many :user_social_contacts
   has_many :social_contacts, through: :user_social_contacts
   
-  has_many :likes
+  has_many :likes, dependent: :delete_all
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

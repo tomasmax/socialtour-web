@@ -23,6 +23,17 @@
   	<%= link_to "Likes", likes_path %>
   </p>
   </div>
+  
+  <div class="span5">
+			<%= render 'pages/user_nav'%>		
+		<p>
+			<%= render 'pages/authentications'%>
+		</p>
+		Revisa tus perfiles:
+		<% if user_signed_in? %>
+    	<%=link_to "Authentications", authentications_path %></li>
+    <% end %>
+	</div>
 </div>
 
 

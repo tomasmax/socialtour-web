@@ -15,6 +15,7 @@ class UsersController < InheritedResources::Base
   def show
     @user = User.find_by_id(params[:id])
     @profile = Profile.find_by_user_id(@user.id)
+    @authentications = Authentication.find_all_by_user_id(current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @user}

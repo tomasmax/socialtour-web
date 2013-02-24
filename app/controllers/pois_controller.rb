@@ -30,7 +30,7 @@ class PoisController < InheritedResources::Base
         ids = Poi.where(category_id: Category.where(group: 'tosee')).select(:id).sample(3).collect{|p| p.id }
         @what_to_see = Poi.where(id: ids)
         
-        ids = Poi.where(category_id: Category.where(group: 'eat')).select(:id).sample(1).collect{|p| p.id }
+        ids = Poi.where(category_id: Category.where(group: 'eat')).select(:id).sample(3).collect{|p| p.id }
         @where_to_eat = Poi.where(id: ids)
     
         ids = Poi.where(category_id: Category.where(is_route: true)).select(:id).sample(4).collect{|p| p.id }

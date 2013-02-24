@@ -12,13 +12,18 @@
  *= require bootstrap
  *= require bootstrap.min
  *= require pois
- *= file-uploader
-   
+ *= require file-uploader
+ *= require authentications  
  */
-
 
 img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     max-width: 99999px;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
 }
 
 .logo {
@@ -34,19 +39,23 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
   height:5%;
 }
 
-.title-divider {
-	background-color:#444;
-	border-width:0;
-	color:#444;
+hr.title-divider {
+	background-color:#C0C0C0;
+	border-top: 3px solid #808080;
+	border-width:2px;
 	height:2px;
 	line-height:0;
-	margin: 20px 20px;
-	page-break-after:always;
+	margin: 20px 10px;
 	text-align:center;
 }
 
-.close-divider {
+hr.close-divider {
 	margin:-.5em 10px 1.8571em 10px;
+}
+
+hr.hline_color {
+   background:#CFF;
+   height:2px;
 }
 
 .navcontainer {

@@ -1,12 +1,101 @@
  
  <%= render partial: 'slider' %>
- 
+ <br /><br />
+<div class="container marketing">        
+         <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="span4">
+          <%= routes_logo = image_tag("routes.png", size: "200x140", class: "img-circle") %>
+          <h2><%= t 'routes_social' %></h2>
+    			<p><%= t 'routes_social_msg' %></p>
+    			<p><a><%= link_to t('read_more'), "/rutas/", class: "btn" %></a></p>	
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <%= pois_logo = image_tag("pois.jpg", size: "200x140", class: "img-circle") %>
+          <h2><%= t 'places' %></h2>
+     			<p><%= t 'places_msg' %></p>
+     			<p><a href="/que-hacer/" class="btn"><%= t 'read_more' %></a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <%= pois_logo = image_tag("tourist_packages.jpg", size: "200x140", class: "img-circle") %>
+          <h2><%= t 'packages_social' %></h2>
+			    <p><%= t 'packages_social_msg' %></p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+		
+<hr/>
+
+<div class="row">
+  <div id="pois-index" class="span12">
+      <h2><%= t 'what_do' %></h2>
+      <span class="contribute">
+        ¿Conoces algo nuevo? <%= link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list">
+        <%= render @what_to_do %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-hacer" %>
+      </div>
+    <br />
+    <div>
+      <h2><%= t 'what_see' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio de interés? <%= link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list condensed">
+        <%= render @what_to_see %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/que-ver" %>
+      </div>
+    </div>
+    <br />
+    <div>
+      <h2><%= t 'where_eat' %></h2>
+      <span class="contribute">
+        ¿Conoces un nuevo sitio donde comer? <%= link_to t('add_new'), new_poi_path %>
+      </span>
+      <ul class="places-list condensed">
+        <%= render @where_to_eat %>
+      </ul>
+      <div class="view-all">
+        <%= link_to "Ver más", "/donde-comer" %>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<br />
+<h2>Recursos cercanos</h2>
+  <div id="pois-index" >
+		<div id="near">
+		    
+		    <div id="map-canvas" style="height: 350px; width: 990px; margin-left: -25px;"></div>
+		    <script>
+			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
+			
+			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi|
+			    		desc = poi.description.truncate(50) if poi.description 
+			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc }
+			      end %>
+			  
+			    var pois = <%= pois_json.to_json.html_safe %>;
+		  	</script>
+		    
+		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
+		        
+		</div>
+	</div>
+
+ </div>
  <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
       	<div class="row">
       		<div class="span5">
       			
-        		
     			</div>		
     			<% if user_signed_in? %>
     				<%= button_to "Sign out", destroy_user_session_path, class: "btn btn-primary btn-large", method: "get" %>
@@ -35,100 +124,4 @@
               <%= t 'to_do' %>
 						</div>
          </div>
-  
-    <% if !user_signed_in? %>
-    	<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
-		<% end %>
-			<%= render 'pages/user_nav'%>
-			
-		<p>
-			<%= render 'pages/authentications'%>
-		</p>
-		
-		<!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2><%= t 'routes_social' %></h2>
-    			<p><%= t 'routes_social_msg' %>
-    			<a><%= link_to t('read_more'), "/rutas/", class: "btn" %></a>
-    			</p>
-        </div>
-        <div class="span4">
-          <h2><%= t 'places' %></h2>
-     			<p><%= t 'places_msg' %>
-     			<a href="/que-hacer/" class="btn"><%= t 'read_more' %></a>
-     			</p>
-       </div>
-        <div class="span4">      
-					<h2><%= t 'packages_social' %></h2>
-			    <p><%= t 'packages_social_msg' %>
-			    </p>
-			  </div>
-			</div>
-
-<hr/>
-
-<div class="row">
-  <div id="pois-index" class="span12">
-      <h2><%= t 'what_do' %></h2>
-      <span class="contribute">
-        ¿Conoces algo nuevo? <%= link_to t('add_new'), new_poi_path %>
-      </span>
-      <ul class="places-list">
-        <%= render @what_to_do %>
-      </ul>
-      <div class="view-all">
-        <%= link_to "Ver más", "/que-hacer" %>
-      </div>
-    
-    <div>
-      <h2><%= t 'what_see' %></h2>
-      <span class="contribute">
-        ¿Conoces un nuevo sitio de interés? <%= link_to t('add_new'), new_poi_path %>
-      </span>
-      <ul class="places-list condensed">
-        <%= render @what_to_see %>
-      </ul>
-      <div class="view-all">
-        <%= link_to "Ver más", "/que-ver" %>
-      </div>
-    </div>
-    
-    <div>
-      <h2><%= t 'where_eat' %></h2>
-      <span class="contribute">
-        ¿Conoces un nuevo sitio donde comer? <%= link_to t('add_new'), new_poi_path %>
-      </span>
-      <ul class="places-list">
-        <%= render @where_to_eat %>
-      </ul>
-      <div class="view-all">
-        <%= link_to "Ver más", "/donde-comer" %>
-      </div>
-    </div>
-  </div>
-  </div>
-
-<br />
-<h2>Recursos cercanos</h2>
-  <div id="pois-index" >
-		<div id="near">
-		    
-		    <div id="map-canvas" style="height: 350px; width: 990px; margin-left: -25px;"></div>
-		    <script>
-			    var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
-			
-			    <% pois_json = Poi.order('created_at desc').limit(50).collect do |poi|
-			    		desc = poi.description.truncate(50) if poi.description 
-			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc }
-			      end %>
-			  
-			    var pois = <%= pois_json.to_json.html_safe %>;
-		  	</script>
-		    
-		    <a href="#map-canvas" class="map-expand"><center>&darr;</center></a>
-		    
-		    
-		</div>
-	</div>
 

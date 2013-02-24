@@ -12,7 +12,7 @@ $(function(){
   
 function initialize() {
   var myOptions = {
-    zoom: 11,
+    zoom: 15,
     draggableCursor: poi.name,
     center: new google.maps.LatLng(poi.latitude, poi.longitude),
     mapTypeId: poi.category && poi.category.is_route ? google.maps.MapTypeId.SATELLITE : google.maps.MapTypeId.ROADMAP

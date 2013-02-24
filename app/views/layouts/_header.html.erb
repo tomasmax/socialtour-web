@@ -5,8 +5,8 @@
   	<%= javascript_include_tag "application" %>
   	<%# javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyDpQyPKnWwpJLOZJCzZocuO9RoetHBk70Q&sensor=false" %>
   	<%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
-  	<%= stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" %>
-  	<%= javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"%>
+  	<%# stylesheet_link_tag "http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" %>
+  	<%# javascript_include_tag "http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"%>
     <%= csrf_meta_tags %>  
   </head>
   <body>	
@@ -32,10 +32,8 @@
 		  				<%= link_to logo, root_path %></li>
               <li><a href="/">Home</a></li>
               <li><a href="/explorer">Explorer</a></li>
-              
-              <% if user_signed_in? %>
-              	<li><%=link_to "Authentications", authentications_path%></li>
-              <% end %>            
+              <li><a href="/packages">Packages</a></li>
+              <li><a href="/recomendations">Recomendaciones</a></li>           
             </ul>
             
             <div class="navbar pull-right">
