@@ -19,9 +19,11 @@
 
 /public/photo
 /public/assets
-/public/poi_type_img
+/public/category_img
+/public/supercategory_img
 /public/cities_img
 /public/system
+/public/profile
 
 .project
 
