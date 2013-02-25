@@ -19,6 +19,7 @@ class Category < ActiveRecord::Base
   def generate_slug
     if !self.slug
       self.slug = self.name.without_accents.to_slug
+      self.save
     end
   end
   

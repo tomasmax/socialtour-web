@@ -8,12 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap
  *= require bootstrap.min
  *= require pois
  *= require file-uploader
  *= require authentications  
+ *= categories
+ *= require_self
  */
 
 img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
@@ -31,7 +32,6 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
   width: 400px;
   height:100px;
   /*background: url(/assets/logo.png) no-repeat center center;*/
-
 }
 
 .brand-logo {
@@ -78,6 +78,10 @@ hr.hline_color {
   -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
   -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
   box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+}
+
+.grey-box:hover {
+	background-color: #82949c;
 }
 
 #content {

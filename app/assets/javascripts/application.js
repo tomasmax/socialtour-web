@@ -18,6 +18,7 @@
 //= require chosen.jquery
 //= require starbar
 //= near-pois
+//= categories-show
 //= require_tree .
 
 $(document).ready(function() {

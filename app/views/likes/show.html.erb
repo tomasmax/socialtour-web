@@ -1,25 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Like -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @like.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @like.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:category) %>:</strong></dt>
+  <dd><%= @like.category %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:facebook_id) %>:</strong></dt>
+  <dd><%= @like.facebook_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_time) %>:</strong></dt>
+  <dd><%= @like.created_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @like.user_id %></dd>
+</dl>
 
-<p>
-  <b>Category:</b>
-  <%= @like.category %>
-</p>
-
-<p>
-  <b>Facebook:</b>
-  <%= @like.facebook_id %>
-</p>
-
-<p>
-  <b>Created time:</b>
-  <%= @like.created_time %>
-</p>
-
-
-<%= link_to 'Edit', edit_like_path(@like) %> |
-<%= link_to 'Back', likes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              likes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_like_path(@like), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              like_path(@like),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

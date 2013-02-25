@@ -1,31 +1,95 @@
-<%- model_class = Category -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
+<div class="row">
+  <div class="mbl city-select" style="width: 200px; display: inline-block; margin-left: 25px;">
+    <select id="city-select" class="select js-select" data-placeholder="Seleccione la ciudad">
+      <option></option>
+      <%= options_for_select(City.order('name').all.collect{|city| [city.name, city.slug] }, @city ? @city.id : nil) %>
+    </select>
+  </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @category.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:supercategory_id) %>:</strong></dt>
-  <dd><%= @category.supercategory_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:group) %>:</strong></dt>
-  <dd><%= @category.group %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:slug) %>:</strong></dt>
-  <dd><%= @category.slug %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:is_route) %>:</strong></dt>
-  <dd><%= @category.is_route %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @category.description %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              categories_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_category_path(@category), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              category_path(@category),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  <div class="mbl city-select" style="width: 120px; display: inline-block; margin-left: 25px;">
+    <a id="filter-category-btn" class="button positive" href="#">filtrar</a>
+  </div>
+  <div class="">
+  
+      <% if @category && @category.description %>
+        <div class="category-description">
+          <%= simple_format @category.description %>
+        </div>
+      <% end %>
+    
+    <% unless @pois.any? %>
+      <div class="empty">
+        <h2>No se ha encontrado ninguna entrada.</h2>
+      </div>
+    <% else %>
+      <ul id="pois-category">
+        <% @pois.each do |poi| %>
+          <li>
+            
+            <h2><%= link_to poi.name, poi_url(poi) %>
+              <% if poi.website && poi.website.length > 0 %>
+                <%= link_to poi.website, target: "blank", class: "label label-info" do %>
+                  Visita su página web
+                  <i class="icon-share-alt icon-white"></i>
+                <% end %>
+              <% end %>
+            </h2>
+            
+            
+            
+              <div style="width:100%; height: 24px; margin-bottom: 12px;">
+              
+              <div class="poi-info" style="display: inline;">
+                <div class="poi-user">
+                  <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
+                </div>
+                <div class="poi-city">
+                  <span>en <%= link_to(poi.city.name, city_url(poi.city)) if poi.city %></span>
+                </div>
+                <div class="poi-created-at">
+                  <%= time_tag poi.created_at %>
+                </div>
+              </div>
+              <div class="poi-rating">
+                <div class="starbar-static">
+                  <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>
+                  <% (0...5).each do |i| %>
+                    <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
+                  <% end %>
+                </div>
+                <span><%= poi.ratings_count %></span>
+              </div>
+              </div>
+              
+              <div class="description">
+                <a href="#" class="thumbnail">
+                  <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.png', class: 'poi-preview' %>
+                </a>
+                <%= simple_format truncate(poi.description, length: 700) %>
+              </div>
+              <% if poi.timetable %>
+                <div class="schedule">
+                  <h3>Horarios</h3>
+                  <%= simple_format poi.timetable %>
+                </div>
+              <% end %>
+              <% if (poi.address && poi.address.length > 0) || (poi.telephone && poi.telephone.length > 0) %>
+                <div class="location">
+                  <h3>Dirección</h3>
+                  <address>
+                    <span><%= poi.address %></span>
+                    <% if poi.telephone && poi.telephone.length > 0 %>
+                      <span>Tel.: <%= poi.telephone %></span>
+                    <% end %>
+                  </address>
+                </div>
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+      <div class="category-pagination">
+        <%= paginate @pois %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -123,8 +123,8 @@ $(function(){
     var el = $(this);
     //$(this).effect("highlight", {color:"#666666"}, 2000);
  
-    $('#places-list ul.places-list li').removeClass('hero-unit');
-    el.addClass('hero-unit');
+    $('#places-list ul.places-list li').removeClass('hover');
+    el.addClass('hover');
     var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
     map.panTo(position);
     map.setZoom(19);

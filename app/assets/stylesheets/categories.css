@@ -1,0 +1,82 @@
+
+.category-pagination {
+  float: right;
+  margin: 12px 0 26px;
+}
+
+#pois-category {
+  list-style: none;
+}
+
+#pois-category > li {
+  margin-top: 20px;
+  padding-bottom: 10px;
+  min-height: 160px;
+  background: transparent url('/assets/separator.png') center bottom no-repeat;
+}
+
+#pois-category > li:last-child {
+  background: none;
+}
+
+#pois-category li h2 {
+  color: #4FA800;
+  font-size: 28px;
+}
+
+#pois-category li h2 a {
+  color: #4FA800;
+  font-size: 28px;
+}
+
+#pois-category li h2 a.label {
+  color: white;
+  float: right;
+  font-size: 18px;
+  line-height: 12px;
+  padding: 4px 8px;
+  background: #F24F00;
+  margin-right: 4px;
+}
+
+#pois-category li h2 a.label:hover {
+  background: #4F78D6;
+}
+
+#pois-category li h2 a.label > i{
+  margin-left: 4px;
+}
+
+#pois-category div.description > p {
+  text-align: justify;
+}
+
+#pois-category div.description a.thumbnail {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#pois-category div > h3 {
+  color: #F24F00;
+}
+
+#pois-category div > p {
+  margin-left: 20px;
+  border-left: 2px solid #DDD;
+  padding-left: 10px;
+}
+
+#pois-category div.location {
+  margin-top: 14px;
+}
+
+#pois-category .poi-rating {
+  float: right;
+}
+
+#pois-category .poi-rating span {
+  margin-left: 8px;
+  font-weight: bold;
+  color: #999;
+}
