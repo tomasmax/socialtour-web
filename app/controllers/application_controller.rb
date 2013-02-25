@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
     "/#{t 'resources.pois'}/#{poi.slug}"
   end
   
-  def get_likes
+  def get_likes(user)
     
-    auth = current_user.authentications.find_by_provider("facebook")
+    auth = user.authentications.find_by_provider("facebook")
     # first, initialize a Graph API with your token
     graph = Koala::Facebook::GraphAPI.new(auth.auth_token) # pre 1.2beta
     graph = Koala::Facebook::API.new(auth.auth_token) # 1.2beta and beyond
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       if !exists
         like = Like.new l
         like.facebook_id = l['id']
-        like.user_id = current_user.id
+        like.user_id = user.id
         like.save
       end 
     end

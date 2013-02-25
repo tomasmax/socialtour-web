@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :delete_all
   has_many :packages
   has_many :profiles, dependent: :delete_all
+  accepts_nested_attributes_for :profiles, :reject_if => :all_blank, :update_only => true, :allow_destroy => true
   # Social contacts
   has_many :user_social_contacts
   has_many :social_contacts, through: :user_social_contacts

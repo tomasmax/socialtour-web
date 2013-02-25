@@ -22,7 +22,7 @@ class AuthenticationsController < InheritedResources::Base
       
       flash[:notice] = "Authentication with #{omniauth ['provider']} successful added."
       add_account(current_user, omniauth)
-      redirect_to authentications_url
+      redirect_to user_path(current_user)
     
       else #si no existe el usuario
         @user = User.new(name: omniauth[:info][:name], email: omniauth[:info][:email], password:Devise.friendly_token[0,20])
@@ -30,7 +30,9 @@ class AuthenticationsController < InheritedResources::Base
         if @user.save       
           add_account(@user, omniauth)
           flash[:notice] = "Signed in with #{omniauth ['provider']}. Change your password"
-          sign_in_and_redirect(:user, @user)
+          get_likes(@user)
+          sign_in(@user)
+          redirect_to user_path(@user)
         else
           session[:omniauth] = omniauth.except('extra')
           redirect_to new_user_registration_url

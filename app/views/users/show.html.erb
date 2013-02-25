@@ -5,7 +5,9 @@
 
 <div class="row">
 	<div class="span5 offset1">	
-	<%= image_tag @profile.image, class: "img-polaroid"%>
+	<%= image_tag @profile.image.nil? ? @profile.image(:gallery) : '/assets/poi-placeholder.jpg', size: "150x100", class: "img-polaroid"%>
+	
+	<br /><br />
 	<p>
 	  <b><%= model_class.human_attribute_name(:name) %>:</b>
 	  <%= @user.name %>

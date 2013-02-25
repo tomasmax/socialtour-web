@@ -8,6 +8,14 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ # app/assets/stylesheets/ie6.css
+ *= require formtastic_ie6
+  
+ # app/assets/stylesheets/ie7.css
+ *= require formtastic_ie7
+ # app/assets/stylesheets/application.css
+ *= require formtastic
+ # require my_formtastic_changes
  *= require bootstrap
  *= require bootstrap.min
  *= require pois

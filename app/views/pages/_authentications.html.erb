@@ -20,14 +20,17 @@
    	<%# link_to "Twitter", user_omniauth_authorize_path(:twitter), :class=> "auth_provider" %>
 		<a href="/auth/twitter" class="auth_provider">
 	  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %></a>
-	 <% elsif !current_user.authentications.find_by_provider("facebook")%>
+	 <% end %>
+	 <% if !current_user.authentications.find_by_provider("facebook")%>
 		<%# link_to "Facebook", user_omniauth_authorize_path(:facebook), :class=> "auth_provider" %>
 		<a href="/auth/facebook" class="auth_provider">
 	  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %></a>
-	 <% elsif !current_user.authentications.find_by_provider("google")%>
+	 <% end %>
+	 <% if !current_user.authentications.find_by_provider("google")%>
 		<a href="/auth/google_oauth2" class="auth_provider">
 	  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %></a>
-	 <% elsif !current_user.authentications.find_by_provider("foursquare")%>
+	 <% end %>
+	 <% if !current_user.authentications.find_by_provider("foursquare")%>
 		<a href="/auth/foursquare" class="auth_provider">
 	  <%= image_tag "foursquare_64.png", :size => "64x64", :alt => "Forsquare" %></a>
 	 <% end %>

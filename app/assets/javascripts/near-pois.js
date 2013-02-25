@@ -2,6 +2,7 @@
 //= require jquery.eislideshow
 
 var map, infowindow, markers = [];
+var initialLocation;
 
 $(function(){
   infowindow = new google.maps.InfoWindow({ 

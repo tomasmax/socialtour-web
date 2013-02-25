@@ -1,4 +1,4 @@
-<%= form_for(@profile) do |f| %>
+<%= form_for @profile, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
+<div class="control-group">
+  <%= f.label :username %>
+  <div class="controls">
     <%= f.text_field :username %>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
+</div>
+<div class="control-group">
+    <%= f.label :first_name %>
+    <div class="controls">
     <%= f.text_field :first_name %>
+    </div>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :gender %><br />
     <%= f.text_field :gender %>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :about_me %><br />
     <%= f.text_area :about_me %>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :i_like %><br />
     <%= f.text_area :i_like %>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :i_dont_like %><br />
     <%= f.text_area :i_dont_like %>
   </div>
-  <div class="field">
-    <%= f.label :married %><br />
-    <%= f.check_box :married %>
+<div class="control-group">
+    <%= f.label :is_married %><br />
+    <%= f.check_box :is_married %>
   </div>
-  <div class="field">
-    <%= f.label :soons %><br />
-    <%= f.check_box :soons %>
+<div class="control-group">
+    <%= f.label :has_sons %><br />
+    <%= f.check_box :has_sons %>
   </div>
-  <div class="field">
+<div class="control-group">
     <%= f.label :restrictions %><br />
     <%= f.text_field :restrictions %>
   </div>

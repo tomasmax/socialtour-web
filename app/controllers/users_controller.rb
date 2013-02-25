@@ -22,6 +22,15 @@ class UsersController < InheritedResources::Base
     end
   end
   
+  def edit
+    @user = User.find_by_id(params[:id])
+    @profile = Profile.find_by_user_id(@user.id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @user}
+    end
+  end
+  
   #get facebook friends
   def facebook
     @friends = current_user.get_social_contacts(:facebook)
