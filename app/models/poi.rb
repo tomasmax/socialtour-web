@@ -20,6 +20,7 @@ class Poi < ActiveRecord::Base
                   
   attr_accessor :route_points_list
   attr_accessor :gpx_file
+  attr_accessor :index
   
   validates :name, presence: true
   #validates :slug, presence: true
@@ -44,9 +45,25 @@ class Poi < ActiveRecord::Base
     end
   end
   
+  def localized_description(locale)
+    if (locale == 'eu' || locale == 'eu_ES') && self.description_eu && self.description_eu.length > 0
+      self.description_eu
+    else
+      self.description
+    end
+  end
+  
+  def localized_name(locale)
+    if (locale == 'eu' || locale == 'eu_ES') && self.name_eu && self.name_eu.length > 0
+      self.name_eu
+    else
+      self.name
+    end
+  end
+  
   def as_json options=nil
     options ||= {}
-    options[:methods] = ((options[:methods] || []) + [:category, :supercategory, :last_photos, :next_events, :route_info, :route_points_list])
+    options[:methods] = ((options[:methods] || []) + [:category, :supercategory, :last_photos, :next_events, :route_info, :route_points_list, :index])
     super options
   end
   

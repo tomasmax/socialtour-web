@@ -1,15 +1,13 @@
 
 <%= javascript_include_tag "pois-explorer" %>
 
-<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 17%; right: 0; z-index: 0; display: block; clear: both;"></div>
+<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 18%; height: 100%; right: 0; z-index: 0; display: block; clear: both;"></div>
 <script>
 	var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
-			
-	<% pois_json = Poi.order('created_at desc').limit(50).collect do |poi|
-		desc = poi.description if poi.description
-		{ supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc }
-		end %>
-			  
+	<% pois_json = @pois.each_with_index do |poi, i|
+			    		desc = poi.description.truncate(200) if poi.description 
+			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc, id: poi.id, index: i }
+			      end %>	  
 	var pois = <%= pois_json.to_json.html_safe %>;
 </script>
 
@@ -46,6 +44,7 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul class="places-list">
+
 		    	<%= render collection: @what_to_do, partial: "poi_explorer", as: :poi %>
 		  	</ul>
       </div>
@@ -66,11 +65,34 @@
 		  	</ul>
       </div>
     </div>
+    <div class="accordion-group">
+   <div id="places-list">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        <%= t 'what_eat' %>
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <ul class="places-list">
+		    	<%= render collection: @what_to_eat, partial: "poi_explorer", as: :poi %>
+		  	</ul>
+      </div>
+    </div>
    </div>
   </div>
 </div>
 </div>
 </div>
 <script>
-	$(".collapse").collapse()
+	$(".collapse").collapse();
+	$('#collapseOne').collapse({
+  	toggle: false
+}	);
+$('#collapseTwo').collapse({
+  	toggle: false
+}	);
+$('#collapseThree').collapse({
+  	toggle: false
+}	);
 </script>

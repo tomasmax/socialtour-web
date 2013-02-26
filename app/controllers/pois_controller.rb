@@ -51,28 +51,57 @@ class PoisController < InheritedResources::Base
   end
   
   #GET /explorer
-  
   def explorer
+    @counter = 0
     
     @city = City.find_by_name("Bilbao")
-    puts "#{@city.name}"
-    @pois = Poi.find_all_by_city_id(@city.id)
     
     pois = Poi.where(category_id: Category.where(group: 'do'), city_id: @city).collect{|p| p.id }
     @what_to_do = Poi.where(id: pois)
-    puts "-----------!!!!!!#{@what_to_do.first.name}"
+    
     pois = Poi.where(category_id: Category.where(group: 'tosee'), city_id: @city).collect{|p| p.id }
     @what_to_see = Poi.where(id: pois)
     
     pois = Poi.where(category_id: Category.where(group: 'eat'), city_id: @city).collect{|p| p.id }
     @where_to_eat = Poi.where(id: pois)
     
+    @pois = @what_to_do + @what_to_see + @where_to_eat
     
     respond_to do |format|
       format.html # explorer.html.erb
    
     end
     
+  end
+  
+  # GET /retrieval
+  # GET /retrieval.js
+  def retrieval
+    params[:order] = params[:order] ? params[:order].to_i : 0
+    
+    @pois = Poi #falta pasarle la ciudad
+    
+    if params[:name] && !params[:name].empty?
+      search = "%" + params[:name].sub(" ", "%") + "%"
+      @pois = @pois.where('name like ? OR name_eu like ?', search, search)
+    end
+    
+    if params[:category] && params[:category] != "null"  && !params[:category].empty?
+      @pois = Poi.where(category_id: Category.where(name: params[:category]))
+    end
+
+    if params[:order] == 0
+      @pois = @pois.order('created_at desc')
+    else
+      @pois = @pois.order('rating desc')
+    end
+    
+    @pois = @pois.page(params[:page]).per(10) 
+
+    respond_to do |format|
+      format.html # retrieval.html.erb
+      format.js # retrieval.js.erb
+    end
   end
   
   # GET /pois/poi+slug

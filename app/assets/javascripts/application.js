@@ -19,6 +19,7 @@
 //= require starbar
 //= near-pois
 //= categories-show
+//= jquery.endless-scroll
 //= require_tree .
 
 $(document).ready(function() {

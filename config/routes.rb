@@ -62,6 +62,8 @@ SocialTour::Application.routes.draw do
   #poi list
   match '(/:city)/:group(/:category)(.:format)', to: 'categories#show', constraints: { group: /(que-hacer|que-ver|donde-comer|donde-dormir)/ }
   
+  match '/retrieval', to: 'pois#retrieval'
+  
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',   :to => 'pages#help'

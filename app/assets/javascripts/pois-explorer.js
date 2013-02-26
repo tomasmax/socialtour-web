@@ -8,31 +8,31 @@ $(function(){
   });
   
   function createMarker(poi) {
+  	var pinColor = "FE7569";
+    		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter_withshadow&chld="+poi.index+"|" + pinColor+"|0000FF",
+        new google.maps.Size(50, 60));
+        
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(poi.latitude, poi.longitude),
         animation: google.maps.Animation.DROP,
-        id: poi.id,
         map: map,
-        icon: supercategories[poi.supercategory_id] ? supercategories[poi.supercategory_id].icon_urls['small'] : null
+        icon: pinImage
+        
+        //icon: supercategories[poi.supercategory_id] ? supercategories[poi.supercategory_id].icon_urls['small'] : null
     });
+    
+    marker.set("id", poi.id);
     
     var html = '<a href="/places/'+poi.slug+'"><b>'+poi.name+'</b></a><p>'+ poi.description +'</p>'
     
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(html); 
         infowindow.open(map, marker);
-        marker.setAnimation(google.maps.Animation.BOUNCE);
     });
     
     google.maps.event.addListener(marker, 'mouseout', function() {
        
         marker.setAnimation(null);
-    });
-    
-    google.maps.event.addListener(marker, 'zoom_changed', function() {
-        infowindow.setContent(html); 
-        infowindow.open(map, marker);
-        marker.setAnimation(google.maps.Animation.BOUNCE);
     });
        
    	return marker;
@@ -84,7 +84,6 @@ $(function(){
 });
 
 var coordinates, path, poisDict = {}, selectedPOI = null;
-var marker;
 
 $(function(){
   function loadRoute(poi, route_points) {
@@ -122,22 +121,22 @@ $(function(){
   $('#places-list ul.places-list li').mouseenter(function(){
     var el = $(this);
     //$(this).effect("highlight", {color:"#666666"}, 2000);
- 
+    
+    var exit = false;
+    	for (var i = 0; i < markers.length && !exit; i++) {
+			  if (markers[i].get("id") == el.attr('data-poi-id'))
+			  {
+			  	markers[i].setAnimation(google.maps.Animation.BOUNCE);
+			    exit = true;
+			  }
+			}
+			
     $('#places-list ul.places-list li').removeClass('hover');
     el.addClass('hover');
     var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
     map.panTo(position);
-    map.setZoom(19);
-    var exit = false;
-    	for (var i = 0; i < markers.length && !exit; i++) {
-    		m = markers[i];
-			  if (m.getPosition().lat() == el.attr('data-poi-lat') && m.getPosition().lng() == el.attr('data-poi-lng'))
-			  {	
-			  	m.setAnimation(google.maps.Animation.BOUNCE);
-			    exit = true;
-			  }
-			}
-			  
+    map.setZoom(17);
+    		  
    	//map.setMarker(map, marker);
    	
     var poiSlug = el.attr('data-poi-slug');
