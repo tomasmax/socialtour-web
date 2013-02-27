@@ -118,15 +118,18 @@ $(function(){
     selectedPOI = poi;
   };
 
+
   $('#places-list ul.places-list li').mouseenter(function(){
     var el = $(this);
     //$(this).effect("highlight", {color:"#666666"}, 2000);
-    
+    var marker;
     var exit = false;
     	for (var i = 0; i < markers.length && !exit; i++) {
-			  if (markers[i].get("id") == el.attr('data-poi-id'))
+    		marker = markers[i];
+			  if (marker.get("id") == el.attr('data-poi-id'))
 			  {
-			  	markers[i].setAnimation(google.maps.Animation.BOUNCE);
+			  	marker.setAnimation(google.maps.Animation.BOUNCE);
+			  	infowindow.open(map, marker);
 			    exit = true;
 			  }
 			}
@@ -135,9 +138,12 @@ $(function(){
     el.addClass('hover');
     var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
     map.panTo(position);
-    map.setZoom(17);
-    		  
+    map.setZoom(17);  
    	//map.setMarker(map, marker);
+   	
+   	el.mouseout(function(){
+   		marker.setAnimation(null);
+   	});
    	
     var poiSlug = el.attr('data-poi-slug');
     
@@ -150,6 +156,7 @@ $(function(){
       }); 
     }
   });
+   
   
   $('#places-list ul.places-list li').on('click', function(){
     var el = $(this);

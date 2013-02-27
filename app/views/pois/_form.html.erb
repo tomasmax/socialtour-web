@@ -1,4 +1,88 @@
-  <div id="new-poi">
+<!--
+<div id="new-poi-form">
+  <%= form_for(@poi, html: {multipart: true}) do |f| %>
+    <fieldset>
+      <div class="span6">
+        <div class="clearfix">
+          <%= f.label t(:poi_name) %>
+          <div class="input">
+            <%= f.text_field :name, class: 'fill-h', required: true %>
+          </div>
+        </div>
+        
+        <div class="clearfix">
+          <%= f.label t(:poi_description) %>
+          <div class="input">
+            <%= f.text_area :description, class: 'fill-h', rows: 12, required: true %>
+          </div>
+        </div>
+        
+        <div class="clearfix">
+          <%= f.label "Categoria" %>
+          <div class="input">
+            <select id="poi_category" name="poi[category_id]" class="chosen fill-h">
+              <%= option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name) %>
+            </select>
+          </div>
+        </div>
+        
+        <div class="clearfix">
+          <%= f.label "Localidad" %>
+          <div class="input">
+            <select id="poi_city" name="poi[city_id]" class="chosen fill-h">
+              <%= options_for_select(City.order('name').all.collect{|city| [city.name, city.id] }, @city ? @city.id : nil) %>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="span6">
+        <div class="tabs">
+          <div class="tab-selector">
+            <a href="#from-map" class="selected">Subir desde el Mapa</a>
+            <a href="#from-gpx">Subir fichero GPX</a>
+          </div>
+          
+          <div id="from-gpx" class="tab" style="display:none;">
+            <div class="clearfix">
+              <div class="input">
+                <%= f.file_field :gpx_file %>
+              </div>
+            </div>
+          </div>
+          
+          <div id="from-map" class="tab">
+            <div class="clearfix">
+              <div class="input">
+                <div id="map-canvas" width="460" height="450"></div> 
+                <span id="route-help" class="help-block">
+                  <%= t :route_help %> 
+                  <a href="#" id="new-map-undo" class="pull-right danger">Deshacer</a>
+                </span>
+                <%= javascript_include_tag "pois-new" %>
+              </div>
+              <div id="route-points" style="display: none;"></div>
+              <%= f.hidden_field :latitude, id: 'poi-latitude' %>
+              <%= f.hidden_field :longitude, id: 'poi-longitude' %>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </fieldset>
+    <div class="fill-h">
+      <div class="actions fill-h">
+        <hr class="thin">
+        <div class="pull-right"><%= f.submit t(:submit_poi), class: 'btn btn-large btn-primary span3' %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'shared/notify', message: @poi.errors.full_messages.map {|e| ['error', e]} if @poi.errors.any? %>
+-->
+
+<div id="new-poi">
   <%= form_for(@poi, html: {multipart: true}) do |f| %>
     <fieldset>
       <% if @poi.errors.any? %>

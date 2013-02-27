@@ -17,10 +17,9 @@
 //= require bootstrap.min
 //= require chosen.jquery
 //= require starbar
-//= near-pois
-//= categories-show
-//= jquery.endless-scroll
-//= require_tree .
+//= require categories-show
+//= require jquery.endless-scroll
+//= require_self
 
 $(document).ready(function() {
   // Init custom selects

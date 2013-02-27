@@ -1,6 +1,7 @@
 
-<div class="grey-box">
+
 <li class="poi-preview" data-poi-id="<%= poi.id %>" data-poi-lat="<%= poi.latitude %>" data-poi-lng="<%= poi.longitude %>" data-poi-name="<%= poi.name %>" data-poi-slug="<%= poi.slug %>" data-poi-index="<%= @counter %>">
+ <div class="grey-box">
   <div class="poi-img thumbnail">
     <%= link_to poi_url(poi) do %>
       <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.jpg', class: 'poi-preview' %>
@@ -29,6 +30,7 @@
     </div>
     
   </div>
+  </div>
 </li>
-</div>
+
 <% @counter += 1 %>
