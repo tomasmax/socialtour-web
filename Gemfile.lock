@@ -84,6 +84,8 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
+    friendly_id (4.0.9)
+    geocoder (1.1.6)
     gpx (0.6)
     has_scope (0.5.1)
     hashie (1.2.0)
@@ -233,11 +235,8 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    utf8_utils (2.0.1)
     warden (1.2.1)
       rack (>= 1.0)
-    without_accents (0.9.1)
-      utf8_utils
 
 PLATFORMS
   ruby
@@ -250,6 +249,8 @@ DEPENDENCIES
   fb_graph
   formtastic
   foursquare2
+  friendly_id (~> 4.0.9)
+  geocoder
   gpx
   i18n_routing
   jquery-rails
@@ -273,4 +274,3 @@ DEPENDENCIES
   twitter
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
-  without_accents

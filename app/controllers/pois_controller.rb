@@ -21,6 +21,11 @@ class PoisController < InheritedResources::Base
       end
     end
 =end
+
+    # returns Geocoder::Result object
+    @location = request.location
+    puts "LOCATION-----------: #{@location.city}"
+    
     respond_to do |format|
       format.html do # index.html.erb
         

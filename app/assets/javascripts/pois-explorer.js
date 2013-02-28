@@ -118,11 +118,12 @@ $(function(){
     selectedPOI = poi;
   };
 
-
-  $('#places-list ul.places-list li').mouseenter(function(){
+var marker;
+  $('#places-list ul.places-list li').hover(function(){
     var el = $(this);
     //$(this).effect("highlight", {color:"#666666"}, 2000);
-    var marker;
+    
+    //Find selected marker
     var exit = false;
     	for (var i = 0; i < markers.length && !exit; i++) {
     		marker = markers[i];
@@ -141,10 +142,6 @@ $(function(){
     map.setZoom(17);  
    	//map.setMarker(map, marker);
    	
-   	el.mouseout(function(){
-   		marker.setAnimation(null);
-   	});
-   	
     var poiSlug = el.attr('data-poi-slug');
     
     if (poisDict[poiSlug]){
@@ -155,7 +152,12 @@ $(function(){
         loadRoute(poi.poi, poi.route_points);
       }); 
     }
-  });
+  },
+  
+  function(){
+   		marker.setAnimation(null);
+   	}
+  );
    
   
   $('#places-list ul.places-list li').on('click', function(){

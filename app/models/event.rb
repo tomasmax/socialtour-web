@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   
   def as_json options=nil
     options ||= {}
-    options[:methods] = ((options[:methods] || []) + [:poi_slug, :poi_title])
+    options[:methods] = ((options[:methods] || []) + [:poi_slug, :poi_name])
     super options
   end
   
@@ -17,8 +17,8 @@ class Event < ActiveRecord::Base
     poi.slug
   end
   
-  def poi_title
-    poi.title
+  def poi_name
+    poi.name
   end
   
 end

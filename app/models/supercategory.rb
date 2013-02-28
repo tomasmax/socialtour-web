@@ -1,4 +1,6 @@
 class Supercategory < ActiveRecord::Base
+  extend FriendlyId
+  
   has_attached_file :icon, styles: { small: '32x32>', med: '64x64>', big: '128x128>' }, 
     url: "/supercategory_img/:hash.:extension",
     hash_secret: "^{R8'PHwe$Jrx@(%rvbo38q"
@@ -13,7 +15,8 @@ class Supercategory < ActiveRecord::Base
   validates :slug, :presence => true
   validates_uniqueness_of :slug
   
-  before_validation :generate_slug
+  friendly_id :name, use: :slugged
+  #before_validation :generate_slug
   
   def generate_slug
     if !self.slug

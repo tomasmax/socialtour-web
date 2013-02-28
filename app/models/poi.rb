@@ -1,4 +1,6 @@
 class Poi < ActiveRecord::Base
+  extend FriendlyId
+  
   belongs_to :user
   belongs_to :city
   belongs_to :category
@@ -20,7 +22,8 @@ class Poi < ActiveRecord::Base
                   
   attr_accessor :route_points_list
   attr_accessor :gpx_file
-  attr_accessor :index
+  
+  friendly_id :name, use: :slugged
   
   validates :name, presence: true
   #validates :slug, presence: true
@@ -29,15 +32,9 @@ class Poi < ActiveRecord::Base
   
   paginates_per 10
   
-  before_validation :generate_slug
   #after_save :save_route, :generate_route_info
   before_save :set_supercategory
-   
-  def generate_slug
-    if !self.slug
-      self.slug = self.name.without_accents.to_slug
-    end
-  end
+  
   
   def set_supercategory
     if !self.supercategory_id && self.category

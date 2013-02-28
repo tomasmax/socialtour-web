@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   @clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
   
+  
   def poi_url(poi)
     "/#{t 'resources.pois'}/#{poi.slug}"
   end

@@ -67,6 +67,8 @@ gem 'formtastic'
 #.gpx archives manager
 gem 'gpx'
 
+gem "geocoder"
+
 #parsers
 gem 'libxml-ruby'
 gem 'json'
@@ -82,4 +84,4 @@ gem 'therubyracer'
 
 gem 'paperclip'
 
-gem 'without_accents'
+gem "friendly_id", "~> 4.0.9"
