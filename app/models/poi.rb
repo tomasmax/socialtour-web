@@ -22,6 +22,7 @@ class Poi < ActiveRecord::Base
                   
   attr_accessor :route_points_list
   attr_accessor :gpx_file
+  attr_accessor :index
   
   friendly_id :name, use: :slugged
   

@@ -5,8 +5,9 @@
 <script>
 	var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
 	<% pois_json = @pois.each_with_index do |poi, i|
-			    		desc = poi.description.truncate(200) if poi.description 
-			        { supercategory_id: poi.supercategory_id, latitude: poi.latitude, longitude: poi.longitude, slug: poi.slug, name: poi.name, description: desc, id: poi.id, index: i }
+			    		desc = poi.description.truncate(400) if poi.description 
+			        poi.description = desc
+			        poi.index = i+1
 			      end %>	  
 	var pois = <%= pois_json.to_json.html_safe %>;
 </script>
@@ -85,7 +86,7 @@
 </div>
 </div>
 <script>
-	$(".collapse").collapse();
+	
 	$('#collapseOne').collapse({
   	toggle: false
 }	);

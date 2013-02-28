@@ -10,7 +10,7 @@ $(function(){
   function createMarker(poi) {
   	var pinColor = "FE7569";
     		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter_withshadow&chld="+poi.index+"|" + pinColor+"|0000FF",
-        new google.maps.Size(50, 60));
+        new google.maps.Size(60, 70));
         
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(poi.latitude, poi.longitude),
@@ -139,7 +139,7 @@ var marker;
     el.addClass('hover');
     var position = new google.maps.LatLng(el.attr('data-poi-lat'), el.attr('data-poi-lng'));
     map.panTo(position);
-    map.setZoom(17);  
+    map.setZoom(16);  
    	//map.setMarker(map, marker);
    	
     var poiSlug = el.attr('data-poi-slug');

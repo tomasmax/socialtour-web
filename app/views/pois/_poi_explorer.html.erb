@@ -17,7 +17,7 @@
       </div>
       <span><%= poi.ratings_count %></span>
     </div>
-    <p><h4><%= link_to poi.name, poi_url(poi) %></h4> <h5><%= @counter %></h5></p>
+    <p><h4><%= link_to poi.name, poi_url(poi) %></h4> <h5><%= poi.index %></h5></p>
     <div class="poi-user">
       <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
     </div>
@@ -28,9 +28,9 @@
     <div class="poi-desc">
       <p><%= truncate poi.description, length: 220 %></p>
     </div>
-    
+    <% @counter += 1 %>
   </div>
   </div>
 </li>
 
-<% @counter += 1 %>
+
