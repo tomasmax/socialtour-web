@@ -1,12 +1,7 @@
 SocialTour::Application.routes.draw do
   resources :likes
 
-
   resources :countries
-
-  resources :route_points
-
-  resources :route_infos
 
   ActiveAdmin.routes(self)
 
@@ -34,6 +29,8 @@ SocialTour::Application.routes.draw do
   resources :authentications
 
   resources :users
+  
+  resources :friendships
 
   resources :cities
   

@@ -5,9 +5,12 @@ class User < ActiveRecord::Base
   has_many :packages
   has_many :profiles, dependent: :delete_all
   accepts_nested_attributes_for :profiles, :reject_if => :all_blank, :update_only => true, :allow_destroy => true
-  # Social contacts
-  has_many :user_social_contacts
-  has_many :social_contacts, through: :user_social_contacts
+  
+  # Friendships
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   
   has_many :likes, dependent: :delete_all
   

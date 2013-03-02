@@ -35,6 +35,24 @@
 		<% if user_signed_in? %>
     	<%=link_to "Authentications", authentications_path %></li>
     <% end %>
+    <br />
+    <h3>Tus Amigos: </h3>
+    <p><%= link_to "Buscar amigos de Facebook "%> </p>
+		<p><%= link_to "Buscar amigos de Twitter "%> </p>
+		<p><%= link_to "Buscar amigos de Foursquare "%> </p>
+    	<% if @user.friends.size > 0 %>
+			<ul>
+			  <% for friendship in @user.friendships %>
+				  <li>
+				    <%= friendship.friend.name %>
+				    (<%= link_to "remove", friendship, :method => :delete %>)
+				  </li>
+			  <% end %>  
+			</ul>
+			<% else %>
+				<p> No tienes amigos añadelos: <%= link_to "Busca amigos", users_path %> </p>
+			<% end %>
+			
 	</div>
 </div>
 

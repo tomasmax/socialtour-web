@@ -24,6 +24,7 @@ TypeTime.create(name: "Mañana")
 TypeTime.create(name: "Tarde")
 TypeTime.create(name: "Noche")
 TypeTime.create(name: "Todo el día")
+TypeTime.create(name: "Fin de semana")
 
 TypeVehicle.create(name: "Bicicleta")
 TypeVehicle.create(name: "Paseo")
@@ -82,7 +83,7 @@ end
 clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
 supCategories = clientFoursquare.venue_categories
 supCategories.each do |sc|
-  puts "- High Category FourSquare #{sc.id} #{sc.name}"
+  puts "- Super Category FourSquare #{sc.id} #{sc.name}"
   supercategory = Supercategory.new sc #sin mirar las de minube
   supercategory.foursquare_id = sc.id
   supercategory.foursquare_icon = sc.icon.prefix.chop + sc.icon.suffix #chop to cut the last character
@@ -90,7 +91,7 @@ supCategories.each do |sc|
   supercategory.name = sc.pluralName
   sc.save
   sc.categories.each do |c|
-    puts "  Category #{c.id} #{c.name}"    
+    puts "  Category FourSquare #{c.id} #{c.name}"    
     cat = Category.find_by_name(c.pluralName)
     if cat
       cat.foursquare_id = c.id

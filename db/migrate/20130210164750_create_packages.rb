@@ -6,7 +6,9 @@ class CreatePackages < ActiveRecord::Migration
       t.decimal :price
       t.references :category
       t.references :supercategory
-      t.references :type
+      t.references :type_leisure
+      t.references :type_time
+      t.references :type_vehicle
       t.references :user
       t.references :provider
       t.string :image_file_name
