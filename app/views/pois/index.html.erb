@@ -23,9 +23,12 @@
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div><!-- /.span4 -->
       </div><!-- /.row -->
-	
- <%= @location.city %>
+
 <hr/>
+
+<% if !@location.city.blank? %>
+	Parece que estás en <%= @location.city %>
+<% end %>
 
 <div class="row">
   <div id="pois-index" class="span12">

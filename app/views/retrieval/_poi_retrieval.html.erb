@@ -1,0 +1,26 @@
+<li class="poi">
+  <div class="poi-img">
+    <%= image_tag poi.photos.first.image.url(:thumb), class: 'event-preview' if poi.photos.count > 0 %>
+  </div>
+  <div class="event-content">
+    <h6><%= link_to poi.localized_name(session[:locale]), poi_url(poi) %></h6>
+    
+    <div class="event-rate">
+      <div class="poi-rating<%= poi.id %>" data="<%= poi.rating ? poi.rating * 2 : 0%>"></div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $(".poi-rating<%= poi.id %>").jRating({poiId: "<%= poi.id %>"});
+        });
+      </script>
+    </div>
+    <div class="poi-type-img">
+      <%= image_tag poi.supercategory.icon.url(:small), class: 'poi-list-type' if poi.supercategory && poi.supercategory.icon %>
+    </div>
+    
+    <div class="event-desc">
+      <p><%# truncate(strip_tags(poi.localized_description session[:locale]), length: 140).html_safe %>
+      </p>
+      <time><%= time_tag poi.created_at %></time>
+    </div>
+  </div>
+</li>

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     
     auth = user.authentications.find_by_provider("facebook")
     # first, initialize a Graph API with your token
-    graph = Koala::Facebook::GraphAPI.new(auth.auth_token) # pre 1.2beta
+    #graph = Koala::Facebook::GraphAPI.new(auth.auth_token) # pre 1.2beta
     graph = Koala::Facebook::API.new(auth.auth_token) # 1.2beta and beyond
     likes = graph.get_connections('me', 'likes')
     likes.each do |l|

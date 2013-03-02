@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222131725) do
+ActiveRecord::Schema.define(:version => 20130302121134) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,7 +158,6 @@ ActiveRecord::Schema.define(:version => 20130222131725) do
     t.decimal  "price"
     t.integer  "category_id"
     t.integer  "supercategory_id"
-    t.integer  "type_id"
     t.integer  "user_id"
     t.integer  "provider_id"
     t.string   "image_file_name"
@@ -167,12 +166,14 @@ ActiveRecord::Schema.define(:version => 20130222131725) do
     t.datetime "image_update_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "type_leisure_id"
+    t.integer  "type_time_id"
+    t.integer  "type_vehicle_id"
   end
 
   add_index "packages", ["category_id"], :name => "index_packages_on_category_id"
   add_index "packages", ["provider_id"], :name => "index_packages_on_provider_id"
   add_index "packages", ["supercategory_id"], :name => "index_packages_on_supercategory_id"
-  add_index "packages", ["type_id"], :name => "index_packages_on_type_id"
   add_index "packages", ["user_id"], :name => "index_packages_on_user_id"
 
   create_table "photos", :force => true do |t|
@@ -331,6 +332,30 @@ ActiveRecord::Schema.define(:version => 20130222131725) do
     t.string   "foursquare_icon"
     t.string   "name_eu"
     t.string   "name_en"
+  end
+
+  create_table "type_leisures", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "type_times", :force => true do |t|
+    t.string   "name"
+    t.time     "time_from"
+    t.time     "to_time"
+    t.datetime "date"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "type_vehicles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

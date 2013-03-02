@@ -17,7 +17,10 @@
       </div>
       <span><%= poi.ratings_count %></span>
     </div>
-    <p><h4><%= link_to poi.name, poi_url(poi) %></h4> <h5><%= poi.index %></h5></p>
+    <h4><%= poi.index %> - <%= link_to poi.name, poi_url(poi) %></h4>
+    <div class="poi-type-img">
+      <%= image_tag poi.supercategory.icon.url(:small), class: 'poi-list-type' if poi.supercategory && poi.supercategory.icon %>
+    </div>
     <div class="poi-user">
       <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
     </div>

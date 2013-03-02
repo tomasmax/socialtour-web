@@ -29,6 +29,19 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     max-width: 99999px;
 }
 
+/*sidebar of retrieval view*/
+.sidebar-nav-fixed {
+    padding: 9px 0;
+    position:fixed;
+    left:20px;
+    top:60px;
+    width:250px;
+}
+
+.row-fluid > .span-fixed-sidebar {
+    margin-left: 290px;
+}
+
 .clear {
   clear: both;
   height: 0;
@@ -102,6 +115,16 @@ hr.hline_color {
 	
   background-color: white;
   padding: 15px 25px;
+  -moz-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+  box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
+}
+
+#container-retrieval {
+	
+  background-color: white;
+  padding-right:-350px;
+	padding-left:50px;
   -moz-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
   -webkit-box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;
   box-shadow:rgba(0, 0, 0, 0.25) 0 0 6px 0px;

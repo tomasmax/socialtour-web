@@ -1,0 +1,6 @@
+<% if @pois && @pois.count > 0 %>
+  $('ul#pois-list').append("<%=escape_javascript(render @pois)%>");
+  page = page + 1;
+<% else %>
+  stopScrolling = true;
+<% end %>

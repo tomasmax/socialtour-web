@@ -1,7 +1,8 @@
 ActiveAdmin.register Supercategory do
   menu parent: "Categorias", label: "Supercategorias"
 
-  index do  
+  index do
+    column :id
     column :name
     column :slug
     column :icon do |sc|

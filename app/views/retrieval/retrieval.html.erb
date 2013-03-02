@@ -1,0 +1,56 @@
+<div id="all-pois-row" class="row">
+  <div class="span8">
+    <h3 id="all-pois"><%= t :all %></h3>
+    <div class="events-list">
+      <ul id="pois-list">
+        <%= render collection: @pois, partial: "poi_retrieval", as: :poi %>
+        <div id="infinite-scroll"></div>
+      </ul>
+      <script>
+      /*
+       *Endless scrolling
+       */
+      var page = 2, stopScrolling = false;
+      var param_type = <%= params[:category] || 'null' %>;
+      var param_order = <%= params[:order] || 'null' %>;
+      var param_title = "<%= params[:name] || '' %>";
+      var options = {
+        fireOnce: true,
+        fireDelay:400,
+        bottomPixels: 300,
+        ceaseFire: function() {
+          return stopScrolling;
+        },
+        callback: function(){
+          $.ajax({
+            url: '/retrieval.js',
+            data: { page: page, category: param_category, order: param_order, name: param_name },
+            dataType: 'script'
+          });
+        }
+      };
+      $(function() {
+        $(document).endlessScroll(options);
+      });
+      /*
+       * Fixed menu
+       */
+      $(document).ready(function () {  
+        var top = $('#search').offset().top - parseFloat($('#search').css('marginTop').replace(/auto/, 0));
+        $(window).scroll(function (event) {
+          // what the y position of the scroll is
+          var y = $(this).scrollTop();
+        
+          // whether that's below the form
+          if (y >= top) {
+            $('#search').css('top', y-130);
+          } else {
+            $('#search').css('top', 0);
+          }
+        });
+      });
+      </script>
+    </div>
+  </div>
+  
+</div>

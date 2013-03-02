@@ -1,4 +1,5 @@
 //= jquery.jscrollpane.min
+//= jquery.hoverIntent
 
 var map, infowindow, markers = [];
 
@@ -122,7 +123,10 @@ var marker;
   $('#places-list ul.places-list li').hover(function(){
     var el = $(this);
     //$(this).effect("highlight", {color:"#666666"}, 2000);
-    
+    /*index = parseInt(el.attr('data-poi-index'))-1;
+    marker = markers[index];
+    marker.setAnimation(google.maps.Animation.BOUNCE);*/
+   
     //Find selected marker
     var exit = false;
     	for (var i = 0; i < markers.length && !exit; i++) {
@@ -167,3 +171,16 @@ var marker;
   });
 
 });
+
+$("#collapseOne").hoverIntent( makeTall, makeShort )
+
+$(".collapse").collapse();
+$('#collapseOne').collapse({
+  	toggle: false
+}	);
+$('#collapseTwo').collapse({
+  	toggle: false
+}	);
+$('#collapseThree').collapse({
+  	toggle: false
+}	);
