@@ -14,6 +14,22 @@ AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :passwo
 User.create(name: "Minube", :email => "minube@minube.com", :password => 'minube1234', :password_confirmation => 'minube1234')
 User.create(name: "Foursquare", :email => "foursquare@foursquare.com", :password => 'foursquare1234', :password_confirmation => 'foursquare1234')
 
+TypeLeisure.create(name: "Ocio solo")
+TypeLeisure.create(name: "Ocio con pareja")
+TypeLeisure.create(name: "Ocio familiar")
+TypeLeisure.create(name: "Ocio con amigos")
+TypeLeisure.create(name: "Otros")
+
+TypeTime.create(name: "Mañana")
+TypeTime.create(name: "Tarde")
+TypeTime.create(name: "Noche")
+TypeTime.create(name: "Todo el día")
+
+TypeVehicle.create(name: "Bicicleta")
+TypeVehicle.create(name: "Paseo")
+TypeVehicle.create(name: "Correr")
+TypeVehicle.create(name: "Coche")
+TypeVehicle.create(name: "Moto")
 
 #Load countries minube
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
