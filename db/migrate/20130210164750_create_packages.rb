@@ -20,7 +20,9 @@ class CreatePackages < ActiveRecord::Migration
     end
     add_index :packages, :category_id
     add_index :packages, :supercategory_id
-    add_index :packages, :type_id
+    add_index :packages, :type_leisure_id
+    add_index :packages, :type_time_id
+    add_index :packages, :type_vehicle_id
     add_index :packages, :user_id
     add_index :packages, :provider_id
   end

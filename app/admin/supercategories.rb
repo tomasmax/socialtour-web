@@ -1,6 +1,5 @@
 ActiveAdmin.register Supercategory do
-  menu parent: "Categorias", label: "Supercategorias"
-
+  menu priority: 10, label: "Supercategorias"
   index do
     column :id
     column :name
@@ -26,7 +25,6 @@ ActiveAdmin.register Supercategory do
       row :name
       row :slug
       row :icon_file_size
-
       row :icon do |sc|
         image_tag sc.icon(:big)
       end
