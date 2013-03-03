@@ -8,12 +8,29 @@
 
 # Create admin users
 
-=begin
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 
 User.create(name: "Minube", :email => "minube@minube.com", :password => 'minube1234', :password_confirmation => 'minube1234')
 User.create(name: "Foursquare", :email => "foursquare@foursquare.com", :password => 'foursquare1234', :password_confirmation => 'foursquare1234')
+
+TypeLeisure.create(name: "Ocio solo")
+TypeLeisure.create(name: "Ocio con pareja")
+TypeLeisure.create(name: "Ocio familiar")
+TypeLeisure.create(name: "Ocio con amigos")
+TypeLeisure.create(name: "Otros")
+
+TypeTime.create(name: "Mañana")
+TypeTime.create(name: "Tarde")
+TypeTime.create(name: "Noche")
+TypeTime.create(name: "Todo el día")
+TypeTime.create(name: "Fin de semana")
+
+TypeVehicle.create(name: "Bicicleta")
+TypeVehicle.create(name: "Paseo")
+TypeVehicle.create(name: "Correr")
+TypeVehicle.create(name: "Coche")
+TypeVehicle.create(name: "Moto")
 
 #Load countries minube
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
@@ -61,79 +78,32 @@ supercategories.each do |sc|
   end
   
 end
-=end
-
-#Create event categories from kulturtik
-
-Category.create(name:"Teatro")
-Category.create(name:"Exposicion")
-Category.create(name:"Danza")
-Category.create(name:"Opera")
-Category.create(name:"Presentacion")
-Category.create(name:"Bertsolaritza")
-Category.create(name:"Conferencia")
-Category.create(name:"Teatro")
-
-#Create package types
-TypeLeisure.create(name: "Ocio solo")
-TypeLeisure.create(name: "Ocio con pareja")
-TypeLeisure.create(name: "Ocio familiar")
-TypeLeisure.create(name: "Ocio con amigos")
-TypeLeisure.create(name: "Otros")
-
-TypeVehicle.create(name: "Bicicleta")
-TypeVehicle.create(name: "Paseo")
-TypeVehicle.create(name: "Correr")
-TypeVehicle.create(name: "Coche")
-TypeVehicle.create(name: "Moto")
-
-TypeTime.create(name: 'Maniana')
-TypeTime.create(name: "Tarde")
-TypeTime.create(name: "Noche")
-TypeTime.create(name: "Todo el dia")
-TypeTime.create(name: "Fin de semana")
-
 
 #Load categories foursquare
 clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
-clientFoursquareEn = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'en')
 supCategories = clientFoursquare.venue_categories
-supCategoriesEn = clientFoursquareEn.venue_categories
-supCategories.each_with_index do |sc, i|
+supCategories.each do |sc|
   puts "- Super Category FourSquare #{sc.id} #{sc.name}"
-  supercategory = SupercategoryFoursquare.new #sin mirar las de minube
+  supercategory = Supercategory.new sc #sin mirar las de minube
   supercategory.foursquare_id = sc.id
   supercategory.foursquare_icon = sc.icon.prefix.chop + sc.icon.suffix #chop to cut the last character
-  #supercategory.icon = open(supercategory.foursquare_icon)
-  supercategory.name = sc.name
-  supercategory.name_en = supCategoriesEn[i].name
-  supercategory.pluralName = sc.pluralName
-  supercategory.shortName = sc.shortName
+  supercategory.icon = open(supercategory.foursquare_icon)
+  supercategory.name = sc.pluralName
   supercategory.save
-  sc.categories.each_with_index do |c, j|
+  sc.categories.each do |c|
     puts "  Category FourSquare #{c.id} #{c.name}"    
-      category = supercategory.category_foursquares.new
+    cat = Category.find_by_name(c.pluralName)
+    if cat
+      cat.foursquare_id = c.id
+      cat.foursquare_icon = c.icon.prefix.chop + c.icon.suffix
+      cat.name = c.pluralName
+    else
+      category = supercategory.categories.new c
       category.foursquare_id = c.id
       category.foursquare_icon = c.icon.prefix.chop + c.icon.suffix
-      #category.icon = open(category.foursquare_icon)
-      category.name = c.name
-      category.name_en = supCategoriesEn[i].categories[j].name
-      category.pluralName = c.pluralName
-      category.shortName = c.shortName
+      category.icon = open(category.foursquare_icon)
+      category.name = c.pluralName
       category.save
-      if c.categories.size > 0
-        c.categories.each_with_index do |suc, k|
-          puts "  SubCategory FourSquare #{suc.id} #{suc.name}"
-          subcategory = category.subcategory_foursquares.new
-          subcategory.foursquare_id = suc.id
-          subcategory.foursquare_icon = suc.icon.prefix.chop + suc.icon.suffix
-          #subcategory.icon = open(subcategory.foursquare_icon)
-          subcategory.name = suc.name
-          subcategory.name_en = supCategoriesEn[i].categories[j].categories[k].name
-          subcategory.pluralName = suc.pluralName
-          subcategory.shortName = suc.shortName
-          subcategory.save
-        end 
-      end
+    end
   end
 end

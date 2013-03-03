@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302172605) do
+ActiveRecord::Schema.define(:version => 20130302232207) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -88,6 +88,18 @@ ActiveRecord::Schema.define(:version => 20130302172605) do
   end
 
   add_index "categories", ["supercategory_id"], :name => "index_categories_on_supercategory_id"
+
+  create_table "category_foursquares", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.string   "pluralName"
+    t.string   "shortName"
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.integer  "supercategory_foursquare_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -329,6 +341,18 @@ ActiveRecord::Schema.define(:version => 20130302172605) do
 
   add_index "route_points", ["poi_id"], :name => "index_route_points_on_poi_id"
 
+  create_table "subcategory_foursquares", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.string   "pluralName"
+    t.string   "shortName"
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.integer  "category_foursquare_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
   create_table "supercategories", :force => true do |t|
     t.string   "name"
     t.string   "slug"
@@ -342,6 +366,17 @@ ActiveRecord::Schema.define(:version => 20130302172605) do
     t.string   "foursquare_icon"
     t.string   "name_eu"
     t.string   "name_en"
+  end
+
+  create_table "supercategory_foursquares", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.string   "pluralName"
+    t.string   "shortName"
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "type_leisures", :force => true do |t|
