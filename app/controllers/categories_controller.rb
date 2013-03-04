@@ -1,7 +1,7 @@
 class CategoriesController < InheritedResources::Base
   # GET /categories.json
   def index
-    @categories = Categiry.all
+    @categories = Category.all
 
     respond_to do |format|
       format.json { render json: @categories }

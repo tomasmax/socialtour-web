@@ -1,5 +1,5 @@
 ActiveAdmin.register Country do
-  menu priority: 2, label: "Paises"
+  menu priority: 2, label: "Countries"
 
   show do
     attributes_table do

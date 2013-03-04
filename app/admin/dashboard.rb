@@ -1,15 +1,32 @@
 ActiveAdmin.register_page "Dashboard" do
 
+  
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+       
+    panel "Ultimos POIs" do
+      table_for Poi.order("created_at desc").limit(5) do  
+        column :name do |poi|  
+          link_to poi.name, admin_poi_path(poi) if poi
+        end
+        column :city
+        column :user
+      end  
+      strong { link_to "Ver todos", admin_pois_path } 
     end
-
+    
+    panel "Ultimos usuarios" do  
+      table_for User.order("created_at desc").limit(5) do  
+        column :name do |user|
+          link_to user.name, admin_user_path(user)
+        end
+        column :provider do |user|
+          user.authentications.pluck(:provider).join(',')
+        end 
+      end  
+      strong { link_to "Ver todos", admin_users_path }  
+  end
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
@@ -30,7 +47,5 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     # end
   end # content
-  
-  
   
 end

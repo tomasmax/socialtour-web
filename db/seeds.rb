@@ -19,6 +19,8 @@ User.create(name: "Foursquare", :email => "foursquare@foursquare.com", :password
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
 resp = Net::HTTP.get_response URI.parse(countries_url)
 result = JSON.parse resp.body
+#f = File.read('files/supercategories_minube.json')
+#result = JSON.parse f
 countries = result["response"]["countries"]
 
 countries.each do |c|
@@ -51,7 +53,9 @@ supercategories.each do |sc|
   categories_url = "http://api.minube.com/places/categories.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3&supercategory=#{supercategory.id}"
   cat_json = JSON.parse Net::HTTP.get_response(URI.parse(categories_url)).body
   categories = cat_json["response"]["categories"]
-
+  #f = File.read('files/categories_minube.json')
+  #categories = JSON.parse f
+  
   categories.each do |c|
     puts "  Category #{c['id']} #{c['name']}"
     c.delete 'supercategory'
@@ -60,6 +64,21 @@ supercategories.each do |sc|
     category.save
   end
   
+end
+
+#cargar desde ficheros
+f = File.read('files/supercategories_minube.json')
+supercategories = JSON.parse f
+supercategories.each do |sc|
+  supercategory = Supercategory.new sc
+  supercategory.save
+end
+
+f = File.read('files/categories_minube.json')
+categories = JSON.parse f
+categories.each do |c|
+  rcategory = Category.new c
+  category.save
 end
 =end
 

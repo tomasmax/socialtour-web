@@ -1,5 +1,5 @@
 ActiveAdmin.register Supercategory do
-  menu priority: 10, label: "Supercategorias"
+  menu priority: 8, label: "Supercategories"
   index do
     column :id
     column :name

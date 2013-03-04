@@ -1,5 +1,5 @@
 ActiveAdmin.register SupercategoryFoursquare do
-  menu parent: "Supercategorias", label: "Supercategorias_Foursquare"
+  menu parent: "Supercategories", label: "Supercategorias_Foursquare"
 
   index do
     column :id

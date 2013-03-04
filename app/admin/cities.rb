@@ -1,5 +1,5 @@
 ActiveAdmin.register City do
-  menu priority: 3, label: "Ciudades"
+  menu parent: "Countries", label: "Ciudades"
 
   show do
     attributes_table do

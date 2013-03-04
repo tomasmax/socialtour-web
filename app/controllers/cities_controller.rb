@@ -5,6 +5,7 @@ class CitiesController < InheritedResources::Base
     @cities = City.order 'name'
     respond_to do |format|
       format.html # index.html.erb
+      format.json {render json: @cities}
     end
   end
   
