@@ -7,7 +7,8 @@ class Profile < ActiveRecord::Base
   attr_accessible :about_me, :first_name, :gender, :i_dont_like, 
                   :i_like, :last_name, :is_married, :restrictions, :has_sons, 
                   :username,:image_content_type, :image_file_name, :image_file_size,
-                  :image_updated_at, :image
+                  :image_updated_at, :image, :leisure, :gastronomy, :ferias, :folclore,
+                  :sport, :nature, :culture, :other, :buildings, :friends, :events
                  
   
   def as_json options=nil

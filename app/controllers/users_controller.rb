@@ -31,6 +31,18 @@ class UsersController < InheritedResources::Base
     end
   end
   
+  def update
+    @user = User.find_by_id(params[:id])
+    @profile = Profile.find_by_user_id(@user.id)
+    @user.name = params[:name]
+    @user.email = params[:email]
+    @user.city = params[:city]
+    @user.save
+    @profile.update_attributes(params[:profile])
+    
+    redirect_to user_path(@user)
+  end
+  
   #get facebook friends
   def facebook
     @friends = current_user.get_social_contacts(:facebook)

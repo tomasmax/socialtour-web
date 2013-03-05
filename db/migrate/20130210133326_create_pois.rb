@@ -20,8 +20,6 @@ class CreatePois < ActiveRecord::Migration
       t.string :name_eu
       t.text :description_eu
       t.text :timetable
-      t.string :picture_nomral
-      t.string :picture_thumbnail
 
       t.timestamps
     end
