@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302232207) do
+ActiveRecord::Schema.define(:version => 20130305124429) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -275,6 +275,18 @@ ActiveRecord::Schema.define(:version => 20130302232207) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.time     "image_update_at"
+    t.integer  "leisure"
+    t.integer  "gastronomy"
+    t.integer  "ferias"
+    t.integer  "foloclore"
+    t.integer  "sport"
+    t.integer  "nature"
+    t.string   "culture"
+    t.string   "integer"
+    t.integer  "other"
+    t.integer  "buildings"
+    t.integer  "friends"
+    t.integer  "events"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"

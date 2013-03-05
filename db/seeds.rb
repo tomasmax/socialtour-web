@@ -82,66 +82,6 @@ categories.each do |c|
 end
 =end
 
-#Create some cities
-City.create(name: "Bilbao")
-City.create(name: "Gernika")
-City.create(name: "Bakio")
-City.create(name: "Algorta")
-City.create(name: "Getxo")
-City.create(name: "Sopelana")
-City.create(name: "Bermeo")
-City.create(name: "Lekeitio")
-City.create(name: "San Sebastian")
-
-#Create event categories from kulturtik
-sp = Supercategory.find_by_name("Evebtos")
-Category.create(name:"Teatro", group: "do", supercategory_id: sp.id)
-Category.create(name:"Exposicion", group: "do", supercategory_id: sp.id)
-Category.create(name:"Danza", group: "do", supercategory_id: sp.id)
-Category.create(name:"Opera", group: "do", supercategory_id: sp.id)
-Category.create(name:"Presentacion", group: "do", supercategory_id: sp.id)
-Category.create(name:"Bertsolaritza", group: "do", supercategory_id: sp.id)
-Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
-Category.create(name:"Recital", group: "do", supercategory_id: sp.id)
-Category.create(name:"Cuenta cuentos", group: "do", supercategory_id: sp.id)
-Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
-Category.create(name:"Feria de artesania", group: "do", supercategory_id: sp.id)
-Category.create(name:"Feria del libro", group: "do", supercategory_id: sp.id)
-Category.create(name:"Titeres", group: "do", supercategory_id: sp.id)
-Category.create(name:"Proyeccion audiovisual", group: "do", supercategory_id: sp.id)
-Category.create(name:"Jornadas", group: "do", supercategory_id: sp.id)
-Category.create(name:"Curso-taller", group: "do", supercategory_id: sp.id)
-Category.create(name:"Consurso", group: "do", supercategory_id: sp.id)
-Category.create(name:"Festival", group: "do", supercategory_id: sp.id)
-Category.create(name:"Actividad infantil", group: "do", supercategory_id: sp.id)
-Category.create(name:"Magia", group: "do", supercategory_id: sp.id)
-Category.create(name:"Circo", group: "do", supercategory_id: sp.id)
-Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
-Category.create(name:"Pastoral", group: "do", supercategory_id: sp.id)
-Category.create(name:"Payasos", group: "do", supercategory_id: sp.id)
-Category.create(name:"Monologos", group: "do", supercategory_id: sp.id)
-Category.create(name:"Humor", group: "do", supercategory_id: sp.id)
-
-#Create package types
-TypeLeisure.create(name: "Ocio solo")
-TypeLeisure.create(name: "Ocio con pareja")
-TypeLeisure.create(name: "Ocio familiar")
-TypeLeisure.create(name: "Ocio con amigos")
-TypeLeisure.create(name: "Otros")
-
-TypeVehicle.create(name: "Bicicleta")
-TypeVehicle.create(name: "Paseo")
-TypeVehicle.create(name: "Correr")
-TypeVehicle.create(name: "Coche")
-TypeVehicle.create(name: "Moto")
-
-TypeTime.create(name: 'Maniana')
-TypeTime.create(name: "Tarde")
-TypeTime.create(name: "Noche")
-TypeTime.create(name: "Todo el dia")
-TypeTime.create(name: "Fin de semana")
-
-
 #Load categories foursquare
 clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
 clientFoursquareEn = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'en')
@@ -185,3 +125,67 @@ supCategories.each_with_index do |sc, i|
       end
   end
 end
+
+#Create some cities
+City.create(name: "Bilbao")
+City.create(name: "Gernika")
+City.create(name: "Bakio")
+City.create(name: "Algorta")
+City.create(name: "Getxo")
+City.create(name: "Sopelana")
+City.create(name: "Bermeo")
+City.create(name: "Lekeitio")
+City.create(name: "San Sebastian")
+puts "Some cities saved"
+
+#Create event categories from kulturtik
+sp = Supercategory.find_by_name("Eventos")
+Category.create(name:"Teatro", group: "do", supercategory_id: sp.id)
+Category.create(name:"Exposicion", group: "do", supercategory_id: sp.id)
+Category.create(name:"Danza", group: "do", supercategory_id: sp.id)
+Category.create(name:"Opera", group: "do", supercategory_id: sp.id)
+Category.create(name:"Presentacion", group: "do", supercategory_id: sp.id)
+Category.create(name:"Bertsolaritza", group: "do", supercategory_id: sp.id)
+Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
+Category.create(name:"Recital", group: "do", supercategory_id: sp.id)
+Category.create(name:"Cuenta cuentos", group: "do", supercategory_id: sp.id)
+Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
+Category.create(name:"Feria de artesania", group: "do", supercategory_id: sp.id)
+Category.create(name:"Feria del libro", group: "do", supercategory_id: sp.id)
+Category.create(name:"Titeres", group: "do", supercategory_id: sp.id)
+Category.create(name:"Proyeccion audiovisual", group: "do", supercategory_id: sp.id)
+Category.create(name:"Jornadas", group: "do", supercategory_id: sp.id)
+Category.create(name:"Curso-taller", group: "do", supercategory_id: sp.id)
+Category.create(name:"Consurso", group: "do", supercategory_id: sp.id)
+Category.create(name:"Festival", group: "do", supercategory_id: sp.id)
+Category.create(name:"Actividad infantil", group: "do", supercategory_id: sp.id)
+Category.create(name:"Magia", group: "do", supercategory_id: sp.id)
+Category.create(name:"Circo", group: "do", supercategory_id: sp.id)
+Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
+Category.create(name:"Pastoral", group: "do", supercategory_id: sp.id)
+Category.create(name:"Payasos", group: "do", supercategory_id: sp.id)
+Category.create(name:"Monologos", group: "do", supercategory_id: sp.id)
+Category.create(name:"Humor", group: "do", supercategory_id: sp.id)
+puts "Kulturtik categories saved"
+
+#Create package types
+TypeLeisure.create(name: "Ocio solo")
+TypeLeisure.create(name: "Ocio con pareja")
+TypeLeisure.create(name: "Ocio familiar")
+TypeLeisure.create(name: "Ocio con amigos")
+TypeLeisure.create(name: "Otros")
+puts "TypeTimes saved"
+
+TypeVehicle.create(name: "Bicicleta")
+TypeVehicle.create(name: "Paseo")
+TypeVehicle.create(name: "Correr")
+TypeVehicle.create(name: "Coche")
+TypeVehicle.create(name: "Moto")
+puts "TypeTimes saved"
+
+TypeTime.create(name: 'Maniana')
+TypeTime.create(name: "Tarde")
+TypeTime.create(name: "Noche")
+TypeTime.create(name: "Todo el dia")
+TypeTime.create(name: "Fin de semana")
+puts "TypeTimes saved"

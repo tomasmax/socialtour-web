@@ -7,6 +7,7 @@ var elevator = null;
 var coordinates = [];
 var path;
 var routePointIndex = 0;
+var initialLocation;
 
 $(function(){
   var infowindow = new google.maps.InfoWindow({ 
@@ -33,13 +34,40 @@ $(function(){
   // create the map
   var options = {
     zoom: 13,
-    center: new google.maps.LatLng(43.213,-3.13),
+    //center: new google.maps.LatLng(43.213,-3.13),
     mapTypeControl: true,
     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
     navigationControl: true,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   map = new google.maps.Map(document.getElementById("map-canvas"), options);
+  
+  // Try W3C Geolocation (Preferred)
+	  if(navigator.geolocation) {
+	    browserSupportFlag = true;
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	      map.setCenter(initialLocation);
+	    }, function() {
+	      handleNoGeolocation(browserSupportFlag);
+	    });
+	  }
+	  // Browser doesn't support Geolocation
+	  else {
+	    browserSupportFlag = false;
+	    handleNoGeolocation(browserSupportFlag);
+	  }
+	  
+	  function handleNoGeolocation(errorFlag) {
+	    if (errorFlag == true) {
+	      alert("Geolocation service failed.");
+	      initialLocation = newyork;
+	    } else {
+	      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+	      initialLocation = siberia;
+	    }
+	    map.setCenter(initialLocation);
+	  }
   
   elevator = new google.maps.ElevationService();
   
