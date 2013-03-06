@@ -1,4 +1,3 @@
-<%= javascript_include_tag "pois-show" %>
 
 <%# Add metadata for google %>
 <div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review-aggregate" class="review-aggregate metadata">
@@ -89,8 +88,8 @@
       </div>
     <% end %>
     
-    <div id="poi-map-canvas" style="width: 700px; height: 300px; margin: 22px 0 30px -5px; display: block; clear: both;"></div>
-    
+    <div id="poi-map-canvas" style="width: 700px; height: 300px; margin: 22px 0 30px -5px;"></div>
+    <%= javascript_include_tag "pois-show" %>
     <div id="poi-comments" class="row">
       <div class="span8">
         <h3 id="last-comments"><%= t :comments %></h3>

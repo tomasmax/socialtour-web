@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(:version => 20130305124429) do
     t.time     "image_update_at"
     t.integer  "foloclore"
     t.string   "integer"
+    t.date     "born_date"
     t.integer  "leisure"
     t.integer  "gastronomy"
     t.integer  "ferias"

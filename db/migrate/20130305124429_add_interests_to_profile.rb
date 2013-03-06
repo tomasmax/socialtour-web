@@ -1,5 +1,6 @@
 class AddInterestsToProfile < ActiveRecord::Migration
   def change
+    add_column :profiles, :born_date, :date
     add_column :profiles, :leisure, :integer
     add_column :profiles, :gastronomy, :integer
     add_column :profiles, :ferias, :integer

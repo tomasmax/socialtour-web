@@ -45,7 +45,6 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul class="places-list">
-
 		    	<%= render collection: @what_to_do, partial: "poi_explorer", as: :poi %>
 		  	</ul>
       </div>
@@ -65,12 +64,14 @@
 		    	<%= render collection: @what_to_see, partial: "poi_explorer", as: :poi %>
 		  	</ul>
       </div>
-    </div>
-    <div class="accordion-group">
+    </div> 
+	 </div>
+	</div>
+	<div class="accordion-group">
    <div id="places-list">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        <%= t 'what_eat' %>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        <%= t 'eat' %>
       </a>
     </div>
     <div id="collapseThree" class="accordion-body collapse">

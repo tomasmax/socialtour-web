@@ -8,19 +8,21 @@
     <% end %>
   </div>
   <div class="pois-content">
-    <div class="poi-rating">
-      <div class="starbar-static">
-        <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>
-        <% (0...5).each do |i| %>
-          <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
-        <% end %>
-      </div>
-      <span><%= poi.ratings_count %></span>
-    </div>
-    <h4><%= poi.index %> - <%= link_to poi.name, poi_url(poi) %></h4>
-    <div class="poi-type-img">
-      <%= image_tag poi.supercategory.icon.url(:small), class: 'poi-list-type' if poi.supercategory && poi.supercategory.icon %>
-    </div>
+    <p>
+	    <div class="poi-rating">
+	      <div class="starbar-static">
+	        <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>
+	        <% (0...5).each do |i| %>
+	          <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
+	        <% end %>
+	      </div>
+	      <span><%= poi.ratings_count %></span>
+	    </div>
+	    <h4><%= poi.index %> - <%= link_to poi.name, poi_url(poi) %></h4>
+	    <div class="poi-type-img">
+	      <%= image_tag poi.supercategory.icon.url(:small), class: 'poi-list-type' if poi.supercategory && poi.supercategory.icon %>
+	    </div>
+    </p>
     <div class="poi-user">
       <span>por <%= link_to poi.user.name, user_url(poi.user) if poi.user %> </span>
     </div>

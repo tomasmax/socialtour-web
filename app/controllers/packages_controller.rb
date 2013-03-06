@@ -2,7 +2,7 @@ class PackagesController < InheritedResources::Base
   
   # GET /packages
   def index
-    @packages = Packages.all
+    @packages = Package.all
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -10,7 +10,7 @@ class PackagesController < InheritedResources::Base
   
   # GET /packages/:id
   def show
-    @package = Packages.find_by_id params[:id]
+    @package = Package.find_by_id params[:id]
     @pois = @package.pois
     respond_to do |format|
       format.html # show.html.erb

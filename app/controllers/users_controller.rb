@@ -32,15 +32,15 @@ class UsersController < InheritedResources::Base
   end
   
   def update
-    @user = User.find_by_id(params[:id])
-    @profile = Profile.find_by_user_id(@user.id)
+    @user = current_user
+    @profile = current_user.profiles.first
     @user.name = params[:name]
     @user.email = params[:email]
     @user.city = params[:city]
     @user.save
     @profile.update_attributes(params[:profile])
     
-    redirect_to user_path(@user)
+    redirect_to @user
   end
   
   #get facebook friends

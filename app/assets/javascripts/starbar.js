@@ -1,3 +1,4 @@
+
 function starbar(starbar) {
   function loadRealRating() {
     starbar.children('.star').removeClass("half full focus");

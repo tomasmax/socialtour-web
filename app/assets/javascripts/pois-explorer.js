@@ -175,6 +175,7 @@ var marker;
 $("#collapseOne").hoverIntent( makeTall, makeShort )
 
 $(".collapse").collapse();
+
 $('#collapseOne').collapse({
   	toggle: false
 }	);

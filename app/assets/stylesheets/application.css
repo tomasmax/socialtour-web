@@ -8,16 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- # app/assets/stylesheets/ie6.css
- *= require formtastic_ie6
-  
- # app/assets/stylesheets/ie7.css
- *= require formtastic_ie7
+
  # app/assets/stylesheets/application.css
  *= require formtastic
  # require my_formtastic_changes
  *= require bootstrap
- *= require bootstrap.min
  *= require pois
  *= require file-uploader
  *= require authentications  
@@ -42,6 +37,45 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     margin-left: 290px;
 }
 
+.starbar {
+  background: #94eaf3 url("/assets/starbar/background.png") 0 0 repeat-x;
+  border-radius: 8px;
+  display: inline-block;
+  height: 16px;
+  padding: 10px;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
+  behavior: url("assets/PIE.htc"); }
+  .star {
+    background: url("/assets/starbar/star.png") 0 0 no-repeat;
+    float: left;
+    height: 16px;
+    width: 17px; }
+    .star.half {
+      background-position: 0 -22px; }
+    .star.full {
+      background-position: 0 -45px; }
+    .star.focus {
+      cursor: pointer; }
+  .starbar .starbar-rating {
+    color: #216a72;
+    float: right;
+    font-weight: bold;
+    padding: 0 5px 0 11px;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    line-height: 1.1 \9; }
+
+.preloader {
+    display: none;
+    float: right;
+    background: url("/assets/tabbox/preloader.gif") 0 0 no-repeat;
+    height: 16px;
+    width: 16px; }
+    
 /* FLASH NOTICE */
 #flash_notice, #flash_error {
   padding: 5px 8px;

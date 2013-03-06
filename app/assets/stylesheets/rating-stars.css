@@ -1,0 +1,28 @@
+/*********************/
+/** jRating CSS **/
+/*********************/
+
+/**Div containing the color of the stars */
+.jRatingAverage {
+	background-color:#f4c239;
+	position:relative;
+	top:0;
+	left:0;
+	z-index:2;
+	height:100%;
+}
+.jRatingColor {
+	background-color: rgb(77, 164, 219); /* bgcolor of the stars*/
+	position:relative;
+	top:0;
+	left:0;
+	z-index:2;
+	height:100%;
+}
+
+/** Div containing the stars **/
+.jStar {
+	position:relative;
+	left:0;
+	z-index:3;
+}

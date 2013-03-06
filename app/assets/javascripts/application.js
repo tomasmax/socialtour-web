@@ -14,11 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.min
-//= require bootstrap.min
 //= require chosen.jquery
-//= require starbar
 //= require categories-show
 //= require jquery.endless-scroll
+//= require starbar
 //= require_self
 
 $(document).ready(function() {
