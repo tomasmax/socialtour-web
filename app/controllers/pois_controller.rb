@@ -25,7 +25,6 @@ class PoisController < InheritedResources::Base
 
     # returns Geocoder::Result object
     @location = request.location
-    puts "LOCATION-----------: #{@location.city}"
     
     respond_to do |format|
       format.html do # index.html.erb
@@ -97,8 +96,9 @@ class PoisController < InheritedResources::Base
     poi = Poi.where(category_id: Category.where(group: 'eat'), city_id: @poi.city).select(:id).sample
     @where_to_eat = Poi.where(id: poi.id) if poi
     
-    @event = Event.new
-    @event.poi = @poi
+    @last_comments = Comment.find_all_by_poi_id(@poi.id, :order => 'created_at DESC')
+    #@event = Event.new
+    #@event.poi = @poi
     
     respond_to do |format|
       format.kml # show.kml.erb

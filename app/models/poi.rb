@@ -9,6 +9,7 @@ class Poi < ActiveRecord::Base
   has_many :photos, dependent: :delete_all
   has_many :events, dependent: :delete_all
   has_many :ratings, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
   has_many :route_infos, dependent: :delete_all
   has_many :route_points, dependent: :delete_all
   

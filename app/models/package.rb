@@ -7,7 +7,8 @@ class Package < ActiveRecord::Base
   belongs_to :user
   belongs_to :provider
   
-  has_many :ratings
+  has_many :ratings, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
   has_many :events
   
   attr_accessible :description, :image_content_type, :image_file_name, :image_file_size, :image_update_at, :name, :price

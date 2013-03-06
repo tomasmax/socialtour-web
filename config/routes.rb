@@ -1,4 +1,7 @@
 SocialTour::Application.routes.draw do
+  resources :comments
+
+
   resources :likes
 
   resources :countries

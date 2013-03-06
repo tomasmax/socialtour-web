@@ -3,5 +3,5 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
   
-  attr_accessible :comment, :ip, :rating
+  attr_accessible :comment, :ip, :rating, :poi_id
 end

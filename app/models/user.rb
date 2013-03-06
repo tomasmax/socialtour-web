@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   
   has_many :likes, dependent: :delete_all
   
+  has_many :ratings
+  has_many :comments, dependent: :delete_all
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

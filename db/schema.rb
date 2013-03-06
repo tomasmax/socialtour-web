@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305124429) do
+ActiveRecord::Schema.define(:version => 20130306163153) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,6 +116,19 @@ ActiveRecord::Schema.define(:version => 20130305124429) do
   end
 
   add_index "cities", ["country_id"], :name => "index_cities_on_country_id"
+
+  create_table "comments", :force => true do |t|
+    t.text     "comment"
+    t.integer  "poi_id"
+    t.integer  "user_id"
+    t.integer  "package_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["package_id"], :name => "index_comments_on_package_id"
+  add_index "comments", ["poi_id"], :name => "index_comments_on_poi_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "countries", :force => true do |t|
     t.integer  "minube_id"

@@ -96,6 +96,67 @@
         <div class="fb-comments" data-href="/places/<%= @poi.slug %>" data-num-posts="10" data-width="700"></div>
       </div>
     </div>
+    <div id="poi-comments" class="span11">
+<h3 id="last-comments"><%= t :comments %></h3>
+    <script>
+    function publishComment(){
+      var comment = $("#comment-content").val();
+      $.post('/comments.json',{
+  				comment : {
+  				  comment: comment,
+  				  poi_id: <%= @poi.id %>
+  				}
+  			},
+  			function(comment) {
+  				if(!comment.error){
+            // Add comment to comments list
+            $('ul#comments-list').prepend(
+            '<li><p>'+comment.comment+'</p><div class="comment-info"><p><span><%= current_user.name if current_user %></span></p><time>Ahora</time></div></li>').fadeIn();
+            $("#comment-content").val('')
+              .attr('rows',1);
+            $('#publish').css('display', 'none');
+  				}else{
+  				}
+  			},
+  			'json'
+  		);
+    }
+    jQuery(function($){
+      $('#comment-content').focus(function(){
+        $(this).attr('rows',5);
+        $('#publish').css('display', 'inline-block');
+      }).blur(function(){
+        if ($(this).val() == '') {
+          $(this).attr('rows',1);
+          $('#publish').css('display', 'none');
+        }
+      });
+    });
+  </script>
+  
+  <div id="new-comment">
+    <textarea id="comment-content" placeholder="<%= raw t(:add_your_comment) %>" class="span9" rows=1></textarea>
+    <a id="publish" class="btn primary" style="display: none;" href="#poi-comments" onClick="publishComment()"><%= t :publish %></a>
+  </div>
+  <ul id="comments-list">
+    <% if @poi.comments.count == 0 %>
+      <li><%= t :no_comments %></li>
+    <% else %>
+      <% @poi.comments.order('created_at desc').each do |comment| %>
+        <li id="comment-<%= comment.id %>">
+          <%= simple_format comment.comment %>
+          <div class="comment-info">
+            <p class="comment-user"><%= comment.user ? simple_format(comment.user.name) : t(:unknown) %></p>
+            <%= time_tag comment.created_at %>
+          </div>
+        </li>
+      <% end %>  
+    <% end %>  
+  </ul>
+  
+</div>
+
+    
   </div>
   
   <div class="span3">
