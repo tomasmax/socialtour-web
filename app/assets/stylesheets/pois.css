@@ -10,8 +10,8 @@
 	top: 45px; 
 	bottom: 0;
 	right: 0;
-	left: 10px; 
-	width: 17%;
+	left: 5px; 
+	width: 250px;
 	height: 100%; 
 	z-index: 0;
 }
@@ -151,8 +151,8 @@ ul.places-list.condensed.reduced li.poi-preview .poi-desc {
 
 a.show-in-minube {
   display: block;
-  width: 220px;
-  height: 79px;
+  width: 125px;
+  height: 25px;
   text-indent: -9999px;
   background-image: url('/assets/logo_minube.png');
 }
@@ -216,6 +216,40 @@ a.map-expand:hover {
   text-decoration: none;
 }
 
+ul#comments-list {
+  list-style: none;
+  margin: 17px 0 8px;
+  
+  li {
+    padding-bottom: 6px;
+    margin-bottom: 7px;
+    border-bottom: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    display: block;
+    p {
+      margin: 0;
+    }
+    time {
+      float: right;
+    }
+  }
+  li:nth-chield(last) {
+    border-bottom: none;
+  }
+}
+
+.comment-info {
+  display: block;
+  font-size: 11px;
+  p {
+    display: inline;
+    span {
+      font-size: 11px;
+    }
+    font-size: 11px;
+  }
+}
 
 /*
  

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     "/#{t 'resources.pois'}/#{poi.slug}"
   end
   
+  
   def get_likes(user)
     
     auth = user.authentications.find_by_provider("facebook")

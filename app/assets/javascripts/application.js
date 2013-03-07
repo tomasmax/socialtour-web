@@ -38,6 +38,5 @@ $(document).ready(function() {
       
       uploader.parent('form').children('input[type="submit"]').css('display', 'inline-block');
     });
-  });
-      
+  });    
 });

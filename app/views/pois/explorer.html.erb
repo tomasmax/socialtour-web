@@ -1,7 +1,7 @@
 
 <%= javascript_include_tag "pois-explorer" %>
 
-<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 18%; height: 100%; right: 0; z-index: 0; display: block; clear: both;"></div>
+<div id="explorer-map-canvas" style="position: absolute; top: 45px; bottom: 0; left: 257px; height: 100%; right: 0; z-index: 0; display: block; clear: both;"></div>
 <script>
 	var supercategories = <%= Hash[Supercategory.all.map {|sc| [sc.id, sc]}].to_json.html_safe %>;
 	<% pois_json = @pois.each_with_index do |poi, i|

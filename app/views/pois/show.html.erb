@@ -96,7 +96,7 @@
         <div class="fb-comments" data-href="/places/<%= @poi.slug %>" data-num-posts="10" data-width="700"></div>
       </div>
     </div>
-    <div id="poi-comments" class="span11">
+    <div id="poi-comments">
 <h3 id="last-comments"><%= t :comments %></h3>
     <script>
     function publishComment(){
@@ -104,6 +104,9 @@
       $.post('/comments.json',{
   				comment : {
   				  comment: comment,
+  				  beforeSend: function(jqXHR, settings) {
+        			jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    				},
   				  poi_id: <%= @poi.id %>
   				}
   			},
@@ -135,7 +138,7 @@
   </script>
   
   <div id="new-comment">
-    <textarea id="comment-content" placeholder="<%= raw t(:add_your_comment) %>" class="span9" rows=1></textarea>
+    <textarea id="comment-content" placeholder="<%= raw t(:add_your_comment) %>" class="span7" rows=1></textarea>
     <a id="publish" class="btn primary" style="display: none;" href="#poi-comments" onClick="publishComment()"><%= t :publish %></a>
   </div>
   <ul id="comments-list">
@@ -146,7 +149,7 @@
         <li id="comment-<%= comment.id %>">
           <%= simple_format comment.comment %>
           <div class="comment-info">
-            <p class="comment-user"><%= comment.user ? simple_format(comment.user.name) : t(:unknown) %></p>
+            <p class="comment-user">Escrito por <%= comment.user ? simple_format(comment.user.name) : t(:unknown) %></p>
             <%= time_tag comment.created_at %>
           </div>
         </li>

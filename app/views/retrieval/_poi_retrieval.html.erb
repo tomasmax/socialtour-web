@@ -5,13 +5,14 @@
   <div class="event-content">
     <h6><%= link_to poi.localized_name(session[:locale]), poi_url(poi) %></h6>
     
-    <div class="event-rate">
-      <div class="poi-rating<%= poi.id %>" data="<%= poi.rating ? poi.rating * 2 : 0%>"></div>
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $(".poi-rating<%= poi.id %>").jRating({poiId: "<%= poi.id %>"});
-        });
-      </script>
+    <div class="poi-rating">
+      <div class="starbar-static">
+        <% rating = poi.ratings_count ? (poi.rating / poi.ratings_count) : 0 %>
+        <% (0...5).each do |i| %>
+          <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
+        <% end %>
+      </div>
+      <span><%= poi.ratings_count %></span>
     </div>
     <div class="poi-type-img">
       <%= image_tag poi.supercategory.icon.url(:small), class: 'poi-list-type' if poi.supercategory && poi.supercategory.icon %>

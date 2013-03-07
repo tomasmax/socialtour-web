@@ -33,7 +33,7 @@ function initialize() {
     });
   
   var bounds = null;
-  if (poi.route_infos.first) {
+  if (poi.route_infos) {
     bounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(poi.route_info.s_bound, poi.route_info.w_bound), 
       new google.maps.LatLng(poi.route_info.n_bound, poi.route_info.e_bound));
