@@ -96,7 +96,7 @@ class PoisController < InheritedResources::Base
     poi = Poi.where(category_id: Category.where(group: 'eat'), city_id: @poi.city).select(:id).sample
     @where_to_eat = Poi.where(id: poi.id) if poi
     
-    @last_comments = Comment.find_all_by_poi_id(@poi.id, :order => 'created_at DESC')
+    @comments = Comment.find_all_by_poi_id(@poi.id, :order => 'created_at DESC')
     #@event = Event.new
     #@event.poi = @poi
     

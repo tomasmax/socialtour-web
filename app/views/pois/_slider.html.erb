@@ -20,8 +20,8 @@
 <!-- Carousel 
     ==================================================  -->
     <div id="myCarousel" class="carousel slide">
+
       <div class="carousel-inner">
-      	
       		<% x = 0 %>
           <% @slider_photos.each do |photo| %>
           	<% if x == 0 %>
@@ -43,7 +43,7 @@
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div> <!-- /.carousel -->
 <script>
-	$('#myCarousel').carousel({  
-  interval: 4000 // in milliseconds  
-})
+	$('.carousel').carousel({
+		interval: 3000
+	});
 </script>

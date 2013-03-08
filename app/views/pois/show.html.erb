@@ -90,23 +90,22 @@
     
     <div id="poi-map-canvas" style="width: 700px; height: 300px; margin: 22px 0 30px -5px;"></div>
     <%= javascript_include_tag "pois-show" %>
-    <div id="poi-comments" class="row">
+    
+    <!-- <div id="poi-comments" class="row">
       <div class="span8">
         <h3 id="last-comments"><%= t :comments %></h3>
         <div class="fb-comments" data-href="/places/<%= @poi.slug %>" data-num-posts="10" data-width="700"></div>
       </div>
-    </div>
+    </div> -->
+    
     <div id="poi-comments">
-<h3 id="last-comments"><%= t :comments %></h3>
+		<h3 id="last-comments"><%= t :comments %></h3>
     <script>
     function publishComment(){
       var comment = $("#comment-content").val();
       $.post('/comments.json',{
   				comment : {
   				  comment: comment,
-  				  beforeSend: function(jqXHR, settings) {
-        			jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-    				},
   				  poi_id: <%= @poi.id %>
   				}
   			},
@@ -142,10 +141,10 @@
     <a id="publish" class="btn primary" style="display: none;" href="#poi-comments" onClick="publishComment()"><%= t :publish %></a>
   </div>
   <ul id="comments-list">
-    <% if @poi.comments.count == 0 %>
+    <% if @comments.count == 0 %>
       <li><%= t :no_comments %></li>
     <% else %>
-      <% @poi.comments.order('created_at desc').each do |comment| %>
+      <% @comments.each do |comment| %>
         <li id="comment-<%= comment.id %>">
           <%= simple_format comment.comment %>
           <div class="comment-info">
@@ -153,7 +152,10 @@
             <%= time_tag comment.created_at %>
           </div>
         </li>
-      <% end %>  
+      <% end %> 
+      <div class="comments-pagination">
+        <%= paginate @comments %>
+      </div> 
     <% end %>  
   </ul>
   

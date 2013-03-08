@@ -16,7 +16,7 @@
  *= require pois
  *= require file-uploader
  *= require authentications  
- *= categories
+ *= require categories
  *= require_self
  */
 

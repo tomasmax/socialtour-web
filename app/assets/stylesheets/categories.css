@@ -19,13 +19,16 @@
   background: none;
 }
 
+#pois-category li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
 #pois-category li h2 {
-  color: #4FA800;
   font-size: 28px;
 }
 
 #pois-category li h2 a {
-  color: #4FA800;
   font-size: 28px;
 }
 
@@ -52,18 +55,18 @@
 }
 
 #pois-category div.description a.thumbnail {
-  float: right;
-  margin-left: 20px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 20px;
   margin-bottom: 20px;
 }
 
 #pois-category div > h3 {
-  color: #F24F00;
+  color: #464646;
 }
 
 #pois-category div > p {
   margin-left: 20px;
-  border-left: 2px solid #DDD;
   padding-left: 10px;
 }
 

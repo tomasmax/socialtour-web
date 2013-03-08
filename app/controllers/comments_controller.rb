@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-  
+  skip_before_filter :verify_authenticity_token, :only => :create
   # GET /comments.json
   def index
     @comments = Comment.all
