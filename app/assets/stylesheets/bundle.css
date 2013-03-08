@@ -652,7 +652,7 @@ input.button, input.button-huge {
       top: 3px;
       width: 19px; }
   .select .options, .select-arrowed .options {
-    background-color: #41444c;
+    background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     display: none;
@@ -683,9 +683,9 @@ input.button, input.button-huge {
         -webkit-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
         box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.3);
-        background: #6c901b;
+        background: black;
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a2ca4c), color-stop(100%, #6c901b));
-        background-image: -webkit-linear-gradient(top, #a2ca4c, #6c901b);
+        background-image: -webkit-linear-gradient(top, black, black);
         background-image: -moz-linear-gradient(top, #a2ca4c, #6c901b);
         background-image: -ms-linear-gradient(top, #a2ca4c, #6c901b);
         background-image: -o-linear-gradient(top, #a2ca4c, #6c901b);

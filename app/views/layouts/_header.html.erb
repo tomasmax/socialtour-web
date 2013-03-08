@@ -47,7 +47,7 @@
 		        	
 		        	<% if user_signed_in? %>
 		        	<div class="pull-right">		        		
-		          	Logged as <%= link_to "#{current_user.name}", current_user %>&nbsp; 
+		          	Logged as <%= link_to current_user.name.blank? ? "Introduce nombre" : "#{current_user.name}", current_user %>&nbsp; 
 		          	<%= link_to "Sign Out", destroy_user_session_path %>&nbsp;&nbsp;		          	
 		          </div>
 		          <% else %>
@@ -57,6 +57,8 @@
 	                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
 	                	<ul class="dropdown-menu">
 		                  <%= render 'users/sessions/login'%>
+		                  <li class="divider"></li>
+		                  <li><a> <%= link_to "Registrate", new_registration_path(resource_name) %></a> </li>
 		                  <li class="divider"></li>
 		                  <li class="nav-header"><Nav header><%= t('authentications')%></li>
 		                  <li><a href="/auth/twitter">Twitter <%= image_tag "twitter_64.png",:size => "30x30",  :alt => "Twitter" %></a></li>

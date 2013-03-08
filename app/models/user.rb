@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :comments, dependent: :delete_all
   
+  belongs_to :city
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -24,10 +26,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :city_id
-                  
-  belongs_to :city
-  attr_accessible :email, :name
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :city_id, :profiles_attributes
+  
+  
+  def analyze_sentiment(tweet)
+    #return Sentimentalizer.analyze(tweet)
+    #=> {'text' => 'i am so happy', 'probability' => '0.937', 'sentiment' => ':)' }
+  end
+  
   
   def get_social_contacts(provider)
     if auth = authentications.find_by_provider(provider)
@@ -47,12 +53,6 @@ class User < ActiveRecord::Base
           #return client.connections.all
       end
     end
-  end
-  
-  
-  def analyze_sentiment(tweet)
-    #return Sentimentalizer.analyze(tweet)
-    #=> {'text' => 'i am so happy', 'probability' => '0.937', 'sentiment' => ':)' }
   end
   
 end

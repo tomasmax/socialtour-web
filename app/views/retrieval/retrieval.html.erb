@@ -1,6 +1,26 @@
 <div id="all-pois-row" class="row">
   <div class="span8">
     <h3 id="all-pois"><%= t :all %></h3>
+    <ul class="nav nav-tabs" id="myTab">
+		  <li class="active"><a href="#home">Home</a></li>
+		  <li><a href="#profile">Profile</a></li>
+		  <li><a href="#messages">Messages</a></li>
+		  <li><a href="#settings">Settings</a></li>
+		</ul>
+		 
+		<div class="tab-content">
+		  <div class="tab-pane active" id="home">Home</div>
+		  <div class="tab-pane" id="profile">Profile</div>
+		  <div class="tab-pane" id="messages">Messsages</div>
+		  <div class="tab-pane" id="settings">...</div>
+		</div>
+		 
+		<script>
+		  $('#myTab a').click(function (e) {
+  			e.preventDefault();
+  			$(this).tab('show');
+			})
+		</script>
     <div class="events-list">
       <ul id="pois-list">
         <%= render collection: @pois, partial: "poi_retrieval", as: :poi %>

@@ -32,10 +32,9 @@
 <div class="span5 offset2">
 <%= semantic_form_for [@user] do |f| %>
     <%= f.inputs do %>
-      <%= f.input :name, :class => 'control-group' %>
       <%= f.input :email, as: :email %>
       <%= f.input :city, include_blank: false %>
-			<%= f.semantic_fields_for @user.profiles do |p| %>
+			<%= f.semantic_fields_for :profiles do |p| %>
 				<%= p.input :born_date, :order => [:day, :month, :year],
                       					:start_year    => 1950,
                       					:end_year      => Date.today.year,
@@ -50,8 +49,16 @@
 	      <%= p.input :is_married, :as => :radio %>
 	      <%= p.input :has_sons, :as => :radio %>
 	      <%= p.input :restrictions %>
-	      :leisure, :gastronomy, :ferias, :folclore,
-                  :sport, :nature, :culture, :other, :buildings, :friends, :events
+	      <%= p.input :gastronomy, :class => 'h-slider' %>
+	      <%= p.input :ferias %>
+	      <%= p.input :folclore %>
+	      <%= p.input :sport %>
+	      <%= p.input :nature %>
+	      <%= p.input :culture %>
+	      <%= p.input :other %>
+	      <%= p.input :buildings %>
+	      <%= p.input :friends %>
+	      <%= p.input :leisure %>
 			<% end %>
     <% end %>
     <%= f.actions do %>

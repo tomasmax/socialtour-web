@@ -14,7 +14,7 @@ class UsersController < InheritedResources::Base
   # GET /users/id.json
   def show
     @user = User.find_by_id(params[:id])
-    @profile = Profile.find_by_user_id(@user.id)
+    @profile = Profile.find_or_create_by_user_id(@user.id)
     @authentications = Authentication.find_all_by_user_id(current_user.id)
     respond_to do |format|
       format.html # index.html.erb
@@ -29,18 +29,6 @@ class UsersController < InheritedResources::Base
       format.html # index.html.erb
       format.json { render :json => @user}
     end
-  end
-  
-  def update
-    @user = current_user
-    @profile = current_user.profiles.first
-    @user.name = params[:name]
-    @user.email = params[:email]
-    @user.city = params[:city]
-    @user.save
-    @profile.update_attributes(params[:profile])
-    
-    redirect_to @user
   end
   
   #get facebook friends

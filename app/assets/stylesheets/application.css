@@ -18,10 +18,17 @@
  *= require authentications  
  *= require categories
  *= require_self
+ *= require jquery-ui-1.10.0.custom
+ *= require chosen
  */
 
 img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     max-width: 99999px;
+}
+
+.fill-h {
+  width: 100%;
+  overflow: hidden;
 }
 
 /*sidebar of retrieval view*/
@@ -46,7 +53,7 @@ img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
   -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.4);
-  behavior: url("assets/PIE.htc"); }
+  behavior: url("assets/vendor/PIE.htc"); }
   .star {
     background: url("/assets/starbar/star.png") 0 0 no-repeat;
     float: left;

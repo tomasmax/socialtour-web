@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery-1.8.3.min
-//= require jquery_ujs
-//= require bootstrap
+//= require jquery-ui-1.10.0.custom.min
+//= require bootstrap.min
 //= require chosen.jquery
 //= require categories-show
 //= require jquery.endless-scroll
@@ -22,6 +22,8 @@
 $(document).ready(function() {
   // Init custom selects
   $(".js-select").chosen();
+  
+  $(".chosen").chosen();
   
   $('.starbar').each(function(){
     starbar($(this));
@@ -37,5 +39,14 @@ $(document).ready(function() {
       
       uploader.parent('form').children('input[type="submit"]').css('display', 'inline-block');
     });
-  });    
+  });
 });
+
+  // Vertical slider
+	$(".h-slider").slider({
+	    range: "min",
+	    min: -10,
+	    max: 10,
+	    value: 0
+	});
+
