@@ -18,7 +18,7 @@
  *= require authentications  
  *= require categories
  *= require_self
- *= require jquery-ui-1.10.0.custom
+ *= require jquery-ui-1.10.1.custom.min
  *= require chosen
  */
 

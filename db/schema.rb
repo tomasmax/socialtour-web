@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306163153) do
+ActiveRecord::Schema.define(:version => 20130309172353) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -159,8 +159,13 @@ ActiveRecord::Schema.define(:version => 20130306163153) do
     t.time     "start_time"
     t.decimal  "price"
     t.integer  "provider_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.integer  "city_id"
+    t.decimal  "latitude",       :precision => 16, :scale => 8
+    t.decimal  "longitude",      :precision => 16, :scale => 8
+    t.string   "name_eu"
+    t.text     "description_eu"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"

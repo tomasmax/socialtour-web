@@ -40,8 +40,9 @@ SocialTour::Application.routes.draw do
   #slug routes
   get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
   
-  #explore pois
-  get '/explorer', to: 'pois#explorer', as: 'explorer'
+  #explorer
+  get 'explorer/places'
+  get 'explorer/events'
   
   get "pages/home"
 

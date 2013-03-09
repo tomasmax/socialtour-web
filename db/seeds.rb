@@ -8,18 +8,19 @@
 
 # Create admin users
 
-=begin
+
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 
 User.create(name: "Minube", :email => "minube@minube.com", :password => 'minube1234', :password_confirmation => 'minube1234')
 User.create(name: "Foursquare", :email => "foursquare@foursquare.com", :password => 'foursquare1234', :password_confirmation => 'foursquare1234')
 
+=begin
 #Load countries minube
 countries_url = "http://api.minube.com/locations/countries.json?api_key=c9fd01a957af1f2afb8b3a31f83257c3"
 resp = Net::HTTP.get_response URI.parse(countries_url)
 result = JSON.parse resp.body
-#f = File.read('files/supercategories_minube.json')
+#f = File.read('files/countries.json')
 #result = JSON.parse f
 countries = result["response"]["countries"]
 
@@ -65,8 +66,16 @@ supercategories.each do |sc|
   end
   
 end
+=end
 
 #cargar desde ficheros
+f = File.read('files/countries.json')
+countries = JSON.parse f
+countries.each do |c|
+  country = Country.new c
+  country.save
+end
+
 f = File.read('files/supercategories_minube.json')
 supercategories = JSON.parse f
 supercategories.each do |sc|
@@ -80,7 +89,6 @@ categories.each do |c|
   rcategory = Category.new c
   category.save
 end
-=end
 
 #Load categories foursquare
 clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
@@ -125,6 +133,9 @@ supCategories.each_with_index do |sc, i|
       end
   end
 end
+
+categories_minube = [1,2,3,4,5,6]
+categories_foursquare = [3,6] #falta
 
 #Create some cities
 City.create(name: "Bilbao")

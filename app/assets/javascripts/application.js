@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery-1.8.3.min
-//= require jquery-ui-1.10.0.custom.min
+//= require jquery-ui-1.10.1.custom.min
 //= require bootstrap.min
 //= require chosen.jquery
 //= require categories-show

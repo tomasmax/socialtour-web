@@ -1,9 +1,9 @@
-class RetrievalController < ApplicationController
+class ExplorerController < ApplicationController
   
-  
-  # GET /retrieval
-  # GET /retrieval.json
-  def retrieval
+  #GET /explorer/places
+  def places
+    @counter = 0
+    
     params[:order] = params[:order] ? params[:order].to_i : 0
     
     if params[:city]
@@ -49,14 +49,16 @@ class RetrievalController < ApplicationController
       @where_to_eat = @where_to_eat.order('created_at desc')
     end
     
-    @what_to_do = @what_to_do.page(params[:page]).per(10)
-    @what_to_see = @what_to_see.page(params[:page]).per(10)
-    @where_to_eat = @where_to_eat.page(params[:page]).per(10) 
-
+    @pois = @what_to_do + @what_to_see + @where_to_eat
+    
     respond_to do |format|
-      format.html # retrieval.html.erb
-      format.js # retrieval.js.erb
-    end
+      format.html # explorer.html.erb
+   
+    end  
+  end
+  
+  def events
+    
   end
   
 end

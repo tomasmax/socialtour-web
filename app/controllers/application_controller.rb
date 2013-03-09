@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :api_call
 
   @clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
-  
-  
+   
   def poi_url(poi)
     "/#{t 'resources.pois'}/#{poi.slug}"
   end
@@ -62,6 +61,32 @@ class ApplicationController < ActionController::Base
         end
       end
       profile.save!
+    end
+  end
+  
+  def load_events_from_kulturtik(start,finish)
+    #“yyyy-mm-dd”
+    url = "http://www.kulturklik.euskadi.net/?api_call=events&from=" + start + "&to=" + finish + "&lang=es"
+    url_eu = "http://www.kulturklik.euskadi.net/?api_call=events&from=" + start + "&to=" + finish + "&lang=eu"
+    resp = Net::HTTP.get_response URI.parse(url)
+    result = JSON.parse resp.body
+    events = result['evento']
+    
+    if events
+      events.each do |e|
+        event = Event.new
+        event.category_id = Category.find_by_name(e['evento_tipo']).id
+        event.name = e['evento_titulo']
+        #event.name_eu
+        event.longitude = e['longitude']
+        event.latitude = e['latitude']
+        poi = Poi.find_by_longitude_and_latitude(event.longitude, event.latitude)
+        if poi
+          event.poi_id = poi.id
+        end
+        event.url = e['evento_url']
+        event.save
+      end
     end
   end
   
@@ -126,34 +151,36 @@ class ApplicationController < ActionController::Base
   
   def load_pois_from_foursquare
     
-    pois = @clientFoursquare.search_venues(near: 'Bilbao') #near or ll, query, radius, categoryId
-    #meter parametro igual de localizacion o categoria
-    total_saved = 0
-    if pois.venues
-        puts "#{pois.count} pois readed"
-    
-        pois.venues.each do |venue|
-          begin
-            poi = Poi.find_by_foursquare_id_and_name(venue.id,venue.name)
-            if poi
-              poi.update_attributes load_poi_from_forsquare(venue)
-            else
-              poi = city.pois.new load_poi_from_forsquare(venue)
-              poi.save
+    City.all.each do |city|
+      pois = @clientFoursquare.search_venues(near: city.name) #near or ll, query, radius, categoryId
+      #meter parametro igual de localizacion o categoria
+      total_saved = 0
+      if pois.venues
+          puts "#{pois.count} pois readed"
+      
+          pois.venues.each do |venue|
+            begin
+              poi = Poi.find_by_foursquare_id_and_name(venue.id,venue.name)
+              if poi
+                poi.update_attributes load_poi_from_forsquare(venue)
+              else
+                poi = city.pois.new load_poi_from_forsquare(venue)
+                poi.save
+                
+                puts "New poi #{poi.name}"
+              end
               
-              puts "New poi #{poi.name}"
+              if poi
+                load_venue_photos_from_foursquare(poi)
+                
+                total_saved = total_saved + 1
+              end
+             
+            rescue Exception => e
+              puts "Error #{e}"
             end
-            
-            if poi
-              load_venue_photos_from_foursquare(poi)
-              
-              total_saved = total_saved + 1
-            end
-           
-          rescue Exception => e
-            puts "Error #{e}"
           end
-        end
+      end
     end
   end
   
