@@ -12,37 +12,62 @@
 	var pois = <%= pois_json.to_json.html_safe %>;
 </script>
 
-<!-- <div class="pois-explorer">
-	<div class="scroll-pane">
-		<div id="places-list">
-		  <h2><%= t 'what_do' %></h2>
-		  <ul class="places-list">
-		    <%= render collection: @what_to_do, partial: "poi_explorer", as: :poi %>
-		  </ul>
-		</div>
-		
-		<div id="places-list">
-		  <h2><%= t 'what_see' %></h2>
-		  <ul class="places-list-condensed">
-		    <%= render collection: @what_to_see, partial: "poi_explorer", as: :poi %>
-		  </ul>
-		</div>
-		
-		<%= render collection: @what_to_eat, partial: "poi_explorer", as: :poi %>
-	</div>
-</div> -->
 
+		    
 <div class="pois-explorer">
 <div class="scroll-pane">
 <div class="accordion" id="accordion2">
+	<div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
+        <%= t :search %>
+      </a>
+    </div>
+    <div id="collapse1" class="accordion-body collapse in">
+      <div class="accordion-inner">
+		      <%= form_tag '/explorer', method: 'get', class: 'form-stacked' do %>
+		      	<div class="clearfix">
+		          <%= label_tag :city, t(:city) %>
+		          <div class="input">
+		            <%= select_tag :city, options_for_select(City.order('name').all.collect{|city| [city.name, city.slug] }, @city ? @city.id : nil),:include_blank => true, class: "chosen", selected: params[:city] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :category, t(:category) %>
+		          <div class="input">
+		            <%= select_tag :category, option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name),:include_blank => true, class: "chosen", selected: params[:category] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :name, t(:search) %>
+		          <div class="input">
+		            <%= text_field_tag :name %>
+		          </div>
+		        </div>
+		        
+		        <div class="clearfix">
+		          <%= label_tag :order, t(:order) %>
+		          <div class="input">
+		            <%= select_tag :order, "<option value=0>#{t :creation_date}</option><option value=1>#{ t :top_rated}</option>".html_safe %>
+		          </div>
+		        </div>
+		        <div class="actions">
+		          <%= submit_tag t(:filter), class: 'btn primary' %>
+		        </div>
+		      <% end %>
+		    <%= link_to "Quitar filtro", explorer_path, class: "btn btn-primary" %>
+		    <br />
+      </div>
+    </div>
+  </div>
   <div class="accordion-group">
    <div id="places-list">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
         <%= t 'what_do' %>
       </a>
     </div>
-    <div id="collapseOne" class="accordion-body collapse in">
+    <div id="collapse2" class="accordion-body collapse in">
       <div class="accordion-inner">
         <ul class="places-list">
 		    	<%= render collection: @what_to_do, partial: "poi_explorer", as: :poi %>
@@ -54,11 +79,11 @@
   <div class="accordion-group">
    <div id="places-list">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
         <%= t 'what_see' %>
       </a>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse">
+    <div id="collapse3" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class="places-list">
 		    	<%= render collection: @what_to_see, partial: "poi_explorer", as: :poi %>
@@ -70,14 +95,14 @@
 	<div class="accordion-group">
    <div id="places-list">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
         <%= t 'eat' %>
       </a>
     </div>
-    <div id="collapseThree" class="accordion-body collapse">
+    <div id="collapse4" class="accordion-body collapse">
       <div class="accordion-inner">
         <ul class="places-list">
-		    	<%= render collection: @what_to_eat, partial: "poi_explorer", as: :poi %>
+		    	<%= render collection: @where_to_eat, partial: "poi_explorer", as: :poi %>
 		  	</ul>
       </div>
     </div>

@@ -1,19 +1,14 @@
+
 <div id="all-pois-row" class="row">
   <div class="span8">
     <h3 id="all-pois"><%= t :all %></h3>
     <ul class="nav nav-tabs" id="myTab">
-		  <li class="active"><a href="#home">Home</a></li>
-		  <li><a href="#profile">Profile</a></li>
-		  <li><a href="#messages">Messages</a></li>
-		  <li><a href="#settings">Settings</a></li>
+		  <li class="active"><a href="#see"><%= t :what_see %></a></li>
+		  <li><a href="#do"><%= t :what_do %></a></li>
+		  <li><a href="#eat"><%= t :where_eat %></a></li>
+		  <li><a href="#sleep"><%= t :where_sleep %></a></li>
 		</ul>
-		 
-		<div class="tab-content">
-		  <div class="tab-pane active" id="home">Home</div>
-		  <div class="tab-pane" id="profile">Profile</div>
-		  <div class="tab-pane" id="messages">Messsages</div>
-		  <div class="tab-pane" id="settings">...</div>
-		</div>
+		 	
 		 
 		<script>
 		  $('#myTab a').click(function (e) {
@@ -22,18 +17,40 @@
 			})
 		</script>
     <div class="events-list">
-      <ul id="pois-list">
-        <%= render collection: @pois, partial: "poi_retrieval", as: :poi %>
-        <div id="infinite-scroll"></div>
-      </ul>
+      
+        <div class="tab-content">
+			  <div class="tab-pane active" id="see">
+			  	<ul id="pois-list">
+			  		<%= render collection: @what_to_see, partial: "poi_retrieval", as: :poi %>
+			  		<div id="infinite-scroll"></div>
+      		</ul>
+			  </div>
+			  <div class="tab-pane" id="do">
+			  	<ul id="pois-list">
+			  	<%= render collection: @what_to_do, partial: "poi_retrieval", as: :poi %>
+			  	<div id="infinite-scroll"></div>
+      		</ul>
+			  </div>
+			  <div class="tab-pane" id="eat">
+			  	<ul id="pois-list">
+			  	<%= render collection: @where_to_eat, partial: "poi_retrieval", as: :poi %>
+			  	<div id="infinite-scroll"></div>
+      		</ul>
+			  </div>
+			  <div class="tab-pane" id="sleep">
+			  	Sleep
+			  </div>
+			</div>
+        
+      
       <script>
       /*
        *Endless scrolling
        */
       var page = 2, stopScrolling = false;
-      var param_type = <%= params[:category] || 'null' %>;
+      var param_category = <%= params[:category] || 'null' %>;
       var param_order = <%= params[:order] || 'null' %>;
-      var param_title = "<%= params[:name] || '' %>";
+      var param_name = "<%= params[:name] || '' %>";
       var options = {
         fireOnce: true,
         fireDelay:400,
@@ -72,5 +89,38 @@
       </script>
     </div>
   </div>
-  
+   <div class="span3" id="search">
+    		
+		      <h3><%= t :search %></h3>
+		      <%= form_tag '/retrieval', method: 'get', class: 'form-stacked' do %>
+		      	<div class="clearfix">
+		          <%= label_tag :city, t(:city) %>
+		          <div class="input">
+		            <%= select_tag :city, options_for_select(City.order('name').all.collect{|city| [city.name, city.slug] }, @city ? @city.id : nil),:include_blank => true, class: "chosen", selected: params[:city] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :name, t(:search) %>
+		          <div class="input">
+		            <%= text_field_tag :name %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :category, t(:category) %>
+		          <div class="input">
+		            <%= select_tag :category, option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name),:include_blank => true, class: "chosen", selected: params[:category] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :order, t(:order) %>
+		          <div class="input">
+		            <%= select_tag :order, "<option value=0>#{t :creation_date}</option><option value=1>#{ t :top_rated}</option>".html_safe %>
+		          </div>
+		        </div>
+		        <div class="actions">
+		          <%= submit_tag t(:filter), class: 'btn btn-primary' %>
+		        </div>
+		      <% end %>
+		    <%= link_to "Quitar filtro", retrieval_path, class: "btn primary" %>
+    </div>
 </div>
