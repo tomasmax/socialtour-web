@@ -1,3 +1,4 @@
+# encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -79,14 +80,14 @@ end
 f = File.read('files/supercategories_minube.json')
 supercategories = JSON.parse f
 supercategories.each do |sc|
-  supercategory = Supercategory.new sc
+  supercategory = SupercategoryMinube.new sc
   supercategory.save
 end
 
 f = File.read('files/categories_minube.json')
 categories = JSON.parse f
 categories.each do |c|
-  rcategory = Category.new c
+  rcategory = CategoryMinube.new c
   category.save
 end
 
@@ -134,8 +135,24 @@ supCategories.each_with_index do |sc, i|
   end
 end
 
-categories_minube = [1,2,3,4,5,6]
-categories_foursquare = [3,6] #falta
+#6minube > 9 foursquare mirar hoteles la misma en las dos
+#juntar supcategories 
+#Interes turístico & recreation | minube: 1-interes_turistico | foursquare: 5-Outdoors&recreation
+sp = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(5)
+mi = SupercartegoryMinube.find_by_id(1)
+#Cultura y entreteniemiento | minube: 2-cultura | foursquare: 1-arte y entretenimiento, 2-Facultad y universidad
+#Ocio
+#Local Nocturno, from foursquare
+#Comida, from forusquare
+#Actividades Deportivas, from minube
+#Eventos
+#Alojamiento y Transporte | minube : 6-Alojamiento, 7-Transporte | foursquare: 9 -Viajes y Transporte
+#Tienda y Servicio
+#Profesionales y otros
+
+sup_categories_minube = [1,2,3,4,5,6]
+sup_categories_foursquare = [1,3,4,5,6,8,9] #falta
 
 #Create some cities
 City.create(name: "Bilbao")
@@ -152,19 +169,19 @@ puts "Some cities saved"
 #Create event categories from kulturtik
 sp = Supercategory.find_by_name("Eventos")
 Category.create(name:"Teatro", group: "do", supercategory_id: sp.id)
-Category.create(name:"Exposicion", group: "do", supercategory_id: sp.id)
+Category.create(name:"Exposición", group: "do", supercategory_id: sp.id)
 Category.create(name:"Danza", group: "do", supercategory_id: sp.id)
 Category.create(name:"Opera", group: "do", supercategory_id: sp.id)
-Category.create(name:"Presentacion", group: "do", supercategory_id: sp.id)
+Category.create(name:"Presentación", group: "do", supercategory_id: sp.id)
 Category.create(name:"Bertsolaritza", group: "do", supercategory_id: sp.id)
 Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
 Category.create(name:"Recital", group: "do", supercategory_id: sp.id)
 Category.create(name:"Cuenta cuentos", group: "do", supercategory_id: sp.id)
 Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
-Category.create(name:"Feria de artesania", group: "do", supercategory_id: sp.id)
+Category.create(name:"Feria de artesanía", group: "do", supercategory_id: sp.id)
 Category.create(name:"Feria del libro", group: "do", supercategory_id: sp.id)
-Category.create(name:"Titeres", group: "do", supercategory_id: sp.id)
-Category.create(name:"Proyeccion audiovisual", group: "do", supercategory_id: sp.id)
+Category.create(name:"Títeres", group: "do", supercategory_id: sp.id)
+Category.create(name:"Proyección audiovisual", group: "do", supercategory_id: sp.id)
 Category.create(name:"Jornadas", group: "do", supercategory_id: sp.id)
 Category.create(name:"Curso-taller", group: "do", supercategory_id: sp.id)
 Category.create(name:"Consurso", group: "do", supercategory_id: sp.id)

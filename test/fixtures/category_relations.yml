@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  minube_id: 1
+  foursquare_id: MyString
+  my_category_id: 1
+  type: 
+
+two:
+  minube_id: 1
+  foursquare_id: MyString
+  my_category_id: 1
+  type: 

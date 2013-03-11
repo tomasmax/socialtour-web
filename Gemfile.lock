@@ -89,7 +89,7 @@ GEM
       tzinfo
     formtastic (2.2.1)
       actionpack (>= 3.0)
-    foursquare2 (1.9.3)
+    foursquare2 (1.9.5)
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
@@ -266,7 +266,7 @@ DEPENDENCIES
   devise
   fb_graph
   formtastic
-  foursquare2
+  foursquare2 (~> 1.9.5)
   friendly_id (~> 4.0.9)
   geocoder
   gpx

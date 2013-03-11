@@ -80,6 +80,8 @@ class ApplicationController < ActionController::Base
         #event.name_eu
         event.longitude = e['longitude']
         event.latitude = e['latitude']
+        event.starts_at = start
+        event.ends_at = finish
         poi = Poi.find_by_longitude_and_latitude(event.longitude, event.latitude)
         if poi
           event.poi_id = poi.id
@@ -116,11 +118,11 @@ class ApplicationController < ActionController::Base
       poi[:description] = tips.items[0].text
       
       tips.items.each do |t|
-        rating = Rating.new
-        rating.poi_id = poi.id
-        rating.user_id = 2
-        rating.comment = t.text
-        rating.save
+        comment = Comment.new
+        comment.poi_id = poi.id
+        comment.user_id = 2 #foursquare user
+        comment.comment = t.text
+        comment.save
       end
       
     end
@@ -149,7 +151,21 @@ class ApplicationController < ActionController::Base
     
   end
   
-  def load_pois_from_foursquare
+  # Explore venues
+    #
+    # @param [Hash]  options
+    # @option options String :ll - Latitude and longitude in format LAT,LON
+    # @option options Integer :llAcc - Accuracy of the lat/lon in meters.
+    # @option options Integer :alt - Altitude in meters
+    # @option options Integer :altAcc - Accuracy of the altitude in meters
+    # @option options Integer :radius - Radius to search within, in meters
+    # @option options String :section - One of food, drinks, coffee, shops, or arts. Choosing one of these limits results to venues with categories matching these terms.
+    # @option options String :query - Query to match venues on.
+    # @option options Integer :limit - The limit of results to return.
+    # @option options String :intent - Limit results to venues with specials.
+    # @option options String :novelty - Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
+
+  def load_pois_from_foursquare()
     
     City.all.each do |city|
       pois = @clientFoursquare.search_venues(near: city.name) #near or ll, query, radius, categoryId

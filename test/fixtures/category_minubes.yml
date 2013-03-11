@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  supercategory_minube: 
+  name: MyString
+  group: MyString
+
+two:
+  supercategory_minube: 
+  name: MyString
+  group: MyString

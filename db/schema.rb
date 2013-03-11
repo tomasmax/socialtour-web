@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309172353) do
+ActiveRecord::Schema.define(:version => 20130310182337) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,25 @@ ActiveRecord::Schema.define(:version => 20130309172353) do
     t.integer  "supercategory_foursquare_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "category_minubes", :force => true do |t|
+    t.integer  "supercategory_minube_id"
+    t.string   "name"
+    t.string   "group"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "category_minubes", ["supercategory_minube_id"], :name => "index_category_minubes_on_supercategory_minube_id"
+
+  create_table "category_relations", :force => true do |t|
+    t.integer  "minube_id"
+    t.string   "foursquare_id"
+    t.integer  "my_category_id"
+    t.string   "type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -409,6 +428,12 @@ ActiveRecord::Schema.define(:version => 20130309172353) do
     t.string   "foursquare_icon"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "supercategory_minubes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "type_leisures", :force => true do |t|

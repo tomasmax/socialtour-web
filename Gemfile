@@ -59,14 +59,16 @@ gem 'oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-foursquare'
+gem 'omniauth-foursquare' 
 
 # Providers APIs
 gem 'twitter'
 gem 'fb_graph'
 #gem 'xmpp4r_facebook' # To send PMs to FB friends
 gem "koala" # Get friends from user
-gem 'foursquare2'
+gem 'foursquare2', '~> 1.9.5'
+
+#gem 'public_activity'
 
 #semtiment analyzer
 #gem 'sentimentalizer'
