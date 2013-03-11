@@ -2,6 +2,7 @@ ActiveAdmin.register Category do
   menu priority: 9, label: "Categories"
 
   index do  
+    column :id
     column :name
     column :slug
     column :supercategory
@@ -13,6 +14,7 @@ ActiveAdmin.register Category do
   
   form do |f|
      f.inputs "Category" do
+      f.input :id
       f.input :name
       f.input :is_route
       f.input :group

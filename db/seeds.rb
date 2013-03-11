@@ -6,10 +6,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'supercategory'
+require 'category'
 
 # Create admin users
-
-
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 AdminUser.create(:email => 'admin@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
 
@@ -138,19 +138,98 @@ end
 #6minube > 9 foursquare mirar hoteles la misma en las dos
 #juntar supcategories 
 #Interes turístico & recreation | minube: 1-interes_turistico | foursquare: 5-Outdoors&recreation
-sp = Supercategory.new
+sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(5)
-mi = SupercartegoryMinube.find_by_id(1)
-#Cultura y entreteniemiento | minube: 2-cultura | foursquare: 1-arte y entretenimiento, 2-Facultad y universidad
-#Ocio
-#Local Nocturno, from foursquare
-#Comida, from forusquare
-#Actividades Deportivas, from minube
-#Eventos
-#Alojamiento y Transporte | minube : 6-Alojamiento, 7-Transporte | foursquare: 9 -Viajes y Transporte
-#Tienda y Servicio
-#Profesionales y otros
+mi = SupercategoryMinube.find_by_id(1)
+name = "Interes turístico & Recreation"
+sc.populate(f2,mi,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
 
+#Cultura | minube: 2-cultura | 2-Facultad y universidad
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(1)
+f22 = SupercategoryFoursquare.find_by_id(2)
+mi = SupercategoryMinube.find_by_id(2)
+name = "Cultura"
+sc.populate(f2,mi,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+
+#Ocio y Entretenimiento | minube: 3 - Ocio | foursquare: 1-Arte y entretenimiento
+#Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes -> a la categoria de Comida
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(1)
+mi = SupercategoryMinube.find_by_id(3)
+name = "Ocio y entreteniemiento"
+sc.populate(f2,mi,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+
+#Comida, from forusquare 3
+#Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes de la categoria 3-Ocio de minube van en esta
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(3)
+name = "Comida"
+sc.populate(f2,nil,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+
+#Local Nocturno, from foursquare 4
+#41  Zonas de Copas    Ocio  do    de minube
+#40  Bares de Copas    Ocio  do    de minube
+#39  Discotecas  pasarlas a esta
+
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(4)
+name = "Local Nocturno"
+sc.populate(f2,nil,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+
+#Actividades Deportivas, from minube 4
+sc = Supercategory.new
+mi = SupercategoryMinube.find_by_id(4)
+name = mi.name
+sc.populate(nil,mi,name)
+sc.save
+CategoryRelation.create(minube_id: mi.id, my_category_id: sc.id)
+
+#Eventos, from minube 5
+sc = Supercategory.new
+mi = SupercategoryMinube.find_by_id(5)
+name = mi.name
+sc.populate(nil,mi,name)
+sc.save
+CategoryRelation.create(minube_id: mi.id, my_category_id: sc.id)
+
+#Alojamiento y Transporte | minube : 6-Alojamiento, 7-Transporte | foursquare: 9 -Viajes y Transporte
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(9)
+mi = SupercategoryMinube.find_by_id(6)
+mi2 = SupercategoryMinube.find_by_id(7)
+name = "Alojamiento y Transporte"
+sc.populate(f2,mi,name)
+sc.save
+
+#Tienda y Servicio | minube: 6-Administraciones y Servicios | foursquare: 8-Tiendas y servicios
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(8)
+mi = SupercategoryMinube.find_by_id(6)
+name = "Tiendas, Administraciones y Servicios"
+sc.populate(f2,mi,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+
+#Profesionales y otros, from foursquare 6
+sc = Supercategory.new
+f2 = SupercategoryFoursquare.find_by_id(6)
+name = f2.name
+sc.populate(f2,nil,name)
+sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+
+#Cargar todas las categorias de mis nuevas categorias
 sup_categories_minube = [1,2,3,4,5,6]
 sup_categories_foursquare = [1,3,4,5,6,8,9] #falta
 
