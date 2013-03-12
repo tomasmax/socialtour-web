@@ -135,8 +135,7 @@ supCategories.each_with_index do |sc, i|
   end
 end
 
-#6minube > 9 foursquare mirar hoteles la misma en las dos
-#juntar supcategories 
+#SuperCategories
 #Interes turístico & recreation | minube: 1-interes_turistico | foursquare: 5-Outdoors&recreation
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(5)
@@ -211,8 +210,10 @@ mi2 = SupercategoryMinube.find_by_id(7)
 name = "Alojamiento y Transporte"
 sc.populate(f2,mi,name)
 sc.save
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi2.id, my_category_id: sc.id)
 
-#Tienda y Servicio | minube: 6-Administraciones y Servicios | foursquare: 8-Tiendas y servicios
+#Tiendas y Servicios | minube: 6-Administraciones y Servicios | foursquare: 8-Tiendas y servicios
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(8)
 mi = SupercategoryMinube.find_by_id(6)
@@ -229,21 +230,34 @@ sc.populate(f2,nil,name)
 sc.save
 CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
 
-#Cargar todas las categorias de mis nuevas categorias
-sup_categories_minube = [1,2,3,4,5,6]
-sup_categories_foursquare = [1,3,4,5,6,8,9] #falta
+puts "My Supercategories created"
 
-#Create some cities
-City.create(name: "Bilbao")
-City.create(name: "Gernika")
-City.create(name: "Bakio")
-City.create(name: "Algorta")
-City.create(name: "Getxo")
-City.create(name: "Sopelana")
-City.create(name: "Bermeo")
-City.create(name: "Lekeitio")
-City.create(name: "San Sebastian")
-puts "Some cities saved"
+#Categories
+scs = Supercategory.all
+scs.each do |supercategory|
+  if supercategory.foursquare_id
+    categories_foursquare = CategoryFoursquare.where(supercategory_id: supercategory.id)
+    categories_foursquare.each do |c|
+      category = Category.new
+      category.load_foursquare_data(c)
+      if category.save
+        puts "- Created category: "+ category.name
+      end
+    end
+  end
+  if supercategory.minube_id
+    categories_minube = CategoryMinube.where(supercategory_id: supercategory.id)
+    categories_minube.each do |c|
+      cat_ex = Category.where("name LIKE :name", name: "#{c.name}%")
+      if cat_ex #actualizar la existente
+        cat_ex.minube_id = c.id
+      else #crear
+        category = Category.new 
+        
+      end
+    end
+  end
+end
 
 #Create event categories from kulturtik
 sp = Supercategory.find_by_name("Eventos")
@@ -274,6 +288,18 @@ Category.create(name:"Payasos", group: "do", supercategory_id: sp.id)
 Category.create(name:"Monologos", group: "do", supercategory_id: sp.id)
 Category.create(name:"Humor", group: "do", supercategory_id: sp.id)
 puts "Kulturtik categories saved"
+
+#Create some cities
+City.create(name: "Bilbao")
+City.create(name: "Gernika")
+City.create(name: "Bakio")
+City.create(name: "Algorta")
+City.create(name: "Getxo")
+City.create(name: "Sopelana")
+City.create(name: "Bermeo")
+City.create(name: "Lekeitio")
+City.create(name: "San Sebastian")
+puts "Some cities saved"
 
 #Create package types
 TypeLeisure.create(name: "Ocio solo")
