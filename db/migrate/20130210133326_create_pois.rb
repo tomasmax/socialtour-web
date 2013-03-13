@@ -15,6 +15,7 @@ class CreatePois < ActiveRecord::Migration
       t.string :minube_url
       t.string :minube_id
       t.references :city
+      t.references :subcategory
       t.references :category
       t.references :supercategory
       t.string :name_eu
@@ -25,6 +26,7 @@ class CreatePois < ActiveRecord::Migration
     end
     add_index :pois, :user_id
     add_index :pois, :city_id
+    add_index :pois, :subcategory_id
     add_index :pois, :category_id
     add_index :pois, :supercategory_id
   end

@@ -73,22 +73,34 @@ end
 f = File.read('files/countries.json')
 countries = JSON.parse f
 countries.each do |c|
-  country = Country.new c
-  country.save
+   country = Country.new
+   country.minube_id = c["id"]
+   country.name = c["name"]
+   country.pois_count = c["pois_count"]
+   country.full_count = c["full_count"]
+   country.restaurant_count = c["restaurant_count"]
+   country.blog_count = c["blog_count"]
+   country.hotel_count = c["hotel_count"]
+   country.latitude = c["latitude"]
+   country.longitude = c["longitude"]
+   country.save
+   puts "- Country #{c['id']} #{c['name']}"
 end
 
 f = File.read('files/supercategories_minube.json')
 supercategories = JSON.parse f
 supercategories.each do |sc|
-  supercategory = SupercategoryMinube.new sc
-  supercategory.save
+  supercategory = SupercategoryMinube.new(name: sc['name'], id: sc['id'])
+  if supercategory.save
+    puts "- Supercategory #{sc['id']} #{sc['name']}"
+  end
 end
 
 f = File.read('files/categories_minube.json')
 categories = JSON.parse f
 categories.each do |c|
-  rcategory = CategoryMinube.new c
-  category.save
+  category = CategoryMinube.new(name: c['name'], supercategory_minube_id: c['supercategory_id'], group: c['group'], id: c['id'])
+  puts "  Category #{c['id']} #{c['name']}" if category.save
 end
 
 #Load categories foursquare
@@ -137,13 +149,21 @@ end
 
 #SuperCategories
 #Interes turístico & recreation | minube: 1-interes_turistico | foursquare: 5-Outdoors&recreation
-sc = Supercategory.new
+
 f2 = SupercategoryFoursquare.find_by_id(5)
 mi = SupercategoryMinube.find_by_id(1)
 name = "Interes turístico & Recreation"
-sc.populate(f2,mi,name)
+sc = Supercategory.new
+sc.id = 1
+sc.name = name
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.minube_id = mi.id if mi
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+sc.group = "see"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Cultura | minube: 2-cultura | 2-Facultad y universidad
 sc = Supercategory.new
@@ -151,9 +171,16 @@ f2 = SupercategoryFoursquare.find_by_id(1)
 f22 = SupercategoryFoursquare.find_by_id(2)
 mi = SupercategoryMinube.find_by_id(2)
 name = "Cultura"
-sc.populate(f2,mi,name)
+sc.id = Supercategory.last.id+1
+sc.name = name
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.minube_id = mi.id if mi
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+sc.group = "see"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Ocio y Entretenimiento | minube: 3 - Ocio | foursquare: 1-Arte y entretenimiento
 #Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes -> a la categoria de Comida
@@ -161,18 +188,31 @@ sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(1)
 mi = SupercategoryMinube.find_by_id(3)
 name = "Ocio y entreteniemiento"
-sc.populate(f2,mi,name)
+sc.id = Supercategory.last.id+1
+sc.name = name
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.minube_id = mi.id if mi
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+sc.group = "do"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Comida, from forusquare 3
 #Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes de la categoria 3-Ocio de minube van en esta
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(3)
 name = "Comida"
-sc.populate(f2,nil,name)
+sc.id = Supercategory.last.id+1
+sc.name = name
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+sc.group = "eat"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: nil, supercategory_id: sc.id)
 
 #Local Nocturno, from foursquare 4
 #41  Zonas de Copas    Ocio  do    de minube
@@ -181,82 +221,158 @@ CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
 
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(4)
-name = "Local Nocturno"
-sc.populate(f2,nil,name)
+sc.name = "Bares y Pubs"
+sc.id = Supercategory.last.id+1
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+sc.group = "do"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: nil, supercategory_id: sc.id)
 
 #Actividades Deportivas, from minube 4
 sc = Supercategory.new
 mi = SupercategoryMinube.find_by_id(4)
-name = mi.name
-sc.populate(nil,mi,name)
+sc.name = mi.name
+sc.name_en = "Sport activities"
+sc.id = Supercategory.last.id+1
+sc.minube_id = mi.id if mi
+sc.group = "do"
 sc.save
-CategoryRelation.create(minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: nil, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Eventos, from minube 5
 sc = Supercategory.new
 mi = SupercategoryMinube.find_by_id(5)
-name = mi.name
-sc.populate(nil,mi,name)
+sc.name = mi.name
+sc.name_en = "Events"
+sc.id = Supercategory.last.id+1
+sc.minube_id = mi.id if mi
+sc.group = "do"
 sc.save
-CategoryRelation.create(minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: nil, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Alojamiento y Transporte | minube : 6-Alojamiento, 7-Transporte | foursquare: 9 -Viajes y Transporte
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(9)
 mi = SupercategoryMinube.find_by_id(6)
 mi2 = SupercategoryMinube.find_by_id(7)
-name = "Alojamiento y Transporte"
-sc.populate(f2,mi,name)
+sc.name = "Alojamiento y Transporte"
+sc.id = Supercategory.last.id+1
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.minube_id = mi.id if mi
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon
+sc.group = "travel"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi2.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Tiendas y Servicios | minube: 6-Administraciones y Servicios | foursquare: 8-Tiendas y servicios
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(8)
 mi = SupercategoryMinube.find_by_id(6)
-name = "Tiendas, Administraciones y Servicios"
-sc.populate(f2,mi,name)
+sc.name = "Tiendas, Administraciones y Servicios"
+sc.id = Supercategory.last.id+1
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.minube_id = mi.id if mi
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon
+sc.group = "do"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, minube_id: mi.id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: mi.id, supercategory_id: sc.id)
 
 #Profesionales y otros, from foursquare 6
 sc = Supercategory.new
 f2 = SupercategoryFoursquare.find_by_id(6)
-name = f2.name
-sc.populate(f2,nil,name)
+sc.name = f2.name
+sc.id = Supercategory.last.id+1
+sc.name_en = f2.name_en if f2
+sc.foursquare_id = f2.foursquare_id if f2
+sc.foursquare_icon = f2.foursquare_icon if f2
+sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon
+sc.group = "do"
 sc.save
-CategoryRelation.create(foursquare_id: f2.foursquare_id, my_category_id: sc.id)
+SupercategoryRelation.create(supercategory_foursquare_id: f2.id, supercategory_minube_id: nil, supercategory_id: sc.id)
 
-puts "My Supercategories created"
+puts "-My Supercategories created"
 
 #Categories
 scs = Supercategory.all
 scs.each do |supercategory|
-  if supercategory.foursquare_id
-    categories_foursquare = CategoryFoursquare.where(supercategory_id: supercategory.id)
-    categories_foursquare.each do |c|
-      category = Category.new
-      category.load_foursquare_data(c)
-      if category.save
-        puts "- Created category: "+ category.name
-      end
-    end
-  end
+  puts "Supercategory: "+supercategory.name
   if supercategory.minube_id
-    categories_minube = CategoryMinube.where(supercategory_id: supercategory.id)
-    categories_minube.each do |c|
-      cat_ex = Category.where("name LIKE :name", name: "#{c.name}%")
-      if cat_ex #actualizar la existente
-        cat_ex.minube_id = c.id
-      else #crear
-        category = Category.new 
-        
+    supercategory.supercategory_minubes.each do |scm|
+      categories_minube = scm.category_minubes
+      categories_minube.each do |c|
+        category = supercategory.categories.new
+        #Comida, from forusquare 3
+        #Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes de la categoria 3-Ocio de minube van en esta
+        #41  Zonas de Copas    Ocio  do    de minube
+        #40  Bares de Copas    Ocio  do    de minube
+        #39  Discotecas  pasarlas a la supercategory 5
+        if supercategory.id == 3
+          if c.id == 36 || c.id == 34 || c.id == 29
+            category.supercategory_id = 4 #asignar supercategoria de comida
+          elsif c.id == 41 || c.id == 40 || c.id == 39
+            category.supercategory_id = 5 #asignar supercategoria de bares
+          end
+        else
+          category.supercategory_id = supercategory.id
+        end
+        category.name = c.name
+        category.group = c.group
+        category.minube_id = c.id
+        if category.save
+          puts "- Created category from (minube): "+ category.name  
+        end
       end
     end
   end
+  
+  if supercategory.foursquare_id
+    supercategory.supercategory_foursquares.each do |scf|
+      categories_foursquare = scf.category_foursquares
+      categories_foursquare.each do |c|   
+        cat_ex = Category.where("lower(name) LIKE :name", name: "#{c.name}%".downcase)
+        if !cat_ex.first.nil? #actualizar la existente
+          cat_ex.first.update_attributes(foursquare_id: c.id, foursquare_icon: c.foursquare_icon)
+          CategoryRelation.create(category_foursquare_id: c.id, category_minube_id: cat_ex.first.minube_id, category_id: cat_ex.first.id)
+          puts "- Updated category: "+ cat_ex.first.name
+        else #crear
+          category = supercategory.categories.new
+          category.name = c.pluralName
+          category.name_en = c.name_en
+          category.foursquare_id = c.foursquare_id
+          category.foursquare_icon = c.foursquare_icon
+          category.group = supercategory.group
+          if !c.foursquare_icon.blank?
+            #category.icon = open(c.foursquare_icon)
+            #puts "New icon #{c.foursquare_icon} for category "+ category.name
+          end
+          if category.save
+            puts "- Created category from (foursquare): "+ category.name
+          end
+          if c.subcategory_foursquares
+            c.subcategory_foursquares.each do |subc|
+              subcategory = category.subcategories.new
+              category.name = c.pluralName
+              subcategory.name_en = c.name_en
+              subcategory.foursquare_id = c.foursquare_id
+              subcategory.foursquare_icon = c.foursquare_icon
+              if category.save
+                puts "- Created subcategory from (foursquare): "+ category.name
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  
 end
 
 #Create event categories from kulturtik

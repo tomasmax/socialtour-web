@@ -8,6 +8,9 @@ class Category < ActiveRecord::Base
   belongs_to :supercategory
   has_many :subcategories
   has_many :pois
+  has_many :category_minubes, through: :category_relations
+  has_many :category_foursquares, through: :category_relations
+  has_many :category_relations 
   attr_accessible :description, :group, :is_route, :name, :slug, :foursquare_id, :foursquare_icon,
                   :name_eu, :name_en, :icon_file_name, :icon_content_type, :icon_file_size, :icon_update_at,
                   :supercategory_id, :icon
@@ -20,6 +23,22 @@ class Category < ActiveRecord::Base
   friendly_id :name, use: :slugged
   
   #before_validation :generate_slug
+  
+  def populate_from_foursquare(f2)
+    self.id = Category.last.id+1
+    self.name = f2.pluralName
+    self.name_en = f2.name_en if f2
+    self.foursquare_id = f2.foursquare_id if f2
+    self.foursquare_icon = f2.foursquare_icon if f2
+    self.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+  end
+  
+  def populate_from_minube(mi)
+    self.id = Category.last.id+1
+    self.name = name
+    self.group = mi.group
+    self.minube_id = mi.id if mi
+  end
   
   def generate_slug
     if !self.slug

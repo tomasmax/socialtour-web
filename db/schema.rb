@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311095330) do
+ActiveRecord::Schema.define(:version => 20130312105906) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -113,12 +113,11 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
   add_index "category_minubes", ["supercategory_minube_id"], :name => "index_category_minubes_on_supercategory_minube_id"
 
   create_table "category_relations", :force => true do |t|
-    t.integer  "minube_id"
-    t.string   "foursquare_id"
-    t.integer  "my_category_id"
-    t.string   "type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "category_minube_id"
+    t.string   "category_foursquare_id"
+    t.integer  "category_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -218,6 +217,9 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.decimal  "price"
     t.integer  "category_id"
     t.integer  "supercategory_id"
+    t.integer  "type_leisure_id"
+    t.integer  "type_time_id"
+    t.integer  "type_vehicle_id"
     t.integer  "user_id"
     t.integer  "provider_id"
     t.string   "image_file_name"
@@ -226,14 +228,14 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.datetime "image_update_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.integer  "type_leisure_id"
-    t.integer  "type_time_id"
-    t.integer  "type_vehicle_id"
   end
 
   add_index "packages", ["category_id"], :name => "index_packages_on_category_id"
   add_index "packages", ["provider_id"], :name => "index_packages_on_provider_id"
   add_index "packages", ["supercategory_id"], :name => "index_packages_on_supercategory_id"
+  add_index "packages", ["type_leisure_id"], :name => "index_packages_on_type_leisure_id"
+  add_index "packages", ["type_time_id"], :name => "index_packages_on_type_time_id"
+  add_index "packages", ["type_vehicle_id"], :name => "index_packages_on_type_vehicle_id"
   add_index "packages", ["user_id"], :name => "index_packages_on_user_id"
 
   create_table "photos", :force => true do |t|
@@ -261,11 +263,11 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
   create_table "pois", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "latitude",          :precision => 16, :scale => 8
-    t.decimal  "longitude",         :precision => 16, :scale => 8
+    t.decimal  "latitude",         :precision => 16, :scale => 8
+    t.decimal  "longitude",        :precision => 16, :scale => 8
     t.integer  "user_id"
-    t.integer  "ratings_count",                                    :default => 0
-    t.decimal  "rating",            :precision => 3,  :scale => 1, :default => 0.0
+    t.integer  "ratings_count",                                   :default => 0
+    t.decimal  "rating",           :precision => 3,  :scale => 1, :default => 0.0
     t.string   "slug"
     t.string   "address"
     t.string   "telephone"
@@ -273,15 +275,14 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.string   "minube_url"
     t.string   "minube_id"
     t.integer  "city_id"
+    t.integer  "subcategory_id"
     t.integer  "category_id"
     t.integer  "supercategory_id"
     t.string   "name_eu"
     t.text     "description_eu"
     t.text     "timetable"
-    t.string   "picture_nomral"
-    t.string   "picture_thumbnail"
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.string   "foursquare_id"
     t.string   "foursquare_url"
     t.integer  "checkins_count"
@@ -292,6 +293,7 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
 
   add_index "pois", ["category_id"], :name => "index_pois_on_category_id"
   add_index "pois", ["city_id"], :name => "index_pois_on_city_id"
+  add_index "pois", ["subcategory_id"], :name => "index_pois_on_subcategory_id"
   add_index "pois", ["supercategory_id"], :name => "index_pois_on_supercategory_id"
   add_index "pois", ["user_id"], :name => "index_pois_on_user_id"
 
@@ -313,8 +315,6 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.time     "image_update_at"
-    t.integer  "foloclore"
-    t.string   "integer"
     t.date     "born_date"
     t.integer  "leisure"
     t.integer  "gastronomy"
@@ -393,6 +393,27 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
 
   add_index "route_points", ["poi_id"], :name => "index_route_points_on_poi_id"
 
+  create_table "subcategories", :force => true do |t|
+    t.string   "name"
+    t.string   "name_en"
+    t.string   "name_eu"
+    t.integer  "category_id"
+    t.string   "group"
+    t.string   "slug"
+    t.boolean  "is_route"
+    t.text     "description"
+    t.string   "foursquare_id"
+    t.string   "foursquare_icon"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_update_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
+
   create_table "subcategory_foursquares", :force => true do |t|
     t.string   "name"
     t.string   "name_en"
@@ -412,6 +433,7 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_update_at"
+    t.string   "group"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "foursquare_id"
@@ -436,6 +458,14 @@ ActiveRecord::Schema.define(:version => 20130311095330) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "supercategory_relations", :force => true do |t|
+    t.integer  "supercategory_minube_id"
+    t.string   "supercategory_foursquare_id"
+    t.integer  "supercategory_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "type_leisures", :force => true do |t|

@@ -165,7 +165,7 @@ class ApplicationController < ActionController::Base
     # @option options String :intent - Limit results to venues with specials.
     # @option options String :novelty - Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
 
-  def load_pois_from_foursquare()
+  def load_pois_from_foursquare
     
     City.all.each do |city|
       pois = @clientFoursquare.search_venues(near: city.name) #near or ll, query, radius, categoryId

@@ -8,7 +8,8 @@ class City < ActiveRecord::Base
   has_many :users
   has_many :pois
   has_many :events
-  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :name_eu, :slug, :minube_id, :image
+  attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :name_eu, :slug, :minube_id, :image,
+                  :id, :created_at, :updated_at
    
   #validates :slug, :presence => true
   validates_uniqueness_of :slug, :minube_id

@@ -10,6 +10,9 @@ class Supercategory < ActiveRecord::Base
     
   has_many :categories
   has_many :pois
+  has_many :supercategory_minubes, through: :supercategory_relations
+  has_many :supercategory_foursquares, through: :supercategory_relations
+  has_many :supercategory_relations 
   
   validates :name, :presence => true
   validates :slug, :presence => true
@@ -18,14 +21,14 @@ class Supercategory < ActiveRecord::Base
   friendly_id :name, use: :slugged
   #before_validation :generate_slug
   
-  def self.populate(f2=nil,mi=nil,name)
-    sc.id = Supercategory.last.id+1
-    sc.name = name
-    sc.name_en = f2.name_en if f2
-    sc.foursquare_id = f2.foursquare_id if f2
-    sc.minube_id = mi.id if mi
-    sc.foursquare_icon = f2.foursquare_icon if f2
-    sc.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
+  def populate(f2=nil,mi=nil,name)
+    self.id = Supercategory.last.id+1
+    self.name = name
+    self.name_en = f2.name_en if f2
+    self.foursquare_id = f2.foursquare_id if f2
+    self.minube_id = mi.id if mi
+    self.foursquare_icon = f2.foursquare_icon if f2
+    self.icon = open(sc.foursquare_icon) if sc.foursquare_icon 
   end
   
   def generate_slug

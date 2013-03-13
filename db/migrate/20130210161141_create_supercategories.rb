@@ -7,6 +7,7 @@ class CreateSupercategories < ActiveRecord::Migration
       t.string :icon_content_type
       t.integer :icon_file_size
       t.datetime :icon_update_at
+      t.string :group
 
       t.timestamps
     end

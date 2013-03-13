@@ -3,6 +3,7 @@ class Poi < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :city
+  belongs_to :subcategory
   belongs_to :category
   belongs_to :supercategory
   
@@ -17,7 +18,7 @@ class Poi < ActiveRecord::Base
                   :address, :description, :description_eu, :latitude, :longitude, 
                   :minube_id, :minube_url, :name, :name_eu, :rating, :ratings_count, :slug, 
                   :telephone, :timetable, :website,:foursquare_id, :foursquare_url, :checkins_count, 
-                  :users_count, :tip_count, :likes_count,:city_id
+                  :users_count, :tip_count, :likes_count,:city_id, :subcategory_id
 
                   
   attr_accessor :route_points_list
