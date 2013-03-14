@@ -308,7 +308,7 @@ scs.each do |supercategory|
     supercategory.supercategory_minubes.each do |scm|
       categories_minube = scm.category_minubes
       categories_minube.each do |c|
-        category = supercategory.categories.new
+        category = Category.new
         #Comida, from forusquare 3
         #Recordar de minube categorias 36 - Interes Gastronomico, 34 - Bares de Tapas, 29 -Restaurantes de la categoria 3-Ocio de minube van en esta
         #41  Zonas de Copas    Ocio  do    de minube
@@ -326,6 +326,7 @@ scs.each do |supercategory|
         category.name = c.name
         category.group = c.group
         category.minube_id = c.id
+        category.foursquare_id = nil
         if category.save
           puts "- Created category from (minube): "+ category.name  
         end
@@ -339,7 +340,7 @@ scs.each do |supercategory|
       categories_foursquare.each do |c|   
         cat_ex = Category.where("lower(name) LIKE :name", name: "#{c.name}%".downcase)
         if !cat_ex.first.nil? #actualizar la existente
-          cat_ex.first.update_attributes(foursquare_id: c.id, foursquare_icon: c.foursquare_icon)
+          cat_ex.first.update_attributes(foursquare_id: c.foursquare_id, foursquare_icon: c.foursquare_icon)
           CategoryRelation.create(category_foursquare_id: c.id, category_minube_id: cat_ex.first.minube_id, category_id: cat_ex.first.id)
           puts "- Updated category: "+ cat_ex.first.name
         else #crear
@@ -349,6 +350,7 @@ scs.each do |supercategory|
           category.foursquare_id = c.foursquare_id
           category.foursquare_icon = c.foursquare_icon
           category.group = supercategory.group
+          category.minube_id = nil
           if !c.foursquare_icon.blank?
             #category.icon = open(c.foursquare_icon)
             #puts "New icon #{c.foursquare_icon} for category "+ category.name

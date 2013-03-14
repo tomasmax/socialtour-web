@@ -30,7 +30,7 @@ class Poi < ActiveRecord::Base
   validates :name, presence: true
   #validates :slug, presence: true
   
-  validates_uniqueness_of :name, :slug, :minube_id
+  validates_uniqueness_of :name, :slug
   
   paginates_per 10
   
