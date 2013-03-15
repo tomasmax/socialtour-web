@@ -84,6 +84,7 @@ gem "geocoder"
 #parsers
 gem 'libxml-ruby'
 gem 'json'
+gem 'nokogiri'
 
 gem "meta_search"
 

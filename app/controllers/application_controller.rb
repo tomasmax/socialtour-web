@@ -109,24 +109,7 @@ class ApplicationController < ActionController::Base
       likes_count: venue.likes.count,
       category_id: cat.id,
       supercategory_id: cat.supercategory.id}
-=begin      
-    # Load description from first tip
-    tips = @@clientFoursquare.venue_tips(poi['foursquare_id'], sort: "recent")    
-    
-    #Load all tips to poi comments
-    if tips.items
-      poi[:description] = tips.items[0].text
-      
-      tips.items.each do |t|
-        comment = Comment.new
-        comment.poi_id = poi.id
-        comment.user_id = 2 #foursquare user
-        comment.comment = t.text
-        comment.save
-      end
-      
-    end
-=end 
+ 
     poi 
   end
   
@@ -137,14 +120,14 @@ class ApplicationController < ActionController::Base
     photos.items.each_with_index do |photo, i|
       begin
         foursquare_photo_url = photo.prefix+"1280x800"+photo.suffix
-        puts foursquare_photo_url
+
         unless Photo.find_by_foursquare_url(foursquare_photo_url)
           p = poi.photos.new(user_id: 2, 
             image: open(foursquare_photo_url), 
             foursquare_url: foursquare_photo_url,
             image_file_name: "#{poi.name}_#{i}.jpg")
           if p.save!
-            puts "New photo #{photo['url']}"
+            puts "New photo #{foursquare_photo_url}"
           end
         end
       rescue Exception => e
@@ -167,6 +150,23 @@ class ApplicationController < ActionController::Base
     # @option options Integer :limit - The limit of results to return.
     # @option options String :intent - Limit results to venues with specials.
     # @option options String :novelty - Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
+    
+  def load_poi_tips(poi)
+    # Load description from first tip
+    tips = @@clientFoursquare.venue_tips(poi.foursquare_id, sort: "recent")    
+    
+    #Load all tips to poi comments
+    if tips.items
+      poi.update_Attributes(description: tips.items[0].text)
+      
+      tips.items.each do |t|
+        comment = poi.comments.new
+        comment.user_id = 2 #foursquare user
+        comment.comment = t.text
+        comment.save!
+      end 
+    end
+  end
 
   def load_pois_from_foursquare
     @@clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
@@ -186,14 +186,17 @@ class ApplicationController < ActionController::Base
                   poi = Poi.find_by_name(venue.name)
                   if poi
                     poi.update_attributes load_poi_from_forsquare(venue)
+          
                   else
                     poi = city.pois.new load_poi_from_forsquare(venue)
+                  
                     if poi.save!
                       puts "--New poi #{poi.name}"
                     end
                   end
                   
                   if poi
+                    load_poi_tips(poi)
                     load_venue_photos_from_foursquare(poi)
                     
                     total_saved = total_saved + 1

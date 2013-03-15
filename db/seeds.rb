@@ -6,8 +6,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'supercategory'
-require 'category'
+require 'nokogiri'
+require 'uri'
+require 'net/http'
 
 # Create admin users
 AdminUser.create(:email => 'tomas.madariaga@urbegi.com', :password => 'admin1234', :password_confirmation => 'admin1234')
@@ -351,22 +352,43 @@ scs.each do |supercategory|
           category.foursquare_icon = c.foursquare_icon
           category.group = supercategory.group
           category.minube_id = nil
-          if !c.foursquare_icon.blank?
-            #category.icon = open(c.foursquare_icon)
-            #puts "New icon #{c.foursquare_icon} for category "+ category.name
+          if !c.foursquare_icon.blank? && category.name != "Puentes"
+            
+            begin 
+             if category.icon = open(c.foursquare_icon, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE) #production VERIFY_PEER
+              puts "New icon #{c.foursquare_icon} for category "+ category.name
+             end 
+             rescue => e
+               case e
+               when OpenURI::HTTPError
+                 # do something
+                 puts "HTTP Error getting #{category.name} photo"
+               when SocketError
+                 # do something else
+               else
+                 raise e
+               end
+              rescue SystemCallError => e
+               if e === Errno::ECONNRESET
+                # do something else
+               else
+                raise e
+               end
+             end
           end
           if category.save
             puts "- Created category from (foursquare): "+ category.name
           end
+          
           if c.subcategory_foursquares
             c.subcategory_foursquares.each do |subc|
               subcategory = category.subcategories.new
-              category.name = c.pluralName
-              subcategory.name_en = c.name_en
-              subcategory.foursquare_id = c.foursquare_id
-              subcategory.foursquare_icon = c.foursquare_icon
-              if category.save
-                puts "- Created subcategory from (foursquare): "+ category.name
+              subcategory.name = subc.pluralName
+              subcategory.name_en = subc.name_en
+              subcategory.foursquare_id = subc.foursquare_id
+              subcategory.foursquare_icon = subc.foursquare_icon
+              if subcategory.save
+                puts "- Created subcategory from (foursquare): "+ subcategory.name
               end
             end
           end
@@ -403,7 +425,7 @@ Category.create(name:"Circo", group: "do", supercategory_id: sp.id)
 Category.create(name:"Conferencia", group: "do", supercategory_id: sp.id)
 Category.create(name:"Pastoral", group: "do", supercategory_id: sp.id)
 Category.create(name:"Payasos", group: "do", supercategory_id: sp.id)
-Category.create(name:"Monologos", group: "do", supercategory_id: sp.id)
+Category.create(name:"Monólogos", group: "do", supercategory_id: sp.id)
 Category.create(name:"Humor", group: "do", supercategory_id: sp.id)
 puts "Kulturtik categories saved"
 
