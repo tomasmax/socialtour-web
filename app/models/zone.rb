@@ -2,7 +2,13 @@ class Zone < ActiveRecord::Base
   belongs_to :country
   attr_accessible :latitude, :longitude, :name
   
-  geocoded_by :name do |obj,results|
+  geocoded_by :name
+ 
+  after_validation :geocode, :if => :name_changed?
+ 
+  
+  def set_location
+    results = Geocoder.search(self.name)
     if geo = results.first
       self.latitude = geo.latitude
       self.longitude = geo.longitude
@@ -10,7 +16,5 @@ class Zone < ActiveRecord::Base
       self.country = country
     end
   end
-  
-  after_validation :geocode
   
 end

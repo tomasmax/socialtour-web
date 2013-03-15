@@ -12,9 +12,19 @@ class City < ActiveRecord::Base
   attr_accessible :icon_content_type, :icon_file_name, :icon_file_size, :icon_update_at, :name, :name_eu, :slug, :minube_id, :image,
                   :latitude, :longitude, :zone_id
                   
-  geocoded_by :name do |obj,results|
+  geocoded_by :name
+  
+  after_validation :geocode, :set_location, :if => :name_changed?
+   
+  #validates :slug, :presence => true
+  validates_uniqueness_of :slug
+  
+  friendly_id :name, use: :slugged
+  #before_validation :generate_slug
+  
+  def set_location
+    results = Geocoder.search(self.name)
     if geo = results.first
-      city = City.find_or_create_by_name(geo.city)
       self.latitude = geo.latitude
       self.longitude = geo.longitude
       zone = Zone.find_or_create_by_name(geo.province)
@@ -24,17 +34,9 @@ class City < ActiveRecord::Base
     end
   end
   
-  after_validation :geocode
-   
-  #validates :slug, :presence => true
-  validates_uniqueness_of :slug
-  
-  friendly_id :name, use: :slugged
-  #before_validation :generate_slug
-  
   def generate_slug
     if !self.slug
-      self.slug = self.name.without_accents.to_slug
+      self.slug = self.name.to_slug
     end
   end
   

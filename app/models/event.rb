@@ -9,14 +9,21 @@ class Event < ActiveRecord::Base
   validates_presence_of :starts_at
   validates_presence_of :ends_at
   
-  reverse_geocoded_by :latitude, :longitude do |obj,results|
+  reverse_geocoded_by :latitude, :longitude
+  
+  after_validation :reverse_geocode, :set_location, :if => :latitude_changed?
+  
+  def set_location
+    results = Geocoder.search("#{self.latitude}, #{self.longitude}")
     if geo = results.first
       city = City.find_or_create_by_name(geo.city)
       self.city = city
     end
+    poi = Poi.find_by_longitude_and_latitude(event.longitude, event.latitude)
+    if poi
+      self.poi = poi
+    end
   end
-  
-  after_validation :reverse_geocode
   
   def as_json options=nil
     options ||= {}

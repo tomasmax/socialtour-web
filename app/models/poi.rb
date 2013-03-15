@@ -19,11 +19,14 @@ class Poi < ActiveRecord::Base
                   :minube_id, :minube_url, :name, :name_eu, :rating, :ratings_count, :slug, 
                   :telephone, :timetable, :website,:foursquare_id, :foursquare_url, :checkins_count, 
                   :users_count, :tip_count, :likes_count,:city_id, :subcategory_id
-
-                  
+               
   attr_accessor :route_points_list
   attr_accessor :gpx_file
   attr_accessor :index
+  
+  reverse_geocoded_by :latitude, :longitude
+  
+  after_validation :reverse_geocode, :set_location, :if => :latitude_changed?
   
   friendly_id :name, use: :slugged
   
@@ -37,6 +40,13 @@ class Poi < ActiveRecord::Base
   #after_save :save_route, :generate_route_info
   before_save :set_supercategory
   
+  def set_location
+    results = Geocoder.search("#{self.latitude}, #{self.longitude}")
+    if geo = results.first
+      city = City.find_or_create_by_name(geo.city)
+      self.city = city
+    end
+  end
   
   def set_supercategory
     if !self.supercategory_id && self.category

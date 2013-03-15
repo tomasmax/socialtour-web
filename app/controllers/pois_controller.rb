@@ -14,7 +14,7 @@ class PoisController < InheritedResources::Base
         begin
           @@last_minube_update = Time.now
           #import_pois_from_minube
-          load_pois_from_foursquare
+          import_pois_from_foursquare
         rescue Exception => e
           puts "Error updating from minube: #{e}"
         end

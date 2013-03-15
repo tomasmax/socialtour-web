@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
                   :subtitle, :subtitle_eu, :title, :title_eu, :image, :user_id,
                   :foursquare_url, :poi_id, :user_id
   
-  validates_uniqueness_of :name
+  validates_uniqueness_of :image_file_name
   
   def as_json options=nil
       options ||= {}

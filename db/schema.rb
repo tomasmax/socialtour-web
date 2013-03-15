@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312105906) do
+ActiveRecord::Schema.define(:version => 20130315185229) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(:version => 20130312105906) do
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "country_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.integer  "minube_id"
     t.string   "slug"
     t.string   "image_file_name"
@@ -132,6 +132,9 @@ ActiveRecord::Schema.define(:version => 20130312105906) do
     t.integer  "image_file_size"
     t.datetime "image_upload_at"
     t.string   "name_eu"
+    t.decimal  "latitude",           :precision => 16, :scale => 8
+    t.decimal  "longitude",          :precision => 16, :scale => 8
+    t.integer  "zone_id"
   end
 
   add_index "cities", ["country_id"], :name => "index_cities_on_country_id"
@@ -141,8 +144,9 @@ ActiveRecord::Schema.define(:version => 20130312105906) do
     t.integer  "poi_id"
     t.integer  "user_id"
     t.integer  "package_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "foursquare_id"
   end
 
   add_index "comments", ["package_id"], :name => "index_comments_on_package_id"
@@ -512,5 +516,16 @@ ActiveRecord::Schema.define(:version => 20130312105906) do
   add_index "users", ["city_id"], :name => "index_users_on_city_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "zones", :force => true do |t|
+    t.string   "name"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.integer  "country_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "zones", ["country_id"], :name => "index_zones_on_country_id"
 
 end

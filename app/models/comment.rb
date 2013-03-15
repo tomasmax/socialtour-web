@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :poi
   belongs_to :user
   belongs_to :package
-  attr_accessible :comment, :poi_id, :user_id, :package_id
+  attr_accessible :comment, :poi_id, :user_id, :package_id, :foursquare_id
   
   paginates_per 10
   

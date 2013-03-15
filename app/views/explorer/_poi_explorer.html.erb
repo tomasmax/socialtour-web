@@ -30,7 +30,11 @@
     </div>
 
     <div class="poi-desc">
-      <p><%= truncate poi.description, length: 220 %></p>
+      <% if !poi.description.blank? %>
+      	<p><%= truncate poi.description, length: 220 %></p>
+      <% elsif poi.comments.first %>
+      	<p><%= truncate poi.comments.first.comment, length: 220 %></p>
+      <% end %>
     </div>
     <% @counter += 1 %>
   </div>
