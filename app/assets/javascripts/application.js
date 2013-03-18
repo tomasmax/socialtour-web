@@ -40,13 +40,18 @@ $(document).ready(function() {
       uploader.parent('form').children('input[type="submit"]').css('display', 'inline-block');
     });
   });
+  
+  $(function() {
+    $(".slider").slider({
+	    min: 0,
+	    max: 10,
+	    value: 5
+    });
+  });
+  
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
 });
 
-  // Vertical slider
-	$(".h-slider").slider({
-	    range: "min",
-	    min: -10,
-	    max: 10,
-	    value: 0
-	});
 

@@ -1,9 +1,9 @@
-<li class="poi">
+<li class="grey-box">
   <div class="poi-img">
-    <%= image_tag poi.photos.first.image.url(:thumb), class: 'event-preview' if poi.photos.count > 0 %>
+    <%= image_tag poi.photos.first.image.url(:thumb_wide), class: 'event-preview' if poi.photos.count > 0 %>
   </div>
   <div class="event-content">
-    <h6><%= link_to poi.localized_name(session[:locale]), poi_url(poi) %></h6>
+    <h4><%= link_to poi.localized_name(session[:locale]), poi_url(poi) %></h4>
     
     <div class="poi-rating">
       <div class="starbar-static">
@@ -19,8 +19,11 @@
     </div>
     
     <div class="event-desc">
-      <p><%# truncate(strip_tags(poi.localized_description session[:locale]), length: 140).html_safe %>
-      </p>
+      <% if !poi.description.blank? %>
+      	<p><%= truncate poi.description, length: 220 %></p>
+      <% elsif poi.comments.first %>
+      	<p><%= truncate poi.comments.first.comment, length: 220 %></p>
+      <% end %>
       <time><%= time_tag poi.created_at %></time>
     </div>
   </div>

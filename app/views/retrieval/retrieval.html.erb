@@ -3,13 +3,12 @@
   <div class="span8">
     <h3 id="all-pois"><%= t :all %></h3>
     <ul class="nav nav-tabs" id="myTab">
-		  <li class="active"><a href="#see"><%= t :what_see %></a></li>
-		  <li><a href="#do"><%= t :what_do %></a></li>
-		  <li><a href="#eat"><%= t :where_eat %></a></li>
-		  <li><a href="#sleep"><%= t :where_sleep %></a></li>
+		  <li class="active"><a href="#see"><%= t :what_see %> (<%= @what_to_see.size %>)</a></li>
+		  <li><a href="#do"><%= t :what_do %> (<%= @what_to_do.size %>)</a></li>
+		  <li><a href="#eat"><%= t :where_eat %> (<%= @where_to_eat.size %>)</a></li>
+		  <li><a href="#sleep"><%= t :where_sleep %> </a></li>
 		</ul>
 		 	
-		 
 		<script>
 		  $('#myTab a').click(function (e) {
   			e.preventDefault();
@@ -20,7 +19,7 @@
       
         <div class="tab-content">
 			  <div class="tab-pane active" id="see">
-			  	<ul id="pois-list">
+			  	<ul id="pois-list" class="places-list">
 			  		<%= render collection: @what_to_see, partial: "poi_retrieval", as: :poi %>
 			  		<div id="infinite-scroll"></div>
       		</ul>

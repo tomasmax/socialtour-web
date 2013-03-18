@@ -1,0 +1,78 @@
+
+
+ul.recommended-list {
+  clear: both;
+  margin: 20px 0 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+ul.recommended-list > li {
+  margin-bottom: 20px;
+  width: 232px;
+  float: left;
+  margin-left: 20px;
+}
+
+ul.recommended-list li a h3 {
+  line-height: 18px;
+  text-align: center;
+}
+
+ul.recommended-list li a h3 > span.poi-name {
+  display: block;
+  clear: both;
+  line-height: 20px;
+  margin: -2px 25px 0;
+  padding: 4px 0 0;
+  border-bottom: 4px solid #DDD;
+  text-transform: capitalize;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  cursor: default;
+}
+
+ul.recommended-list li a h3 > img {
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+}
+
+ul.recommended-list ul.poi-actions {
+  padding: 4px;
+  list-style: none;
+}
+
+ul.recommended-list ul.poi-actions li {
+  margin: 4px 0;
+}
+
+ul.recommended-list ul.poi-actions li a {
+  text-decoration: none;
+  color: #444;
+  text-transform: capitalize;
+  padding-bottom: 1px;
+}
+
+
+ul.recommended-list ul.poi-actions li a:hover {
+  border-bottom: 1px dotted #444;
+  padding-bottom: 0px;
+}
+
+ul.recommended-list ul.poi-actions li a i {
+  margin-right: 4px;
+}
+
+#recommended-index .view-all {
+  padding: 4px 32px 32px 0;
+}
+
+#recommended-index .view-all a {
+  float: right;
+}
+
+#recommended-index .places-list {
+  margin-bottom: 25px;
+}

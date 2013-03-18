@@ -33,35 +33,41 @@
 <%= semantic_form_for [@user] do |f| %>
     <%= f.inputs do %>
       <%= f.input :email, as: :email %>
-      <%= f.input :city, include_blank: false %>
+      <%= f.input :city, label: t(:city), include_blank: false %>
 			<%= f.semantic_fields_for :profiles do |p| %>
-				<%= p.input :born_date, :order => [:day, :month, :year],
+				<%= p.input :born_date, label: t(:born_date), :order => [:day, :month, :year],
                       					:start_year    => 1950,
                       					:end_year      => Date.today.year,
                       					:include_blank => false %>
-	      <%= p.input :username %>
-	      <%= p.input :first_name %>
-	      <%= p.input :last_name %>
-	      <%= p.input :gender %>
-	      <%= p.input :about_me, as: :text %>
-	      <%= p.input :i_like %>
-	      <%= p.input :i_dont_like %>
-	      <%= p.input :is_married, :as => :radio %>
-	      <%= p.input :has_sons, :as => :radio %>
-	      <%= p.input :restrictions %>
-	      <%= p.input :gastronomy, :class => 'h-slider' %>
-	      <%= p.input :ferias %>
-	      <%= p.input :folclore %>
-	      <%= p.input :sport %>
-	      <%= p.input :nature %>
-	      <%= p.input :culture %>
-	      <%= p.input :other %>
-	      <%= p.input :buildings %>
-	      <%= p.input :friends %>
-	      <%= p.input :leisure %>
+	      <%= p.input :username, label: t(:uname) %>
+	      <%= p.input :first_name, label: t(:first_name) %>
+	      <%= p.input :last_name, label: t(:last_name) %>
+	      <%= p.input :gender,label: t(:gender), as: :select, :collection => ["male", "female"] %>
+	      <%= p.input :about_me, label: t(:about_me), :input_html => { :rows => 4 } %>
+	      <%= p.input :i_like, :input_html => { :rows => 4 }, label: t('i_like') %>
+	      <%= p.input :i_dont_like, :input_html => { :rows => 4 }, label: t('i_dont_like') %>
+	      <%= p.input :is_married, label: t('is_married') %>
+	      <%= p.input :has_sons, label: t('has_sons') %>
+	      <%= p.input :restrictions, label: t('restrictions') %>
+	      
+	   		<b>Valora tus intereses para personalizar los resultados:</b>
+	   		<br /><br />
+	   		
+	      <%= p.input :leisure, label: t('leisure'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :gastronomy, label: t('gastronomy'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :ferias, label: t('ferias'),as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :folclore, label: t('folclore'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :sport, label: t('sport'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :nature, label: t('nature'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :culture, label: t('culture'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :other, label: t('other'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :buildings, label: t('buildings'), as: :range, in: 0..10, step: 1 %>
+	      <%= p.input :friends, label: t('friends'), as: :range, in: 0..10, step: 1 %>
+	      
 			<% end %>
     <% end %>
     <%= f.actions do %>
+    
       <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
       
       <%= f.action :cancel, button_html: { class: 'btn btn-danger' } %>

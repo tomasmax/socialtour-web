@@ -1,0 +1,10 @@
+<li>
+  <%= link_to poi_path(poi.slug) do %>
+    <h3>
+      <%= link_to poi_url(poi) do %>
+				<%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.jpg' %>
+			<% end %>
+      <span class="poi-name"><%= poi.name %></span>
+    </h3>
+  <% end %>
+</li>

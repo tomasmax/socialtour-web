@@ -69,6 +69,8 @@ SocialTour::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/help',   :to => 'pages#help'
   
+  match '/recommendations',   :to => 'recommendation#index'
+  
   #for providers authentication
   match '/auth/:provider/callback', to: 'authentications#create'
   match '/auth/failure', to: "authentications#failure"

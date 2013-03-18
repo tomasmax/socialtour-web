@@ -5,6 +5,10 @@
 	overflow: auto;
 }
 
+#poi-list {
+	list-style: none;
+}
+
 .pois-explorer {
 	position: absolute; 
 	top: 45px; 

@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
     likes.each do |l|
       exists = Like.find_by_facebook_id(l['id'])
       if !exists
-        like = user.likes.new l
+        like = user.likes.new
+        like.category = l['category'] #faltan coger las category_list nueva incorporacion de facebook
+      
         like.facebook_id = l['id']
         like.save
       end 
@@ -135,20 +137,6 @@ class ApplicationController < ActionController::Base
     end
     
   end
-  
-  # Explore venues
-    #
-    # @param [Hash]  options
-    # @option options String :ll - Latitude and longitude in format LAT,LON
-    # @option options Integer :llAcc - Accuracy of the lat/lon in meters.
-    # @option options Integer :alt - Altitude in meters
-    # @option options Integer :altAcc - Accuracy of the altitude in meters
-    # @option options Integer :radius - Radius to search within, in meters
-    # @option options String :section - One of food, drinks, coffee, shops, or arts. Choosing one of these limits results to venues with categories matching these terms.
-    # @option options String :query - Query to match venues on.
-    # @option options Integer :limit - The limit of results to return.
-    # @option options String :intent - Limit results to venues with specials.
-    # @option options String :novelty - Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
     
   def load_poi_tips(poi)
     # Load description from first tip
@@ -177,10 +165,10 @@ class ApplicationController < ActionController::Base
     @@clientFoursquare = Foursquare2::Client.new(client_id: "IN2OMEKAQP0JAZUB4G2YE5GS11AA3F2TRCCWQ5PVXCEG55PG", client_secret: "CHUBYYCIGCD5H54IB43UQOE4C3PU4FKAPI4CGW0VNQD21SYE", :api_version => '20130215', :locale=>'es')
     City.all.each do |city|
       puts "Loading #{city.name} pois"
-      Supercategory.all.each do |category|
+      Category.all.each do |category|
         if category.foursquare_id
           puts "-Loading #{category.name} category pois"
-          pois = @@clientFoursquare.search_venues(near: city.name, intent: 'browse', radius: 1500, limit: 15, categoryId: category.foursquare_id) #near or ll, query, radius, categoryId
+          pois = @@clientFoursquare.search_venues(near: city.name, intent: 'browse', radius: 1500, limit: 5, categoryId: category.foursquare_id) #near or ll, query, radius, categoryId
           #meter parametro igual de localizacion o categoria
           load_venues_from_foursquare(pois,category)
         end
@@ -188,21 +176,52 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def import_trending_topic_pois_from_foursquare
+  # Search for trending venues
+    #
+    # @param [String] :ll Latitude and longitude in format LAT,LON
+    # @param [Hash]  options
+    # @option options Integer :limit - Number of results to return, up to 50.
+    # @option options Integer :radius - Radius in meters, up to approximately 2000 meters.
+  def import_trending_topic_pois_from_foursquare(city)
     #clientFoursquare.trending_venues('40.7,-74')
+    lng = city.longitude.longitude.to_s('F')
+    ll = city.latitude.to_s('F')+","+lng
+    #returns most cheched places
+    @@clientFoursquare.trending_venues(ll,)
     
   end
   
-  def import_recommended_pois_from_foursquare
-    #foursquarecliente with user token
-    auth = Authentications.where(user_id: current_user.id, provider: :foursquare)
-    if auth.first
-      client = Foursquare2::Client.new(:oauth_token => auth.first)
+  # Explore venues
+    #
+    # @param [Hash]  options
+    # @option options String :ll - Latitude and longitude in format LAT,LON
+    # @option options Integer :llAcc - Accuracy of the lat/lon in meters.
+    # @option options Integer :alt - Altitude in meters
+    # @option options Integer :altAcc - Accuracy of the altitude in meters
+    # @option options Integer :radius - Radius to search within, in meters
+    # @option options String :section - One of food, drinks, coffee, shops, or arts. Choosing one of these limits results to venues with categories matching these terms.
+    # @option options String :query - Query to match venues on.
+    # @option options Integer :limit - The limit of results to return.
+    # @option options String :intent - Limit results to venues with specials.
+    # @option options String :novelty - Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
+  def import_recommended_pois_from_foursquare(city,novelty) #novelty new = new pois, old = checked pois
+    #foursquareclient with user token
+    auth = Authentications.find_by_user_id_and_provider(current_user.id, 'foursquare')
+    if auth
+      client = Foursquare2::Client.new(:oauth_token => auth, locale: 'es')
+      lng = city.longitude.longitude.to_s('F')
+      ll = city.latitude.to_s('F')+","+lng
+      pois = client.explore_venues(ll: ll, radius: 1500, limit: 30, novelty: novelty)
+      pois.groups do |group|
+        puts "Loading #{group.name} group recommeded pois"
+        
+      end
     end
   end
   
   def load_venues_from_foursquare(pois, category)
     
+    pois_array = Array.new
     total_saved = 0
           if pois.venues
               puts "#{pois.size} pois readed"
@@ -225,6 +244,7 @@ class ApplicationController < ActionController::Base
                     
                     load_venue_photos_from_foursquare(poi)
                     load_poi_tips(poi)
+                    pois_array.push(poi)
                     total_saved = total_saved + 1
                   end
                  
@@ -233,6 +253,7 @@ class ApplicationController < ActionController::Base
                 end
               end
           end
+    pois_array
   end
   
   

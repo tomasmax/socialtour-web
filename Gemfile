@@ -75,6 +75,7 @@ gem 'foursquare2', '~> 1.9.5'
 
 #form builder
 gem 'formtastic'
+gem 'formtastic-bootstrap'
 
 #.gpx archives manager
 gem 'gpx'
