@@ -30,11 +30,17 @@
             <ul class="nav">
 							<li><% logo = image_tag("logo.png", :size => "100x200", class: "rounded-image") %>
 		  				<%= link_to logo, root_path %></li>
-              
-              <li><a href="/explorer/places">Explorer</a></li>
-              <li><a href="/packages">Packages</a></li>
-              <li><a href="/recommendations">Recomendaciones</a></li>
-              <li><a href="/retrieval">Retrieval</a></li>           
+              <li class="dropdown">
+	                	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t :explorer %> <b class="caret"></b></a>
+	                	<ul class="dropdown-menu">
+		                  <li><a href="/explorer/places"><%= t :places %></a></li>
+		                  <li class="divider"></li>
+											<li><a href="/explorer/events"><%= t :events %></a></li>
+                		</ul>
+              			</li>
+              <li><a href="/packages"><%= t :packages %></a></li>
+              <li><a href="/recommendations"><%= t :recommendations %></a></li>
+              <li><a href="/retrieval"><%= t :retrieval %></a></li>           
             </ul>
             
             <div class="navbar pull-right">

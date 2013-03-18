@@ -457,9 +457,9 @@ TypeVehicle.create(name: "Coche")
 TypeVehicle.create(name: "Moto")
 puts "TypeTimes saved"
 
-TypeTime.create(name: 'Maniana')
+TypeTime.create(name: 'Mañana')
 TypeTime.create(name: "Tarde")
 TypeTime.create(name: "Noche")
-TypeTime.create(name: "Todo el dia")
+TypeTime.create(name: "Todo el día")
 TypeTime.create(name: "Fin de semana")
 puts "TypeTimes saved"

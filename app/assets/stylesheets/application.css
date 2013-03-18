@@ -15,6 +15,7 @@
  *= require bootstrap.min
  *= require pois
  *= require file-uploader
+ *= require fancybox
  *= require authentications  
  *= require categories
  *= require_self

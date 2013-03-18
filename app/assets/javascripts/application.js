@@ -13,6 +13,8 @@
 //= require jquery-1.8.3.min
 //= require jquery-ui-1.10.1.custom.min
 //= require bootstrap.min
+//= require jquery.fancybox-1.3.4.pack
+//= require jquery.mousewheel-3.0.4.pack
 //= require chosen.jquery
 //= require categories-show
 //= require jquery.endless-scroll
@@ -49,9 +51,6 @@ $(document).ready(function() {
     });
   });
   
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
 });
 
 

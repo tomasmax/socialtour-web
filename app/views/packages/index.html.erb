@@ -1,44 +1,42 @@
-<h1>Listing packages</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Supercategory</th>
-    <th>Type</th>
-    <th>User</th>
-    <th>Provider</th>
-    <th>Image file name</th>
-    <th>Image content type</th>
-    <th>Image file size</th>
-    <th>Image update at</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @packages.each do |package| %>
-  <tr>
-    <td><%= package.name %></td>
-    <td><%= package.description %></td>
-    <td><%= package.price %></td>
-    <td><%= package.category %></td>
-    <td><%= package.supercategory %></td>
-    <td><%= package.type %></td>
-    <td><%= package.user %></td>
-    <td><%= package.provider %></td>
-    <td><%= package.image_file_name %></td>
-    <td><%= package.image_content_type %></td>
-    <td><%= package.image_file_size %></td>
-    <td><%= package.image_update_at %></td>
-    <td><%= link_to 'Show', package %></td>
-    <td><%= link_to 'Edit', edit_package_path(package) %></td>
-    <td><%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<h2>Crea tus Paquetes Turísticos o de Ocio personalizados</h2>
+<div class="hero-unit">
+	<h3><%= t :package_options %></h3>
+		      <%= form_tag '/packages', method: 'get' do %>
+		          <%= label_tag :city, t(:city) %>
+		            <%= select_tag :city, options_for_select(City.order('name').all.collect{|city| [city.name, city.slug] }, @city ? @city.id : nil),:include_blank => true, class: "chosen", selected: params[:city] %>
+		         
+		          <%= label_tag :type_leisure, t(:type_leisure) %>
+		            <%= select_tag :type_leisure, options_for_select(TypeLeisure.all.collect{|type| [type.name] }),:include_blank => true, selected: params[:type_leisure] %>
+		        <div class="clearfix">
+		          <%= label_tag :type_time, t(:type_time) %>
+		          <div class="input">
+		            <%= select_tag :type_time, options_for_select(TypeTime.all.collect{|type| [type.name] }),:include_blank => true, selected: params[:type_time] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :type_vehicle, t(:type_vehicle) %>
+		          <div class="input">
+		            <%= select_tag :type_vehicle, options_for_select(TypeVehicle.all.collect{|type| [type.name] }),:include_blank => true, selected: params[:type_vehicle] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :category, t(:category) %>
+		          <div class="input">
+		            <%= select_tag :category, option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name),:include_blank => true, class: "chosen", selected: params[:category] %>
+		          </div>
+		        </div>
+		        <div class="clearfix">
+		          <%= label_tag :order, t(:order) %>
+		          <div class="input">
+		            <%= select_tag :order, "<option value=0>#{t :creation_date}</option><option value=1>#{ t :top_rated}</option>".html_safe %>
+		          </div>
+		        </div>
+		        <div class="actions">
+		          <%= submit_tag t(:filter), class: 'btn btn-primary' %>
+		        </div>
+		      <% end %>
+		    <%= link_to "Quitar filtro", retrieval_path, class: "btn primary" %>
+</div>
 
 <br />
 

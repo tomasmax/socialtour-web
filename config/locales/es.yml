@@ -239,10 +239,10 @@ es:
   eat: "Donde Comer"
   routes_social: "Comparte rutas"
   routes_social_msg: "Comparte rutas para que todo el mundo pueda opinar sobre ellas"
-  places: "Comparte recursos"
-  places_msg: "lalal"
+  places_share: "Descubre lugares insolitos"
+  places_msg: "Comparte y descubre nuevos lugares y rincones"
   packages_social: "Paquetes personalizados"
-  packages_social_msg: "lalala"
+  packages_social_msg: "SocialTour crea paquetes de ocio a tu medida"
   authentications: "Accede con:"
   login_twitter: "Accede con tu cuenta de Twitter"
   login_facebook: "Accede con tu cuenta de Facebook"
@@ -251,6 +251,17 @@ es:
   poi_name: "Nombre"
   poi_description: "Descripción"
   submit_poi: "Enviar"
+  
+  type_leisure: "Tipo de ocio"
+  type_time: "Especifíca el tiempo que le vas a dedicar"
+  type_vehicle: "Modo de transporte"
+  
+  explorer: "Explora"
+  places: "Lugares"
+  events: "Eventos"
+  packages: "Paquetes pers."
+  recommendations: "Recomendaciones pers."
+  retrieval: "Buscador"
   
   user_profile: "Perfil de Usuario"
   uname: "Nombre de usuario"
@@ -278,8 +289,6 @@ es:
   gender: "Sexo"
   born_date: "Fecha de nacimiento"
   city: "Ciudad"
-  
-  
   
   aventure: "Aventura"
   login_msg_upload: "Sube tus fotos y opina"
