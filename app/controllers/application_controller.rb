@@ -81,8 +81,32 @@ class ApplicationController < ActionController::Base
         event.latitude = e['latitude']
         event.starts_at = start
         event.ends_at = finish
-        
         event.url = e['evento_url']
+        doc = Nokogiri::HTML(open(event.url))
+        doc.css('div.eventoCampo').each do |el|
+          if !el.children[0].content.nil?
+            case el.children[0].content 
+              
+              when "Protagonistas: "
+                el.children[1].content
+              when "Fecha: "
+                event.starts_at = el.children[1].content
+                events.ends_at = el.children[1].content
+              when "Fecha de Inicio: "
+                event.starts_at = el.children[1].content
+              when "Fecha de Finalización: "
+                events.ends_at = el.children[1].content
+              when "Hora/Horario: "
+              
+              when "Lugar: " #Centro Cívico Iparralde. Plaza Zuberoa, 1, Vitoria-Gasteiz (Álava)
+              
+              when "Idioma: "
+                
+              when "Precio: "
+              
+            end
+          end
+        end
         event.save
       end
     end

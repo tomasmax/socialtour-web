@@ -1,4 +1,12 @@
 class Provider < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
   has_attached_file :image, styles: { gallery: "1060x400#", icon: "140x140#" }, 
     url: "/provider/:hash.:extension",
     hash_secret: "(%^{R8'PH:#5<=K*'RF$%"

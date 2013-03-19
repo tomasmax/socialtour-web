@@ -252,6 +252,11 @@ es:
   poi_description: "Descripción"
   submit_poi: "Enviar"
   
+  sign_in: "Identificate"
+  sign_up: "Registrate"
+  logged_as: "Identificado como"
+  sign_up_provider: "Date de alta como proveedor"
+  
   type_leisure: "Tipo de ocio"
   type_time: "Especifíca el tiempo que le vas a dedicar"
   type_vehicle: "Modo de transporte"

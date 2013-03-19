@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315185229) do
+ActiveRecord::Schema.define(:version => 20130319093001) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -341,16 +341,28 @@ ActiveRecord::Schema.define(:version => 20130315185229) do
     t.integer  "city_id"
     t.integer  "category_id"
     t.integer  "supercategory_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.time     "image_update_at"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "providers", ["category_id"], :name => "index_providers_on_category_id"
   add_index "providers", ["city_id"], :name => "index_providers_on_city_id"
+  add_index "providers", ["email"], :name => "index_providers_on_email", :unique => true
+  add_index "providers", ["reset_password_token"], :name => "index_providers_on_reset_password_token", :unique => true
   add_index "providers", ["supercategory_id"], :name => "index_providers_on_supercategory_id"
 
   create_table "ratings", :force => true do |t|
@@ -470,6 +482,17 @@ ActiveRecord::Schema.define(:version => 20130315185229) do
     t.integer  "supercategory_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "to_dos", :force => true do |t|
+    t.string   "user_id"
+    t.string   "integer"
+    t.integer  "poi_id"
+    t.integer  "package_id"
+    t.integer  "event_id"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "type_leisures", :force => true do |t|

@@ -1,6 +1,7 @@
 SocialTour::Application.routes.draw do
-  resources :comments
+  devise_for :providers
 
+  resources :comments
 
   resources :likes
 
