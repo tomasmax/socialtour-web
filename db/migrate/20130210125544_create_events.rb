@@ -12,7 +12,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :starts_at
       t.datetime :ends_at
       t.time :start_time
-      t.decimal :price
+      t.string :price
       t.references :provider
 
       t.timestamps

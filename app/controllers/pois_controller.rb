@@ -4,24 +4,27 @@ class PoisController < InheritedResources::Base
   
   @@last_minube_update = Time.at(0)
   
+  def crawler
+    
+  end
+  
   # GET /pois
   # GET /pois.json
   def index
     ## Check if has pass more than limit time from last update
-
     if (Time.now - @@last_minube_update).to_i > 60*60*4 # 4 hours
       Thread.new do
         begin
           @@last_minube_update = Time.now
           #import_pois_from_minube
           #import_pois_from_foursquare
+          load_events_from_kulturklik(Date.today.to_s, (Date.today+1.month).to_s) #“yyyy-mm-dd”
         rescue Exception => e
-          puts "Error updating from minube: #{e}"
+          puts "Error updating from minube or foursquare: #{e}"
         end
       end
     end
-
-
+    
     # returns Geocoder::Result object
     @location = request.location
     

@@ -40,4 +40,25 @@
 
 <br />
 
-<%= link_to 'New Package', new_package_path %>
+<h2>Contenido del paquete personalizado</h2>
+
+<br />
+
+<h3>Por la mañana</h3>
+
+<div class="row-fluid">
+	<ul class="thumbnails">
+		<%= render collection: @places_morning, partial: "poi_package", as: :poi %>
+	</ul>
+<br />
+<h3>Comida</h3>
+	<ul class="thumbnails">
+		<%= render collection: @eat, partial: "poi_package", as: :poi %>
+	</ul>
+<br />
+<h3>Por la tarde</h3>
+	<ul class="thumbnails">
+		<%= render collection: @places_afternoon, partial: "poi_package", as: :poi %>
+	</ul>
+</div>
+

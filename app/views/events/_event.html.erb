@@ -1,0 +1,30 @@
+<li class="poi-preview" data-event-id="<%= event.id %>" data-event-lat="<%= event.latitude %>" data-event-lng="<%= event.longitude %>" data-event-name="<%= event.name %>" data-event-index="<%= @counter %>">
+ <div class="grey-box">
+ 	
+  <div class="poi-content">
+	   
+	    <h4><%= link_to event.name, event_url(event) %></h4>
+	      
+			<p>Lugar: <%= event.place %></p>
+			
+    <div class="poi-city">
+      <span>en <%= link_to(event.city.name, city_url(event.city)) if event.city %></span>
+    </div>
+    
+    <% if event.price %>
+				<p>Precio: <%= event.price %></p>
+			<% end %>
+
+    <div class="poi-desc">
+      <% if !event.description.blank? %>
+      	<p><%= truncate event.description, length: 220 %></p>
+      <% elsif event.comments.first %>
+      	<p><%= truncate event.comments.first.comment, length: 220 %></p>
+      <% end %>
+    </div>
+
+  </div>
+  <br />
+  <%= button_to "Añadir a To do List", explorer_events_path, class: "btn btn-info" %>
+  </div>
+</li>

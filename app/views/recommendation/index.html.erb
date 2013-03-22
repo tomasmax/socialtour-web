@@ -2,9 +2,11 @@
 
 <h4>Lugares</h4>
 
-<ul class="recommended-list">
-	<%= render @recommended_pois, partial: "poi_recommend", as: :poi %>
-</ul>	
+<div class="row-fluid">
+	<ul class="thumbnails">
+		<%= render collection: @recommended_pois, partial: "poi_recommend", as: :poi %>
+	</ul>
+</div>
 
 <h4>Actividades</h4>
 

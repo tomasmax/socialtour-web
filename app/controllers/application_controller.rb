@@ -1,3 +1,6 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
@@ -69,10 +72,12 @@ class ApplicationController < ActionController::Base
     url_eu = "http://www.kulturklik.euskadi.net/?api_call=events&from=" + start + "&to=" + finish + "&lang=eu"
     resp = Net::HTTP.get_response URI.parse(url)
     result = JSON.parse resp.body
-    events = result['evento']
+    events = result['eventos']
+    puts "Loading events from #{url}"
     
     if events
       events.each do |e|
+        puts "-Creating event #{e['evento_titulo']}"
         event = Event.new
         event.category_id = Category.find_by_name(e['evento_tipo']).id
         event.name = e['evento_titulo']
@@ -83,30 +88,40 @@ class ApplicationController < ActionController::Base
         event.ends_at = finish
         event.url = e['evento_url']
         doc = Nokogiri::HTML(open(event.url))
+        #parsing html
         doc.css('div.eventoCampo').each do |el|
           if !el.children[0].content.nil?
-            case el.children[0].content 
-              
+            puts "-- Parsing HTML #{el.children[0].content}"
+            case el.children[0].content.to_s       
               when "Protagonistas: "
                 el.children[1].content
               when "Fecha: "
                 event.starts_at = el.children[1].content
-                events.ends_at = el.children[1].content
+                event.ends_at = el.children[1].content
               when "Fecha de Inicio: "
                 event.starts_at = el.children[1].content
               when "Fecha de Finalización: "
-                events.ends_at = el.children[1].content
+                event.ends_at = el.children[1].content
               when "Hora/Horario: "
-              
+                event.timetable = el.children[1].content
               when "Lugar: " #Centro Cívico Iparralde. Plaza Zuberoa, 1, Vitoria-Gasteiz (Álava)
-              
+                event.place = el.children[1].content
               when "Idioma: "
                 
               when "Precio: "
-              
+                event.price = el.children[1].content
+              when "Taquilla virtual: "
+                event.buy_ticket_url = el.children[1].content
             end
           end
         end
+        
+          #falta sacar la descripcion y eso
+        event.description = "" 
+        doc.css('div.observacionesEvento').children.each do |ch|
+          event.description = event.description + ch.content
+        end
+        
         event.save
       end
     end
@@ -245,7 +260,6 @@ class ApplicationController < ActionController::Base
   
   def load_venues_from_foursquare(pois, category)
     
-    pois_array = Array.new
     total_saved = 0
           if pois.venues
               puts "#{pois.size} pois readed"
@@ -268,7 +282,6 @@ class ApplicationController < ActionController::Base
                     
                     load_venue_photos_from_foursquare(poi)
                     load_poi_tips(poi)
-                    pois_array.push(poi)
                     total_saved = total_saved + 1
                   end
                  
@@ -277,13 +290,11 @@ class ApplicationController < ActionController::Base
                 end
               end
           end
-    pois_array
+    
   end
-  
-  
-  
+   
   def load_poi_from_minube(poi_hash)
-
+    cat = Category.find_by_minube_id(poi_hash["category"]["id"])
     poi = {name: poi_hash["name"],
       user_id: 1, #minube user
       latitude: poi_hash["latitude"],
@@ -293,8 +304,8 @@ class ApplicationController < ActionController::Base
       website: poi_hash["website"],
       minube_id: poi_hash["id"],
       minube_url: poi_hash["url"],
-      category_id: poi_hash["category"]["id"],
-      supercategory_id: poi_hash["supercategory"]["id"]}
+      category_id: cat.id,
+      supercategory_id: cat.supercategory_id}
     
     
     # Load description from comments
@@ -341,37 +352,41 @@ class ApplicationController < ActionController::Base
     
     City.all.each do |city|
       puts "Importing city #{city.name}"
-    
-      pois_url = "#{base_url}&city=#{city.minube_id}&supercategory=1"
-      resp = Net::HTTP.get_response URI.parse(pois_url)
-      result = JSON.parse resp.body
-      pois_list = result["response"]["pois"]
       
-      if pois_list
-        puts "#{pois_list.count} pois readed"
-        
-        pois_list.each do |poi_hash|
-          begin
-            poi = Poi.find_by_minube_id(poi_hash["id"])
-            if poi
-              poi.update_attributes load_poi_from_minube(poi_hash)
-            else
-              poi = city.pois.new load_poi_from_minube(poi_hash)
-              poi.save
-              
-              puts "New poi #{poi.name}"
-            end
+      Supercategory.all.each do |sc|
+        if sc.minube_id
+          
+          pois_url = "#{base_url}&city=#{city.minube_id}&supercategory=#{sc.minube_id}"
+          resp = Net::HTTP.get_response URI.parse(pois_url)
+          result = JSON.parse resp.body
+          pois_list = result["response"]["pois"]
+          
+          if pois_list
+            puts "#{pois_list.count} pois readed"
             
-            if poi
-              load_photos_from_poi(poi)
-              
-              total_saved = total_saved + 1
-            end
-          rescue Exception => e
-            puts "Error #{e}"
+            pois_list.each do |poi_hash|
+              begin
+                poi = Poi.find_by_minube_id(poi_hash["id"])
+                if poi
+                  poi.update_attributes load_poi_from_minube(poi_hash)
+                else
+                  poi = city.pois.new load_poi_from_minube(poi_hash)
+                  poi.save
+                  
+                  puts "New poi #{poi.name}"
+                end
+                
+                if poi
+                  load_photos_from_poi(poi)
+                  
+                  total_saved = total_saved + 1
+                end
+              rescue Exception => e
+                puts "Error #{e}"
+              end
+            end 
           end
         end
-        
       end
     end
     total_saved
