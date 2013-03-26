@@ -77,52 +77,57 @@ class ApplicationController < ActionController::Base
     
     if events
       events.each do |e|
-        puts "-Creating event #{e['evento_titulo']}"
-        event = Event.new
-        event.category_id = Category.find_by_name(e['evento_tipo']).id
-        event.name = e['evento_titulo']
-        #event.name_eu
-        event.longitude = e['longitude']
-        event.latitude = e['latitude']
-        event.starts_at = start
-        event.ends_at = finish
-        event.url = e['evento_url']
-        doc = Nokogiri::HTML(open(event.url))
-        #parsing html
-        doc.css('div.eventoCampo').each do |el|
-          if !el.children[0].content.nil?
-            puts "-- Parsing HTML #{el.children[0].content}"
-            case el.children[0].content.to_s       
-              when "Protagonistas: "
-                el.children[1].content
-              when "Fecha: "
-                event.starts_at = el.children[1].content
-                event.ends_at = el.children[1].content
-              when "Fecha de Inicio: "
-                event.starts_at = el.children[1].content
-              when "Fecha de Finalización: "
-                event.ends_at = el.children[1].content
-              when "Hora/Horario: "
-                event.timetable = el.children[1].content
-              when "Lugar: " #Centro Cívico Iparralde. Plaza Zuberoa, 1, Vitoria-Gasteiz (Álava)
-                event.place = el.children[1].content
-              when "Idioma: "
-                
-              when "Precio: "
-                event.price = el.children[1].content
-              when "Taquilla virtual: "
-                event.buy_ticket_url = el.children[1].content
+        ev = Event.find_by_name(e['evento_titulo'])
+        if ev.nil?
+          puts "-Creating event #{e['evento_titulo']}"
+          event = Event.new
+          puts "Category #{e['evento_tipo']}"
+          event.category_id = Category.find_by_name(e['evento_tipo']).id
+          event.name = e['evento_titulo']
+          event.name.gsub("&quot;", "")
+          #event.name_eu
+          event.longitude = e['longitude']
+          event.latitude = e['latitude']
+          event.starts_at = start
+          event.ends_at = finish
+          event.url = e['evento_url']
+          doc = Nokogiri::HTML(open(event.url))
+          #parsing html
+          doc.css('div.eventoCampo').each do |el|
+            if !el.children[0].content.nil?
+              puts "-- Parsing HTML #{el.children[0].content}"
+              case el.children[0].content.to_s       
+                when "Protagonistas: "
+                  el.children[1].content
+                when "Fecha: "
+                  event.starts_at = el.children[1].content
+                  event.ends_at = el.children[1].content
+                when "Fecha de Inicio: "
+                  event.starts_at = el.children[1].content
+                when "Fecha de Finalización: "
+                  event.ends_at = el.children[1].content
+                when "Hora/Horario: "
+                  event.timetable = el.children[1].content
+                when "Lugar: " #Centro Cívico Iparralde. Plaza Zuberoa, 1, Vitoria-Gasteiz (Álava)
+                  event.place = el.children[1].content
+                #when "Idioma: "
+                  
+                when "Precio: "
+                  event.price = el.children[1].content
+                when "Taquilla virtual: "
+                  event.buy_ticket_url = el.children[1].content
+              end
             end
           end
-        end
-        
-          #falta sacar la descripcion y eso
-        event.description = "" 
-        doc.css('div.observacionesEvento').children.each do |ch|
-          event.description = event.description + ch.content
-        end
-        
-        event.save
+          
+            #falta sacar la descripcion y eso
+          event.description = "" 
+          doc.css('div.observacionesEvento').children.each do |ch|
+            event.description = event.description + ch.content
+          end
+          
+          event.save
+         end
       end
     end
   end
