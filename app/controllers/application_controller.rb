@@ -231,7 +231,7 @@ class ApplicationController < ActionController::Base
     lng = city.longitude.longitude.to_s('F')
     ll = city.latitude.to_s('F')+","+lng
     #returns most cheched places
-    @@clientFoursquare.trending_venues(ll,)
+    @@clientFoursquare.trending_venues(ll, radius: 1500)
     
   end
   
@@ -256,46 +256,63 @@ class ApplicationController < ActionController::Base
       lng = city.longitude.longitude.to_s('F')
       ll = city.latitude.to_s('F')+","+lng
       pois = client.explore_venues(ll: ll, radius: 1500, limit: 30, novelty: novelty)
+      recommended_pois_ids = Array.new
       pois.groups do |group|
         puts "Loading #{group.name} group recommeded pois"
-        
+        group.items.each do |item|
+          #ver si exsite en la BD, sino existe crearlo y meterlo en array par devolver
+          category = Category.find_by_id(item.venue.categories[0].id)
+          if category
+            if create_poi(item.venue, category)
+              puts "Recommended poi#{item.venue.name}"
+              poi = Poi.find_by_foursquare_id(item.venue.id)
+              recommended_pois_ids.push(poi)
+            end
+          end
+        end   
       end
     end
+    return recommended_pois_ids
   end
   
-  def load_venues_from_foursquare(pois, category)
-    
+   def load_venues_from_foursquare(pois, category)
+
     total_saved = 0
-          if pois.venues
-              puts "#{pois.size} pois readed"
-          
-              pois.venues.each do |venue|
-                begin
-                  poi = Poi.find_by_name(venue.name)
-                  if poi
-                    poi.update_attributes load_poi_from_forsquare(venue)
-          
-                  else
-                    poi = category.pois.new load_poi_from_forsquare(venue)
-                    
-                    if poi.save!
-                      puts "--New poi #{poi.name}"
-                    end
-                  end
-                  
-                  if poi
-                    
-                    load_venue_photos_from_foursquare(poi)
-                    load_poi_tips(poi)
-                    total_saved = total_saved + 1
-                  end
-                 
-                rescue Exception => e
-                  puts "Error #{e}"
-                end
-              end
-          end
-    
+    if pois.venues
+      puts "#{pois.size} pois readed"
+
+      pois.venues.each do |venue|
+        if create_poi(venue)
+          total_saved = total_saved + 1
+        end
+      end
+    end
+
+  end
+  
+   def create_poi(venue, category)
+    begin
+      poi = Poi.find_by_name(venue.name)
+      if poi
+        poi.update_attributes load_poi_from_forsquare(venue)
+
+      else
+        poi = category.pois.new load_poi_from_forsquare(venue)
+
+        if poi.save!
+          puts "--New poi #{poi.name}"
+        end
+      end
+
+      if poi
+        load_venue_photos_from_foursquare(poi)
+        load_poi_tips(poi)
+        return true
+      end
+
+    rescue Exception => e
+      puts "Error #{e}"
+    end
   end
    
   def load_poi_from_minube(poi_hash)

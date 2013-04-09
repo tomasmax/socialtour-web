@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320082319) do
+ActiveRecord::Schema.define(:version => 20130322102905) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -217,6 +217,30 @@ ActiveRecord::Schema.define(:version => 20130320082319) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "list_contents", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "poi_id"
+    t.integer  "package_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "list_contents", ["event_id"], :name => "index_list_contents_on_event_id"
+  add_index "list_contents", ["list_id"], :name => "index_list_contents_on_list_id"
+  add_index "list_contents", ["package_id"], :name => "index_list_contents_on_package_id"
+  add_index "list_contents", ["poi_id"], :name => "index_list_contents_on_poi_id"
+
+  create_table "lists", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "lists", ["user_id"], :name => "index_lists_on_user_id"
 
   create_table "packages", :force => true do |t|
     t.string   "name"
@@ -485,17 +509,6 @@ ActiveRecord::Schema.define(:version => 20130320082319) do
     t.integer  "supercategory_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
-  end
-
-  create_table "to_dos", :force => true do |t|
-    t.string   "user_id"
-    t.string   "integer"
-    t.integer  "poi_id"
-    t.integer  "package_id"
-    t.integer  "event_id"
-    t.text     "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "type_leisures", :force => true do |t|

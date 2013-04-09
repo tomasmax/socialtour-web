@@ -32,9 +32,11 @@ class User < ActiveRecord::Base
   
   def recommend_pois
     interests = interests_hash.sort {|a1,a2| a2[1].to_i <=> a1[1].to_i }  #order desc value
-    interests.each do |i|
-      call_function(i)
+    recommended_poi_ids = Array.new
+    interests.each_with_index do |item, i|
+      recommended_poi_ids.push(call_function(item, interests.size - i))
     end
+    return recommended_poi_ids
   end
   
   def recommend_packages
@@ -49,7 +51,6 @@ class User < ActiveRecord::Base
     #return Sentimentalizer.analyze(tweet)
     #=> {'text' => 'i am so happy', 'probability' => '0.937', 'sentiment' => ':)' }
   end
-  
   
   def get_social_contacts(provider)
     if auth = authentications.find_by_provider(provider)
@@ -71,6 +72,50 @@ class User < ActiveRecord::Base
     end
   end
   
+  def get_leisure(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_gastronomy(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Gastronomia')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_ferias(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_folclore(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_sport(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Actividades Deportivas,')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_culture(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Cultura')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_nature(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Interes turístico & Recreation')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_other(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Interes turístico & Recreation')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
+  def get_buildings(q)
+    
+  end
+  
+  def get_friends(q)
+    
+  end
+  
+  def get_events(q)
+    pois = Poi.where(category_id: Supercategory.where(name: 'Eventos')).select(:id).sample(q).collect{|p| p.id }
+  end
+  
   private
   
   def interests_hash
@@ -88,26 +133,30 @@ class User < ActiveRecord::Base
          }
   end
   
-  def call_function(interest)
-    case interest[0]
+  def call_function(interest, q)
+    case interest[0] #compare with the key of the hash
       when :leisure
-        return get_leisure
+        return get_leisure(q)
+      when :gastronomy
+        return get_gastronomy(q)
       when :ferias
-        return get_ferias
+        return get_ferias(q)
       when :folclore
-        return get_folclore
+        return get_folclore(q)
       when :sport
-        return get_sport
+        return get_sport(q)
+      when :culture
+        return get_culture(q)
       when :nature
-        return get_nature
+        return get_nature(q)
       when :other
-        return get_other
+        return get_other(q)
       when :buildings
-        return get_buildings
+        return get_buildings(q)
       when :friends
-        return get_friends
+        return get_friends(q)
       when :events
-        return get_events
+        return get_events(q)
     end
   end
      
