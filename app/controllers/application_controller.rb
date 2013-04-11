@@ -256,7 +256,7 @@ class ApplicationController < ActionController::Base
       lng = city.longitude.longitude.to_s('F')
       ll = city.latitude.to_s('F')+","+lng
       pois = client.explore_venues(ll: ll, radius: 1500, limit: 30, novelty: novelty)
-      recommended_pois_ids = Array.new
+      recommended_poi_ids = Array.new
       pois.groups do |group|
         puts "Loading #{group.name} group recommeded pois"
         group.items.each do |item|
@@ -264,15 +264,15 @@ class ApplicationController < ActionController::Base
           category = Category.find_by_id(item.venue.categories[0].id)
           if category
             if create_poi(item.venue, category)
-              puts "Recommended poi#{item.venue.name}"
+              puts "Recommended poi #{item.venue.name}"
               poi = Poi.find_by_foursquare_id(item.venue.id)
-              recommended_pois_ids.push(poi)
+              recommended_poi_ids.push(poi)
             end
           end
         end   
       end
     end
-    return recommended_pois_ids
+    return recommended_poi_ids
   end
   
    def load_venues_from_foursquare(pois, category)

@@ -1,3 +1,4 @@
+# encoding: utf-8
 #require "sentimentalizer"
 
 class User < ActiveRecord::Base
@@ -34,8 +35,10 @@ class User < ActiveRecord::Base
     interests = interests_hash.sort {|a1,a2| a2[1].to_i <=> a1[1].to_i }  #order desc value
     recommended_poi_ids = Array.new
     interests.each_with_index do |item, i|
-      recommended_poi_ids.push(call_function(item, interests.size - i))
+      #no va bien
+      recommended_poi_ids.push(call_function(item[0], interests.size - i))
     end
+    puts " SIZEEE #{recommended_poi_ids.size}"
     return recommended_poi_ids
   end
   
@@ -73,69 +76,73 @@ class User < ActiveRecord::Base
   end
   
   def get_leisure(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Ocio y Entretenimiento')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
+    puts "SIZE leisure pois #{pois.size}"
   end
   
   def get_gastronomy(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Gastronomia')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Gastronomia')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_ferias(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Ocio y Entretenimiento')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_folclore(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Ocio y Entretenimiento')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Ocio y Entretenimiento')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_sport(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Actividades Deportivas,')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Actividades Deportivas,')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_culture(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Cultura')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Cultura')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_nature(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Interes turístico & Recreation')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Interes turístico & Recreation')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_other(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Interes turístico & Recreation')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Interes turístico & Recreation')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_buildings(q)
-    
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Cultura')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   def get_friends(q)
-    
+    #recomendar lo que hacen los amigos
   end
   
   def get_events(q)
-    pois = Poi.where(category_id: Supercategory.where(name: 'Eventos')).select(:id).sample(q).collect{|p| p.id }
+    pois = Poi.where(supercategory_id: Supercategory.where(name: 'Eventos')).order('rating DESC').select(:id).sample(q).collect{|p| p.id }
   end
   
   private
   
   def interests_hash
-    interests = { :leisure => self.profiles.leisure,
-           :gastronomy => self.profiles.gastronomy,
-           :ferias => self.profiles.ferias,
-           :folclore => self.profiles.folclore,
-           :sport => self.profiles.sport,
-           :nature=> self.profiles.nature,
-           :culture=> self.profiles.culture, 
-           :other=> self.profiles.other, 
-           :buildings=> self.profiles.buildings, 
-           :friends=> self.profiles.friends, 
-           :events=> self.profiles.events
+    
+    interests = { :leisure => self.profiles.first.leisure,
+           :gastronomy => self.profiles.first.gastronomy,
+           :ferias => self.profiles.first.ferias,
+           :folclore => self.profiles.first.folclore,
+           :sport => self.profiles.first.sport,
+           :nature=> self.profiles.first.nature,
+           :culture=> self.profiles.first.culture, 
+           :other=> self.profiles.first.other, 
+           :buildings=> self.profiles.first.buildings, 
+           :friends=> self.profiles.first.friends, 
+           :events=> self.profiles.first.events
          }
+
   end
   
   def call_function(interest, q)
-    case interest[0] #compare with the key of the hash
+    case interest #compare with the key of the hash
       when :leisure
+        puts "Call leisure"
         return get_leisure(q)
       when :gastronomy
         return get_gastronomy(q)

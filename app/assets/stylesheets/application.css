@@ -25,6 +25,11 @@
  *= require formtastic-bootstrap
  */
 
+
+.ui-datepicker {
+width: 20%; /*what ever width you want*/
+}
+
 img[src*="gstatic.com/"], img[src*="googleapis.com/"]  {
     max-width: 99999px;
 }
