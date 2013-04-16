@@ -3,6 +3,8 @@ class PackagesController < InheritedResources::Base
   # GET /packages
   def index
     @packages = Package.all
+    
+    recommended_pois = current_user.recommend_pois
     ids = Poi.where(category_id: Category.where(group: 'tosee')).select(:id).sample(3).collect{|p| p.id }
     @places_morning = Poi.where(id: ids)
     id = Poi.where(category_id: Category.where(group: 'eat')).select(:id).sample(1).collect{|p| p.id }
@@ -11,6 +13,7 @@ class PackagesController < InheritedResources::Base
     @places_afternoon = Poi.where(id: ids)
     respond_to do |format|
       format.html # index.html.erb
+      format.json
     end
   end
   
@@ -20,6 +23,7 @@ class PackagesController < InheritedResources::Base
     @pois = @package.pois
     respond_to do |format|
       format.html # show.html.erb
+      format.json
     end
   end
   

@@ -24,8 +24,20 @@ class ApplicationController < ActionController::Base
       if !exists
         like = user.likes.new
         like.category = l['category'] #faltan coger las category_list nueva incorporacion de facebook
-      
         like.facebook_id = l['id']
+        if l['category_list']
+          l['category_list'].each do |fc|
+            cat = CategoryFacebook.find_by_id(fc['id'])
+            if cat
+              r = like.like_categories.new
+              r.category_facebook_id = fc['id'] 
+              r.save
+            else
+              catNew = like.category_facebooks.new fc
+              catNew.save
+            end
+          end
+        end
         like.save
       end 
     end

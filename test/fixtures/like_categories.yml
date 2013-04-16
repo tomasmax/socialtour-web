@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category_facebook_id: 1
+  like_id: 1
+
+two:
+  category_facebook_id: 1
+  like_id: 1
