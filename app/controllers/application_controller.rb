@@ -19,26 +19,30 @@ class ApplicationController < ActionController::Base
     #graph = Koala::Facebook::GraphAPI.new(auth.auth_token) # pre 1.2beta
     graph = Koala::Facebook::API.new(auth.auth_token) # 1.2beta and beyond
     likes = graph.get_connections('me', 'likes')
+    puts "Creating likes"
     likes.each do |l|
       exists = Like.find_by_facebook_id(l['id'])
       if !exists
         like = user.likes.new
         like.category = l['category'] #faltan coger las category_list nueva incorporacion de facebook
         like.facebook_id = l['id']
+        puts "Creating facebook like #{l['id']}"
         if l['category_list']
+          puts "Category_list: "
           l['category_list'].each do |fc|
-            cat = CategoryFacebook.find_by_id(fc['id'])
+            cat = CategoryFacebook.find_by_name(fc['name'])
             if cat
-              r = like.like_categories.new
-              r.category_facebook_id = fc['id'] 
-              r.save
+              cat.likes.push(like)
+              cat.save
+              puts("Already existing category #{cat.id} - #{cat.name} ")
             else
               catNew = like.category_facebooks.new fc
-              catNew.save
+              catNew.save!
+              puts "Created new category #{fc['name']}"
             end
           end
         end
-        like.save
+        like.save!
       end 
     end
   end

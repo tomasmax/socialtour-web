@@ -14,6 +14,12 @@
   <dd><%= @like.created_time %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @like.user_id %></dd>
+  <% if @like.category_facebooks %>
+	  <dt><strong>Likes category list:</strong></dt>
+	  <% @like.category_facebooks.each do |cf| %>
+	  	<dd><%= link_to cf.name, cf %></dd>
+	  <% end %>
+	<% end %>
 </dl>
 
 <div class="form-actions">
