@@ -8,7 +8,7 @@
 		          <%= label_tag :type_leisure, t(:type_leisure) %>
 		            <%= select_tag :type_leisure, options_for_select(TypeLeisure.all.collect{|type| [type.name] }),:include_blank => true, selected: params[:type_leisure] %>
 		        <div class="clearfix">
-		          <%= label_tag :type_time, t(:type_time) %>
+		          <b><%= label_tag :type_time, t(:type_time) %></b>
 		          <div class="input">
 		            <%= select_tag :type_time, options_for_select(TypeTime.all.collect{|type| [type.name] }),:include_blank => true, selected: params[:type_time] %>
 		          </div>
@@ -44,21 +44,28 @@
 
 <br />
 
-<h3>Por la mañana</h3>
-
 <div class="row-fluid">
-	<ul class="thumbnails">
-		<%= render collection: @places_morning, partial: "poi_package", as: :poi %>
-	</ul>
-<br />
-<h3>Comida</h3>
-	<ul class="thumbnails">
-		<%= render collection: @eat, partial: "poi_package", as: :poi %>
-	</ul>
-<br />
+<% if @places_morning %>
+	<h3>Por la mañana</h3>
+		<ul class="thumbnails">
+			<%= render collection: @places_morning, partial: "poi_package", as: :poi %>
+		</ul>
+	<br />
+<% end %>
+
+<% if @eat %>
+	<h3>Comida</h3>
+		<ul class="thumbnails">
+			<%= render collection: @eat, partial: "poi_package", as: :poi %>
+		</ul>
+	<br />
+<% end %>
+
+<% if @places_afternoon %>
 <h3>Por la tarde</h3>
 	<ul class="thumbnails">
 		<%= render collection: @places_afternoon, partial: "poi_package", as: :poi %>
 	</ul>
+<% end %>
 </div>
 

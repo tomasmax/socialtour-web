@@ -10,15 +10,14 @@
   <dd><%= @like.category %></dd>
   <dt><strong><%= model_class.human_attribute_name(:facebook_id) %>:</strong></dt>
   <dd><%= @like.facebook_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:created_time) %>:</strong></dt>
-  <dd><%= @like.created_time %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @like.user_id %></dd>
   <% if @like.category_facebooks %>
 	  <dt><strong>Likes category list:</strong></dt>
+	  <ul>
 	  <% @like.category_facebooks.each do |cf| %>
-	  	<dd><%= link_to cf.name, cf %></dd>
+	  	<dd><li><%= cf.name %></li></dd>
 	  <% end %>
+	  </ul>
 	<% end %>
 </dl>
 
