@@ -447,18 +447,18 @@ TypeLeisure.create(name: "Ocio con pareja")
 TypeLeisure.create(name: "Ocio familiar")
 TypeLeisure.create(name: "Ocio con amigos")
 TypeLeisure.create(name: "Otros")
-puts "TypeTimes saved"
+puts "TypeLeisure saved"
 
 TypeVehicle.create(name: "Bicicleta")
 TypeVehicle.create(name: "Paseo")
 TypeVehicle.create(name: "Correr")
 TypeVehicle.create(name: "Coche")
 TypeVehicle.create(name: "Moto")
-puts "TypeTimes saved"
+puts "TypeVehicle saved"
 
 TypeTime.create(name: 'Mañana')
 TypeTime.create(name: "Tarde")
 TypeTime.create(name: "Noche")
 TypeTime.create(name: "Todo el día")
 TypeTime.create(name: "Fin de semana")
-puts "TypeTimes saved"
+puts "TypeTime saved"
