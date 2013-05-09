@@ -7,6 +7,7 @@ class Package < ActiveRecord::Base
   belongs_to :user
   belongs_to :provider
   
+  has_many :pois
   has_many :ratings, dependent: :delete_all
   has_many :comments, dependent: :delete_all
   has_many :events
