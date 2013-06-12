@@ -1,0 +1,24 @@
+
+<li class="poi-preview">
+
+  <div class="pois-content">
+    <div class="poi-rating">
+      <div class="starbar-static">
+        <% rating = package.ratings_count ? (package.rating / package.ratings_count) : 0.0 %>
+        <% (0...5).each do |i| %>
+          <div class="star <%= (rating - i) > 0.5 ? 'full' : 'half' if rating >= i %>"></div>
+        <% end %>
+      </div>
+      <span><%= package.ratings_count || 0 %></span>
+    </div>
+    <h3><%= link_to package.name, package_url(package) %></h3>
+    <div class="poi-user">
+      <span>por <%= link_to package.user.name, user_url(package.user) if package.user %> </span>
+    </div>
+
+    <div class="poi-desc">
+      <p><%= truncate package.description, length: 220 %></p>
+    </div>
+    
+  </div>
+</li>

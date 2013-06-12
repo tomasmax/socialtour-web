@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="2587px" height="2894px" viewBox="0 0 2587 2894" enable-background="new 0 0 2587 2894" xml:space="preserve">
+<g id="graph0" transform="scale(1 1) rotate(0) translate(4 2890)">
+	<title>models_diagram</title>
+	<polygon fill="#FFFFFF" stroke="#FFFFFF" points="-4,5 -4,-2890 2584,-2890 2584,5 	"/>
+	<g id="node2">
+		<title>AdminUser</title>
+		<path fill="none" stroke="#000000" d="M827.722-2634.4h180.558c6,0,12-6,12-12v-227.2c0-6-6-12-12-12H827.722c-6,0-12,6-12,12
+			v227.2C815.722-2640.4,821.722-2634.4,827.722-2634.4"/>
+		<text transform="matrix(1 0 0 1 885.3376 -2867.5996)" font-family="'Times-Roman'" font-size="14">AdminUser</text>
+		<line fill="none" stroke="#000000" x1="815.722" y1="-2860.8" x2="1020.28" y2="-2860.8"/>
+		<text transform="matrix(1 0 0 1 823.7219 -2842.7998)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2826)" font-family="'Times-Roman'" font-size="14">email :string</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2809.2002)" font-family="'Times-Roman'" font-size="14">encrypted_password :string</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2792.4004)" font-family="'Times-Roman'" font-size="14">reset_password_token :string</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2775.5996)" font-family="'Times-Roman'" font-size="14">reset_password_sent_at :datetime</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2758.7998)" font-family="'Times-Roman'" font-size="14">remember_created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2742)" font-family="'Times-Roman'" font-size="14">sign_in_count :integer</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2725.2002)" font-family="'Times-Roman'" font-size="14">current_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2708.4004)" font-family="'Times-Roman'" font-size="14">last_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2691.5996)" font-family="'Times-Roman'" font-size="14">current_sign_in_ip :string</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2674.7998)" font-family="'Times-Roman'" font-size="14">last_sign_in_ip :string</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2658)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 823.7219 -2641.2002)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="node3">
+		<title>ApiKey</title>
+		<path fill="none" stroke="#000000" d="M1050.49-2693.2h109.021c6,0,12-6,12-12v-109.6c0-6-6-12-12-12H1050.49c-6,0-12,6-12,12
+			v109.6C1038.49-2699.2,1044.49-2693.2,1050.49-2693.2"/>
+		<text transform="matrix(1 0 0 1 1082.8376 -2808.7998)" font-family="'Times-Roman'" font-size="14">ApiKey</text>
+		<line fill="none" stroke="#000000" x1="1038.49" y1="-2802" x2="1171.51" y2="-2802"/>
+		<text transform="matrix(1 0 0 1 1046.4895 -2784)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1046.4895 -2767.2002)" font-family="'Times-Roman'" font-size="14">description :string</text>
+		<text transform="matrix(1 0 0 1 1046.4895 -2750.4004)" font-family="'Times-Roman'" font-size="14">key :string</text>
+		<text transform="matrix(1 0 0 1 1046.4895 -2733.5996)" font-family="'Times-Roman'" font-size="14">calls_count :integer</text>
+		<text transform="matrix(1 0 0 1 1046.4895 -2716.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1046.4895 -2700)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="node4">
+		<title>Authentication</title>
+		<path fill="none" stroke="#000000" d="M2163.49-1562.6h109.021c6,0,12-6,12-12V-1751.4c0-6-6-12-12-12H2163.49c-6,0-12,6-12,12
+			v176.801C2151.49-1568.6,2157.49-1562.6,2163.49-1562.6"/>
+		<text transform="matrix(1 0 0 1 2176.3997 -1745.4004)" font-family="'Times-Roman'" font-size="14">Authentication</text>
+		<line fill="none" stroke="#000000" x1="2151.49" y1="-1738.6" x2="2284.51" y2="-1738.6"/>
+		<text transform="matrix(1 0 0 1 2159.4895 -1720.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1703.7998)" font-family="'Times-Roman'" font-size="14">provider :string</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1687)" font-family="'Times-Roman'" font-size="14">uid :string</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1670.2002)" font-family="'Times-Roman'" font-size="14">uname :string</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1653.4004)" font-family="'Times-Roman'" font-size="14">uemail :string</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1636.6001)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1619.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1603)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1586.2002)" font-family="'Times-Roman'" font-size="14">auth_token :string</text>
+		<text transform="matrix(1 0 0 1 2159.4895 -1569.3999)" font-family="'Times-Roman'" font-size="14">auth_secret :string</text>
+	</g>
+	<g id="node5">
+		<title>Category</title>
+		<path fill="none" stroke="#000000" d="M570.653-1495.4h134.694c6,0,12-6,12-12V-1818.6c0-6-6-12-12-12H570.653c-6,0-12,6-12,12
+			v311.199C558.653-1501.4,564.653-1495.4,570.653-1495.4"/>
+		<text transform="matrix(1 0 0 1 612.3411 -1812.5996)" font-family="'Times-Roman'" font-size="14">Category</text>
+		<line fill="none" stroke="#000000" x1="558.653" y1="-1805.8" x2="717.347" y2="-1805.8"/>
+		<text transform="matrix(1 0 0 1 566.6526 -1787.7998)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1771)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1754.2002)" font-family="'Times-Roman'" font-size="14">supercategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1737.4004)" font-family="'Times-Roman'" font-size="14">group :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1720.5996)" font-family="'Times-Roman'" font-size="14">slug :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1703.7998)" font-family="'Times-Roman'" font-size="14">is_route :boolean</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1687)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1670.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1653.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1636.6001)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1619.7998)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1603)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1586.2002)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1569.3999)" font-family="'Times-Roman'" font-size="14">icon_file_name :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1552.6001)" font-family="'Times-Roman'" font-size="14">icon_content_type :string</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1535.7998)" font-family="'Times-Roman'" font-size="14">icon_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1519)" font-family="'Times-Roman'" font-size="14">icon_update_at :datetime</text>
+		<text transform="matrix(1 0 0 1 566.6526 -1502.2002)" font-family="'Times-Roman'" font-size="14">minube_id :integer</text>
+	</g>
+	<g id="node27">
+		<title>Subcategory</title>
+		<path fill="none" stroke="#000000" d="M463.653-1036.8h134.694c6,0,12-6,12-12v-294.4c0-6-6-12-12-12H463.653c-6,0-12,6-12,12
+			v294.4C451.653-1042.8,457.653-1036.8,463.653-1036.8"/>
+		<text transform="matrix(1 0 0 1 496.01 -1337.2002)" font-family="'Times-Roman'" font-size="14">Subcategory</text>
+		<line fill="none" stroke="#000000" x1="451.653" y1="-1330.4" x2="610.347" y2="-1330.4"/>
+		<text transform="matrix(1 0 0 1 459.6526 -1312.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1295.5996)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1278.7998)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1262)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1245.2002)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1228.4004)" font-family="'Times-Roman'" font-size="14">group :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1211.5996)" font-family="'Times-Roman'" font-size="14">slug :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1194.7998)" font-family="'Times-Roman'" font-size="14">is_route :boolean</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1178)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1161.2002)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1144.4004)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1127.5996)" font-family="'Times-Roman'" font-size="14">icon_file_name :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1110.7998)" font-family="'Times-Roman'" font-size="14">icon_content_type :string</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1094)" font-family="'Times-Roman'" font-size="14">icon_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1077.2002)" font-family="'Times-Roman'" font-size="14">icon_update_at :datetime</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1060.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 459.6526 -1043.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge1">
+		<title>Category-&gt;Subcategory</title>
+		<path fill="none" stroke="#DFF4D8" d="M597.75-1487.08c-9.157,39.79-18.867,81.99-27.963,121.52"/>
+		<ellipse fill="none" stroke="#DFF4D8" cx="598.699" cy="-1491.21" rx="4" ry="4"/>
+		<polygon fill="#DFF4D8" stroke="#DFF4D8" points="569.732,-1365.32 571.875,-1354.57 568.611,-1360.45 567.49,-1355.58 
+			567.49,-1355.58 567.49,-1355.58 568.611,-1360.45 563.104,-1356.59 569.732,-1365.32 		"/>
+	</g>
+	<g id="node21">
+		<title>Poi</title>
+		<path fill="none" stroke="#000000" d="M1027.67-477h134.659c6,0,12-6,12-12v-496c0-6-6-12-12-12H1027.67c-6,0-12,6-12,12v496
+			C1015.67-483,1021.67-477,1027.67-477"/>
+		<text transform="matrix(1 0 0 1 1085.6619 -979)" font-family="'Times-Roman'" font-size="14">Poi</text>
+		<line fill="none" stroke="#000000" x1="1015.67" y1="-972.2" x2="1174.329" y2="-972.2"/>
+		<text transform="matrix(1 0 0 1 1023.6697 -954.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -937.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -920.5996)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -903.7998)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -887)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -870.2002)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -853.4004)" font-family="'Times-Roman'" font-size="14">ratings_count :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -836.5996)" font-family="'Times-Roman'" font-size="14">rating :decimal</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -819.7998)" font-family="'Times-Roman'" font-size="14">slug :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -803)" font-family="'Times-Roman'" font-size="14">address :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -786.2002)" font-family="'Times-Roman'" font-size="14">telephone :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -769.4004)" font-family="'Times-Roman'" font-size="14">website :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -752.5996)" font-family="'Times-Roman'" font-size="14">minube_url :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -735.7998)" font-family="'Times-Roman'" font-size="14">minube_id :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -719)" font-family="'Times-Roman'" font-size="14">city_id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -702.2002)" font-family="'Times-Roman'" font-size="14">subcategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -685.4004)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -668.5996)" font-family="'Times-Roman'" font-size="14">supercategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -651.7998)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -635)" font-family="'Times-Roman'" font-size="14">description_eu :text</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -618.2002)" font-family="'Times-Roman'" font-size="14">timetable :text</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -601.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -584.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -567.7998)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -551)" font-family="'Times-Roman'" font-size="14">foursquare_url :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -534.2002)" font-family="'Times-Roman'" font-size="14">checkins_count :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -517.4004)" font-family="'Times-Roman'" font-size="14">users_count :integer</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -500.5996)" font-family="'Times-Roman'" font-size="14">tip_count :string</text>
+		<text transform="matrix(1 0 0 1 1023.6697 -483.7998)" font-family="'Times-Roman'" font-size="14">likes_count :integer</text>
+	</g>
+	<g id="edge2">
+		<title>Category-&gt;Poi</title>
+		<path fill="none" stroke="#BEDEBD" d="M721.62-1525.34C771.319-1444.1,824.781-1356.63,825-1356
+			c46.866,135.34-16.433,187.53,38,320c33.147,80.676,94.491,157.975,145.779,213.621"/>
+		<ellipse fill="none" stroke="#BEDEBD" cx="719.527" cy="-1528.77" rx="4" ry="4"/>
+		<polygon fill="#BEDEBD" stroke="#BEDEBD" points="1008.81,-822.341 1018.92,-818.08 1012.22,-818.678 1015.619,-815.016 
+			1015.619,-815.016 1015.619,-815.016 1012.22,-818.678 1012.32,-811.952 1008.81,-822.341 		"/>
+	</g>
+	<g id="node8">
+		<title>CategoryMinube</title>
+		<path fill="none" stroke="#000000" d="M884.17-1129.2h183.659c6,0,12-6,12-12v-109.6c0-6-6-12-12-12H884.17c-6,0-12,6-12,12v109.6
+			C872.17-1135.2,878.17-1129.2,884.17-1129.2"/>
+		<text transform="matrix(1 0 0 1 928.5652 -1244.7998)" font-family="'Times-Roman'" font-size="14">CategoryMinube</text>
+		<line fill="none" stroke="#000000" x1="872.17" y1="-1238" x2="1079.829" y2="-1238"/>
+		<text transform="matrix(1 0 0 1 880.1697 -1220)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 880.1697 -1203.2002)" font-family="'Times-Roman'" font-size="14">supercategory_minube_id :integer</text>
+		<text transform="matrix(1 0 0 1 880.1697 -1186.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 880.1697 -1169.5996)" font-family="'Times-Roman'" font-size="14">group :string</text>
+		<text transform="matrix(1 0 0 1 880.1697 -1152.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 880.1697 -1136)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge3">
+		<title>Category-&gt;CategoryMinube</title>
+		<path fill="none" stroke="#9A5BA8" d="M720.506-1486.36c22.518,34.3,49.672,67.341,81.494,92.36c20.551,16.16,35.18,2.189,56,18
+			c35.524,26.98,63.648,67.93,83.516,103.85"/>
+		<polygon fill="#9A5BA8" stroke="#9A5BA8" points="720.291,-1486.689 711.096,-1492.67 717.586,-1490.9 714.881,-1495.1 
+			714.881,-1495.1 714.881,-1495.1 717.586,-1490.9 718.664,-1497.54 720.291,-1486.689 		"/>
+		<polygon fill="#9A5BA8" stroke="#9A5BA8" points="941.633,-1271.93 950.347,-1265.28 944.011,-1267.53 946.388,-1263.14 
+			946.388,-1263.14 946.388,-1263.14 944.011,-1267.53 942.43,-1261 941.633,-1271.93 		"/>
+	</g>
+	<g id="node7">
+		<title>CategoryFoursquare</title>
+		<path fill="none" stroke="#000000" d="M182.236-1095.6h201.528c6,0,12-6,12-12V-1284.4c0-6-6-12-12-12H182.236c-6,0-12,6-12,12
+			v176.801C170.236-1101.6,176.236-1095.6,182.236-1095.6"/>
+		<text transform="matrix(1 0 0 1 225.8479 -1278.4004)" font-family="'Times-Roman'" font-size="14">CategoryFoursquare</text>
+		<line fill="none" stroke="#000000" x1="170.236" y1="-1271.6" x2="395.764" y2="-1271.6"/>
+		<text transform="matrix(1 0 0 1 178.2356 -1253.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1236.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1220)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1203.2002)" font-family="'Times-Roman'" font-size="14">pluralName :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1186.4004)" font-family="'Times-Roman'" font-size="14">shortName :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1169.5996)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1152.7998)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1136)" font-family="'Times-Roman'" font-size="14">supercategory_foursquare_id :integer</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1119.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 178.2356 -1102.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge4">
+		<title>Category-&gt;CategoryFoursquare</title>
+		<path fill="none" stroke="#A5AC38" d="M552.191-1549.6c-56.704,74.27-130.618,171.09-186.644,244.479"/>
+		<polygon fill="#A5AC38" stroke="#A5AC38" points="552.484,-1549.99 554.975,-1560.67 555.518,-1553.96 558.552,-1557.93 
+			558.552,-1557.93 558.552,-1557.93 555.518,-1553.96 562.129,-1555.2 552.484,-1549.99 		"/>
+		<polygon fill="#A5AC38" stroke="#A5AC38" points="365.219,-1304.7 362.727,-1294.02 362.185,-1300.72 359.151,-1296.75 
+			359.151,-1296.75 359.151,-1296.75 362.185,-1300.72 355.573,-1299.48 365.219,-1304.7 		"/>
+	</g>
+	<g id="node9">
+		<title>CategoryRelation</title>
+		<path fill="none" stroke="#000000" d="M639.888-1129.2h164.224c6,0,12-6,12-12v-109.6c0-6-6-12-12-12H639.888c-6,0-12,6-12,12
+			v109.6C627.888-1135.2,633.888-1129.2,639.888-1129.2"/>
+		<text transform="matrix(1 0 0 1 672.6238 -1244.7998)" font-family="'Times-Roman'" font-size="14">CategoryRelation</text>
+		<line fill="none" stroke="#000000" x1="627.888" y1="-1238" x2="816.112" y2="-1238"/>
+		<text transform="matrix(1 0 0 1 635.8879 -1220)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 635.8879 -1203.2002)" font-family="'Times-Roman'" font-size="14">category_minube_id :integer</text>
+		<text transform="matrix(1 0 0 1 635.8879 -1186.4004)" font-family="'Times-Roman'" font-size="14">category_foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 635.8879 -1169.5996)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 635.8879 -1152.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 635.8879 -1136)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge5">
+		<title>Category-&gt;CategoryRelation</title>
+		<path fill="none" stroke="#FA070E" d="M669.598-1487.08c13.335,73.82,28.162,155.9,38.632,213.85"/>
+		<ellipse fill="none" stroke="#FA070E" cx="668.859" cy="-1491.17" rx="4" ry="4"/>
+		<polygon fill="#FA070E" stroke="#FA070E" points="708.289,-1272.89 714.495,-1263.85 709.179,-1267.97 710.068,-1263.05 
+			710.068,-1263.05 710.068,-1263.05 709.179,-1267.97 705.639,-1262.25 708.289,-1272.89 		"/>
+	</g>
+	<g id="node6">
+		<title>CategoryFacebook</title>
+		<path fill="none" stroke="#000000" d="M2426.49-2079h109.021c6,0,12-6,12-12v-76c0-6-6-12-12-12H2426.49c-6,0-12,6-12,12v76
+			C2414.49-2085,2420.49-2079,2426.49-2079"/>
+		<text transform="matrix(1 0 0 1 2428.1272 -2161)" font-family="'Times-Roman'" font-size="14">CategoryFacebook</text>
+		<line fill="none" stroke="#000000" x1="2414.49" y1="-2154.2" x2="2547.51" y2="-2154.2"/>
+		<text transform="matrix(1 0 0 1 2422.4895 -2136.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 2422.4895 -2119.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 2422.4895 -2102.5996)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2422.4895 -2085.7998)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="node15">
+		<title>Like</title>
+		<path fill="none" stroke="#000000" d="M2314.68-1571h162.64c6,0,12-6,12-12v-160c0-6-6-12-12-12h-162.64c-6,0-12,6-12,12v160
+			C2302.68-1577,2308.68-1571,2314.68-1571"/>
+		<text transform="matrix(1 0 0 1 2383.1721 -1737)" font-family="'Times-Roman'" font-size="14">Like</text>
+		<line fill="none" stroke="#000000" x1="2302.68" y1="-1730.2" x2="2489.32" y2="-1730.2"/>
+		<text transform="matrix(1 0 0 1 2310.6799 -1712.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1695.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1678.5996)" font-family="'Times-Roman'" font-size="14">category :string</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1661.7998)" font-family="'Times-Roman'" font-size="14">facebook_id :string</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1645)" font-family="'Times-Roman'" font-size="14">created_time :datetime</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1628.2002)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1611.3999)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1594.6001)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2310.6799 -1577.7998)" font-family="'Times-Roman'" font-size="14">category_facebook_id :integer</text>
+	</g>
+	<g id="edge6">
+		<title>CategoryFacebook-&gt;Like</title>
+		<path fill="none" stroke="#B0A43C" d="M2470.1-2068.48c-14.02,76.53-38.58,210.591-55.561,303.28"/>
+		<polygon fill="#B0A43C" stroke="#B0A43C" points="2470.18,-2068.95 2467.56,-2079.59 2471.08,-2073.86 2471.98,-2078.78 
+			2471.98,-2078.78 2471.98,-2078.78 2471.08,-2073.86 2476.409,-2077.97 2470.18,-2068.95 		"/>
+		<polygon fill="#B0A43C" stroke="#B0A43C" points="2414.52,-1765.07 2417.14,-1754.43 2413.61,-1760.16 2412.709,-1755.24 
+			2412.709,-1755.24 2412.709,-1755.24 2413.61,-1760.16 2408.289,-1756.05 2414.52,-1765.07 		"/>
+	</g>
+	<g id="node16">
+		<title>LikeCategory</title>
+		<path fill="none" stroke="#000000" d="M2404.68-1137.6h162.64c6,0,12-6,12-12v-92.801c0-6-6-12-12-12h-162.64c-6,0-12,6-12,12
+			v92.801C2392.68-1143.6,2398.68-1137.6,2404.68-1137.6"/>
+		<text transform="matrix(1 0 0 1 2447.5139 -1236.4004)" font-family="'Times-Roman'" font-size="14">LikeCategory</text>
+		<line fill="none" stroke="#000000" x1="2392.68" y1="-1229.6" x2="2579.32" y2="-1229.6"/>
+		<text transform="matrix(1 0 0 1 2400.6799 -1211.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 2400.6799 -1194.7998)" font-family="'Times-Roman'" font-size="14">category_facebook_id :integer</text>
+		<text transform="matrix(1 0 0 1 2400.6799 -1178)" font-family="'Times-Roman'" font-size="14">like_id :integer</text>
+		<text transform="matrix(1 0 0 1 2400.6799 -1161.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2400.6799 -1144.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge7">
+		<title>CategoryFacebook-&gt;LikeCategory</title>
+		<path fill="none" stroke="#813B90" d="M2487.27-2070.83c3.96,39.05,8.7,92,10.73,138.83c10.34,238.89,7.27,299,0,538
+			c-1.311,42.89-4.2,90.96-6.83,128.87"/>
+		<ellipse fill="none" stroke="#813B90" cx="2486.85" cy="-2074.96" rx="4" ry="4"/>
+		<polygon fill="#813B90" stroke="#813B90" points="2491.14,-1264.689 2494.93,-1254.4 2490.789,-1259.7 2490.44,-1254.71 
+			2490.44,-1254.71 2490.44,-1254.71 2490.789,-1259.7 2485.949,-1255.03 2491.14,-1264.689 		"/>
+	</g>
+	<g id="node28">
+		<title>SubcategoryFoursquare</title>
+		<path fill="none" stroke="#000000" d="M197.398-636.6h171.204c6,0,12-6,12-12V-825.4c0-6-6-12-12-12H197.398c-6,0-12,6-12,12
+			V-648.6C185.398-642.6,191.398-636.6,197.398-636.6"/>
+		<text transform="matrix(1 0 0 1 216.5168 -819.4004)" font-family="'Times-Roman'" font-size="14">SubcategoryFoursquare</text>
+		<line fill="none" stroke="#000000" x1="185.398" y1="-812.6" x2="380.602" y2="-812.6"/>
+		<text transform="matrix(1 0 0 1 193.3977 -794.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 193.3977 -777.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -761)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -744.2002)" font-family="'Times-Roman'" font-size="14">pluralName :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -727.4004)" font-family="'Times-Roman'" font-size="14">shortName :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -710.5996)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -693.7998)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 193.3977 -677)" font-family="'Times-Roman'" font-size="14">category_foursquare_id :integer</text>
+		<text transform="matrix(1 0 0 1 193.3977 -660.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 193.3977 -643.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge8">
+		<title>CategoryFoursquare-&gt;SubcategoryFoursquare</title>
+		<path fill="none" stroke="#EF3EA7" d="M283-1087.39c0,72.2,0,167.017,0,239.657"/>
+		<ellipse fill="none" stroke="#EF3EA7" cx="283" cy="-1091.561" rx="4" ry="4"/>
+		<polygon fill="#EF3EA7" stroke="#EF3EA7" points="283,-847.635 287.5,-837.635 283,-842.635 283,-837.635 283,-837.635 
+			283,-837.635 283,-842.635 278.5,-837.635 283,-847.635 		"/>
+	</g>
+	<g id="node10">
+		<title>City</title>
+		<path fill="none" stroke="#000000" d="M1073.6-2310.6h144.8c6,0,12-6,12-12v-260.8c0-6-6-12-12-12h-144.8c-6,0-12,6-12,12v260.8
+			C1061.6-2316.6,1067.6-2310.6,1073.6-2310.6"/>
+		<text transform="matrix(1 0 0 1 1133.9412 -2577.4004)" font-family="'Times-Roman'" font-size="14">City</text>
+		<line fill="none" stroke="#000000" x1="1061.6" y1="-2570.6" x2="1230.4" y2="-2570.6"/>
+		<text transform="matrix(1 0 0 1 1069.5999 -2552.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2535.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2519)" font-family="'Times-Roman'" font-size="14">country_id :integer</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2502.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2485.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2468.5996)" font-family="'Times-Roman'" font-size="14">minube_id :integer</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2451.7998)" font-family="'Times-Roman'" font-size="14">slug :string</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2435)" font-family="'Times-Roman'" font-size="14">image_file_name :string</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2418.2002)" font-family="'Times-Roman'" font-size="14">image_content_type :string</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2401.4004)" font-family="'Times-Roman'" font-size="14">image_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2384.5996)" font-family="'Times-Roman'" font-size="14">image_upload_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2367.7998)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2351)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2334.2002)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1069.5999 -2317.4004)" font-family="'Times-Roman'" font-size="14">zone_id :integer</text>
+	</g>
+	<g id="node36">
+		<title>User</title>
+		<path fill="none" stroke="#000000" d="M1751.72-1986.6h180.56c6,0,12-6,12-12V-2259.4c0-6-6-12-12-12h-180.56c-6,0-12,6-12,12
+			v260.801C1739.72-1992.6,1745.72-1986.6,1751.72-1986.6"/>
+		<text transform="matrix(1 0 0 1 1828.7825 -2253.4004)" font-family="'Times-Roman'" font-size="14">User</text>
+		<line fill="none" stroke="#000000" x1="1739.72" y1="-2246.6" x2="1944.28" y2="-2246.6"/>
+		<text transform="matrix(1 0 0 1 1747.72 -2228.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2211.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2195)" font-family="'Times-Roman'" font-size="14">city_id :integer</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2178.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2161.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2144.5996)" font-family="'Times-Roman'" font-size="14">email :string</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2127.7998)" font-family="'Times-Roman'" font-size="14">encrypted_password :string</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2111)" font-family="'Times-Roman'" font-size="14">reset_password_token :string</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2094.2002)" font-family="'Times-Roman'" font-size="14">reset_password_sent_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2077.4004)" font-family="'Times-Roman'" font-size="14">remember_created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2060.5996)" font-family="'Times-Roman'" font-size="14">sign_in_count :integer</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2043.7998)" font-family="'Times-Roman'" font-size="14">current_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2027)" font-family="'Times-Roman'" font-size="14">last_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1747.72 -2010.2002)" font-family="'Times-Roman'" font-size="14">current_sign_in_ip :string</text>
+		<text transform="matrix(1 0 0 1 1747.72 -1993.4004)" font-family="'Times-Roman'" font-size="14">last_sign_in_ip :string</text>
+	</g>
+	<g id="edge9">
+		<title>City-&gt;User</title>
+		<path fill="none" stroke="#A97D05" d="M1236.89-2311.61c0.7,0.55,1.399,1.08,2.11,1.61c147.27,109.77,361.17,152.99,490.67,169.73
+			"/>
+		<ellipse fill="none" stroke="#A97D05" cx="1233.78" cy="-2314.14" rx="4" ry="4"/>
+		<polygon fill="#A97D05" stroke="#A97D05" points="1729.699,-2140.26 1740.18,-2143.48 1734.659,-2139.64 1739.619,-2139.01 
+			1739.619,-2139.01 1739.619,-2139.01 1734.659,-2139.64 1739.06,-2134.55 1729.699,-2140.26 		"/>
+	</g>
+	<g id="edge10">
+		<title>City-&gt;Poi</title>
+		<path fill="none" stroke="#3816D1" d="M1120.98-2302.62C1113.86-2248.42,1108-2186.6,1108-2130c0,0,0,0,0,935
+			c0,60.71-1.16,125.95-2.791,187.58"/>
+		<ellipse fill="none" stroke="#3816D1" cx="1121.51" cy="-2306.6" rx="4" ry="4"/>
+		<polygon fill="#3816D1" stroke="#3816D1" points="1105.199,-1007.16 1109.43,-997.046 1105.07,-1002.17 1104.94,-997.167 
+			1104.94,-997.167 1104.94,-997.167 1105.07,-1002.17 1100.44,-997.288 1105.199,-1007.16 		"/>
+	</g>
+	<g id="node13">
+		<title>Event</title>
+		<path fill="none" stroke="#000000" d="M1246.539-1h112.92c6,0,12-6,12-12v-412c0-6-6-12-12-12h-112.92c-6,0-12,6-12,12v412
+			C1234.539-7,1240.539-1,1246.539-1"/>
+		<text transform="matrix(1 0 0 1 1286.6721 -419)" font-family="'Times-Roman'" font-size="14">Event</text>
+		<line fill="none" stroke="#000000" x1="1234.539" y1="-412.2" x2="1371.459" y2="-412.2"/>
+		<text transform="matrix(1 0 0 1 1242.5398 -394.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -377.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -360.5996)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -343.7998)" font-family="'Times-Roman'" font-size="14">picture :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -327)" font-family="'Times-Roman'" font-size="14">url :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -310.2002)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -293.4004)" font-family="'Times-Roman'" font-size="14">supercategory :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -276.5996)" font-family="'Times-Roman'" font-size="14">references :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -259.7998)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -243)" font-family="'Times-Roman'" font-size="14">starts_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -226.2002)" font-family="'Times-Roman'" font-size="14">ends_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -209.4004)" font-family="'Times-Roman'" font-size="14">start_time :time</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -192.5996)" font-family="'Times-Roman'" font-size="14">price :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -175.7998)" font-family="'Times-Roman'" font-size="14">provider_id :integer</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -159)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -142.2002)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -125.4004)" font-family="'Times-Roman'" font-size="14">city_id :integer</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -108.5996)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -91.7998)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -75)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -58.2002)" font-family="'Times-Roman'" font-size="14">description_eu :text</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -41.4004)" font-family="'Times-Roman'" font-size="14">timetable :text</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -24.5996)" font-family="'Times-Roman'" font-size="14">place :string</text>
+		<text transform="matrix(1 0 0 1 1242.5398 -7.7998)" font-family="'Times-Roman'" font-size="14">buy_ticket_url :string</text>
+	</g>
+	<g id="edge11">
+		<title>City-&gt;Event</title>
+		<path fill="none" stroke="#96B053" d="M1146-2302.24c0,54.26,0,116.01,0,172.24c0,0,0,0,0,756c0,100.54,95.939,798.598,111,898
+			c1.43,9.444,2.939,19.075,4.5,28.797"/>
+		<ellipse fill="none" stroke="#96B053" cx="1146" cy="-2306.54" rx="4" ry="4"/>
+		<polygon fill="#96B053" stroke="#96B053" points="1261.55,-446.912 1267.59,-437.762 1262.35,-441.977 1263.15,-437.041 
+			1263.15,-437.041 1263.15,-437.041 1262.35,-441.977 1258.709,-436.321 1261.55,-446.912 		"/>
+	</g>
+	<g id="node11">
+		<title>Comment</title>
+		<path fill="none" stroke="#000000" d="M1487.48-135.4h109.04c6,0,12-6,12-12V-290.6c0-6-6-12-12-12h-109.04c-6,0-12,6-12,12
+			V-147.4C1475.48-141.4,1481.48-135.4,1487.48-135.4"/>
+		<text transform="matrix(1 0 0 1 1514.3889 -284.5996)" font-family="'Times-Roman'" font-size="14">Comment</text>
+		<line fill="none" stroke="#000000" x1="1475.48" y1="-277.8" x2="1608.52" y2="-277.8"/>
+		<text transform="matrix(1 0 0 1 1483.4797 -259.7998)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -243)" font-family="'Times-Roman'" font-size="14">comment :text</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -226.2002)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -209.4004)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -192.5996)" font-family="'Times-Roman'" font-size="14">package_id :integer</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -175.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -159)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1483.4797 -142.2002)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+	</g>
+	<g id="node12">
+		<title>Country</title>
+		<path fill="none" stroke="#000000" d="M1201.22-2634.4h131.56c6,0,12-6,12-12v-227.2c0-6-6-12-12-12h-131.56c-6,0-12,6-12,12
+			v227.2C1189.22-2640.4,1195.22-2634.4,1201.22-2634.4"/>
+		<text transform="matrix(1 0 0 1 1244.0549 -2867.5996)" font-family="'Times-Roman'" font-size="14">Country</text>
+		<line fill="none" stroke="#000000" x1="1189.22" y1="-2860.8" x2="1344.78" y2="-2860.8"/>
+		<text transform="matrix(1 0 0 1 1197.22 -2842.7998)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2826)" font-family="'Times-Roman'" font-size="14">minube_id :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2809.2002)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2792.4004)" font-family="'Times-Roman'" font-size="14">pois_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2775.5996)" font-family="'Times-Roman'" font-size="14">full_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2758.7998)" font-family="'Times-Roman'" font-size="14">see_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2742)" font-family="'Times-Roman'" font-size="14">restaurant_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2725.2002)" font-family="'Times-Roman'" font-size="14">blog_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2708.4004)" font-family="'Times-Roman'" font-size="14">hotel_count :integer</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2691.5996)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2674.7998)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2658)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1197.22 -2641.2002)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge12">
+		<title>Country-&gt;City</title>
+		<path fill="none" stroke="#54AAE8" d="M1214.48-2626.62c-2.8,7.06-5.62,14.18-8.44,21.29"/>
+		<ellipse fill="none" stroke="#54AAE8" cx="1215.959" cy="-2630.35" rx="4" ry="4"/>
+		<polygon fill="#54AAE8" stroke="#54AAE8" points="1205.88,-2604.94 1206.369,-2593.98 1204.039,-2600.29 1202.19,-2595.64 
+			1202.19,-2595.64 1202.19,-2595.64 1204.039,-2600.29 1198.01,-2597.3 1205.88,-2604.94 		"/>
+	</g>
+	<g id="node37">
+		<title>Zone</title>
+		<path fill="none" stroke="#000000" d="M1260.49-2377.8h109.021c6,0,12-6,12-12v-126.4c0-6-6-12-12-12H1260.49c-6,0-12,6-12,12
+			v126.4C1248.49-2383.8,1254.49-2377.8,1260.49-2377.8"/>
+		<text transform="matrix(1 0 0 1 1300.6174 -2510.2002)" font-family="'Times-Roman'" font-size="14">Zone</text>
+		<line fill="none" stroke="#000000" x1="1248.49" y1="-2503.4" x2="1381.51" y2="-2503.4"/>
+		<text transform="matrix(1 0 0 1 1256.4895 -2485.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2468.5996)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2451.7998)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2435)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2418.2002)" font-family="'Times-Roman'" font-size="14">country_id :integer</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2401.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1256.4895 -2384.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge13">
+		<title>Country-&gt;Zone</title>
+		<path fill="none" stroke="#4F1374" d="M1287.92-2626.05c4.67,29.66,9.5,60.32,13.76,87.4"/>
+		<ellipse fill="none" stroke="#4F1374" cx="1287.28" cy="-2630.11" rx="4" ry="4"/>
+		<polygon fill="#4F1374" stroke="#4F1374" points="1301.73,-2538.33 1307.73,-2529.16 1302.5,-2533.4 1303.28,-2528.46 
+			1303.28,-2528.46 1303.28,-2528.46 1302.5,-2533.4 1298.84,-2527.76 1301.73,-2538.33 		"/>
+	</g>
+	<g id="node14">
+		<title>Friendship</title>
+		<path fill="none" stroke="#000000" d="M2012.49-1604.6h109.021c6,0,12-6,12-12v-92.801c0-6-6-12-12-12H2012.49c-6,0-12,6-12,12
+			v92.801C2000.49-1610.6,2006.49-1604.6,2012.49-1604.6"/>
+		<text transform="matrix(1 0 0 1 2037.0549 -1703.4004)" font-family="'Times-Roman'" font-size="14">Friendship</text>
+		<line fill="none" stroke="#000000" x1="2000.49" y1="-1696.6" x2="2133.51" y2="-1696.6"/>
+		<text transform="matrix(1 0 0 1 2008.4895 -1678.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 2008.4895 -1661.7998)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 2008.4895 -1645)" font-family="'Times-Roman'" font-size="14">friend_id :integer</text>
+		<text transform="matrix(1 0 0 1 2008.4895 -1628.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 2008.4895 -1611.3999)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge14">
+		<title>Like-&gt;LikeCategory</title>
+		<path fill="none" stroke="#2A5990" d="M2415.19-1562.87c17.38,89.81,42.53,219.75,57.71,298.181"/>
+		<ellipse fill="none" stroke="#2A5990" cx="2414.379" cy="-1567.04" rx="4" ry="4"/>
+		<polygon fill="#2A5990" stroke="#2A5990" points="2472.98,-1264.27 2479.3,-1255.3 2473.93,-1259.36 2474.879,-1254.45 
+			2474.879,-1254.45 2474.879,-1254.45 2473.93,-1259.36 2470.459,-1253.59 2472.98,-1264.27 		"/>
+	</g>
+	<g id="node17">
+		<title>List</title>
+		<path fill="none" stroke="#000000" d="M1186.49-1596.2h109.021c6,0,12-6,12-12v-109.6c0-6-6-12-12-12H1186.49c-6,0-12,6-12,12
+			v109.6C1174.49-1602.2,1180.49-1596.2,1186.49-1596.2"/>
+		<text transform="matrix(1 0 0 1 1230.1101 -1711.7998)" font-family="'Times-Roman'" font-size="14">List</text>
+		<line fill="none" stroke="#000000" x1="1174.49" y1="-1705" x2="1307.51" y2="-1705"/>
+		<text transform="matrix(1 0 0 1 1182.4895 -1687)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1182.4895 -1670.2002)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1182.4895 -1653.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1182.4895 -1636.6001)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1182.4895 -1619.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1182.4895 -1603)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge15">
+		<title>List-&gt;Poi</title>
+		<path fill="none" stroke="#17354A" d="M1228.97-1585.87c-19.8,125.32-60.181,380.89-91.46,578.83"/>
+		<polygon fill="#17354A" stroke="#17354A" points="1229,-1586.04 1226.11,-1596.62 1229.78,-1590.98 1230.56,-1595.92 
+			1230.56,-1595.92 1230.56,-1595.92 1229.78,-1590.98 1235,-1595.22 1229,-1586.04 		"/>
+		<polygon fill="#17354A" stroke="#17354A" points="1137.49,-1006.939 1140.38,-996.357 1136.709,-1002 1135.93,-997.061 
+			1135.93,-997.061 1135.93,-997.061 1136.709,-1002 1131.49,-997.763 1137.49,-1006.939 		"/>
+	</g>
+	<g id="node19">
+		<title>Package</title>
+		<path fill="none" stroke="#000000" d="M1469.6-1036.8h144.8c6,0,12-6,12-12v-294.4c0-6-6-12-12-12h-144.8c-6,0-12,6-12,12v294.4
+			C1457.6-1042.8,1463.6-1036.8,1469.6-1036.8"/>
+		<text transform="matrix(1 0 0 1 1518.679 -1337.2002)" font-family="'Times-Roman'" font-size="14">Package</text>
+		<line fill="none" stroke="#000000" x1="1457.6" y1="-1330.4" x2="1626.4" y2="-1330.4"/>
+		<text transform="matrix(1 0 0 1 1465.5999 -1312.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1295.5996)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1278.7998)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1262)" font-family="'Times-Roman'" font-size="14">price :decimal</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1245.2002)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1228.4004)" font-family="'Times-Roman'" font-size="14">supercategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1211.5996)" font-family="'Times-Roman'" font-size="14">type_leisure_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1194.7998)" font-family="'Times-Roman'" font-size="14">type_time_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1178)" font-family="'Times-Roman'" font-size="14">type_vehicle_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1161.2002)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1144.4004)" font-family="'Times-Roman'" font-size="14">provider_id :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1127.5996)" font-family="'Times-Roman'" font-size="14">image_file_name :string</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1110.7998)" font-family="'Times-Roman'" font-size="14">image_content_type :string</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1094)" font-family="'Times-Roman'" font-size="14">image_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1077.2002)" font-family="'Times-Roman'" font-size="14">image_update_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1060.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1465.5999 -1043.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge16">
+		<title>List-&gt;Package</title>
+		<path fill="none" stroke="#05F9DF" d="M1244.86-1586.15c6.78,58.92,24.83,139.24,72.141,192.15c29.76,33.28,57,11.59,93,38
+			c14.159,10.39,27.72,22.61,40.409,35.59"/>
+		<polygon fill="#05F9DF" stroke="#05F9DF" points="1244.85,-1586.21 1239.32,-1595.67 1244.32,-1591.18 1243.789,-1596.15 
+			1243.789,-1596.15 1243.789,-1596.15 1244.32,-1591.18 1248.27,-1596.63 1244.85,-1586.21 		"/>
+		<polygon fill="#05F9DF" stroke="#05F9DF" points="1450.459,-1320.36 1460.619,-1316.23 1453.909,-1316.74 1457.369,-1313.13 
+			1457.369,-1313.13 1457.369,-1313.13 1453.909,-1316.74 1454.11,-1310.02 1450.459,-1320.36 		"/>
+	</g>
+	<g id="edge17">
+		<title>List-&gt;Event</title>
+		<path fill="none" stroke="#1CF98B" d="M1242.57-1585.84c2.58,117.88,8.24,351.59,16.431,549.84
+			c8.22,198.895,20.649,424.896,30.199,588.54"/>
+		<polygon fill="#1CF98B" stroke="#1CF98B" points="1242.57,-1586.189 1237.85,-1596.09 1242.459,-1591.189 1242.35,-1596.189 
+			1242.35,-1596.189 1242.35,-1596.189 1242.459,-1591.189 1246.85,-1596.29 1242.57,-1586.189 		"/>
+		<polygon fill="#1CF98B" stroke="#1CF98B" points="1289.209,-447.247 1294.289,-437.527 1289.51,-442.255 1289.8,-437.264 
+			1289.8,-437.264 1289.8,-437.264 1289.51,-442.255 1285.3,-437.001 1289.209,-447.247 		"/>
+	</g>
+	<g id="node18">
+		<title>ListContent</title>
+		<path fill="none" stroke="#000000" d="M1280.49-1120.8h109.021c6,0,12-6,12-12v-126.4c0-6-6-12-12-12H1280.49c-6,0-12,6-12,12
+			v126.4C1268.49-1126.8,1274.49-1120.8,1280.49-1120.8"/>
+		<text transform="matrix(1 0 0 1 1301.9446 -1253.2002)" font-family="'Times-Roman'" font-size="14">ListContent</text>
+		<line fill="none" stroke="#000000" x1="1268.49" y1="-1246.4" x2="1401.51" y2="-1246.4"/>
+		<text transform="matrix(1 0 0 1 1276.4895 -1228.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1211.5996)" font-family="'Times-Roman'" font-size="14">list_id :integer</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1194.7998)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1178)" font-family="'Times-Roman'" font-size="14">package_id :integer</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1161.2002)" font-family="'Times-Roman'" font-size="14">event_id :integer</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1144.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1276.4895 -1127.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge18">
+		<title>List-&gt;ListContent</title>
+		<path fill="none" stroke="#896229" d="M1255.98-1587.91c16.89,83.55,44.3,219.141,61.99,306.65"/>
+		<ellipse fill="none" stroke="#896229" cx="1255.159" cy="-1591.95" rx="4" ry="4"/>
+		<polygon fill="#896229" stroke="#896229" points="1317.99,-1281.16 1324.38,-1272.25 1318.98,-1276.26 1319.97,-1271.36 
+			1319.97,-1271.36 1319.97,-1271.36 1318.98,-1276.26 1315.56,-1270.47 1317.99,-1281.16 		"/>
+	</g>
+	<g id="edge19">
+		<title>Package-&gt;Poi</title>
+		<path fill="none" stroke="#1937EB" d="M1452.03-1083.14c-13.77,16.09-28.06,32.229-42.029,47.14
+			c-73.461,78.383-162.9,161.975-227.681,220.614"/>
+		<ellipse fill="none" stroke="#1937EB" cx="1454.89" cy="-1086.49" rx="4" ry="4"/>
+		<polygon fill="#1937EB" stroke="#1937EB" points="1181.97,-815.064 1177.56,-805.021 1178.26,-811.713 1174.55,-808.361 
+			1174.55,-808.361 1174.55,-808.361 1178.26,-811.713 1171.53,-811.7 1181.97,-815.064 		"/>
+	</g>
+	<g id="node24">
+		<title>Rating</title>
+		<path fill="none" stroke="#000000" d="M1655.49-127h109.021c6,0,12-6,12-12v-160c0-6-6-12-12-12H1655.49c-6,0-12,6-12,12v160
+			C1643.49-133,1649.49-127,1655.49-127"/>
+		<text transform="matrix(1 0 0 1 1691.3342 -293)" font-family="'Times-Roman'" font-size="14">Rating</text>
+		<line fill="none" stroke="#000000" x1="1643.49" y1="-286.2" x2="1776.51" y2="-286.2"/>
+		<text transform="matrix(1 0 0 1 1651.4895 -268.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -251.4004)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -234.5996)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -217.7998)" font-family="'Times-Roman'" font-size="14">package_id :integer</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -201)" font-family="'Times-Roman'" font-size="14">ip :string</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -184.2002)" font-family="'Times-Roman'" font-size="14">rating :decimal</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -167.4004)" font-family="'Times-Roman'" font-size="14">comment :text</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -150.5996)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1651.4895 -133.7998)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge20">
+		<title>Package-&gt;Rating</title>
+		<path fill="none" stroke="#8E42BF" d="M1570.64-1028.8c34.979,203.017,93.06,540.065,121.939,707.689"/>
+		<ellipse fill="none" stroke="#8E42BF" cx="1569.949" cy="-1032.78" rx="4" ry="4"/>
+		<polygon fill="#8E42BF" stroke="#8E42BF" points="1692.61,-320.907 1698.75,-311.816 1693.459,-315.98 1694.31,-311.052 
+			1694.31,-311.052 1694.31,-311.052 1693.459,-315.98 1689.88,-310.288 1692.61,-320.907 		"/>
+	</g>
+	<g id="edge21">
+		<title>Package-&gt;Comment</title>
+		<path fill="none" stroke="#A5C42D" d="M1542-1028.67c0,206.433,0,551.281,0,715.825"/>
+		<ellipse fill="none" stroke="#A5C42D" cx="1542" cy="-1032.72" rx="4" ry="4"/>
+		<polygon fill="#A5C42D" stroke="#A5C42D" points="1542,-312.75 1546.5,-302.75 1542,-307.75 1542,-302.75 1542,-302.75 
+			1542,-302.75 1542,-307.75 1537.5,-302.75 1542,-312.75 		"/>
+	</g>
+	<g id="edge22">
+		<title>Package-&gt;Event</title>
+		<path fill="none" stroke="#95A1A8" d="M1527.789-1028.25C1510.659-843.593,1479.68-558.439,1444-456
+			c-16.021,45.988-41.671,92.807-66.73,132.49"/>
+		<ellipse fill="none" stroke="#95A1A8" cx="1528.17" cy="-1032.43" rx="4" ry="4"/>
+		<polygon fill="#95A1A8" stroke="#95A1A8" points="1376.99,-323.061 1375.4,-312.21 1374.3,-318.846 1371.6,-314.632 
+			1371.6,-314.632 1371.6,-314.632 1374.3,-318.846 1367.81,-317.055 1376.99,-323.061 		"/>
+	</g>
+	<g id="node20">
+		<title>Photo</title>
+		<path fill="none" stroke="#000000" d="M816.76-59.8H973.24c6,0,12-6,12-12v-294.4c0-6-6-12-12-12H816.76c-6,0-12,6-12,12v294.4
+			C804.76-65.8,810.76-59.8,816.76-59.8"/>
+		<text transform="matrix(1 0 0 1 878.6619 -360.2002)" font-family="'Times-Roman'" font-size="14">Photo</text>
+		<line fill="none" stroke="#000000" x1="804.76" y1="-353.4" x2="985.24" y2="-353.4"/>
+		<text transform="matrix(1 0 0 1 812.76 -335.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 812.76 -318.5996)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 812.76 -301.7998)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 812.76 -285)" font-family="'Times-Roman'" font-size="14">image_file_name :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -268.2002)" font-family="'Times-Roman'" font-size="14">image_content_type :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -251.4004)" font-family="'Times-Roman'" font-size="14">image_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 812.76 -234.5996)" font-family="'Times-Roman'" font-size="14">image_updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 812.76 -217.7998)" font-family="'Times-Roman'" font-size="14">is_visible_on_index :boolean</text>
+		<text transform="matrix(1 0 0 1 812.76 -201)" font-family="'Times-Roman'" font-size="14">title :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -184.2002)" font-family="'Times-Roman'" font-size="14">subtitle :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -167.4004)" font-family="'Times-Roman'" font-size="14">title_eu :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -150.5996)" font-family="'Times-Roman'" font-size="14">subtitle_eu :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -133.7998)" font-family="'Times-Roman'" font-size="14">minube_url :string</text>
+		<text transform="matrix(1 0 0 1 812.76 -117)" font-family="'Times-Roman'" font-size="14">sequence :integer</text>
+		<text transform="matrix(1 0 0 1 812.76 -100.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 812.76 -83.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 812.76 -66.5996)" font-family="'Times-Roman'" font-size="14">foursquare_url :string</text>
+	</g>
+	<g id="edge23">
+		<title>Poi-&gt;Photo</title>
+		<path fill="none" stroke="#492F64" d="M1012.52-523.198c-17.492,45.126-35.72,92.155-52.456,135.332"/>
+		<ellipse fill="none" stroke="#492F64" cx="1014.079" cy="-527.222" rx="4" ry="4"/>
+		<polygon fill="#492F64" stroke="#492F64" points="960.02,-387.751 960.601,-376.8 958.213,-383.088 956.406,-378.426 
+			956.406,-378.426 956.406,-378.426 958.213,-383.088 952.21,-380.053 960.02,-387.751 		"/>
+	</g>
+	<g id="edge24">
+		<title>Poi-&gt;Event</title>
+		<path fill="none" stroke="#08EC18" d="M1176.5-470.215c3.67,4.897,7.5,9.645,11.5,14.215c12.05,13.756,24.789,4.383,37,18
+			c1.01,1.122,2,2.259,2.979,3.408"/>
+		<ellipse fill="none" stroke="#08EC18" cx="1173.94" cy="-473.745" rx="4" ry="4"/>
+		<polygon fill="#08EC18" stroke="#08EC18" points="1227.98,-434.591 1237.77,-429.65 1231.13,-430.705 1234.27,-426.819 
+			1234.27,-426.819 1234.27,-426.819 1231.13,-430.705 1230.78,-423.987 1227.98,-434.591 		"/>
+	</g>
+	<g id="edge25">
+		<title>Poi-&gt;Rating</title>
+		<path fill="none" stroke="#639F7E" d="M1182.27-706.32C1296.25-663.53,1495.55-574.352,1617-438
+			c29.64,33.282,50.85,77.427,65.449,117.284"/>
+		<ellipse fill="none" stroke="#639F7E" cx="1178.3" cy="-707.799" rx="4" ry="4"/>
+		<polygon fill="#639F7E" stroke="#639F7E" points="1682.48,-320.64 1690.079,-312.732 1684.159,-315.93 1685.84,-311.22 
+			1685.84,-311.22 1685.84,-311.22 1684.159,-315.93 1681.6,-309.709 1682.48,-320.64 		"/>
+	</g>
+	<g id="edge26">
+		<title>Poi-&gt;Comment</title>
+		<path fill="none" stroke="#1AD85A" d="M1180.51-652.248C1238.699-593.917,1316.38-513.363,1380-438
+			c34,40.283,69.209,86.958,98.069,126.759"/>
+		<ellipse fill="none" stroke="#1AD85A" cx="1177.409" cy="-655.349" rx="4" ry="4"/>
+		<polygon fill="#1AD85A" stroke="#1AD85A" points="1478.27,-310.961 1487.78,-305.493 1481.199,-306.909 1484.13,-302.857 
+			1484.13,-302.857 1484.13,-302.857 1481.199,-306.909 1480.49,-300.22 1478.27,-310.961 		"/>
+	</g>
+	<g id="node25">
+		<title>RouteInfo</title>
+		<path fill="none" stroke="#000000" d="M1015.449-59.8h189.101c6,0,12-6,12-12v-294.4c0-6-6-12-12-12h-189.101c-6,0-12,6-12,12
+			v294.4C1003.449-65.8,1009.449-59.8,1015.449-59.8"/>
+		<text transform="matrix(1 0 0 1 1081.6169 -360.2002)" font-family="'Times-Roman'" font-size="14">RouteInfo</text>
+		<line fill="none" stroke="#000000" x1="1003.449" y1="-353.4" x2="1216.55" y2="-353.4"/>
+		<text transform="matrix(1 0 0 1 1011.45 -335.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1011.45 -318.5996)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 1011.45 -301.7998)" font-family="'Times-Roman'" font-size="14">n_bound :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -285)" font-family="'Times-Roman'" font-size="14">s_bound :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -268.2002)" font-family="'Times-Roman'" font-size="14">e_bound :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -251.4004)" font-family="'Times-Roman'" font-size="14">w_bound :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -234.5996)" font-family="'Times-Roman'" font-size="14">length :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -217.7998)" font-family="'Times-Roman'" font-size="14">difficulty :string</text>
+		<text transform="matrix(1 0 0 1 1011.45 -201)" font-family="'Times-Roman'" font-size="14">max_elevation :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -184.2002)" font-family="'Times-Roman'" font-size="14">min_elevation :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -167.4004)" font-family="'Times-Roman'" font-size="14">max_up_slope :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -150.5996)" font-family="'Times-Roman'" font-size="14">max_down_slope :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -133.7998)" font-family="'Times-Roman'" font-size="14">accomulated_up_slope :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -117)" font-family="'Times-Roman'" font-size="14">accomulated_down_slope :decimal</text>
+		<text transform="matrix(1 0 0 1 1011.45 -100.2002)" font-family="'Times-Roman'" font-size="14">is_circular :boolean</text>
+		<text transform="matrix(1 0 0 1 1011.45 -83.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1011.45 -66.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge27">
+		<title>Poi-&gt;RouteInfo</title>
+		<path fill="none" stroke="#EA4388" d="M1102.77-468.584c0.8,27.264,1.58,54.388,2.33,80.151"/>
+		<ellipse fill="none" stroke="#EA4388" cx="1102.65" cy="-472.868" rx="4" ry="4"/>
+		<polygon fill="#EA4388" stroke="#EA4388" points="1105.11,-388.244 1109.9,-378.379 1105.25,-383.246 1105.4,-378.248 
+			1105.4,-378.248 1105.4,-378.248 1105.25,-383.246 1100.9,-378.117 1105.11,-388.244 		"/>
+	</g>
+	<g id="node26">
+		<title>RoutePoint</title>
+		<path fill="none" stroke="#000000" d="M665.494-143.8h109.011c6,0,12-6,12-12v-126.4c0-6-6-12-12-12H665.494c-6,0-12,6-12,12
+			v126.4C653.494-149.8,659.494-143.8,665.494-143.8"/>
+		<text transform="matrix(1 0 0 1 688.4963 -276.2002)" font-family="'Times-Roman'" font-size="14">RoutePoint</text>
+		<line fill="none" stroke="#000000" x1="653.494" y1="-269.4" x2="786.505" y2="-269.4"/>
+		<text transform="matrix(1 0 0 1 661.4949 -251.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 661.4949 -234.5996)" font-family="'Times-Roman'" font-size="14">poi_id :integer</text>
+		<text transform="matrix(1 0 0 1 661.4949 -217.7998)" font-family="'Times-Roman'" font-size="14">latitude :decimal</text>
+		<text transform="matrix(1 0 0 1 661.4949 -201)" font-family="'Times-Roman'" font-size="14">longitude :decimal</text>
+		<text transform="matrix(1 0 0 1 661.4949 -184.2002)" font-family="'Times-Roman'" font-size="14">elevation :decimal</text>
+		<text transform="matrix(1 0 0 1 661.4949 -167.4004)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 661.4949 -150.5996)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge28">
+		<title>Poi-&gt;RoutePoint</title>
+		<path fill="none" stroke="#C19766" d="M1009.079-668.995C942.835-613.377,853.156-528.911,796-438
+			c-25.729,40.924-44.084,91.673-56.303,133.907"/>
+		<ellipse fill="none" stroke="#C19766" cx="1012.35" cy="-671.722" rx="4" ry="4"/>
+		<polygon fill="#C19766" stroke="#C19766" points="739.675,-304.01 741.284,-293.163 738.315,-299.199 736.953,-294.387 
+			736.953,-294.387 736.953,-294.387 738.315,-299.199 732.623,-295.612 739.675,-304.01 		"/>
+	</g>
+	<g id="node22">
+		<title>Profile</title>
+		<path fill="none" stroke="#000000" d="M1825.6-1394.6h144.8c6,0,12-6,12-12V-1919.4c0-6-6-12-12-12h-144.8c-6,0-12,6-12,12
+			v512.801C1813.6-1400.6,1819.6-1394.6,1825.6-1394.6"/>
+		<text transform="matrix(1 0 0 1 1878.9475 -1913.4004)" font-family="'Times-Roman'" font-size="14">Profile</text>
+		<line fill="none" stroke="#000000" x1="1813.6" y1="-1906.6" x2="1982.4" y2="-1906.6"/>
+		<text transform="matrix(1 0 0 1 1821.5999 -1888.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1871.7998)" font-family="'Times-Roman'" font-size="14">user_id :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1855)" font-family="'Times-Roman'" font-size="14">username :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1838.2002)" font-family="'Times-Roman'" font-size="14">first_name :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1821.4004)" font-family="'Times-Roman'" font-size="14">last_name :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1804.5996)" font-family="'Times-Roman'" font-size="14">gender :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1787.7998)" font-family="'Times-Roman'" font-size="14">about_me :text</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1771)" font-family="'Times-Roman'" font-size="14">i_like :text</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1754.2002)" font-family="'Times-Roman'" font-size="14">i_dont_like :text</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1737.4004)" font-family="'Times-Roman'" font-size="14">is_married :boolean</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1720.5996)" font-family="'Times-Roman'" font-size="14">has_sons :boolean</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1703.7998)" font-family="'Times-Roman'" font-size="14">restrictions :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1687)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1670.2002)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1653.4004)" font-family="'Times-Roman'" font-size="14">image_file_name :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1636.6001)" font-family="'Times-Roman'" font-size="14">image_content_type :string</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1619.7998)" font-family="'Times-Roman'" font-size="14">image_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1603)" font-family="'Times-Roman'" font-size="14">image_update_at :time</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1586.2002)" font-family="'Times-Roman'" font-size="14">born_date :date</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1569.3999)" font-family="'Times-Roman'" font-size="14">leisure :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1552.6001)" font-family="'Times-Roman'" font-size="14">gastronomy :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1535.7998)" font-family="'Times-Roman'" font-size="14">ferias :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1519)" font-family="'Times-Roman'" font-size="14">folclore :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1502.2002)" font-family="'Times-Roman'" font-size="14">sport :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1485.3999)" font-family="'Times-Roman'" font-size="14">nature :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1468.6001)" font-family="'Times-Roman'" font-size="14">culture :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1451.7998)" font-family="'Times-Roman'" font-size="14">other :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1435)" font-family="'Times-Roman'" font-size="14">buildings :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1418.2002)" font-family="'Times-Roman'" font-size="14">friends :integer</text>
+		<text transform="matrix(1 0 0 1 1821.5999 -1401.4004)" font-family="'Times-Roman'" font-size="14">events :integer</text>
+	</g>
+	<g id="node23">
+		<title>Provider</title>
+		<path fill="none" stroke="#000000" d="M1337.72-1461.8h180.56c6,0,12-6,12-12v-378.4c0-6-6-12-12-12h-180.56c-6,0-12,6-12,12
+			v378.4C1325.72-1467.8,1331.72-1461.8,1337.72-1461.8"/>
+		<text transform="matrix(1 0 0 1 1403.8928 -1846.2002)" font-family="'Times-Roman'" font-size="14">Provider</text>
+		<line fill="none" stroke="#000000" x1="1325.72" y1="-1839.4" x2="1530.28" y2="-1839.4"/>
+		<text transform="matrix(1 0 0 1 1333.72 -1821.4004)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1804.5996)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1787.7998)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1771)" font-family="'Times-Roman'" font-size="14">city_id :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1754.2002)" font-family="'Times-Roman'" font-size="14">category_id :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1737.4004)" font-family="'Times-Roman'" font-size="14">supercategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1720.5996)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1703.7998)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1687)" font-family="'Times-Roman'" font-size="14">image_file_name :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1670.2002)" font-family="'Times-Roman'" font-size="14">image_content_type :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1653.4004)" font-family="'Times-Roman'" font-size="14">image_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1636.6001)" font-family="'Times-Roman'" font-size="14">image_update_at :time</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1619.7998)" font-family="'Times-Roman'" font-size="14">email :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1603)" font-family="'Times-Roman'" font-size="14">encrypted_password :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1586.2002)" font-family="'Times-Roman'" font-size="14">reset_password_token :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1569.3999)" font-family="'Times-Roman'" font-size="14">reset_password_sent_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1552.6001)" font-family="'Times-Roman'" font-size="14">remember_created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1535.7998)" font-family="'Times-Roman'" font-size="14">sign_in_count :integer</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1519)" font-family="'Times-Roman'" font-size="14">current_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1502.2002)" font-family="'Times-Roman'" font-size="14">last_sign_in_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1485.3999)" font-family="'Times-Roman'" font-size="14">current_sign_in_ip :string</text>
+		<text transform="matrix(1 0 0 1 1333.72 -1468.6001)" font-family="'Times-Roman'" font-size="14">last_sign_in_ip :string</text>
+	</g>
+	<g id="edge29">
+		<title>Provider-&gt;Package</title>
+		<path fill="none" stroke="#916D48" d="M1479.03-1453.83c7.25,29.54,14.62,59.62,21.65,88.29"/>
+		<ellipse fill="none" stroke="#916D48" cx="1478.039" cy="-1457.88" rx="4" ry="4"/>
+		<polygon fill="#916D48" stroke="#916D48" points="1500.77,-1365.17 1507.52,-1356.53 1501.959,-1360.32 1503.15,-1355.46 
+			1503.15,-1355.46 1503.15,-1355.46 1501.959,-1360.32 1498.78,-1354.39 1500.77,-1365.17 		"/>
+	</g>
+	<g id="edge30">
+		<title>Provider-&gt;Event</title>
+		<path fill="none" stroke="#418F99" d="M1427.3-1453.21c-1.73,121.84-6.23,278.42-17.3,417.21
+			c-15.921,199.669-46.49,425.359-70.891,588.693"/>
+		<ellipse fill="none" stroke="#418F99" cx="1427.36" cy="-1457.55" rx="4" ry="4"/>
+		<polygon fill="#418F99" stroke="#418F99" points="1339.06,-447.02 1342.03,-436.463 1338.32,-442.075 1337.579,-437.13 
+			1337.579,-437.13 1337.579,-437.13 1338.32,-442.075 1333.13,-437.797 1339.06,-447.02 		"/>
+	</g>
+	<g id="edge31">
+		<title>Subcategory-&gt;Poi</title>
+		<path fill="none" stroke="#E4E921" d="M615.731-1039.53c1.081,1.19,2.17,2.37,3.27,3.53
+			c113.103,119.365,283.784,210.796,387.079,259.29"/>
+		<ellipse fill="none" stroke="#E4E921" cx="613.041" cy="-1042.59" rx="4" ry="4"/>
+		<polygon fill="#E4E921" stroke="#E4E921" points="1006.19,-776.663 1017.15,-776.516 1010.72,-774.55 1015.25,-772.438 
+			1015.25,-772.438 1015.25,-772.438 1010.72,-774.55 1013.35,-768.359 1006.19,-776.663 		"/>
+	</g>
+	<g id="node29">
+		<title>Supercategory</title>
+		<path fill="none" stroke="#000000" d="M356.653-1986.6h134.694c6,0,12-6,12-12V-2259.4c0-6-6-12-12-12H356.653c-6,0-12,6-12,12
+			v260.801C344.653-1992.6,350.653-1986.6,356.653-1986.6"/>
+		<text transform="matrix(1 0 0 1 383.572 -2253.4004)" font-family="'Times-Roman'" font-size="14">Supercategory</text>
+		<line fill="none" stroke="#000000" x1="344.653" y1="-2246.6" x2="503.347" y2="-2246.6"/>
+		<text transform="matrix(1 0 0 1 352.6526 -2228.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2211.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2195)" font-family="'Times-Roman'" font-size="14">slug :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2178.2002)" font-family="'Times-Roman'" font-size="14">icon_file_name :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2161.4004)" font-family="'Times-Roman'" font-size="14">icon_content_type :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2144.5996)" font-family="'Times-Roman'" font-size="14">icon_file_size :integer</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2127.7998)" font-family="'Times-Roman'" font-size="14">icon_update_at :datetime</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2111)" font-family="'Times-Roman'" font-size="14">group :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2094.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2077.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2060.5996)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2043.7998)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2027)" font-family="'Times-Roman'" font-size="14">name_eu :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -2010.2002)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 352.6526 -1993.4004)" font-family="'Times-Roman'" font-size="14">minube_id :integer</text>
+	</g>
+	<g id="edge32">
+		<title>Supercategory-&gt;Category</title>
+		<path fill="none" stroke="#9245DC" d="M492.701-1979.04c20.442,44.33,43.033,93.31,64.188,139.17"/>
+		<ellipse fill="none" stroke="#9245DC" cx="490.899" cy="-1982.95" rx="4" ry="4"/>
+		<polygon fill="#9245DC" stroke="#9245DC" points="556.911,-1839.82 565.187,-1832.62 559.006,-1835.28 561.1,-1830.74 
+			561.1,-1830.74 561.1,-1830.74 559.006,-1835.28 557.014,-1828.85 556.911,-1839.82 		"/>
+	</g>
+	<g id="edge33">
+		<title>Supercategory-&gt;Poi</title>
+		<path fill="none" stroke="#6EC60D" d="M417.864-1978.36C407.614-1697.53,392.744-1112.75,443-1036
+			c127.297,194.405,415.728,263.752,562.539,287.05"/>
+		<ellipse fill="none" stroke="#6EC60D" cx="418.019" cy="-1982.59" rx="4" ry="4"/>
+		<polygon fill="#6EC60D" stroke="#6EC60D" points="1005.55,-748.949 1016.119,-751.863 1010.49,-748.182 1015.43,-747.416 
+			1015.43,-747.416 1015.43,-747.416 1010.49,-748.182 1014.74,-742.969 1005.55,-748.949 		"/>
+	</g>
+	<g id="node31">
+		<title>SupercategoryMinube</title>
+		<path fill="none" stroke="#000000" d="M822.796-1613h116.407c6,0,12-6,12-12v-76c0-6-6-12-12-12H822.796c-6,0-12,6-12,12v76
+			C810.796-1619,816.796-1613,822.796-1613"/>
+		<text transform="matrix(1 0 0 1 818.7961 -1695)" font-family="'Times-Roman'" font-size="14">SupercategoryMinube</text>
+		<line fill="none" stroke="#000000" x1="810.796" y1="-1688.2" x2="951.203" y2="-1688.2"/>
+		<text transform="matrix(1 0 0 1 818.7957 -1670.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 818.7957 -1653.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 818.7957 -1636.6001)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 818.7957 -1619.7998)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge34">
+		<title>Supercategory-&gt;SupercategoryMinube</title>
+		<path fill="none" stroke="#132D47" d="M512.564-2085.04C577.394-2050.38,664.43-1996.811,726-1932
+			c59.262,62.38,105.02,151.55,130.986,209.6"/>
+		<polygon fill="#132D47" stroke="#132D47" points="512.406,-2085.13 501.463,-2085.83 507.987,-2087.47 503.569,-2089.811 
+			503.569,-2089.811 503.569,-2089.811 507.987,-2087.47 505.675,-2093.78 512.406,-2085.13 		"/>
+		<polygon fill="#132D47" stroke="#132D47" points="857.098,-1722.15 865.255,-1714.82 859.117,-1717.57 861.139,-1713 
+			861.139,-1713 861.139,-1713 859.117,-1717.57 857.023,-1711.18 857.098,-1722.15 		"/>
+	</g>
+	<g id="node30">
+		<title>SupercategoryFoursquare</title>
+		<path fill="none" stroke="#000000" d="M248.079-1571h135.842c6,0,12-6,12-12v-160c0-6-6-12-12-12H248.079c-6,0-12,6-12,12v160
+			C236.079-1577,242.079-1571,248.079-1571"/>
+		<text transform="matrix(1 0 0 1 244.0789 -1737)" font-family="'Times-Roman'" font-size="14">SupercategoryFoursquare</text>
+		<line fill="none" stroke="#000000" x1="236.079" y1="-1730.2" x2="395.921" y2="-1730.2"/>
+		<text transform="matrix(1 0 0 1 244.0789 -1712.2002)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1695.4004)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1678.5996)" font-family="'Times-Roman'" font-size="14">name_en :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1661.7998)" font-family="'Times-Roman'" font-size="14">pluralName :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1645)" font-family="'Times-Roman'" font-size="14">shortName :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1628.2002)" font-family="'Times-Roman'" font-size="14">foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1611.3999)" font-family="'Times-Roman'" font-size="14">foursquare_icon :string</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1594.6001)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 244.0789 -1577.7998)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge35">
+		<title>Supercategory-&gt;SupercategoryFoursquare</title>
+		<path fill="none" stroke="#19E1D8" d="M388.809-1976.811c-16.153,69.4-34.872,149.82-49.284,211.74"/>
+		<polygon fill="#19E1D8" stroke="#19E1D8" points="388.816,-1976.84 386.699,-1987.6 389.949,-1981.71 391.082,-1986.58 
+			391.082,-1986.58 391.082,-1986.58 389.949,-1981.71 395.466,-1985.561 388.816,-1976.84 		"/>
+		<polygon fill="#19E1D8" stroke="#19E1D8" points="339.517,-1765.03 341.632,-1754.27 338.383,-1760.16 337.248,-1755.29 
+			337.248,-1755.29 337.248,-1755.29 338.383,-1760.16 332.866,-1756.311 339.517,-1765.03 		"/>
+	</g>
+	<g id="node32">
+		<title>SupercategoryRelation</title>
+		<path fill="none" stroke="#000000" d="M11.726-1596.2h194.548c6,0,12-6,12-12v-109.6c0-6-6-12-12-12H11.726c-6,0-12,6-12,12v109.6
+			C-0.274-1602.2,5.726-1596.2,11.726-1596.2"/>
+		<text transform="matrix(1 0 0 1 44.8547 -1711.7998)" font-family="'Times-Roman'" font-size="14">SupercategoryRelation</text>
+		<line fill="none" stroke="#000000" x1="-0.274" y1="-1705" x2="218.274" y2="-1705"/>
+		<text transform="matrix(1 0 0 1 7.7253 -1687)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 7.7253 -1670.2002)" font-family="'Times-Roman'" font-size="14">supercategory_minube_id :integer</text>
+		<text transform="matrix(1 0 0 1 7.7253 -1653.4004)" font-family="'Times-Roman'" font-size="14">supercategory_foursquare_id :string</text>
+		<text transform="matrix(1 0 0 1 7.7253 -1636.6001)" font-family="'Times-Roman'" font-size="14">supercategory_id :integer</text>
+		<text transform="matrix(1 0 0 1 7.7253 -1619.7998)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 7.7253 -1603)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge36">
+		<title>Supercategory-&gt;SupercategoryRelation</title>
+		<path fill="none" stroke="#D8960A" d="M338.502-2056.189C300.869-2021.47,258.22-1977.5,227-1932
+			c-41.123,59.939-73.119,136.52-93.356,192.46"/>
+		<ellipse fill="none" stroke="#D8960A" cx="341.547" cy="-2058.98" rx="4" ry="4"/>
+		<polygon fill="#D8960A" stroke="#D8960A" points="133.617,-1739.46 134.488,-1728.53 131.934,-1734.75 130.251,-1730.05 
+			130.251,-1730.05 130.251,-1730.05 131.934,-1734.75 126.014,-1731.561 133.617,-1739.46 		"/>
+	</g>
+	<g id="edge37">
+		<title>SupercategoryFoursquare-&gt;CategoryFoursquare</title>
+		<path fill="none" stroke="#8C1E4D" d="M308.94-1562.51c-5.329,75.08-12.635,178.04-18.136,255.55"/>
+		<ellipse fill="none" stroke="#8C1E4D" cx="309.256" cy="-1566.97" rx="4" ry="4"/>
+		<polygon fill="#8C1E4D" stroke="#8C1E4D" points="290.782,-1306.65 294.563,-1296.36 290.428,-1301.66 290.074,-1296.68 
+			290.074,-1296.68 290.074,-1296.68 290.428,-1301.66 285.585,-1296.99 290.782,-1306.65 		"/>
+	</g>
+	<g id="edge38">
+		<title>SupercategoryMinube-&gt;CategoryMinube</title>
+		<path fill="none" stroke="#EFA0A5" d="M892.686-1604.8c17.064,83.53,48.831,239.02,67.825,331.989"/>
+		<ellipse fill="none" stroke="#EFA0A5" cx="891.877" cy="-1608.76" rx="4" ry="4"/>
+		<polygon fill="#EFA0A5" stroke="#EFA0A5" points="960.533,-1272.7 966.944,-1263.811 961.533,-1267.8 962.534,-1262.91 
+			962.534,-1262.91 962.534,-1262.91 961.533,-1267.8 958.125,-1262.01 960.533,-1272.7 		"/>
+	</g>
+	<g id="node33">
+		<title>TypeLeisure</title>
+		<path fill="none" stroke="#000000" d="M1598.49-1604.6h109.021c6,0,12-6,12-12v-92.801c0-6-6-12-12-12H1598.49c-6,0-12,6-12,12
+			v92.801C1586.49-1610.6,1592.49-1604.6,1598.49-1604.6"/>
+		<text transform="matrix(1 0 0 1 1618.1155 -1703.4004)" font-family="'Times-Roman'" font-size="14">TypeLeisure</text>
+		<line fill="none" stroke="#000000" x1="1586.49" y1="-1696.6" x2="1719.51" y2="-1696.6"/>
+		<text transform="matrix(1 0 0 1 1594.4895 -1678.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1594.4895 -1661.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1594.4895 -1645)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1594.4895 -1628.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1594.4895 -1611.3999)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge39">
+		<title>TypeLeisure-&gt;Package</title>
+		<path fill="none" stroke="#311DE0" d="M1637.409-1596.7c-14.3,59.931-36.12,151.32-55.279,231.601"/>
+		<ellipse fill="none" stroke="#311DE0" cx="1638.35" cy="-1600.62" rx="4" ry="4"/>
+		<polygon fill="#311DE0" stroke="#311DE0" points="1582.13,-1365.1 1584.18,-1354.32 1580.97,-1360.23 1579.8,-1355.37 
+			1579.8,-1355.37 1579.8,-1355.37 1580.97,-1360.23 1575.43,-1356.41 1582.13,-1365.1 		"/>
+	</g>
+	<g id="node34">
+		<title>TypeTime</title>
+		<path fill="none" stroke="#000000" d="M1374.49-2676.4h109.021c6,0,12-6,12-12v-143.2c0-6-6-12-12-12H1374.49c-6,0-12,6-12,12
+			v143.2C1362.49-2682.4,1368.49-2676.4,1374.49-2676.4"/>
+		<text transform="matrix(1 0 0 1 1400.5764 -2825.5996)" font-family="'Times-Roman'" font-size="14">TypeTime</text>
+		<line fill="none" stroke="#000000" x1="1362.49" y1="-2818.8" x2="1495.51" y2="-2818.8"/>
+		<text transform="matrix(1 0 0 1 1370.4895 -2800.7998)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2784)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2767.2002)" font-family="'Times-Roman'" font-size="14">time_from :time</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2750.4004)" font-family="'Times-Roman'" font-size="14">to_time :time</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2733.5996)" font-family="'Times-Roman'" font-size="14">date :datetime</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2716.7998)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2700)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1370.4895 -2683.2002)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="node35">
+		<title>TypeVehicle</title>
+		<path fill="none" stroke="#000000" d="M1525.49-2701.6h109.021c6,0,12-6,12-12v-92.8c0-6-6-12-12-12H1525.49c-6,0-12,6-12,12v92.8
+			C1513.49-2707.6,1519.49-2701.6,1525.49-2701.6"/>
+		<text transform="matrix(1 0 0 1 1545.1155 -2800.4004)" font-family="'Times-Roman'" font-size="14">TypeVehicle</text>
+		<line fill="none" stroke="#000000" x1="1513.49" y1="-2793.6" x2="1646.51" y2="-2793.6"/>
+		<text transform="matrix(1 0 0 1 1521.4895 -2775.5996)" font-family="'Times-Roman'" font-size="14">id :integer</text>
+		<text transform="matrix(1 0 0 1 1521.4895 -2758.7998)" font-family="'Times-Roman'" font-size="14">name :string</text>
+		<text transform="matrix(1 0 0 1 1521.4895 -2742)" font-family="'Times-Roman'" font-size="14">description :text</text>
+		<text transform="matrix(1 0 0 1 1521.4895 -2725.2002)" font-family="'Times-Roman'" font-size="14">created_at :datetime</text>
+		<text transform="matrix(1 0 0 1 1521.4895 -2708.4004)" font-family="'Times-Roman'" font-size="14">updated_at :datetime</text>
+	</g>
+	<g id="edge40">
+		<title>User-&gt;Authentication</title>
+		<path fill="none" stroke="#D0A7FA" d="M1951.789-2087.03c67.471,31.431,148.7,81.96,190.211,155.03
+			c27.6,48.59,45.77,107.91,57.399,158.38"/>
+		<ellipse fill="none" stroke="#D0A7FA" cx="1948.1" cy="-2088.72" rx="4" ry="4"/>
+		<polygon fill="#D0A7FA" stroke="#D0A7FA" points="2199.44,-1773.4 2206.03,-1764.63 2200.539,-1768.52 2201.64,-1763.65 
+			2201.64,-1763.65 2201.64,-1763.65 2200.539,-1768.52 2197.24,-1762.66 2199.44,-1773.4 		"/>
+	</g>
+	<g id="edge41">
+		<title>User-&gt;Package</title>
+		<path fill="none" stroke="#23D2C1" d="M1732.18-2076.61c-56.851,32.83-121.3,81.21-155.18,144.61
+			c-25.94,48.54-32.82,364.83-34.541,566.37"/>
+		<ellipse fill="none" stroke="#23D2C1" cx="1735.949" cy="-2078.75" rx="4" ry="4"/>
+		<polygon fill="#23D2C1" stroke="#23D2C1" points="1542.459,-1365.52 1546.88,-1355.48 1542.42,-1360.52 1542.38,-1355.52 
+			1542.38,-1355.52 1542.38,-1355.52 1542.42,-1360.52 1537.88,-1355.561 1542.459,-1365.52 		"/>
+	</g>
+	<g id="edge42">
+		<title>User-&gt;Profile</title>
+		<path fill="none" stroke="#DBACDB" d="M1860.03-1978.63c1.45,12.069,2.95,24.479,4.471,37.08"/>
+		<ellipse fill="none" stroke="#DBACDB" cx="1859.55" cy="-1982.61" rx="4" ry="4"/>
+		<polygon fill="#DBACDB" stroke="#DBACDB" points="1864.53,-1941.33 1870.19,-1931.939 1865.13,-1936.37 1865.73,-1931.4 
+			1865.73,-1931.4 1865.73,-1931.4 1865.13,-1936.37 1861.26,-1930.87 1864.53,-1941.33 		"/>
+	</g>
+	<g id="edge43">
+		<title>User-&gt;Friendship</title>
+		<path fill="none" stroke="#87ABAB" d="M1949.24-2000.87c15.47,22.07,30.08,45.48,41.761,68.87
+			c32.189,64.46,52.649,144.65,64.14,200.439"/>
+		<ellipse fill="none" stroke="#87ABAB" cx="1946.73" cy="-2004.42" rx="4" ry="4"/>
+		<polygon fill="#87ABAB" stroke="#87ABAB" points="2055.199,-1731.24 2061.59,-1722.32 2056.19,-1726.34 2057.18,-1721.43 
+			2057.18,-1721.43 2057.18,-1721.43 2056.19,-1726.34 2052.76,-1720.54 2055.199,-1731.24 		"/>
+	</g>
+	<g id="edge44">
+		<title>User-&gt;User</title>
+		<path fill="none" stroke="#4720D2" d="M1953.24-2148.54c5.511,4.87,8.761,11.38,8.761,19.54s-3.25,14.67-8.761,19.54"/>
+		<polygon fill="#4720D2" stroke="#4720D2" points="1952.85,-2148.79 1942,-2150.37 1948.63,-2151.48 1944.42,-2154.17 
+			1944.42,-2154.17 1944.42,-2154.17 1948.63,-2151.48 1946.84,-2157.96 1952.85,-2148.79 		"/>
+		<polygon fill="#4720D2" stroke="#4720D2" points="1952.85,-2109.21 1946.84,-2100.04 1948.63,-2106.52 1944.42,-2103.83 
+			1944.42,-2103.83 1944.42,-2103.83 1948.63,-2106.52 1942,-2107.63 1952.85,-2109.21 		"/>
+		<text transform="matrix(1 0 0 1 1962.0022 -2123.4004)" font-family="'Times-Roman'" font-size="14">friends</text>
+	</g>
+	<g id="edge45">
+		<title>User-&gt;Friendship</title>
+		<path fill="none" stroke="#6F92CA" d="M1949.68-2024.03c14.39,17.66,27.779,36.601,38.32,56.03
+			c40.779,75.189,61.25,172.37,70.979,236.36"/>
+		<ellipse fill="none" stroke="#6F92CA" cx="1946.89" cy="-2027.39" rx="4" ry="4"/>
+		<polygon fill="#6F92CA" stroke="#6F92CA" points="2058.99,-1731.55 2064.9,-1722.32 2059.72,-1726.61 2060.449,-1721.66 
+			2060.449,-1721.66 2060.449,-1721.66 2059.72,-1726.61 2056,-1721 2058.99,-1731.55 		"/>
+		<text transform="matrix(1 0 0 1 1994.9993 -1953.4004)" font-family="'Times-Roman'" font-size="14">inverse_friendships</text>
+	</g>
+	<g id="edge46">
+		<title>User-&gt;User</title>
+		<path fill="none" stroke="#D74E4F" d="M1953.24-2148.54c5.511,4.87,8.761,11.38,8.761,19.54s-3.25,14.67-8.761,19.54"/>
+		<polygon fill="#D74E4F" stroke="#D74E4F" points="1952.85,-2148.79 1942,-2150.37 1948.63,-2151.48 1944.42,-2154.17 
+			1944.42,-2154.17 1944.42,-2154.17 1948.63,-2151.48 1946.84,-2157.96 1952.85,-2148.79 		"/>
+		<polygon fill="#D74E4F" stroke="#D74E4F" points="1952.85,-2109.21 1946.84,-2100.04 1948.63,-2106.52 1944.42,-2103.83 
+			1944.42,-2103.83 1944.42,-2103.83 1948.63,-2106.52 1942,-2107.63 1952.85,-2109.21 		"/>
+		<text transform="matrix(1 0 0 1 1961.9983 -2123.4004)" font-family="'Times-Roman'" font-size="14">inverse_friends</text>
+	</g>
+	<g id="edge47">
+		<title>User-&gt;List</title>
+		<path fill="none" stroke="#AC2C3A" d="M1731.579-2116.07c-118.93,18.7-305.699,66-414.579,184.07
+			c-48.19,52.26-66.101,132.87-72.61,192.04"/>
+		<ellipse fill="none" stroke="#AC2C3A" cx="1735.709" cy="-2116.71" rx="4" ry="4"/>
+		<polygon fill="#AC2C3A" stroke="#AC2C3A" points="1244.38,-1739.87 1247.85,-1729.46 1243.88,-1734.89 1243.369,-1729.92 
+			1243.369,-1729.92 1243.369,-1729.92 1243.88,-1734.89 1238.89,-1730.37 1244.38,-1739.87 		"/>
+	</g>
+	<g id="edge48">
+		<title>User-&gt;Like</title>
+		<path fill="none" stroke="#2DE77C" d="M1952.159-2105.76c101.05,25.72,248.61,77.47,340.841,173.76
+			c43.75,45.67,69.43,111.91,84.209,167.1"/>
+		<ellipse fill="none" stroke="#2DE77C" cx="1948.24" cy="-2106.74" rx="4" ry="4"/>
+		<polygon fill="#2DE77C" stroke="#2DE77C" points="2377.25,-1764.76 2384.11,-1756.21 2378.5,-1759.92 2379.76,-1755.08 
+			2379.76,-1755.08 2379.76,-1755.08 2378.5,-1759.92 2375.4,-1753.95 2377.25,-1764.76 		"/>
+	</g>
+	<g id="edge49">
+		<title>User-&gt;Rating</title>
+		<path fill="none" stroke="#7A874E" d="M1811.9-1978.311c-2.58,15.601-4.95,31.25-6.899,46.311c-15.32,118.42-19,148.59-19,268
+			c0,0,0,0,0,928c0,145.396-29.9,311.401-52.19,414.961"/>
+		<ellipse fill="none" stroke="#7A874E" cx="1812.61" cy="-1982.52" rx="4" ry="4"/>
+		<polygon fill="#7A874E" stroke="#7A874E" points="1733.8,-320.987 1736.07,-310.26 1732.74,-316.102 1731.68,-311.214 
+			1731.68,-311.214 1731.68,-311.214 1732.74,-316.102 1727.28,-312.169 1733.8,-320.987 		"/>
+	</g>
+	<g id="edge50">
+		<title>User-&gt;Comment</title>
+		<path fill="none" stroke="#462B1F" d="M1793.31-1978.26c-4.19,15.529-8.06,31.149-11.31,46.26c-25.221,117.39-34,147.93-34,268
+			c0,0,0,0,0,648c0,262.075-105.95,557.651-165.881,703.884"/>
+		<ellipse fill="none" stroke="#462B1F" cx="1794.47" cy="-1982.51" rx="4" ry="4"/>
+		<polygon fill="#462B1F" stroke="#462B1F" points="1582.05,-311.947 1582.4,-300.987 1580.14,-307.324 1578.24,-302.701 
+			1578.24,-302.701 1578.24,-302.701 1580.14,-307.324 1574.079,-304.416 1582.05,-311.947 		"/>
+	</g>
+</g>
+</svg>

@@ -8,7 +8,7 @@ class RecommendationController < ApplicationController
     
     #@pois = current_user.recommend_pois
     #@events = current_user.recommend_events
-    import_recommended_pois_from_foursquare(city,novelty) #novelty new = new pois, old = checked pois
+    #import_recommended_pois_from_foursquare(city,novelty) #novelty new = new pois, old = checked pois
     
     ids = current_user.recommend_pois
     
@@ -21,7 +21,7 @@ class RecommendationController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json render json: @recommended_poi
+      format.json {render json: @recommended_poi}
     end
     
   end

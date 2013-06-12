@@ -19,6 +19,7 @@
 //= require categories-show
 //= require jquery.endless-scroll
 //= require starbar
+//= require cocoon
 //= require_self
 
 $(document).ready(function() {

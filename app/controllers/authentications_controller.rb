@@ -27,7 +27,7 @@ class AuthenticationsController < InheritedResources::Base
       else #si no existe el usuario
         @user = User.new(name: omniauth[:info][:name], email: omniauth[:info][:email], password:Devise.friendly_token[0,20])
         
-        if @user.save       
+        if @user.save     
           add_account(@user, omniauth)
           flash[:notice] = "Signed in with #{omniauth ['provider']}. Change your password"
           get_likes(@user)

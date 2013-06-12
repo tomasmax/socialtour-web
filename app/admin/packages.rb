@@ -4,6 +4,7 @@ ActiveAdmin.register Package do
   index do
     
     column :name
+    column :pois
     column :description
     column :price
     column :category
@@ -16,8 +17,9 @@ ActiveAdmin.register Package do
   end 
   
   form do |f|
-     f.inputs "Category" do
+     f.inputs "Package" do
       f.input :name
+      f.input :pois
       f.input :description
       f.input :price
       f.input :category

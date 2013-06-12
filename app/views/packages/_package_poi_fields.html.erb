@@ -1,0 +1,7 @@
+<div class="nested-fields package-poi-fields">
+	<div id="pacakge_form_list">
+  	<%= f.association :poi, :collection => Poi.all(:order => 'name'), :prompt => 'Elegir un lugar existente', class: 'chosen' %>
+  </div>
+
+  <%= link_to_remove_association "Elimina el lugar", f %>
+</div>
