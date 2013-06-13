@@ -13,12 +13,12 @@ class Poi < ActiveRecord::Base
   has_many :comments, dependent: :delete_all
   has_many :route_infos, dependent: :delete_all
   has_many :route_points, dependent: :delete_all
-  
+ 
   attr_accessible :user_id, :category_id, :supercategory_id,
                   :address, :description, :description_eu, :latitude, :longitude, 
                   :minube_id, :minube_url, :name, :name_eu, :rating, :ratings_count, :slug, 
                   :telephone, :timetable, :website,:foursquare_id, :foursquare_url, :checkins_count, 
-                  :users_count, :tip_count, :likes_count,:city_id, :subcategory_id
+                  :users_count, :tip_count, :likes_count,:city_id, :subcategory_id, :gpx_file
                
   attr_accessor :route_points_list
   attr_accessor :gpx_file
@@ -31,13 +31,14 @@ class Poi < ActiveRecord::Base
   friendly_id :name, use: :slugged
   
   validates :name, presence: true
-  #validates :slug, presence: true
   
   validates_uniqueness_of :name, :slug
   
   paginates_per 10
   
   #after_save :save_route, :generate_route_info
+  after_commit :save_gpx_file,      if: :gpx_file
+  after_commit :save_route_points,  if: :route_points_list
   before_save :set_supercategory
   
   def set_location
@@ -84,53 +85,41 @@ class Poi < ActiveRecord::Base
     photos.order('created_at desc').limit(10)
   end
   
-  #metodos de las rutas
-  def generate_route_info
-    if !self.route_info && self.route_points && self.route_points.count > 0
-      self.create_route_info
-    end
-  end
-  
-  def save_route
-    if self.gpx_file
-      self.save_gpx_file
-    else
-      self.save_route_points
+  #routes methods
+  def self.create_from_gpx(gpx)
+    routes = []
+    routes.push(*gpx.tracks)
+    routes.push(*gpx.routes)
+    
+    routes.collect do |route|
+      poi = create!(title: route.name, description: route.name, latitude: route.points.first.lat, longitude: route.points.first.lon)
+      route.points.each {|p| poi.route_points.create(latitude: p.lat, longitude: p.lon, elevation: p.elevation) }
+      poi
     end
   end
   
   def save_gpx_file
     gpx = GPX::GPXFile.new gpx_file: self.gpx_file.tempfile.path
     
-    if gpx.tracks
-      self.latitude = gpx.tracks.first.points.first.lat
-      self.longitude = gpx.tracks.first.points.first.lon
-      gpx.tracks.first.points.each do |route_point|
-        self.route_points.new(latitude: route_point.lat, longitude: route_point.lon, elevation: route_point.elevation).save!
-      end
-    elsif gpx.routes
-      self.latitude = gpx.routes.first.points.first.lat
-      self.longitude = gpx.routes.first.points.first.lon
-      gpx.routes.first.points.each do |route_point|
-        self.route_points.new(latitude: route_point.lat, longitude: route_point.lon, elevation: route_point.elevation).save!
-      end
-    end
+    route   = gpx.tracks.first if gpx.tracks.any?
+    route ||= gpx.routes.first if gpx.routes.any?
+    
+    raise "No routes found in GPX file" if !route
+    
+    latitude = route.points.first.lat
+    longitude = route.points.first.lon
+    route.points.each {|p| route_points.create(latitude: p.lat, longitude: p.lon, elevation: p.elevation) }
+    
     self.gpx_file = nil
-    self.save
+    save
+    create_route_info unless route_info
   end
   
   def save_route_points
-    if @route_points_list
-      if @route_points_list.kind_of?(Array)
-        @route_points_list.each do |route_point| 
-          self.route_points.new(route_point).save
-        end
-      else
-        @route_points_list.each do |index, route_point| 
-          self.route_points.new(route_point).save
-        end
-      end
-    end
+    route_points_list.each {|i, point| point ||= i; route_points.create(point) }
+    
+    self.route_points_list = nil
+    create_route_info unless route_info
   end
   
 end

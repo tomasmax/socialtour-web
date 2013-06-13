@@ -74,7 +74,7 @@ gem 'foursquare2', '~> 1.9.5'
 #semtiment analyzer
 #gem 'sentimentalizer'
 
-#form builder
+#form builders
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 

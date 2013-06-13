@@ -1,11 +1,16 @@
 class PoisController < InheritedResources::Base
   
-  before_filter :authenticate_user!, :only => :new
+  before_filter :authenticate_user!, only: [:create, :new, :edit, :update]
   
   @@last_minube_update = Time.at(0)
   
   def crawler
     
+  end
+  
+  def check_ownership
+    @poi = current_user.pois.find(params[:id])
+    raise ActionController::RoutingError.new('Not Found') unless @poi
   end
   
   # GET /pois
@@ -87,6 +92,22 @@ class PoisController < InheritedResources::Base
       format.json do 
         @poi.route_points_list = @poi.route_points
         render json: @poi
+      end
+    end
+  end
+  
+  # POST /pois
+  # POST /pois.json
+  def create
+    @poi = current_user.pois.new(params[:poi])
+    
+    respond_to do |format|
+      if @poi.save
+        format.html { redirect_to poi_url(@poi), notice: 'Poi was successfully created.' }
+        format.json { render json: @poi, status: :created, location: @poi }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @poi.errors, status: :unprocessable_entity }
       end
     end
   end

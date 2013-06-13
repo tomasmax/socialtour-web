@@ -4,6 +4,7 @@
 class User < ActiveRecord::Base
   has_many :authentications, dependent: :delete_all
   has_many :packages
+  has_many :pois
   has_many :profiles, dependent: :delete_all
   accepts_nested_attributes_for :profiles, :reject_if => :all_blank, :update_only => true, :allow_destroy => true
   
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   
-  has_many :lists
+  has_many :lists, dependent: :delete_all
   
   has_many :likes, dependent: :delete_all
   

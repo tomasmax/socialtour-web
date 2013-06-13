@@ -28,6 +28,15 @@ SocialTour::Application.routes.draw do
   resources :photos
 
   resources :pois
+  post '/pois/create-from-gpx', to: 'pois#create_from_gpx'
+
+  get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
+  get '/places/:slug(.:format)', to: 'pois#show', as: 'place'
+  get '/routes/:slug(.:format)', to: 'pois#show', as: 'route'
+  
+  #explorer
+  get 'explorer/places'
+  get 'explorer/events'
 
   resources :events
 
@@ -41,12 +50,7 @@ SocialTour::Application.routes.draw do
 
   resources :cities
   
-  #slug routes
-  get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
-  
-  #explorer
-  get 'explorer/places'
-  get 'explorer/events'
+  #pages controller
   
   get "pages/home"
 
@@ -55,12 +59,6 @@ SocialTour::Application.routes.draw do
   get "pages/about"
   
   root :to => 'pois#index'
-  
-  post '/pois/create-from-gpx', to: 'pois#create_from_gpx'
-
-  get '/pois/:slug(.:format)', to: 'pois#show', as: 'poi'
-  get '/places/:slug(.:format)', to: 'pois#show', as: 'place'
-  get '/routes/:slug(.:format)', to: 'pois#show', as: 'route'
   
   match '/cities/:slug(.:format)', to: 'cities#show', as: 'city'
   
@@ -78,5 +76,7 @@ SocialTour::Application.routes.draw do
   #for providers authentication
   match '/auth/:provider/callback', to: 'authentications#create'
   match '/auth/failure', to: "authentications#failure"
+  match '/signout' => 'authentications#destroy'
+  match '/signin' => 'authentications#new'
 
 end

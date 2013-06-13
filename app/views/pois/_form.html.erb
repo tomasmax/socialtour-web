@@ -2,7 +2,7 @@
 <div id="new-poi-form">
   <%= form_for(@poi, html: {multipart: true}) do |f| %>
     <fieldset>
-      <div class="span6">
+      <div class="span5">
         <div class="clearfix">
           <%= f.label t(:poi_name) %>
           <div class="input">
@@ -14,24 +14,6 @@
           <%= f.label t(:poi_description) %>
           <div class="input">
             <%= f.text_area :description, class: 'fill-h', rows: 12, required: true %>
-          </div>
-        </div>
-        
-         <div class="clearfix">
-          <%= f.label "Categoria" %>
-          <div class="input">
-            <select id="poi_category" name="poi[category_id]" class="chosen">
-              <%= option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name) %>
-            </select>
-          </div>
-        </div>
-        
-        <div class="clearfix">
-          <%= f.label "Localidad" %>
-          <div class="input">
-            <select id="poi_city" name="poi[city_id]" class="chosen">
-              <%= options_for_select(City.order('name').all.collect{|city| [city.name, city.id] }, @city ? @city.id : nil) %>
-            </select>
           </div>
         </div>
 
@@ -50,11 +32,30 @@
 			
 			  <div class="field">
 			    <%= f.label :timetable %><br />
-			    <%= f.text_area :timetable, class: 'span6', rows: 2 %>
+			    <%= f.text_area :timetable, rows: 2 %>
 			  </div>
-			  </div>
+			</div>
       
-      <div>
+      <div class="span5">
+      	 <div class="clearfix">
+          <%= f.label "Categoria" %>
+          <div class="input">
+            <select id="poi_category" name="poi[category_id]" class="chosen">
+              <%= option_groups_from_collection_for_select(Supercategory.order('name').all, :categories, :name, :id, :name) %>
+            </select>
+          </div>
+        </div>
+        
+        <div class="clearfix">
+          <%= f.label "Localidad" %>
+          <div class="input">
+            <select id="poi_city" name="poi[city_id]" class="chosen">
+              <%= options_for_select(City.order('name').all.collect{|city| [city.name, city.id] }, @city ? @city.id : nil) %>
+            </select>
+          </div>
+        </div>
+        <br />
+        
         <div class="tabs">
           <div class="tab-selector">
             <a href="#from-map" class="selected">Subir desde el Mapa</a>
@@ -72,12 +73,12 @@
           <div id="from-map" class="tab">
             <div class="clearfix">
               <div class="input">
-                <div id="map-canvas" style="height: 450px; width: 460px; margin-left: -25px;"></div> 
+                <div id="map-canvas" style="height: 450px; width: 460px;"></div> 
                 <span id="route-help" class="help-block">
                   <%= t :route_help %> 
                   <a href="#" id="new-map-undo" class="pull-right danger">Deshacer</a>
                 </span>
-                <% javascript_include_tag "pois-new" %>
+                <%= javascript_include_tag "pois-new" %>
               </div>
               <div id="route-points" style="display: none;"></div>
               <%= f.hidden_field :latitude, id: 'poi-latitude' %>
@@ -87,6 +88,7 @@
           
         </div>
       </div>
+      
     </fieldset>
     <div class="fill-h">
       <div class="actions fill-h">
