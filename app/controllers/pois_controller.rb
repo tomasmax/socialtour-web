@@ -22,8 +22,8 @@ class PoisController < InheritedResources::Base
         begin
           @@last_minube_update = Time.now
           #import_pois_from_minube
-          #import_pois_from_foursquare
-          load_events_from_kulturklik(Date.today.to_s, (Date.today+1.month).to_s) #“yyyy-mm-dd”
+          import_pois_from_foursquare
+          #load_events_from_kulturklik(Date.today.to_s, (Date.today+1.month).to_s) #“yyyy-mm-dd”
         rescue Exception => e
           puts "Error updating from minube or foursquare: #{e}"
         end

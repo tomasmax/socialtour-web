@@ -60,8 +60,8 @@
               </div>
               
               <div class="description">
-                <a href="#" class="thumbnail">
-                  <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.jpg', class: 'poi-preview' %>
+                <a href="#" class="poi-img thumbnail">
+                  <%= image_tag poi.photos.count > 0 ? poi.photos.first.image.url(:thumb_wide) : '/assets/poi-placeholder.png', class: 'poi-preview' %>
                 </a>
                 <%= simple_format truncate(poi.description, length: 700) %>
               </div>

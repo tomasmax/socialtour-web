@@ -298,7 +298,7 @@ class ApplicationController < ActionController::Base
       puts "#{pois.size} pois readed"
 
       pois.venues.each do |venue|
-        if create_poi(venue)
+        if create_poi(venue, category)
           total_saved = total_saved + 1
         end
       end
