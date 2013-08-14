@@ -53,6 +53,7 @@ class PackagesController < InheritedResources::Base
         
     end
     
+    
     if params[:type_time] #Mañana, tarde, noche, todo el día, fin de semana
       case params[:type_time]
       when "Mañana"

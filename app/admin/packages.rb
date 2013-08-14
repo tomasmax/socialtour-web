@@ -11,6 +11,9 @@ ActiveAdmin.register Package do
     column :supercategory
     column :type
     column :user
+    f.input :type_leisure
+    f.input :type_time
+    f.input :type_vehicle
     column :provider
     
     default_actions
@@ -24,7 +27,9 @@ ActiveAdmin.register Package do
       f.input :price
       f.input :category
       f.input :supercategory
-      f.input :type
+      f.input :type_leisure
+      f.input :type_time
+      f.input :type_vehicle
       f.input :user
       f.input :provider
     end
